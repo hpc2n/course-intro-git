@@ -12,7 +12,7 @@ Introduction to Git --- Fall 2021
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
 Minor modifications done for the fall 2021 version of the course. -->
 
-![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png | width=200px)
+![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png | width=200)
 
 <small>Slides: https://hackmd.io/@hpc2n-git-2021/LA-intro#/</small>
 
