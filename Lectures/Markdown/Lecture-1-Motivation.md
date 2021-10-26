@@ -12,7 +12,7 @@ Introduction to Git --- Fall 2021
 <!-- Lecture material made by Mirko Myllykoski for the version of the course that was given in fall 2020. Lecture was first given by Mirko Myllykoski in fall 2020.
 Minor modifications made by Birgitte Brydsö for the fall 2021 version of the course.-->
 
-![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
+![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png)
 
 <small>Slides: https://hackmd.io/@hpc2n-git-2021/L1-motivation#/</small>
 
