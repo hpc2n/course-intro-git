@@ -8,3 +8,5 @@
 * Lecture 3, basic commands: **Lecture-3-Basic-commands.pdf**
 * Lecture 4, the commit tree: **Lecture-4-Commits.pdf**
 * Lecture 5, branches: **Lecture-5-Branches.pdf**
+* Lecture 6, working with remotes: **Lecture-6-Working-with-remotes.pdf**
+* Lecture 7, teamwork: **Lecture-7-Teamwork.pdf**
