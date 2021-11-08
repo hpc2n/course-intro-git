@@ -109,10 +109,7 @@ remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
 Checking connectivity... done.
 
-$ cd GitCourse/Alice/
-$ ls
-my-project
-$ cd my-project/
+$ cd GitCourse/Alice/my-project
 $ git status
 On branch master
 Your branch is up-to-date with 'origin/master'.
@@ -308,7 +305,7 @@ $ git add .         (all files in the sub-folders)
 <!-- .slide: data-background="#ffffff" -->
 ## Adding files' modifications interactively
 
-Suppose we create a file, stage it, and commit the changes as follows:
+Suppose we create an empty file, stage it, and commit the changes as follows:
 
 ```shell
 touch first.txt
@@ -344,52 +341,22 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-Let's suppose that the new text lines refer to different topics and because of that it would be better to have them in different commits. We can add the modifications interactively:
+Let's suppose that the new text (5 lines) refer to different topics: *TODO list* and *Summary*. Then, it would be better to have them in different commits. We can add the modifications interactively:
 
 ---
 
 <!-- .slide: data-background="#ffffff" -->
 ```console
-$ git add -i first.txt
+$ git add -p first.txt
 ```
 
-```console
-           staged     unstaged path
-  1:    unchanged        +4/-0 first.txt
-
-*** Commands ***
-  1: status       2: update       3: revert       4: add untracked
-  5: patch        6: diff         7: quit         8: help
-What now> p
-```
-
-choose the **p** option will create a patch. **Need to define patch**
-
----
-
-<!-- .slide: data-background="#ffffff" -->
-select the file **1** for patch update:
-```console
-           staged     unstaged path
-  1:    unchanged        +4/-0 first.txt
-Patch update>> 1
-```
-and one more enter to accept the selected patch:
-```console
-Patch update>>
-```
-
----
-
-<!-- .slide: data-background="#ffffff" -->
-Then, Git will ask you about the editing options:
 ```console
 diff --git a/first.txt b/first.txt
-index dba0775..96dd9a2 100644
+index e69de29..96dd9a2 100644
 --- a/first.txt
 +++ b/first.txt
-@@ -1 +1,5 @@
- This is my first file
+@@ -0,0 +1,5 @@
++This is my first file
 +
 +* TODO list
 +
@@ -397,18 +364,19 @@ index dba0775..96dd9a2 100644
 (1/1) Stage this hunk [y,n,q,a,d,e,?]?
 ```
 
-By choosing the option **e**, Git will display a message in your text editor. We will delete the last line **\* Summary**: 
+choose the **e** edit option to enter the editing mode.
 
 ---
 
 <!-- .slide: data-background="#ffffff" -->
+
 ```console
 # Manual hunk edit mode -- see bottom for a quick guide.
-@@ -1 +1,5 @@
- This is my first file
+@@ -0,0 +1,5 @@
++This is my first file
 +
 +* TODO list
-+
++                                                                                                                                       
 +* Summary
 # ---
 # To remove '-' lines, make them ' ' lines (context).
@@ -416,23 +384,8 @@ By choosing the option **e**, Git will display a message in your text editor. We
 # Lines starting with # will be removed.
 ```
 
----
+Because we don't want *Summary* in the first commit, we delete that line and save the file.
 
-<!-- .slide: data-background="#ffffff" -->
-```console
-# Manual hunk edit mode -- see bottom for a quick guide.
-@@ -1 +1,5 @@
- This is my first file
-+
-+* TODO list
-+
-# ---
-# To remove '-' lines, make them ' ' lines (context).
-# To remove '+' lines, delete them.
-# Lines starting with # will be removed.
-```
-
-and save the file. Then, type **q** to quit the menu.
 
 ---
 

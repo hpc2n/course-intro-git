@@ -185,6 +185,9 @@ $ git fetch
 $ git merge
 ```
 
+---
+
+<!-- .slide: data-background="#ffffff" -->
 The command
 ```shell
 $ git push 
@@ -194,6 +197,26 @@ will send all the changes (branches) to the remote by default. This can be chang
 git config --global push.default matching(default), current, ...
 ```
 
+---
+
+<!-- .slide: data-background="#ffffff" -->
+If you have a brand-new branch called **new**, then it is recommended to push it the first time with the command:
+
+```shell
+git push -u origin new
+```
+
+which is equivalent to
+
+```shell
+git push origin new
+git branch --set-upstream new origin/new
+```
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+then, you will be able to push/pull the changes in the branch by simply typing **git push/pull**
 
 ---
 
