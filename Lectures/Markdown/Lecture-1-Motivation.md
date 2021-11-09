@@ -263,6 +263,8 @@ What are the practical use cases for VCS?
 
 ### Examples of VCS
 
+<!-- .slide: style="font-size: 24px;" -->
+
 - SCCS: The first VCS. Created in 1972 at Bell Labs. Was available only for UNIX and worked with Source Code files only.
 - RCS (Revision Control System): First release July 1985. Usually superseded by other systems such as CVS, which began as a wrapper on top of RCS. 
 - CVS (centralized version control system): First release July 1986; based on RCS. Expands on RCS by adding support for repository-level change tracking, and a client-server model. 
