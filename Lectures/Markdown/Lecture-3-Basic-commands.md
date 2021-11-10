@@ -280,6 +280,26 @@ $ git restore --staged filename
 ---
 
 <!-- .slide: data-background="#ffffff" -->
+```console
+$ git restore --staged filename
+```
+unstages the changes made to *filename*. From the website https://git-scm.com/docs/git-restore: THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
+
+```console
+$ git reset HEAD filename
+```
+old command for unstaging,
+
+```console
+$ git rm --cached filename
+```
+with this command you Git will untrack *filename* (staging for removal) leaving the file in the working directory
+
+
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
 ## Adding multiple files 
 
 In case you want to add multiple files, that follow a pattern, at the same time you can use Linux-type wild cards. As an example, we can add the files <span style="color:brown"> *file1.txt, file2.txt, file3.txt*</span>  at once with the commands (equivalent for this test case):
@@ -719,5 +739,22 @@ $ git graph
 ```
 <span style="color:red">Note: use this command in commits that haven't been pushed on public branches. This command modifies the history.</span>
 
+---
 
+<!-- .slide: data-background="#ffffff" -->
+
+## Git blame
+
+it displays information about the last modifications of authors line by line 
+
+```java
+git blame filename
+
+$git blame 1.basic-commands/README.md
+^a18abd1 (Birgitte Brydsö 2021-09-28 12:21:06 +0200  9)       - stage the file
+^a18abd1 (Birgitte Brydsö 2021-09-28 12:21:06 +0200 10)       - commit the changes
+dd5db248 (Pedro Ojeda-May 2021-11-02 10:53:01 +0100 11)       - create a second file "Poem.md" without any text (hint: use touch command), stage and commit it
+
+```
+here we can see the commit, author, timestamp, line number and line content.
 
