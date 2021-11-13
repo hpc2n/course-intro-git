@@ -52,11 +52,10 @@ Merge branch 'fixed-recipe'
 #
 # Lines starting with '#' will be ignored, and an empty message aborts
 # the commit.
-~                                                                                                            ~                                                                                                            
+~
 ~                                                                                                            
 ~
-
-```                                                                                                          ```
+```
 
 If you want (you should), add something to the above message, then save and quit the editor (if it opened in vim as above, then open for editing by pushing the 'i' key, write what you want to write, then press the 'ESC' key to go to command-mode, then write ':wq' and press enter to save and quit).                    
 
