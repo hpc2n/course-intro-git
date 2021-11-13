@@ -76,7 +76,7 @@ To abort and get back to the state before "git rebase", run "git rebase --abort"
 
 Let us try the command 'git am --show-current-patch': 
 
-
+https://github.com/hpc2n/course-intro-git/blob/main/exercises-solutions/5.branches/5.rebase-bad/git-rebase-fail.png
 
 
 3. Use `git log` (with the above flags) and `git status` to see where the problems are. See if you can fix the conflict and then reattempt the rebase.
