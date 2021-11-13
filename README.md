@@ -18,6 +18,8 @@ Then do
 
 Then cd to the folder that is created. The exercises will be found under each subdirectory for the relevant lecture - in some cases just in a README.md file. 
 
+**NOTE**: There is a subdirectory in this directory called 'exercises-readmes', it contains the readme files from the exercises so you can view them in a nicer format. The directory does NOT contain all the material for the exercises. Those are found in the git_materials.zip file. 
+
 ## Lectures 
 
 The lectures are in the folder 'Lectures'. There are two subfolders in that directory, one for the lectures in markdown language and one for them as PDF files. 
