@@ -81,14 +81,13 @@ The file 'cakerecipe.txt' is modified on both branches. You can solve this confl
 1) You could do "git merge --abort" to abort the merge and then perhaps undo the changes on one of the branches. 
 2) You could manually fix the conflict. This is the option we are going to go with here. 
 
-To fix the conflict, there are a few options: 
-a) Use a mergetool, like 'git mergetool' to launch a graphical mergetool. This will help you go through the steps of the merge. 
-b) Look at the diffs. The command git diff will show a three-way diff. The changes from the versions will be highlighted. 
-c) Look at the diffs from each branch. The command git log --merge -p <path> will first give diffs for the HEAD of the branch you are on, then for the HEAD of the branch you are merging. 
-d) Look at the originals and compare them. 
-e) Open the conflicting file and look at the problems directly. If it is just a small number of conflicts, this is the easiest. 
+To fix the conflict, there are a couple options: 
+1) Use 'git mergetool' to launch a graphical mergetool. This will help you go through the steps of the merge. you will need to configure mergetool before using it. 
+2) Look at the diffs. The command git diff will show a three-way diff. The changes from the versions will be highlighted. Fix the conflicts in the file(s). 
+3) Look at the diffs from each branch. The command git log --merge -p <path> will first give diffs for the HEAD of the branch you are on, then for the HEAD of the branch you are merging. 
+4) Open the conflicting file and look at the problems directly. If it is just a small number of conflicts, this is the easiest. 
 
-Here we will do option e) so open the file 'cakerecipe.txt' in your editor of choice. Find the problematic areas: 
+Here we will do option 4) so open the file 'cakerecipe.txt' in your editor of choice. Find the problematic areas: 
 
 ```shell
 # Maraschino Devil's Food Cake
