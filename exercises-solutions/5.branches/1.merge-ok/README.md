@@ -73,7 +73,7 @@ bbrydsoe@enterprise-a:~/course-intro-git/git_materials/5.branches/1.merge-ok/rec
 
 **Solution** 
 
-The change was only made on the 'fixed-recipe' branch, so there was no risk of conflict. 
+The change was only made on the 'fixed-recipe' branch, so there was no risk of conflict. The changes were committed, so there was also nothing uncommitted to handle. 
 
 Remember: 
 Fast Forward Merge - the commit history is one straight line. You create a branch, you make some commits there, but no changes to the ‘master’. You then just merge onto the ‘master’. This just moves the pointer for the ‘master’ branch forward in a straight line. 
