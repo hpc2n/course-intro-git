@@ -81,7 +81,7 @@ The file 'cakerecipe.txt' is modified on both branches. You can solve this confl
 1) You could do "git merge --abort" to abort the merge and then perhaps undo the changes on one of the branches. 
 2) You could manually fix the conflict. This is the option we are going to go with here. 
 
-To fix the conflict, there are a couple options: 
+To fix the conflict, there are a few options (2, 3, 4 all basically reverts to you having to do the changes manually): 
 1) Use 'git mergetool' to launch a graphical mergetool. This will help you go through the steps of the merge. you will need to configure mergetool before using it. 
 2) Look at the diffs. The command git diff will show a three-way diff. The changes from the versions will be highlighted. Fix the conflicts in the file(s). 
 3) Look at the diffs from each branch. The command git log --merge -p <path> will first give diffs for the HEAD of the branch you are on, then for the HEAD of the branch you are merging. 
