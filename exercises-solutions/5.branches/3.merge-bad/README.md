@@ -154,6 +154,9 @@ Now all is well:
 ```shell
 bbrydsoe@enterprise-a:~/course-intro-git/git_materials/5.branches/3.merge-bad/recipes$ git merge metric
 Already up-to-date.
+bbrydsoe@enterprise-a:~/course-intro-git/git_materials/5.branches/3.merge-bad/recipes$ git status
+On branch master
+nothing to commit, working tree clean
 bbrydsoe@enterprise-a:~/course-intro-git/git_materials/5.branches/3.merge-bad/recipes$ git branch
 * master
   metric
