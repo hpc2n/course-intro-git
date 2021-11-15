@@ -18,10 +18,12 @@ You will be using your GitHub username and password for this exercise
 **Solution** 
 
 Create a new repository: 
+
 ![](figures/Github-new-repo.png)
 ![](figures/Github-create-repo.png)
 
 Go to settings and then Manage access to "Add people". Search by username, full name, or email. The person you are adding needs to have a GitHub account. 
+
 ![](figures/github-repo-settings.png)
 ![](figures/Github-add-members.png) 
 
