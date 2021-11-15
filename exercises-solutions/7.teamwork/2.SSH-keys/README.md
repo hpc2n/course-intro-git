@@ -80,7 +80,7 @@ Then, open GitHub. Click on your avatar in the top right corner and pick "Settin
 ![](figures/github-keys.png)
 ![](figures/github-keys-2.png)
 
-Now choose "Add SSH key" / "Add new SSH key" (depending on whether or not you have a key already. If not, GitHub will not list a key as it does for me. 
+Now choose "New SSH key". If you do not have a key there already, GitHub will not list a key as it does for me. 
 
 ![](figures/github-keys-new.png)
 
