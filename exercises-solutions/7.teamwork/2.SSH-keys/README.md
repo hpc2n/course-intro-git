@@ -88,7 +88,7 @@ Now enter the ENTIRE content of the file ~/.ssh/id_rsa.pub (or whatever you name
 
 ![](figures/github-keys-new-2.png)
 
-Click Add key. 
+Click "Add SSH key". 
 
 **Testing the SSH keys**
 
@@ -116,13 +116,80 @@ We now have SSH keys set up. Try and repeat some of the things that was done in 
 
 1. Again clone the repository, but this time use the SSH address (click CODE on the GitHub repository and pick SSH). You will be asked for the key passphrase.
 
+**Solution**
+
+Use the SSH address (click CODE to find it). See example: 
+
+![](figures/github-url.png )
+
+Clone with: 
+```shell
+git clone <url>
+```
+
+This is how it looks for this example (remember to use your own repo-url):  
+
+```shell
+bbrydsoe@enterprise-a:~$ git clone git@github.com:bbrydsoe/mytestrepo.git
+Cloning into 'mytestrepo'...
+Enter passphrase for key '/home/bbrydsoe/.ssh/id_rsa': 
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+```
+
 2. Enter the local repository. Do a `git pull` and see that you no longer have to enter your GitHub username and password, but you do have to enter the key passphrase. 
+
+**Solution**
+
+```shell
+bbrydsoe@enterprise-a:~/mytestrepo$ git pull
+Enter passphrase for key '/home/bbrydsoe/.ssh/id_rsa': 
+Already up-to-date.
+```
 
 3. Create a file (or edit a file). 
 
-4. Add the file. Commit the file.
+**Solution**
+
+Creating a file (here named 'myfile.txt'): 
+
+```shell
+bbrydsoe@enterprise-a:~/mytestrepo$ touch myfile.txt
+```
+
+4. Add/stage the file. Commit the file. 
+
+**Solution** 
+
+Adding and committing the file 'myfile.txt', and also giving a commit message: 
+
+```shell
+bbrydsoe@enterprise-a:~/mytestrepo$ git add myfile.txt
+bbrydsoe@enterprise-a:~/mytestrepo$ git commit -m "Adding my new file to the repository."
+[main d4a666e] Adding my new file to the repository.
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 myfile.txt
+```
 
 5. Push the file. Again it will not ask for GitHub username and password, but only the key passphrase. Success! 
+
+**Solution**
+
+```shell
+bbrydsoe@enterprise-a:~/mytestrepo$ git push
+Enter passphrase for key '/home/bbrydsoe/.ssh/id_rsa': 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 301 bytes | 301.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To github.com:bbrydsoe/mytestrepo.git
+   303bf63..d4a666e  main -> main
+```
 
 6. NOTE: Optionally, you could run `ssh-add` to add the key. Then you will only be asked for the passphrase once per session. This is relatively safe on Linux and macOS, but not on Windows where it usually saves the key passphrase permanently.
 
