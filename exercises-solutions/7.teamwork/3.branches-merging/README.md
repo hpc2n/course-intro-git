@@ -70,6 +70,16 @@ To github.com:bbrydsoe/mytestrepo.git
 Branch 'birgittesbranch' set up to track remote branch 'birgittesbranch' from 'origin'.
 ```
 
+On GitHub it looks like this. Notice that there are now 2 branches: 
+
+![](figures/github.png)
+
+Clicking on the 'branches' you get more information: 
+
+![](figures/2brnaches.png) 
+
+Notice that you can do a 'New pull request'. 
+
 5. When everyone has done this, all do a `git pull`
 
 6. Use `git status`, `git branch`, and `git log` to see what has happened. 
