@@ -20,6 +20,8 @@ Then cd to the folder that is created. The exercises will be found under each su
 
 **NOTE**: There is a subdirectory in this directory called 'exercises-readmes', it contains the readme files from the exercises so you can view them in a nicer format. The directory does NOT contain all the material for the exercises. Those are found in the git_materials.zip file. 
 
+**NOTE 2**: There is a subdirectory in this directory called 'exercises-solutions', it contains model solutions to the exercises. 
+
 ## Lectures 
 
 The lectures are in the folder 'Lectures'. There are two subfolders in that directory, one for the lectures in markdown language and one for them as PDF files. 
