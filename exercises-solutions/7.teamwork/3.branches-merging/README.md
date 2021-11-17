@@ -82,7 +82,37 @@ Notice that you can do a 'New pull request'.
 
 5. When everyone has done this, all do a `git pull`
 
+**Solution**
+
+In my example, two people have created branches and committed a file to it, then pushed. This is how it looks when I do 'git branch -r' first, to see all branches including remote ones, then do a pull, then look at all branches again: 
+
+```shell
+bbrydsoe@enterprise-a:~/mytestrepo$ git branch -r
+  origin/HEAD -> origin/main
+  origin/birgittesbranch
+  origin/main
+bbrydsoe@enterprise-a:~/mytestrepo$ git pull
+Enter passphrase for key '/home/bbrydsoe/.ssh/id_rsa': 
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 2 (delta 0), reused 2 (delta 0), pack-reused 0
+Unpacking objects: 100% (2/2), 285 bytes | 285.00 KiB/s, done.
+From github.com:bbrydsoe/mytestrepo
+ * [new branch]      spocksbranch -> origin/spocksbranch
+Already up-to-date.
+bbrydsoe@enterprise-a:~/mytestrepo$ git branch -r
+  origin/HEAD -> origin/main
+  origin/birgittesbranch
+  origin/main
+  origin/spocksbranch
+```
+
 6. Use `git status`, `git branch`, and `git log` to see what has happened. 
+
+**Solution**
+
+'git status' and 'git log' only shows what is happening locally. The command 'git branch' also only shows local, unless you add the flag '-r' to see remote branches, as I did above. Then you see the difference. 
 
 NOTE: It is possible to make the master branch "protected" so it is not changed without a review from the owner. 
 
