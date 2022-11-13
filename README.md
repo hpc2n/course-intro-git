@@ -26,7 +26,9 @@ Then cd to the folder that is created. The exercises will be found under each su
 
 The lectures are in the folder 'Lectures'.  
 
-You can also find the lectures on the HackMD page for this course: https://hackmd.io/@hpc2n-git-2022/
+You can also find the lectures on the HackMD page for this course: https://hackmd.io/@git-fall-2022
+
+Note that there may be minor updates which are only on the HackMD pages. 
 
 ## Other materials 
 
