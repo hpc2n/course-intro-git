@@ -18,9 +18,7 @@ Then do
 
 Then cd to the folder that is created. The exercises will be found under each subdirectory for the relevant lecture - in some cases just in a README.md file. 
 
-**NOTE**: There is a subdirectory in this directory called 'exercises-readmes', it contains the readme files from the exercises so you can view them in a nicer format. The directory does NOT contain all the material for the exercises. Those are found in the git_materials.zip file. 
-
-**NOTE 2**: There is a subdirectory in this directory called 'exercises-solutions', it contains model solutions to (some of) the exercises. 
+**NOTE**: There is a subdirectory in this directory called 'exercises-solutions', it contains model solutions to (some of) the exercises. 
 
 ## Lectures 
 
