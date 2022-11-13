@@ -1,10 +1,10 @@
 ---
 title: "Lecture 5: Branches"
-tags: Lecture, Birgitte, day 3
+tags: Lecture, Björn, day 3, 4
 description: "Branches, merges and conflicts"
 ---
 
-Introduction to Git --- Fall 2021
+Introduction to Git --- Fall 2022
 # Lecture 5: Branches
 
 <!-- .slide: data-background="#ffffff" -->
@@ -14,7 +14,7 @@ Minor modifications done for the fall 2021 version of the course. -->
 
 ![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
 
-<small>Slides: https://hackmd.io/@hpc2n-git-2021/L5-branches#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2022/L5-branches#/</small>
 
 ---
 
@@ -185,7 +185,7 @@ $ git commit -m "Committing the first file"
 <!-- .slide: style="font-size: 32px;" -->
 
 * Create a new branch, then switch to that branch
-* Make some changes - add files and text <!-- .element: class="fragment" -->
+* Make some changes - add files and text ( > overwrites or are suitable for new file) <!-- .element: class="fragment" -->
 * Stage the file and commit it <!-- .element: class="fragment" -->
 ```shell
 $ git branch cool-feature
@@ -220,7 +220,15 @@ $ git commit -m "Added a second file"
 ```shell
 $ git log --graph --oneline --decorate --all
 ```
+- or, if you made an alias before.
+```shell
+$ git graph
+```
 <!-- .element: class="fragment" -->
+- Otherwise make the alias:
+```shell
+$ git config --global alias.graph "log --all --graph --decorate --oneline"
+```
 
 ---
 
@@ -229,7 +237,7 @@ $ git log --graph --oneline --decorate --all
 This is on the master branch 
 
 ```shell
-$ git log --graph --oneline --decorate --all
+$ git graph
 * bdec2cf (HEAD -> master) Added a second file
 | * 5bad966 (cool-feature) Added text to the first file
 |/  
@@ -243,7 +251,10 @@ $ git merge cool-feature
 Merge made by the 'recursive' strategy.
  file.txt | 1 +
  1 file changed, 1 insertion(+)
-$ git log --graph --oneline --decorate --all
+```
+- Note that in recent git versions (>=2.33) the "recursive" strategy is replaced by the "ort" strategy.
+```shell
+$ git graph
 *   cf3e6b7 (HEAD -> master) Merge branch 'cool-feature'
 |\  
 | * 5bad966 (cool-feature) Added text to the first file
@@ -348,6 +359,7 @@ What if there is a conflict? <!-- .element: class="fragment" -->
 
 <!-- .slide: style="font-size: 30px;" -->
 
+**We continue in the same repository!**
 Here we create a new branch, switch to it, then add a new file. Then we switch back to the master branch without committing the changes: 
 
 ```shell
@@ -368,11 +380,13 @@ Git warns that there is a file added in one branch but not the other, but the sw
 
 <!-- .slide: style="font-size: 32px;" -->
 
-If we make changes to the file in one of the branches but not on the other and do not commit it, then git will again warn: 
+**We continue in the same repository!**
+If we make changes to the file in one of the branches (go back to `cool-feature`) but not on the other and do not commit it, then git will again warn: 
 
 ```shell
-$ echo "Adding some text" >> newfile.txt
-$ git add newfile.txt 
+$ git checkout cool-feature
+$ echo "Adding some text" >> second-file.txt
+$ git add second-file.txt 
 $ git checkout master
 M	newfile.txt
 Switched to branch 'master'
@@ -386,11 +400,14 @@ Git warns that there is a file that is modified in one branch but not the other,
 
 <!-- .slide: style="font-size: 32px;" -->
 
+**We continue in the same repository!**
 Assume two branches, "cool-feature" and "morefeatures"
 
+Create the branch "morefeatures" without switching to it
 Switch to branch "cool-feature", add some text to a file, stage the file and commit it: 
 
 ```shell
+$ git branch morefeatures
 $ git checkout cool-feature 
 Switched to branch 'cool-feature'
 $ echo "add text" >> morefiles.txt 
@@ -418,7 +435,7 @@ error: Your local changes to the following files would be overwritten by checkou
 Please commit your changes or stash them before you switch branches.
 Aborting
 ```
-Now Git complains. 
+Now Git complains and do not allow the switch. 
 
 ---
 
@@ -433,17 +450,19 @@ So what can we do if there is a conflict?
 * Discard the uncommitted changes <!-- .element: class="fragment" -->
 * Checkout with Merge <!-- .element: class="fragment" -->
 
+---
+
+## Stashing
+
 <!-- ## Handling uncommitted changes - stashing -->
 
 <!-- .slide: style="font-size: 32px;" -->
 
-<!-- The command "stash" can be described as a drawer where you store uncommitted changes temporarily. 
+The command "stash" can be described as a drawer where you store uncommitted changes temporarily. 
 
 After stashing your uncommitted changes you can continue working on other things in a different branch.
 
 The uncommitted changes that are stored in the stash can be taken out and applied to any branch, including the original branch. 
-
--->
 
 ---
 
@@ -489,7 +508,6 @@ You can now switch branches and work on something else.
 
 ---
 
-<!--
 ## Working with stashes
 
 You can have several stashes stored. To see them, use 
@@ -524,7 +542,8 @@ Example:
 ```
 $ git stash apply stash@{0}
 ```
--->
+
+---
 
 ## Discarding uncommitted changes 
 
@@ -594,7 +613,7 @@ while standing on the branch you want to merge to.
 Git has some merge strategies. The most commonly used are: 
 
 * Fast Forward Merge - the commit history is one straight line. You create a branch, you make some commits there, but no changes to the 'master'. You then just merge onto the 'master'. This just moves the pointer for the 'master' branch forward in a straight line. <!-- .element: class="fragment" -->
-* Recursive Merge - make a branch and make some commits there, but also make new commits made on the ‘master‘. Then, when you want to merge, git will recurse over the branch and create a new merge commit. The merge commit will continue to have two parents. <!-- .element: class="fragment" -->
+* Recursive Merge - make a branch and make some commits there, but also make new commits that are made on another branch, like the ‘master‘. Then, when you want to merge, git will recurse over the branch and create a new merge commit. The merge commit will continue to have two parents. <!-- .element: class="fragment" -->
 
 ---
 

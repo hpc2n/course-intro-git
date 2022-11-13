@@ -4,7 +4,7 @@ tags: Lecture, Diana, day 1
 description: "What are the basic concepts of Git?"
 ---
 
-Introduction to Git --- Fall 2021
+Introduction to Git --- Fall 2022
 # Lecture 2: Basic concepts
 
 <!-- .slide: data-background="#ffffff" -->
@@ -13,7 +13,7 @@ Introduction to Git --- Fall 2021
 
 ![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
 
-<small>Slides: https://hackmd.io/@hpc2n-git-2021/L2-concepts#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2022/L2-concepts#/</small>
 
 ---
 
@@ -1252,4 +1252,4 @@ digraph {
 
 The end.
 
-And idea: Try to play with different commands. See what happens to the `.git/` directory.
+An idea: Try to play with different commands. See what happens to the `.git/` directory.

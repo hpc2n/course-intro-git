@@ -4,17 +4,17 @@ tags: Lecture, Birgitte, day 1
 description: "Git installation, use of Kebnekaise, etc"
 ---
 
-Introduction to Git --- Fall 2021
+Introduction to Git --- Fall 2022
 # Lecture B: Using Kebnekaise for the Git course
 
 <!-- .slide: data-background="#ffffff" -->
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
-Minor modifications done for the fall 2021 version of the course. -->
+Minor modifications done for the fall 2021 and 2022 versions of the course. -->
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
 
-<small>Slides: https://hackmd.io/@hpc2n-git-2021/LB-kebnekaise#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2022/LB-kebnekaise#/</small>
 
 ---
 
@@ -22,7 +22,7 @@ Minor modifications done for the fall 2021 version of the course. -->
 
 <!-- .slide: style="font-size: 30px;" -->
 
-For this course we recommend using ThinLinc, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. 
+For this course we recommend using ThinLinc, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only. 
 
 * Download the client from https://www.cendio.com/thinlinc/download and install it.
 * Start the client. Enter the name of the server: kebnekaise-tl.hpc2n.umu.se and then enter your own username.
@@ -109,7 +109,7 @@ If that is the case, your Git should be configured correctly.
 
 For the individual hands-on part of the course, we have created some course materials which you will download from either the course website, the course GitHub, or the "important information" page. 
 
-* Course website: https://www.hpc2n.umu.se/events/courses/2021/git
+* Course website: https://www.hpc2n.umu.se/events/courses/2022/introduction-to-git
 * Course GitHub: https://github.com/hpc2n/course-intro-git
   - Click the green button labeled "Code" to get links to clone or download the materials. 
 * Download the material, then please go to the terminal window where you have downloaded and set up Git.

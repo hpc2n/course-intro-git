@@ -1,10 +1,10 @@
 ---
 title: "Lecture 6: Working with remotes"
-tags: Lecture, Pedro
+tags: Lecture, Pedro, Day 4
 description: "TODO"
 ---
 
-Introduction to Git --- Fall 2021
+Introduction to Git --- Fall 2022
 # Lecture 6: Working with remotes
 
 <!-- .slide: data-background="#ffffff" -->
@@ -13,7 +13,7 @@ Introduction to Git --- Fall 2021
 
 ![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
 
-<small>Slides: https://hackmd.io/@hpc2n-git-2021/L6-remotes#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2022/L6-remotes#/</small>
 
 ---
 
@@ -29,10 +29,11 @@ Introduction to Git --- Fall 2021
     display: block;
   }
 </style>
-## Basic concepts
-A remote repository is a version of the project which can be hosted in your local machine, some network, or over the internet[1] where you and your collaborators can push or pull code modifications. 
+## Concepts
+A remote repository is a version of the project which can be hosted in your local machine, some network, or over the internet (Pro Git, 2nd. Ed., Scott Chacon and Ben Straub) where you and your collaborators can push or pull code modifications. 
 
 In addition to this, a remote is a way to backup your repository.
+
 
 ---
 
@@ -47,7 +48,7 @@ In addition to this, a remote is a way to backup your repository.
 ## Basic concepts cont.
 The command 
 
-```shell
+```java
 $ git remote -v
 origin  git@bitbucket.org:arm2011/gitcourse.git (fetch)
 origin  git@bitbucket.org:arm2011/gitcourse.git (push)
@@ -56,8 +57,17 @@ origin  git@bitbucket.org:arm2011/gitcourse.git (push)
 
 displays the remotes that are already set up where you can *fetch* and *pull* changes. In this case there is only a single remoted called **origin**.
 
-[^1]: Pro Git, 2nd. Ed., Scott Chacon and Ben Straub.
+---
 
+<!-- .slide: data-background="#ffffff" -->
+
+```java
+$git graph
+* 2e56d0a (HEAD -> main, origin/main, origin/HEAD) text of exercise git diff usage
+* 22a7316 Adding yet more lectures
+* 0ddb791 Adding some more of the lectures
+* 3ff9f8f Adding some of the lectures
+```
 
 ---
 
@@ -66,14 +76,14 @@ displays the remotes that are already set up where you can *fetch* and *pull* ch
 
 A remote repository can be added manually with the command
 
-```console
+```java
 $ git remote add remote_name location
 
-$ git remote add origin https://github.com/aliceuser2020/my-first-project.git
+$ git remote add remote_name git@github.com:aliceuser2020/my-first-project.git
 
 $ git remote -v
-origin	https://github.com/aliceuser2020/my-first-project.git (fetch)
-origin	https://github.com/aliceuser2020/my-first-project.git (push)
+remote_name	git@github.com:aliceuser2020/my-first-project.git (fetch)
+remote_name	git@github.com:aliceuser2020/my-first-project.git (push)
 ```
 
 where the location of the remote can be an URL or the path if that is in your local machine.
@@ -117,14 +127,27 @@ digraph {
 
 <!-- .slide: data-background="#ffffff" -->
 
-```shell
-$ git remote add upstream git@bitbucket.org:bob/gitcourse.git
+```java
+$ git remote add upstream git@github.com:bob/my-first-project.git
 
 $ git remote -v
-origin	https://github.com/aliceuser2020/my-first-project.git (fetch)
-origin	https://github.com/aliceuser2020/my-first-project.git (push)
-upstream	https://github.com/bobuser2020/my-first-project.git (fetch)
-upstream	https://github.com/bobuser2020/my-first-project.git (push)
+origin	git@github.com:aliceuser2020/my-first-project.git (fetch)
+origin	git@github.com:aliceuser2020/my-first-project.git (push)
+upstream	git@github.com:bobuser2020/my-first-project.git (fetch)
+upstream	git@github.com:bobuser2020/my-first-project.git (push)
+```
+
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+
+```java
+$git graph
+* 2e56d0a (HEAD -> main, upstream/main, origin/main, origin/HEAD) text of exercise git diff usage
+* 22a7316 Adding yet more lectures
+* 0ddb791 Adding some more of the lectures
+* 3ff9f8f Adding some of the lectures
 ```
 
 ---
@@ -180,6 +203,13 @@ brings all the changes (branches) that are in the remote and tries to merge them
 
 <!-- .slide: data-background="#ffffff" -->
 In fact, *git pull* is a combination of two commands:
+```shell
+$ git fetch remote_name branch_name
+$ git merge remote_name/branch_name
+```
+
+or
+
 ```shell
 $ git fetch 
 $ git merge

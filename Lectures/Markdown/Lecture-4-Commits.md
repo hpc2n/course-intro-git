@@ -1,10 +1,10 @@
 ---
 title: "Lecture 4: Commits"
-tags: Lecture, Diana, day 2
+tags: Lecture, Diana, day 2, 3
 description: "Commits and commit trees"
 ---
 
-Introduction to Git --- Fall 2021
+Introduction to Git --- Fall 2022
 # Lecture 4: Commits
 
 <!-- .slide: data-background="#ffffff" -->
@@ -13,7 +13,7 @@ Introduction to Git --- Fall 2021
 
 ![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
 
-<small>Slides: https://hackmd.io/@hpc2n-git-2021/L4-commits#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2022/L4-commits#/</small>
 
 ---
 
@@ -146,7 +146,7 @@ $ git log --graph --all --oneline
 
 ### Reflog
 
- - The `git log` command displays **only changes that effect the commit tree**
+ - The `git log` command displays **only changes that affect the commit tree**
  - Git stores extra logging information to a **reference log** (reflog)
      - Gets updated when the tips of branches and other references are modified
      - Accessed with the `git reflog` command

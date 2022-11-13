@@ -4,7 +4,7 @@ tags: Lecture, Birgitte, day 1
 description: "Introduction to Git"
 ---
 
-Introduction to Git --- Fall 2021
+Introduction to Git --- Fall 2022
 # Lecture A: Course info
 
 <!-- .slide: data-background="#ffffff" -->
@@ -14,7 +14,7 @@ Minor modifications done for the fall 2021 version of the course. -->
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
 
-<small>Slides: https://hackmd.io/@hpc2n-git-2021/LA-intro#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2022/LA-intro#/</small>
 
 ---
 
@@ -29,8 +29,9 @@ Instructors:
 * Pedro Ojeda-May (HPC2N)
 * Birgitte Brydsö (HPC2N)
 * Diana Iusan (UPPMAX)
+* Björn Claremar (UPPMAX)
 
-The course will have a mixture of lectures and hands-ons, and will be split into modules. It will consist of four half-days. 
+The course will have a mixture of lectures and hands-ons, and will be split into modules. It will consist of five half-days. 
 
 ---
 
@@ -52,7 +53,7 @@ The course will have a mixture of lectures and hands-ons, and will be split into
 <!-- .slide: style="font-size: 30px;" -->
 
 * During the hands-ons you can just ask the instructors if there is anything you need help with. 
-* You can ask in the chat, but the recommended option is using the Google docs file for Questions and Answers (Q&A). The link can be found on the "Important information" page. Please write any questions you have during the lectures etc. to the Q&A page. The instructors will try to answer as quickly as possible. 
+* You can ask in the chat, but the recommended option is using the Questions and Answers page (Q&A page). The link can be found on the "Important information" page. Please write any questions you have during the lectures etc. to the Q&A page. The instructors will try to answer as quickly as possible. 
 * Scroll down on a slide page to get to access the slides in a text form (small pen icon)
 
 
@@ -63,30 +64,49 @@ The course will have a mixture of lectures and hands-ons, and will be split into
 <!-- .slide: style="font-size: 24px;" -->
 
 **1. day**
-* 0. Setup and intro
-* 1. Motivation
+* 0. Introduction and setup
+* 1. Motivation - Why use version management?
 * 2. Basic concepts
      - Blobs, Trees, Commits, References, etc. 
-* 3. Basics commands, part 1
-     - Creating & cloning repositories, Adding files, Committing, etc.
 
 **2. day**
+* 3. Basics commands, part 1
+     - Creating & cloning repositories, Adding files, Committing, etc.
+     - Hands-on
 * 3. Basics commands, part 2
      - Creating & cloning repositories, Adding files, Committing, etc.
      - Hands-on
-* 4. Commits
+* 4. Traversing the commit tree, part 1
      - History, Tags, HEAD, Diffs, etc. 
      - Hands-on
 
 **3. day**
-* 5. Branches
-     - Basics concepts, Creation, deletion, Conflicts, etc. 
+* 4. Traversing the commit tree, part 2
+     - History, Tags, HEAD, Diffs, etc. 
      - Hands-on
-* 6. Working with remotes
-     - Basics concepts, Pull, push, fetch, GitHub, etc. 
+* 4. Traversing the commit tree, part 3
+     - History, Tags, HEAD, Diffs, etc. 
+     - Hands-on
+* 5. Branches, merges, and conflicts, part 1
+     - Basics concepts, Creation, deletion, Conflicts, etc. 
      - Hands-on
 
 **4. day**
-* 7. Teamwork
+* 5. Branchess, merges, and conflicts, part 2
+     - Basics concepts, Creation, deletion, Conflicts, etc. 
+     - Hands-on
+* 6. Working with remotes, part 1
+     - Basics concepts, Pull, push, fetch, GitHub, etc. 
+     - Hands-on
+* 6. Working with remotes, part 2
+     - Basics concepts, Pull, push, fetch, GitHub, etc. 
+     - Hands-on
+
+**5. day**
+* 7. Teamwork, part 1
+     - Hands-on
+* 7. Teamwork, part 2
+     - Hands-on
+* 7. Teamwork, part 3
      - Hands-on
 * Catch-up from previous days

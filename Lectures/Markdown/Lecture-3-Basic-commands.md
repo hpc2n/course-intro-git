@@ -1,10 +1,10 @@
 ---
-title: "Lecture 3: Basic commands"
-tags: Lecture, Pedro, day 1, day 2
+title: "Lecture 3: Basic and useful commands"
+tags: Lecture, Pedro, day 2
 description: "Basic Git commands"
 ---
 
-Introduction to Git --- Fall 2021
+Introduction to Git --- Fall 2022
 # Lecture 3: Basic commands
 
 <!-- .slide: data-background="#ffffff" -->
@@ -13,7 +13,7 @@ Introduction to Git --- Fall 2021
 
 ![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
 
-<small>Slides: https://hackmd.io/@hpc2n-git-2021/L3-commands#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2022/L3-commands#/</small>
 
 ---
 
@@ -60,10 +60,12 @@ DESCRIPTION
 ## Creating a repository
 In case you want to start a project from scratch called **myproject**:
 
-```console
+```bash
 $ mkdir myproject
 $ cd myproject
 $ git init
+
+Initialized empty Git repository in .../myproject/.git/
 ```
 
 this will create a folder called *.git* in the current folder which contains the Git-related files.
@@ -73,11 +75,12 @@ We can now ask about the status of the repository:
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-```console
+```bash
 $ git status 
+
 On branch master
 
-Initial commit
+No commits yet
 
 nothing to commit (create/copy files and use "git add" to track)
 ```
@@ -101,7 +104,7 @@ $ git clone repository_location path_where_it_will_be
 
 <!-- .slide: data-background="#ffffff" -->
 ```console
-$ git clone https://github.com/aliceuser2020/my-first-project.git  GitCourse/Alice/my-project  
+$ git clone https://github.com/aliceuser2020/my-first-project.git  ./my-project  
 Cloning into 'GitCourse/Alice/my-project'...
 remote: Enumerating objects: 3, done.
 remote: Counting objects: 100% (3/3), done.
@@ -109,7 +112,7 @@ remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
 Checking connectivity... done.
 
-$ cd GitCourse/Alice/my-project
+$ cd ./my-project
 $ git status
 On branch master
 Your branch is up-to-date with 'origin/master'.
@@ -143,11 +146,10 @@ If we ask about the status of the repository we will see the following message,
 $ git status 
 On branch master
 
-Initial commit
+No commits yet
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-
 	first.txt
 
 nothing added to commit but untracked files present (use "git add" to track)
@@ -168,11 +170,10 @@ and then check the status of the repository:
 $ git status 
 On branch master
 
-Initial commit
+No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-
 	new file:   first.txt
 ```
 
@@ -243,7 +244,7 @@ nothing to commit, working tree clean
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-Fast (lazy?) commit quick option:
+Fast (lazy?) commit option:
 
 
 ```console
@@ -255,8 +256,30 @@ this command will add all files that were modified (and tracked) and commit them
 ---
 
 <!-- .slide: data-background="#ffffff" -->
+## What to include in a commit message
+
+- why is this change needed?
+- how is the problem approached?
+- are there side effects?
+
+**Important**: check that the code works before commiting. Here, test cases are very handy. For more recommendations: Git kurz & gut, O'Reillys, Nina Siessegger.  
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
 ## Unstaging files' modifications part II
-Imagine that after doing the first commit for <span style="color:brown">*first.txt* </span> file, you modify this file and stage it (<span style="color:brown">*git add first.txt*</span>), the status now looks like:
+Imagine that after doing the first commit for <span style="color:brown">*first.txt* </span> file, you modify this file and stage it (<span style="color:brown">*git add first.txt*</span>). If you check the status the output will be (version 2.25.1):
+
+```console
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   first.txt
+```
+
+---
+
+For versions before 2.23 the status would look like:
 
 ```console
 On branch master
@@ -271,12 +294,6 @@ Changes to be committed:
 <!-- .slide: data-background="#ffffff" -->
 Git suggests a different way to unstage the file as we saw before, because now there is a <span style="color:brown">HEAD </span> pointer. 
 
-In the recent versions of Git you can also use the following command to unstage:
-
-```console
-$ git restore --staged filename
-```
-
 ---
 
 <!-- .slide: data-background="#ffffff" -->
@@ -288,7 +305,7 @@ unstages the changes made to *filename*. From the website https://git-scm.com/do
 ```console
 $ git reset HEAD filename
 ```
-old command for unstaging,
+is an old command for unstaging,
 
 ```console
 $ git rm --cached filename
@@ -313,7 +330,7 @@ $ git add *.txt
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-If we want to add all the files that can be staged we can do:
+If we want to add all the files for staging we can do:
 
 ```console
 $ git add -A        (all files including those in the parent folder)
@@ -323,7 +340,7 @@ $ git add .         (all files in the sub-folders)
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-## Adding files' modifications interactively
+## Adding files' modifications interactively (advanced)
 
 Suppose we create an empty file, stage it, and commit the changes as follows:
 
@@ -529,7 +546,7 @@ Sometimes it is more convenient to rename files instead of deleting them to keep
 <!-- .slide: data-background="#ffffff" -->
 ## Ignoring files
 
-It could be that you want to ignore some files in your repository, for instance, temporary (.tmp) or binary (.bin) files. One way to accomplish this is by creating a file called **.gitignore** in the repository with some rules with a Linux-type wild cards syntax
+If you want to ignore some files in your repository, for instance, temporary (.tmp) or binary (.bin) files. One way to accomplish this is by creating a file called **.gitignore** in the repository with some rules with a Linux-type wild cards syntax
 
 ---
 
@@ -599,7 +616,7 @@ which will make the command <span style="color:blue"> *graph*</span> available o
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-## Simplifying commits
+## Simplifying commits (Advanced)
 
 Suppose that you have a series of commits which are close-related in your <span style="color:red"> *local repo*</span>:
 
@@ -609,8 +626,8 @@ $ git graph
 
 * 39ecba2 (HEAD -> master) ingredient salt
 * 3cd651b ingredient onion
-* 7dce2ff ingredient avocado
-* 1f2cdcc Recipe for guacamole
+* 7dce2ff ingredient tomato
+* 1f2cdcc Recipe for pico de gallo
 ```
 
 in this case, the three last commits refer to the ingredients of a guacamole and could be summarized into one,
@@ -622,7 +639,7 @@ in this case, the three last commits refer to the ingredients of a guacamole and
 ```java
 $ git rebase -i HEAD~3
 
-pick 7dce2ff ingredient avocado
+pick 7dce2ff ingredient tomato
 pick 3cd651b ingredient onion
 pick 39ecba2 ingredient salt
 
@@ -658,7 +675,7 @@ pick 39ecba2 ingredient salt
 <!-- .slide: data-background="#ffffff" -->
 choose the option **s** (squash)
 ```java
-pick 7dce2ff ingredient avocado
+pick 7dce2ff ingredient tomato
 s 3cd651b ingredient onion
 s 39ecba2 ingredient salt
 
@@ -699,7 +716,7 @@ a text editor message will appear where you can type the message for the squashe
 # This is the 1st commit message:
 
 Summary of three ingredients
-#ingredient avocado
+#ingredient tomato
 
 # This is the commit message #2:
 
@@ -735,7 +752,7 @@ $ git log --all --decorate --oneline --graph
 $ git graph
 
 * 62f921f (HEAD -> master) Summary of three ingredients
-* 1f2cdcc Recipe for guacamole
+* 1f2cdcc Recipe for pico de gallo
 ```
 <span style="color:red">Note: use this command in commits that haven't been pushed on public branches. This command modifies the history.</span>
 
@@ -743,7 +760,7 @@ $ git graph
 
 <!-- .slide: data-background="#ffffff" -->
 
-## Git blame
+## Git blame (Advanced)
 
 it displays information about the last modifications of authors line by line 
 
