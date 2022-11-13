@@ -30,7 +30,7 @@ bbrydsoe@enterprise-a:~/course-intro-git/git_materials/5.branches/5.rebase-bad/r
 
    NOTE: Remember to check with `git branch` to find out if you are on the right branch before trying to rebase. 
 
-   You will get an error similar to this: 
+   You will get an error more or less similar to this: 
 
    ```
    $ git rebase master
@@ -80,7 +80,7 @@ To abort and get back to the state before "git rebase", run "git rebase --abort"
 
 CONFLICT!
 
-Let us try the command 'git am --show-current-patch': 
+Let us try the command 'git am --show-current-patch' (this works better on older git versions): 
 
 ![](https://github.com/hpc2n/course-intro-git/blob/main/exercises-solutions/5.branches/5.rebase-bad/git-rebase-fail.png)
 
