@@ -1,5 +1,5 @@
 ---
-title: "Lecture 3: Basic and useful commands"
+title: "Lecture 3: Basic commands"
 tags: Lecture, Pedro, day 2
 description: "Basic Git commands"
 ---
@@ -57,7 +57,7 @@ DESCRIPTION
 
 
 <!-- .slide: data-background="#ffffff" -->
-## Creating a repository
+## Creating a repository from scratch
 In case you want to start a project from scratch called **myproject**:
 
 ```bash
@@ -88,7 +88,7 @@ nothing to commit (create/copy files and use "git add" to track)
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-## Cloning a repository
+## Creating a repository by cloning an existing repository
 
 One can clone an existing repository with the command:
 
@@ -125,6 +125,21 @@ nothing to commit, working directory clean
 ## Three stages of files
 
 ![](https://i.imgur.com/eP2UlVp.jpg)
+
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+
+## Monitoring the differences in files
+
+Differences or changes in files can be seen with the command
+
+```console
+$ git diff
+```
+
+This command supports different options
 
 ---
 
@@ -256,17 +271,6 @@ this command will add all files that were modified (and tracked) and commit them
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-## What to include in a commit message
-
-- why is this change needed?
-- how is the problem approached?
-- are there side effects?
-
-**Important**: check that the code works before commiting. Here, test cases are very handy. For more recommendations: Git kurz & gut, O'Reillys, Nina Siessegger.  
-
----
-
-<!-- .slide: data-background="#ffffff" -->
 ## Unstaging files' modifications part II
 Imagine that after doing the first commit for <span style="color:brown">*first.txt* </span> file, you modify this file and stage it (<span style="color:brown">*git add first.txt*</span>). If you check the status the output will be (version 2.25.1):
 
@@ -312,7 +316,32 @@ $ git rm --cached filename
 ```
 with this command you Git will untrack *filename* (staging for removal) leaving the file in the working directory
 
+---
 
+<!-- .slide: data-background="#ffffff" -->
+## What to include in a commit message
+
+- why is this change needed?
+- how is the problem approached?
+- are there side effects?
+- write structured text (~70 characters)
+- one can include the ticket numbers for related issues for instance (#1112)
+
+**Important:** check that the code works before commiting. Here, test cases are very handy. For more recommendations: Git kurz & gut, O'Reillys, Nina Siessegger.  
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+## Reverting to the previous commit
+
+If you made a commit and you regret later, you can revert the changes to the previous
+commit with the command:
+
+```console
+$ git revert HEAD
+```
+
+---
 
 ---
 
@@ -337,147 +366,6 @@ $ git add -A        (all files including those in the parent folder)
 $ git add .         (all files in the sub-folders)
 ```
 
----
-
-<!-- .slide: data-background="#ffffff" -->
-## Adding files' modifications interactively (advanced)
-
-Suppose we create an empty file, stage it, and commit the changes as follows:
-
-```shell
-touch first.txt
-git add first.txt
-git commit -m "first file"
-```
-
-Now, we add a couple of lines to our file <span style="color:brown"> *first.txt*</span> and now it looks like
-
-```shell
-This is my first file
-
-* TODO list
-
-* Summary
-```
-
----
-
-<!-- .slide: data-background="#ffffff" -->
-the status command tells us that we did some modifications to the file:
-
-```console
-On branch master
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-        modified:   first.txt
-
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-
----
-
-<!-- .slide: data-background="#ffffff" -->
-Let's suppose that the new text (5 lines) refer to different topics: *TODO list* and *Summary*. Then, it would be better to have them in different commits. We can add the modifications interactively:
-
----
-
-<!-- .slide: data-background="#ffffff" -->
-```console
-$ git add -p first.txt
-```
-
-```console
-diff --git a/first.txt b/first.txt
-index e69de29..96dd9a2 100644
---- a/first.txt
-+++ b/first.txt
-@@ -0,0 +1,5 @@
-+This is my first file
-+
-+* TODO list
-+
-+* Summary
-(1/1) Stage this hunk [y,n,q,a,d,e,?]?
-```
-
-choose the **e** edit option to enter the editing mode.
-
----
-
-<!-- .slide: data-background="#ffffff" -->
-
-```console
-# Manual hunk edit mode -- see bottom for a quick guide.
-@@ -0,0 +1,5 @@
-+This is my first file
-+
-+* TODO list
-+                                                                                                                                       
-+* Summary
-# ---
-# To remove '-' lines, make them ' ' lines (context).
-# To remove '+' lines, delete them.
-# Lines starting with # will be removed.
-```
-
-Because we don't want *Summary* in the first commit, we delete that line and save the file.
-
-
----
-
-<!-- .slide: data-background="#ffffff" -->
-You can now take a look at the status of the file
-
-```console
-$ git status
-On branch master
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-        modified:   first.txt
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-        modified:   first.txt
-
-```
-
----
-
-<!-- .slide: data-background="#ffffff" -->
-Notice that the file <span style="color:brown">first.txt </span> has been partially staged. 
-
-![](https://i.imgur.com/BtXqjlD.jpg)
-
-
-
----
-
-<!-- .slide: data-background="#ffffff" -->
-The difference between staged changes and the unstaged ones can be seen with:
-
-```console
-$ git diff
-```
-
-the difference between staged changes and the previous commit with:
-
-```console
-$ git diff --staged
-$ git diff --cached
-```
-
----
-
-<!-- .slide: data-background="#ffffff" -->
-and the difference between the unstaged changes and the previous commit with:
-
-```console
-$ git diff HEAD
-```
-
-At this point, you can commit the staged changes and later on stage and commit the remaining changes.
 
 ---
 
@@ -593,6 +481,8 @@ $ git config --global alias.graph "log --all --graph --decorate --oneline"
 
 ---
 
+<!-- .slide: data-background="#ffffff" -->
+
 In this way, you can use a customized **git graph** command:
 ```java
 $ git graph
@@ -603,10 +493,6 @@ $ git graph
 * 1f2cdcc Recipe for guacamole
 ```
 
-
-
-
-<!-- .slide: data-background="#ffffff" -->
 A second way to generate an alias is by adding it to your *.bashrc* file:
 ```java
 alias graph="git log --all --decorate --oneline --graph"
@@ -616,7 +502,171 @@ which will make the command <span style="color:blue"> *graph*</span> available o
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-## Simplifying commits (Advanced)
+
+# Intermediate/Advanced commands
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+## Adding files' modifications interactively
+
+Suppose we create an empty file, stage it, and commit the changes as follows:
+
+```shell
+touch first.txt
+git add first.txt
+git commit -m "first file"
+```
+
+Now, we add a couple of lines to our file <span style="color:brown"> *first.txt*</span> and now it looks like
+
+```shell
+This is my first file
+
+* TODO list
+
+* Summary
+```
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+the status command tells us that we did some modifications to the file:
+
+```console
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+Let's suppose that the new text (5 lines) refer to different topics: *TODO list* and *Summary*. Then, it would be better to have them in different commits. We can add the modifications interactively:
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+```console
+$ git add -p first.txt
+```
+
+```console
+diff --git a/first.txt b/first.txt
+index e69de29..96dd9a2 100644
+--- a/first.txt
++++ b/first.txt
+@@ -0,0 +1,5 @@
++This is my first file
++
++* TODO list
++
++* Summary
+(1/1) Stage this hunk [y,n,q,a,d,e,?]?
+```
+
+choose the **e** edit option to enter the editing mode.
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+
+```console
+# Manual hunk edit mode -- see bottom for a quick guide.
+@@ -0,0 +1,5 @@
++This is my first file
++
++* TODO list
++                                                                                                                                       
++* Summary
+# ---
+# To remove '-' lines, make them ' ' lines (context).
+# To remove '+' lines, delete them.
+# Lines starting with # will be removed.
+```
+
+Because we don't want *Summary* in the first commit, we delete that line and save the file.
+
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+You can now take a look at the status of the file
+
+```console
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   first.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first.txt
+
+```
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+Notice that the file <span style="color:brown">first.txt </span> has been partially staged. 
+
+![](https://i.imgur.com/BtXqjlD.jpg)
+
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+The difference between staged changes and the unstaged ones can be seen with:
+
+```console
+$ git diff
+```
+
+the difference between staged changes and the previous commit with:
+
+```console
+$ git diff --staged
+$ git diff --cached
+```
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+and the difference between the unstaged changes and the previous commit with:
+
+```console
+$ git diff HEAD
+```
+
+At this point, you can commit the staged changes and later on stage and commit the remaining changes.
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+## Amending commits
+
+The following command will help you to modify your last commit, imagine for
+instance that a typo was made in the previous commit or that the problem
+was not fully solved:
+
+```shell
+$ git commit --amend 
+```
+
+the flag *-m* will allow you to write a short message and *--no-edit*
+will keep the message from the previous commit.
+<span style="color:red">Note: use this command in commits that haven't been pushed on public branches. This command modifies the history.</span>
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+## Simplifying commits
 
 Suppose that you have a series of commits which are close-related in your <span style="color:red"> *local repo*</span>:
 

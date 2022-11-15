@@ -18,6 +18,67 @@ Minor modifications done for the fall 2021 version of the course. -->
 
 ---
 
+## Objectives
+
+<!-- .slide: style="font-size: 30px;" -->
+
+- Get some more hands-on working with branches
+    - creation
+    - switching
+    - merging
+    - deletion
+    - handling uncommitted changes
+        - stashing
+        - discarding
+        - checkout with merge
+    - merging and merge conflicts
+    - rebasing: combining a sequence of commits to a new base commit.
+    - cherry-picking
+
+---
+
+## Repetition
+
+<!-- .slide: style="font-size: 24px;" -->
+**Not starting with "R"**
+- `checkout` - go/move HEAD to branch or specific commit (hash)
+    - Applying to a file discards all unstaged changes made to the file
+    - will never move the reference
+- ``clean`` - clear **unstaged** files
+    - ``--dry-run`` to check what will happen
+- ``diff`` - compare
+    - lists unstaged changes
+    - `--staged` - commit vs staged
+    - `HEAD` - commit vs working tree
+- ``log`` - history of commit tree
+    - ``--graph`` - graphically see the branches
+- ``show`` - shows info for commit
+- ``stash`` - temporarily **stores the staged** changes to the working tree
+- `switch` - go to branch only (more clear for this use)
+- ``tag`` - tag (like version number), **naming commits** (not branches)
+
+---
+
+## Repetition
+
+<!-- .slide: style="font-size: 28px;" -->
+**Starting with "R"**
+
+- ``rebase -i HEAD~3`` - interactively rebase last 3 **commits**
+    - with ``squash`` - summarize last 3 **commits**
+- ``reflog`` - log of commits that changes the head
+- ``reset`` - as ``checkout`` but takes options to also do updates 
+    - `<filename>` - **unstages** the file
+    - may move the reference and thereby update the branch
+- `restore` - restore **file** in work dir
+    - `--staged` - **unstages**
+    - does not update your branch
+- ``revert`` - makes **inverse of** the previous **commit**. The commit tree is not modified, rather two cancelling commits.
+- `rev-parse --short` - find short hash for references, like `HEAD~~`
+- ``rm`` - remove from repo
+
+---
+
 ## What is a Git branch?
 
 <!-- .slide: style="font-size: 30px;" -->
@@ -160,7 +221,7 @@ $ git branch -d cool-feature
 
 ---
 
-## Example 
+### Example 
 
 <!-- .slide: style="font-size: 32px;" -->
 
@@ -355,7 +416,7 @@ What if there is a conflict? <!-- .element: class="fragment" -->
 
 ---
 
-## Example - new file
+### Example - new file
 
 <!-- .slide: style="font-size: 30px;" -->
 
@@ -376,7 +437,7 @@ Git warns that there is a file added in one branch but not the other, but the sw
 
 ---
 
-## Example - modified file
+### Example - modified file
 
 <!-- .slide: style="font-size: 32px;" -->
 
@@ -396,7 +457,7 @@ Git warns that there is a file that is modified in one branch but not the other,
 
 ---
 
-## Example - uncommitted, conflicting changes
+### Example - uncommitted, conflicting changes
 
 <!-- .slide: style="font-size: 32px;" -->
 
@@ -466,7 +527,7 @@ The uncommitted changes that are stored in the stash can be taken out and applie
 
 ---
 
-## Stashing, example 
+### Stashing, example 
 
 <!-- .slide: style="font-size: 32px;" -->
 
@@ -612,12 +673,22 @@ while standing on the branch you want to merge to.
 
 Git has some merge strategies. The most commonly used are: 
 
-* Fast Forward Merge - the commit history is one straight line. You create a branch, you make some commits there, but no changes to the 'master'. You then just merge onto the 'master'. This just moves the pointer for the 'master' branch forward in a straight line. <!-- .element: class="fragment" -->
-* Recursive Merge - make a branch and make some commits there, but also make new commits that are made on another branch, like the ‘master‘. Then, when you want to merge, git will recurse over the branch and create a new merge commit. The merge commit will continue to have two parents. <!-- .element: class="fragment" -->
+* Fast Forward Merge 
+  * the commit history is one straight line. 
+  * You create a branch, you make some commits there, but no changes to the 'master'. You then just merge onto the 'master'. This just moves the pointer for the 'master' branch forward in a straight line. <!-- .element: class="fragment" -->
+* Recursive Merge 
+  * make a branch and make some commits there, but also make new commits that are made on another branch, like the ‘master‘. 
+  * Then, when you want to merge, git will recurse over the branch and create a new merge commit. The merge commit will continue to have two parents. 
+* ORT (from git-2.33)
+  * acronym for "Ostensibly Recursive’s Twin"
+  * replacement for the previous default algorithm, recursive.
+  * This is the default merge strategy when pulling or merging one branch. 
+  * Has been reported to result in fewer merge conflicts without causing mismerges 
+    <!-- .element: class="fragment" -->
 
 ---
 
-## Merge conflicts, example
+### Merge conflicts, example
 
 <!-- .slide: style="font-size: 30px;" -->
 
@@ -942,6 +1013,40 @@ $ git cherry-pick <hash>
 
 ---
 
+## Cherry-picking — graphic view
+
+<!-- .slide: style="font-size: 28px;" -->
+
+Apply the commit Y to the master branch (called Y´)
+
+```graphviz
+digraph {
+  rankdir=LR
+  "commit2" -> "commit1"
+  "commitX" -> "commit2"
+  "commit3" -> "commit2"
+  "commitY'" -> "commit3"
+  "commitY'" -> "commitY"
+  
+  "commitY" -> "commitX"
+  "commitZ" -> "commitY"
+  "master" -> "commitY'" [style=dashed]
+  "Feature" -> "commitZ" [style=dashed]
+  
+  master [shape=plaintext]
+  Feature [shape=plaintext]
+ 
+}
+```
+---
+
+## Takeaways
+
+**git commands**
+- 
+
+---
+
 ## Exercises 
 
 <!-- .slide: style="font-size: 26px;" -->
@@ -949,7 +1054,7 @@ $ git cherry-pick <hash>
 Each of the exercises has a README.md file with explanations and descriptions of what to do. You can find all of them in the subdirectory 5.branches. You should do them in the below order: 
  
 1. Fast-forward Merge (OK): This exercise will show an example where git can do a fast-forward merge. The exercise is in the subdirectory "1.merge-ok" <!-- .element: class="fragment" -->
-2. Recursive Merge (OK): In this exercise you will see an example where git can automatically merge two branches. This time git will use the recursive merge. The exercise can be found in the subdirectory "2.merge-ok-recursive" <!-- .element: class="fragment" -->
+2. Recursive/ORT Merge (OK): In this exercise you will see an example where git can automatically merge two branches. This time git will use the recursive merge. The exercise can be found in the subdirectory "2.merge-ok-recursive" <!-- .element: class="fragment" -->
 3. Merge (BAD): This exercise gives an example of a merge that cannot be done automatically with the merge command. The exercise can be found in the subdirectory "3.merge-bad" <!-- .element: class="fragment" -->
 4. Rebasing (OK): In this exercise you will try the command rebase and see that it succeeds. The exercise can be found in the subdirectory "4.rebase-ok"  <!-- .element: class="fragment" -->
 5. Rebasing (BAD): This exercise again gives an example of rebasing two branches, but in this case the rebase fails. The exercise can be found in the subdirectory "5.rebase-bad" <!-- .element: class="fragment" -->

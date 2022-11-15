@@ -471,17 +471,17 @@ digraph {
 
 ---
 
- - Applying `git checkout` to a file **discards all changes** made to the file:
+ - Applying `git checkout` to a file **discards all unstaged changes** made to the file:
 
 ```shell
 $ git checkout <filename>
 ```
-
  - Applying `git reset` to a file **unstages the file**:
 
 ```shell
 $ git reset <filename>
 ```
+
 
 ---
 
@@ -664,7 +664,7 @@ $ git reset <option>
 
 ---
 
-Unstaged files are cleared with
+Untracked files are cleared with
 
 ```shell
 $ git clean <options> <path>
@@ -699,7 +699,7 @@ $ git clean -dfx
 
 ---
 
- - We sometimes find ourselves in a situation where we want to temporarily store the changes to the working tree.
+ - We sometimes find ourselves in a situation where we want to temporarily store the changes of the working tree.
  - This might happen, for example, when we are attempting to move the `HEAD`.
      - Git cannot always restore the working tree.
  - We can store these changes to the **stash**.
