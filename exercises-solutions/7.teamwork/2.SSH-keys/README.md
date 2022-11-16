@@ -1,4 +1,4 @@
-# Creating and using SSH-keys
+# 2. Creating and using SSH-keys
 
 In this exercise you create SSH keys and upload to GitHub. Then test that it works. 
 
