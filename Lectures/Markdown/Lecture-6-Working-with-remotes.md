@@ -41,11 +41,18 @@ In addition to this, a remote is a way to backup your repository.
 ![](https://i.imgur.com/z2FesR1.jpg)
 
 
+---
+
+<!-- .slide: data-background="#ffffff" -->
+## Updated scheme for file stages
+
+![](https://i.imgur.com/gwSRG4w.jpg)
+
 
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-## Basic concepts cont.
+## Concepts cont.
 The command 
 
 ```java
@@ -62,7 +69,7 @@ displays the remotes that are already set up where you can *fetch* and *pull* ch
 <!-- .slide: data-background="#ffffff" -->
 
 ```java
-$git graph
+$ git graph
 * 2e56d0a (HEAD -> main, origin/main, origin/HEAD) text of exercise git diff usage
 * 22a7316 Adding yet more lectures
 * 0ddb791 Adding some more of the lectures
@@ -218,6 +225,7 @@ $ git merge
 ---
 
 <!-- .slide: data-background="#ffffff" -->
+## Advanced
 The command
 ```shell
 $ git push 

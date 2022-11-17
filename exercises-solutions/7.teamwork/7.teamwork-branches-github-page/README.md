@@ -1,118 +1,95 @@
-# Branches and merging 
+# 7. Teamwork and branches  
 
-1. Each person creates a branch with `git branch yourbranchname` where you put any name you want for the new branch. 
+Now you will be creating a new branch in the repo your group is sharing, but you will create in from the GitHub page. 
 
-**Solution**
+1. Everyone in the group create a new branch in the repo - this time you could try doing it from the GitHub page. 
 
-Create a branch (here named 'birgittesbranch'). Check which branch you are on. Finding that you are on the main/master branch, switch to the newly created branch: 
+	You can do it two ways; either by pressing the "branches" (marked by me with a red line) and then picking the green "New branch" button on the right side, or by pressing "main" (marked by me with a blue line) and writing your new branch's name in the field and then clicking "Create branch: <branch-name> from main"
 
-```shell
-bbrydsoe@enterprise-a:~/mytestrepo$ git branch birgittesbranch
-bbrydsoe@enterprise-a:~/mytestrepo$ git branch
-  birgittesbranch
-* main
-bbrydsoe@enterprise-a:~/mytestrepo$ git checkout birgittesbranch 
-Switched to branch 'birgittesbranch'
-``` 
+![](figures/github-main.png)
 
-2. Create a uniquely named file. Put anything you want in it. 
+	Option 1: Creating from clicking "branches": 
 
-**Solution**
+![](figures/create-new-branch.png) 
+![](figures/creating.png)
+	
+	Note that you could create a branch from one of the other branches instead of main, if you want to. 
 
-This creates a file named 'birgittesfile.txt'. I then use vi to edit it, adding some text to it: 
+	Option 2: Creating from clicking "main": 
 
-```shell
-bbrydsoe@enterprise-a:~/mytestrepo$ touch birgittesfile.txt
-bbrydsoe@enterprise-a:~/mytestrepo$ vi birgittesfile.txt 
-```
+![](figures/othercreate.png)
 
-3. Stage and commit the file. 
+2. Check which remote branches exist with `git branch -r`
 
-**Solution**
+	This is done on the command line. Note that you need to do a pull before you will see the newly created branches: 
+	
+	Before a pull:
 
-```shell
-bbrydsoe@enterprise-a:~/mytestrepo$ git add birgittesfile.txt 
-bbrydsoe@enterprise-a:~/mytestrepo$ git commit -m "Adding my new file to my new branch."
-[birgittesbranch 92901fa] Adding my new file to my new branch.
- 1 file changed, 1 insertion(+)
- create mode 100644 birgittesfile.txt
-```
+	```shell
+	bbrydsoe@enterprise-a:~/mytestrepo$ git branch -r
+	  origin/HEAD -> origin/main
+	  origin/birgittesbranch
+	  origin/extrabranch
+	  origin/fancyfeatures
+	  origin/main
+	  origin/mynewbranch
+	  origin/mytestbranch
+	  origin/spocksbranch
+	```
 
-Checking: 
+	After a pull: 
 
-```shell
-bbrydsoe@enterprise-a:~/mytestrepo$ git status
-On branch birgittesbranch
-nothing to commit, working tree clean
-```
+	```shell
+	bbrydsoe@enterprise-a:~/mytestrepo$ git pull
+	Enter passphrase for key '/home/bbrydsoe/.ssh/id_rsa': 
+	From github.com:bbrydsoe/mytestrepo
+	 * [new branch]      mybranch         -> origin/mybranch
+	 * [new branch]      yetanotherbranch -> origin/yetanotherbranch
+	Already up-to-date.
+	```
 
-All is well. 
+	```shell
+	bbrydsoe@enterprise-a:~/mytestrepo$ git branch -r
+	  origin/HEAD -> origin/main
+	  origin/birgittesbranch
+	  origin/extrabranch
+	  origin/fancyfeatures
+	  origin/main
+	  origin/mybranch
+	  origin/mynewbranch
+	  origin/mytestbranch
+	  origin/spocksbranch
+	  origin/yetanotherbranch
+	```
 
-4. Push your changes with `git push origin -u yourbranchname`
+3. Check which local branches you have with `git branch`
 
-**Solution** 
+	```shell
+	bbrydsoe@enterprise-a:~/mytestrepo$ git branch
+	  birgittesbranch
+	* fancyfeatures
+	  main
+	  mynewbranch
+	  mytestbranch
+	```
 
-```shell
-bbrydsoe@enterprise-a:~/mytestrepo$ git push origin -u birgittesbranch 
-Enter passphrase for key '/home/bbrydsoe/.ssh/id_rsa': 
-Enumerating objects: 4, done.
-Counting objects: 100% (4/4), done.
-Delta compression using up to 4 threads
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (3/3), 367 bytes | 367.00 KiB/s, done.
-Total 3 (delta 0), reused 0 (delta 0)
-remote: 
-remote: Create a pull request for 'birgittesbranch' on GitHub by visiting:
-remote:      https://github.com/bbrydsoe/mytestrepo/pull/new/birgittesbranch
-remote: 
-To github.com:bbrydsoe/mytestrepo.git
- * [new branch]      birgittesbranch -> birgittesbranch
-Branch 'birgittesbranch' set up to track remote branch 'birgittesbranch' from 'origin'.
-```
+	So no changes here, as the branches were created remotely.  
 
-On GitHub it looks like this. Notice that there are now 2 branches: 
+4. Use `git status` to see which branch you are on. 
 
-![](figures/github.png)
 
-Clicking on the 'branches' you get more information: 
 
-![](figures/2brnaches.png) 
+5. Check with `git branch -a` to see all local and remote branches
 
-Notice that you can do a 'New pull request'. 
+6. Do a `git pull` from the command line to get a list of all branches. Switch to the branch you created on GitHub with `git checkout --track origin/mynewbranch`. Again do `git branch` to see which branch you are on.
 
-5. When everyone has done this, all do a `git pull`
+7. Create a new file and put some content to it. Add and commit it. Check for changes (`git status`, `git log`). Push the changes.
 
-**Solution**
+8. Try and merge the branches from the command line. Remember to first pull any changes from your other group members. Also remember to switch to the branch you want to merge it to (main in this case).
 
-In my example, two people have created branches and committed a file to it, then pushed. This is how it looks when I do 'git branch -r' first, to see all branches including remote ones, then do a pull, then look at all branches again: 
+9. Were you succesful? Why or why not? Is there are difference between what happens when the owner of the branch tries this and when everyone else does?
 
-```shell
-bbrydsoe@enterprise-a:~/mytestrepo$ git branch -r
-  origin/HEAD -> origin/main
-  origin/birgittesbranch
-  origin/main
-bbrydsoe@enterprise-a:~/mytestrepo$ git pull
-Enter passphrase for key '/home/bbrydsoe/.ssh/id_rsa': 
-remote: Enumerating objects: 3, done.
-remote: Counting objects: 100% (3/3), done.
-remote: Compressing objects: 100% (2/2), done.
-remote: Total 2 (delta 0), reused 2 (delta 0), pack-reused 0
-Unpacking objects: 100% (2/2), 285 bytes | 285.00 KiB/s, done.
-From github.com:bbrydsoe/mytestrepo
- * [new branch]      spocksbranch -> origin/spocksbranch
-Already up-to-date.
-bbrydsoe@enterprise-a:~/mytestrepo$ git branch -r
-  origin/HEAD -> origin/main
-  origin/birgittesbranch
-  origin/main
-  origin/spocksbranch
-```
+10. After doing this, everyone should again do a `git pull` (on the command line)
 
-6. Use `git status`, `git branch`, and `git log` to see what has happened. 
-
-**Solution**
-
-'git status' and 'git log' only shows what is happening locally. The command 'git branch' also only shows local, unless you add the flag '-r' to see remote branches, as I did above. Then you see the difference. 
-
-NOTE: It is possible to make the master branch "protected" so it is not changed without a review from the owner. 
+11. Use `git status`, `git branch`, and `git log` to see what has happened. If you want a "prettier" and sometimes easier to read view, use `git log --graph --oneline --decorate --all`
 
