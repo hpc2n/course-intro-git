@@ -2,7 +2,7 @@
 
 One of you should create a repository on GitHub and invite their team. Remember, on the GitHub webpage the option to create a new repository is in the top right corner - click the "+". To add members: "Settings" -> "Access".
 
-![](figures/setting.png )
+![](figures/git-settings.png )
 ![](figures/access.png )
 
 Then click "Collaborators" and then "Add people". The other members should get an invitation. Accept it and check that you have access. 
