@@ -1,4 +1,4 @@
-# Teamwork, push and pull
+# 4. Teamwork, push and pull
 
 One of you should create a repository on GitHub and invite their team. Remember, on the GitHub webpage the option to create a new repository is in the top right corner - click the "+". To add members: "Settings" -> "Manage access".
 
