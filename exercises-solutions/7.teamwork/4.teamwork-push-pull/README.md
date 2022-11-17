@@ -1,11 +1,13 @@
 # 4. Teamwork, push and pull
 
-One of you should create a repository on GitHub and invite their team. Remember, on the GitHub webpage the option to create a new repository is in the top right corner - click the "+". To add members: "Settings" -> "Manage access".
+One of you should create a repository on GitHub and invite their team. Remember, on the GitHub webpage the option to create a new repository is in the top right corner - click the "+". To add members: "Settings" -> "Access".
 
-![](figures/github-setting.png )
-![](figures/Github-add-members.png )
+![](figures/setting.png )
+![](figures/access.png )
 
-Then click "Add people". You should get an invitation. Accept it and check that you have access. 
+Then click "Collaborators" and then "Add people". The other members should get an invitation. Accept it and check that you have access. 
+
+The person who owns the repository should possibly change the roles/permissions for the members if they cannot push to the repository. 
 
 1. Each person should create a file in the repository. It is probably easiest to do from the command line. 
 
