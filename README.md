@@ -10,7 +10,7 @@ When you have cloned the repository (click the green "Code" button to get the re
 
 Clone the repository with 
 
-`git clone [https://github.com/hpc2n/course-intro-git.git](https://github.com/hpc2n/course-intro-git.git)`
+`git clone https://github.com/hpc2n/course-intro-git.git`
 
 Then cd into the directory that was created and do 
 
