@@ -1,6 +1,6 @@
-# Materials for the participants of the course "Introduction to Git"
+# Materials for the participants of the course "Introduction to Git" (November 2023) 
 
-This repository contains the material for the exercises for the participants of the course "Introduction to Git" as well as copies of the lectures.
+This repository contains the material for the exercises for the participants of the course "Introduction to Git" as well as copies of the lectures. 
 
 ## Exercises
 
