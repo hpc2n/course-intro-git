@@ -30,6 +30,6 @@ Note that there may be minor updates which are only on the HackMD pages.
 
 ## Other materials 
 
-The course website, which also has the course schedule, can be found here: [https://www.hpc2n.umu.se/events/courses/2022/introduction-to-git](https://www.hpc2n.umu.se/events/courses/2023/git-fall-2023)
+The course website, which also has the course schedule, can be found here: [https://www.hpc2n.umu.se/events/courses/2023/git-fall-2023](https://www.hpc2n.umu.se/events/courses/2023/git-fall-2023)
 
 The recordings of the lectures can be found on [HPC2N's YouTube channel](https://www.youtube.com/user/HPC2N). There will be a playlist for the course. The recordings are usually uploaded within a day or so of the lecture. 
