@@ -4,11 +4,11 @@ This repository contains the material for the exercises for the participants of 
 
 ## Exercises
 
-The exercises are in the file 'git_materials.zip'. 
+The exercises are both in the subdirectory 'exercises-solutions' and in the top-level file 'git_materials.zip'. 
 
 When you have cloned the repository (click the green "Code" button to get the repo-url - pick the https one), unzip it. 
 
-Clone it with 
+Clone the repository with 
 
 `git clone repo-url`
 
