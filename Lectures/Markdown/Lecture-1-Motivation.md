@@ -4,17 +4,17 @@ tags: Lecture, Birgitte, day 1
 description: "Why use version control?" 
 ---
 
-Introduction to Git --- Fall 2022
+Introduction to Git --- Fall 2023
 # Lecture 1: Why use version control?
 
 <!-- .slide: data-background="#ffffff" -->
 
-<!-- Lecture material made by Mirko Myllykoski for the version of the course that was given in fall 2020. Lecture was first given by Mirko Myllykoski in fall 2020.
-Minor modifications made by Birgitte Brydsö for the fall 2021 and 2022 versions of the course.-->
+<!-- Lecture material made by Mirko Myllykoski for the version of the course that was given in fall 2020. The lecture was first given by Mirko Myllykoski in fall 2020.
+Very minor modifications have been made by Birgitte Brydsö for the fall 2021, fall 2022, and fall 2023 versions of the course.-->
 
-![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
+![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2022/L1-motivation#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2023/L1-motivation#/</small>
 
 ---
 

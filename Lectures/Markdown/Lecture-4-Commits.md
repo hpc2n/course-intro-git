@@ -4,16 +4,16 @@ tags: Lecture, Diana, day 2, 3
 description: "Commits and commit trees"
 ---
 
-Introduction to Git --- Fall 2022
+Introduction to Git --- Fall 2023
 # Lecture 4: Commits
 
 <!-- .slide: data-background="#ffffff" -->
 
 <!-- Lecture material made by Mirko Myllykoski for the version of the course that was given in fall 2020. Lecture was first given by Mirko Myllykoski in fall 2020.-->
 
-![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
+![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2022/L4-commits#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2023/L4-commits#/</small>
 
 ---
 
@@ -411,6 +411,8 @@ Switched to branch 'master'
 
 ### Git reset
 
+<!-- .slide: style="font-size: 32px;" -->
+
  - We could have also used `git reset` to move the `HEAD`:
 
 ```shell
@@ -648,6 +650,8 @@ digraph {
 
 ---
 
+<!-- .slide: style="font-size: 32px;" -->
+
  - Files that are already staged are cleaned with
 
 ```shell
@@ -663,6 +667,8 @@ $ git reset <option>
 |`--hard`  |  X   |   X   |  X   |                |
 
 ---
+
+<!-- .slide: style="font-size: 32px;" -->
 
 Untracked files are cleared with
 
@@ -1061,18 +1067,7 @@ digraph {
 ```shell
 $ git commit -c ORIG_HEAD
 [master #######] B
- Date: ### ### ## ##:##:## #### #####
- 2 files changed, 2 insertions(+)
-```
-
----
-
-## Reverting a commit
-
----
-
- - It is sometimes more convenient to simply **revert** a commit.
- - This means that a special commit is created that **undoes** the changes included in a different commit.
+ Date: ### ### ## ##:##:##s means that a special commit is created that **undoes** the changes included in a different commit.
  - The commit tree **is not modified**.
      - Does not effect other people.
 

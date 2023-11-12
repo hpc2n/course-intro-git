@@ -4,16 +4,16 @@ tags: Lecture, Birgitte, Day 5
 description: "Teamwork. Will be done on GitHub"
 ---
 
-Introduction to Git --- Fall 2022
+Introduction to Git --- Fall 2023
 # Lecture 7: Teamwork
 
 <!-- .slide: data-background="#ffffff" -->
 
-<!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. Several changes done to the material in 2021 and 2022, mainly due to GitHub no longer allowing for password authentication. -->
+<!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. Several changes done to the material in 2021 and 2022, mainly due to GitHub no longer allowing for password authentication. Minor changes and updates done for the 2023 version. -->
 
-![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
+![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2022/L7-teamwork#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2023/L7-teamwork#/</small>
 
 ---
 
@@ -322,9 +322,7 @@ bbrydsoe@enterprise-a:~/mytestrepo$ git log --graph --oneline --decorate --all
 bbrydsoe@enterprise-a:~/mytestrepo$
 ```
 
-Note: when you do this it should be coloured for easier readability
-
-Note: on some newer Git versions, including the current default one on Windows, you can use `git graph` instead of the above long command. 
+Note: when you do this it should be coloured for easier readability 
 
 ---
 
@@ -527,7 +525,7 @@ nothing to commit, working tree clean
 
 ## First exercise - GitHub (if not setup already)
 
-<!-- .slide: style="font-size: 26px;" -->
+<!-- .slide: style="font-size: 24px;" -->
 
 1. Create a repository (click on the + at the top right of the menu or picking "Start a new repository" on your "home screen")
 2. Under "Quick setup", pick "creating a new file". 
@@ -563,6 +561,13 @@ In this exercise you create SSH keys and upload to GitHub. Then test that it wor
     
 2. You will be asked for a file to save the key. Unless you have an existing SSH key, accept the default.
 3. Enter a passphrase and repeat it.
+
+---
+
+## Second exercise (cont.), SSH keys (if you have not set up already)
+
+<!-- .slide: style="font-size: 26px;" -->
+
 4. Add the key to the ssh-agent. Here we assume the default name: 
 ```
 $ eval "$(ssh-agent -s)"
@@ -668,7 +673,7 @@ One of you should create a repository on GitHub and invite their team. Remember,
 
 ## Seventh exercise, teamwork and branches
 
-<!-- .slide: style="font-size: 30px;" -->
+<!-- .slide: style="font-size: 28px;" -->
 
 1. Everyone in the group create a new branch in the repo - this time you could try doing it from the GitHub page
 2. Check which remote branches exist with `git branch -r`

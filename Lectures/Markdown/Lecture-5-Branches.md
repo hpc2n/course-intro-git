@@ -1,20 +1,66 @@
 ---
 title: "Lecture 5: Branches"
-tags: Lecture, Björn, day 3, 4
+tags: Lecture, Diana, day 3, 4
 description: "Branches, merges and conflicts"
 ---
 
-Introduction to Git --- Fall 2022
+Introduction to Git --- Fall 2023
 # Lecture 5: Branches
 
 <!-- .slide: data-background="#ffffff" -->
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
-Minor modifications done for the fall 2021 version of the course. -->
+Minor modifications done for the fall 2021/2022/2023 versions of the course. -->
 
-![](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =250x)  ![](https://www.hpc2n.umu.se/sites/default/files/images/SNIC_logo_autocrop.png =250x)
+![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2022/L5-branches#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2023/L5-branches#/</small>
+
+
+---
+
+## Repetition
+
+<!-- .slide: style="font-size: 24px;" -->
+<!-- .slide: data-background="#0000FF" -->
+
+
+**Not starting with "R"**
+- `checkout` - go/move HEAD to branch or specific commit (hash)
+    - Applying to a file discards all unstaged changes made to the file
+    - will never move the reference
+- ``clean`` - clear **unstaged** files
+    - ``--dry-run`` to check what will happen
+- ``diff`` - compare
+    - lists unstaged changes
+    - `--staged` - commit vs staged
+    - `HEAD` - commit vs working tree
+- ``log`` - history of commit tree
+    - ``--graph`` - graphically see the branches
+- ``show`` - shows info for commit
+- ``stash`` - temporarily **stores the staged** changes to the working tree
+- `switch` - go to branch only (more clear for this use)
+- ``tag`` - tag (like version number), **naming commits** (not branches)
+
+---
+
+### Repetition
+
+<!-- .slide: style="font-size: 28px;" -->
+**Starting with "R"**
+
+- ``rebase -i HEAD~3`` - interactively rebase last 3 **commits**
+    - with ``squash`` - summarize last 3 **commits**
+- ``reflog`` - log of commits that changes the head
+- ``reset`` - as ``checkout`` but takes options to also do updates 
+    - `<filename>` - **unstages** the file
+    - may move the reference and thereby update the branch
+- `restore` - restore **file** in work dir
+    - `--staged` - **unstages**
+    - does not update your branch
+- ``revert`` - makes **inverse of** the previous **commit**. The commit tree is not modified, rather two cancelling commits.
+- `rev-parse --short` - find short hash for references, like `HEAD~~`
+- ``rm`` - remove from repo
 
 ---
 
@@ -35,47 +81,6 @@ Minor modifications done for the fall 2021 version of the course. -->
     - rebasing: combining a sequence of commits to a new base commit.
     - cherry-picking
 
----
-
-## Repetition
-
-<!-- .slide: style="font-size: 24px;" -->
-**Not starting with "R"**
-- `checkout` - go/move HEAD to branch or specific commit (hash)
-    - Applying to a file discards all unstaged changes made to the file
-    - will never move the reference
-- ``clean`` - clear **unstaged** files
-    - ``--dry-run`` to check what will happen
-- ``diff`` - compare
-    - lists unstaged changes
-    - `--staged` - commit vs staged
-    - `HEAD` - commit vs working tree
-- ``log`` - history of commit tree
-    - ``--graph`` - graphically see the branches
-- ``show`` - shows info for commit
-- ``stash`` - temporarily **stores the staged** changes to the working tree
-- `switch` - go to branch only (more clear for this use)
-- ``tag`` - tag (like version number), **naming commits** (not branches)
-
----
-
-## Repetition
-
-<!-- .slide: style="font-size: 28px;" -->
-**Starting with "R"**
-
-- ``rebase -i HEAD~3`` - interactively rebase last 3 **commits**
-    - with ``squash`` - summarize last 3 **commits**
-- ``reflog`` - log of commits that changes the head
-- ``reset`` - as ``checkout`` but takes options to also do updates 
-    - `<filename>` - **unstages** the file
-    - may move the reference and thereby update the branch
-- `restore` - restore **file** in work dir
-    - `--staged` - **unstages**
-    - does not update your branch
-- ``revert`` - makes **inverse of** the previous **commit**. The commit tree is not modified, rather two cancelling commits.
-- `rev-parse --short` - find short hash for references, like `HEAD~~`
-- ``rm`` - remove from repo
 
 ---
 
@@ -125,11 +130,11 @@ Until now, we have worked with a repository that only have one branch, with the 
 
 ![](https://i.imgur.com/OjpgqBz.png)
 
-In the above picture, the master branch points to a commit. The current position is HEAD. 
+In the above picture, the master branch points to a commit. The current position is HEAD. (Time goes rightwards)
 
 ---
 
-## What is a Git branch - basic concepts
+### What is a Git branch - basic concepts
 
 <!-- .slide: style="font-size: 30px;" -->
 
@@ -137,7 +142,7 @@ Now we want to look at repositories with several branches:
 
 ![](https://i.imgur.com/9lvwmg9.png)
 
-Branches are used to create another line of development.  They are "individual projects" within a git repository. 
+Branches are used to create another line of development.  They are "individual projects" within a git repository. (Time goes rightwards)
 
 ---
 
@@ -157,7 +162,7 @@ Usually, a branch is created to work on a new feature. Once the feature is compl
 
 
 ![](https://i.imgur.com/9Y4ymjG.png)
-
+(Time goes right)
 
 ---
 
@@ -184,6 +189,10 @@ To move to another branch (switch):
 
 ```shell
 $ git checkout cool-feature
+```
+or...
+```shell
+$ git switch cool-feature
 ```
 
 If you wish to switch to a new branch that is not yet created, you can do so by adding the flag `-b` to `git checkout`.
@@ -221,7 +230,7 @@ $ git branch -d cool-feature
 
 ---
 
-### Example 
+### Example - Type along if you wish
 
 <!-- .slide: style="font-size: 32px;" -->
 
@@ -280,16 +289,18 @@ $ git commit -m "Added a second file"
 <!-- .element: class="fragment" -->
 ```shell
 $ git log --graph --oneline --decorate --all
-```
-- or, if you made an alias before.
+``` 
+<!-- .element: class="fragment" -->
+- or, if you made an alias before. <!-- .element: class="fragment" -->
 ```shell
 $ git graph
 ```
 <!-- .element: class="fragment" -->
-- Otherwise make the alias:
+- Otherwise make the alias: <!-- .element: class="fragment" -->
 ```shell
 $ git config --global alias.graph "log --all --graph --decorate --oneline"
 ```
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -313,7 +324,8 @@ Merge made by the 'recursive' strategy.
  file.txt | 1 +
  1 file changed, 1 insertion(+)
 ```
-- Note that in recent git versions (>=2.33) the "recursive" strategy is replaced by the "ort" strategy.
+<!-- .element: class="fragment" -->
+- Note that in recent git versions (>=2.33) the "recursive" strategy is replaced by the "ort" strategy. <!-- .element: class="fragment" -->
 ```shell
 $ git graph
 *   cf3e6b7 (HEAD -> master) Merge branch 'cool-feature'
@@ -335,6 +347,7 @@ Now we can delete the new branch we had created, since all the content is now in
 $ git branch -d cool-feature 
 Deleted branch cool-feature (was 5bad966).
 ```
+Comment: It is good practice to keep old branches for understanding of the development. Deletion could however be done for very evident mistakes or insignificant issues.
 
 ---
 
@@ -356,6 +369,7 @@ digraph {
   "cool-feature" [shape=plaintext]
 }
 ```
+(Time goes leftwards)
 
 ---
 
@@ -377,6 +391,7 @@ digraph {
   "cool-feature" [shape=plaintext]
 }
 ```
+
 Delete 'cool-feature'
 ```graphviz
 digraph {
@@ -391,6 +406,7 @@ digraph {
   master [shape=plaintext]
 }
 ```
+(Time goes leftwards)
 
 ---
 
@@ -433,7 +449,7 @@ A	newfile.txt
 Switched to branch 'master'
 ```
 
-Git warns that there is a file added in one branch but not the other, but the switch is allowed. 
+Git warns that there is a file added (`A`) in one branch but not the other, but the switch is allowed. 
 
 ---
 
@@ -442,18 +458,20 @@ Git warns that there is a file added in one branch but not the other, but the sw
 <!-- .slide: style="font-size: 32px;" -->
 
 **We continue in the same repository!**
+First commit the `newfile.txt` in the cool-feature branch to clean the environment.
 If we make changes to the file in one of the branches (go back to `cool-feature`) but not on the other and do not commit it, then git will again warn: 
 
 ```shell
-$ git checkout cool-feature
+$ git switch cool-feature
+$ git commit -m "newfile.txt"
 $ echo "Adding some text" >> second-file.txt
 $ git add second-file.txt 
 $ git checkout master
-M	newfile.txt
+M	second-file.txt
 Switched to branch 'master'
 ```
 
-Git warns that there is a file that is modified in one branch but not the other, but the switch is allowed. 
+Git warns that there is a file that is modified (`M`) in one branch but not the other, but the switch is allowed. 
 
 ---
 
@@ -471,6 +489,7 @@ Switch to branch "cool-feature", add some text to a file, stage the file and com
 $ git branch morefeatures
 $ git checkout cool-feature 
 Switched to branch 'cool-feature'
+$ git commit -m "second-file.txt"
 $ echo "add text" >> morefiles.txt 
 $ git add morefiles.txt 
 $ git commit -m "Some text"
@@ -500,11 +519,12 @@ Now Git complains and do not allow the switch.
 
 ---
 
+
 ## Handling uncommitted changes
 
 <!-- .slide: style="font-size: 36px;" -->
 
-So what can we do if there is a conflict?
+So, what can we do if there is a conflict?
 
 * Commit the changes before switching branch <!-- .element: class="fragment" -->
 * Stash the uncommitted changes <!-- .element: class="fragment" -->
@@ -519,15 +539,15 @@ So what can we do if there is a conflict?
 
 <!-- .slide: style="font-size: 32px;" -->
 
-The command "stash" can be described as a drawer where you store uncommitted changes temporarily. 
+The command "stash" can be described as a **drawer** where you store uncommitted changes temporarily. 
 
-After stashing your uncommitted changes you can continue working on other things in a different branch.
+After stashing your uncommitted changes you can continue **working on other things** in a different branch.
 
-The uncommitted changes that are stored in the stash can be taken out and applied to any branch, including the original branch. 
+The uncommitted changes that are stored in the stash **can be taken out and applied to any branch, including the original branch.**
 
 ---
 
-### Stashing, example 
+### Stashing, example (no type-along this time)
 
 <!-- .slide: style="font-size: 32px;" -->
 
@@ -569,7 +589,7 @@ You can now switch branches and work on something else.
 
 ---
 
-## Working with stashes
+## Working with stashes (repetition)
 
 You can have several stashes stored. To see them, use 
 
@@ -586,11 +606,11 @@ stash@{1}: WIP on morefeatures: 4922606 Some text
 stash@{2}: WIP on morefeatures: 4922606 Some text
 ```
 
---- 
+---
 
-## Working with stashes - continued
+### Working with stashes - continued (repetition)
 
-When you have done what you needed before committing the stashed changes you can reapply a stash, using 
+When you have done what you needed before committing the stashed changes you can reapply a stash (select branch first), using 
 
 ```
 $ git stash apply
@@ -610,7 +630,7 @@ $ git stash apply stash@{0}
 
 <!-- .slide: style="font-size: 32px;" -->
 
-If you do not want to stash your changes, but just get rid of them, you can use `git clean`.
+If you do not want to stash your changes, but just **get rid** of them, you can use `git clean`.
 
 WARNING: This command will remove all non-tracked files in your current directory!
 <!-- .element: class="fragment" -->
@@ -631,11 +651,11 @@ $ git clean --dry-run
 ```shell
 $ git checkout --merge <branch>
 ```
-- This will perform a three-way merge between your working tree and the new branch, with the current branch as the base.
+- This will perform a **three-way merge between your working tree and the new branch, with the current branch as the base.**
 <!-- .element: class="fragment" -->
 - After the merge, you will be on the new  branch and the merged result will be in your working tree. 
 <!-- .element: class="fragment" --> 
-- NOTE: As with any merge, conflicts may result and you will then have to resolve those. 
+- NOTE: As with any merge, **conflicts may result** and you will then have to resolve those. 
 <!-- .element: class="fragment" -->
 
 ---
@@ -662,29 +682,29 @@ Cannot merge. (Changes in staging area)
 Git can automatically try to merge when you give the command: 
 
 ```shell
-$ git merge <branch-to-merge-to>
+$ git merge <branch-to-merge-into-present-branch>
 ```
 
 while standing on the branch you want to merge to. 
 
 ---
 
-<!-- .slide: style="font-size: 32px;" -->
+### Merge strategies
+<!-- .slide: style="font-size: 26px;" -->
 
-Git has some merge strategies. The most commonly used are: 
+The most commonly used 
 
 * Fast Forward Merge 
   * the commit history is one straight line. 
-  * You create a branch, you make some commits there, but no changes to the 'master'. You then just merge onto the 'master'. This just moves the pointer for the 'master' branch forward in a straight line. <!-- .element: class="fragment" -->
-* Recursive Merge 
+  * You create a branch, you make some commits there, but no changes to the 'master'. You then just merge onto the 'master'. This just moves the pointer for the 'master' branch forward in a straight line. 
+* Recursive Merge (until 2.32)
   * make a branch and make some commits there, but also make new commits that are made on another branch, like the ‘master‘. 
   * Then, when you want to merge, git will recurse over the branch and create a new merge commit. The merge commit will continue to have two parents. 
 * ORT (from git-2.33)
   * acronym for "Ostensibly Recursive’s Twin"
   * replacement for the previous default algorithm, recursive.
   * This is the default merge strategy when pulling or merging one branch. 
-  * Has been reported to result in fewer merge conflicts without causing mismerges 
-    <!-- .element: class="fragment" -->
+  * Results in fewer merge conflicts without causing mismerges 
 
 ---
 
@@ -832,7 +852,8 @@ $ git merge <other-branch>`
 - CONFLICT! <!-- .element: class="fragment" -->
 - Fix problems <!-- .element: class="fragment" -->
 - Stage files <!-- .element: class="fragment" -->
-- Commit files <!-- .element: class="fragment" -->
+- (Commit files)
+  - not necessary because git merge --continue takes care of that <!-- .element: class="fragment" -->
 - Then do <!-- .element: class="fragment" -->
 ```shell
 $ git merge --continue <other-branch>`
@@ -852,7 +873,7 @@ Success! <!-- .element: class="fragment" -->
 
 ---
 
-## Rebasing - illustration 
+### Rebasing - illustration 
 
 <!-- .slide: style="font-size: 26px;" -->
 
@@ -871,6 +892,9 @@ digraph {
   "bugfix" [shape=plaintext]
 }
 ```
+(Time goes leftwards)
+
+
 Rebasing 'bugfix' to the 'master' branch
 ```graphviz
 digraph {
@@ -885,10 +909,11 @@ digraph {
 master [shape=plaintext]
 }
 ```
+(Time goes leftwards)
 
 ---
 
-## Rebasing - continued
+### Rebasing - continued
 
 <!-- .slide: style="font-size: 30px;" -->
 
@@ -909,7 +934,7 @@ This works by <!-- .element: class="fragment" -->
 
 ---
 
-## Rebasing vs. Fast-forward merge
+### Rebasing vs. Fast-forward merge
 
 <!-- .slide: style="font-size: 32px;" -->
 
@@ -938,6 +963,8 @@ digraph {
   C [shape=plaintext]
 }
 ```
+(Time goes leftwards)
+
 <!-- .element: class="fragment" -->
 
 ---
@@ -987,10 +1014,11 @@ digraph {
   C [shape=plaintext]
 }
 ```
+(Time goes leftwards)
 
 ---
 
-## Cherry-picking 
+## Cherry-picking (advanced)
 
 <!-- .slide: style="font-size: 30px;" -->
 
@@ -1013,9 +1041,9 @@ $ git cherry-pick <hash>
 
 ---
 
-## Cherry-picking — graphic view
+### Cherry-picking — illustration (advanced)
 
-<!-- .slide: style="font-size: 28px;" -->
+<!-- .slide: style="font-size: 30px;" -->
 
 Apply the commit Y to the master branch (called Y´)
 
@@ -1038,24 +1066,54 @@ digraph {
  
 }
 ```
----
-
-## Takeaways
-
-**git commands**
-- 
+(Time goes leftwards)
 
 ---
 
-## Exercises 
+## Take aways
+<!-- .slide: style="font-size: 24px;" -->
 
-<!-- .slide: style="font-size: 26px;" -->
+- create or parse branch - ``git branch``
+- switch branch - ``git checkout`` or ``git switch``
+- merge branches - `git merge` 
+- rebase branch  - `rebase` - like merge but end result is just one branch
+
+
+**Conflict?**
+- Commit or `stash` or discard (`clean`) the changes before switching branch or do a ``checkout --merge`` .
+
+**Workflow merge**
+- Work on files 
+- Stage and commit files 
+- Then do: ``$ git merge <other-branch>``
+
+Conflict?
+  - Fix problems 
+  - Stage and commit files 
+  - Then do: ``$ git merge --continue <other-branch>``
+
+
+---
+
+## Exercises
+<!-- .slide: style="font-size: 32px;" -->
 
 Each of the exercises has a README.md file with explanations and descriptions of what to do. You can find all of them in the subdirectory 5.branches. You should do them in the below order: 
  
-1. Fast-forward Merge (OK): This exercise will show an example where git can do a fast-forward merge. The exercise is in the subdirectory "1.merge-ok" <!-- .element: class="fragment" -->
-2. Recursive/ORT Merge (OK): In this exercise you will see an example where git can automatically merge two branches. This time git will use the recursive merge. The exercise can be found in the subdirectory "2.merge-ok-recursive" <!-- .element: class="fragment" -->
-3. Merge (BAD): This exercise gives an example of a merge that cannot be done automatically with the merge command. The exercise can be found in the subdirectory "3.merge-bad" <!-- .element: class="fragment" -->
-4. Rebasing (OK): In this exercise you will try the command rebase and see that it succeeds. The exercise can be found in the subdirectory "4.rebase-ok"  <!-- .element: class="fragment" -->
-5. Rebasing (BAD): This exercise again gives an example of rebasing two branches, but in this case the rebase fails. The exercise can be found in the subdirectory "5.rebase-bad" <!-- .element: class="fragment" -->
+1. Fast-forward Merge (OK): This exercise will show an example where git can do a fast-forward merge. The exercise is in the subdirectory "1.merge-ok" 
 
+2. Recursive/ORT Merge (OK): In this exercise you will see an example where git can automatically merge two branches. This time git will use the recursive merge. The exercise can be found in the subdirectory "2.merge-ok-recursive" 
+
+---
+
+### Exercises
+
+<!-- .slide: style="font-size: 32px;" -->
+ 
+3. Merge (BAD): This exercise gives an example of a merge that cannot be done automatically with the merge command. The exercise can be found in the subdirectory "3.merge-bad" 
+
+4. Rebasing (OK): In this exercise you will try the command rebase and see that it succeeds. The exercise can be found in the subdirectory "4.rebase-ok"  
+
+5. Rebasing (BAD): This exercise again gives an example of rebasing two branches, but in this case the rebase fails. The exercise can be found in the subdirectory "5.rebase-bad" 
+
+---
