@@ -1,4 +1,4 @@
-# Materials for the participants of the course "Introduction to Git" (November 2023) 
+# Materials for the participants of the course "Introduction to Git" (November 2024) 
 
 This repository contains the material for the exercises for the participants of the course "Introduction to Git" as well as copies of the lectures. 
 
@@ -24,12 +24,12 @@ Then cd to the folder that is created. The exercises will be found under each su
 
 The lectures are in the folder 'Lectures'.  
 
-You can also find the lectures, probably in a nicer format, on the HackMD page for this course: [https://hackmd.io/@git-fall-2023](https://hackmd.io/@git-fall-2023)
+You can also find the lectures, probably in a nicer format, on the HackMD page for this course: [https://hackmd.io/@git-fall-2023](https://hackmd.io/@git-fall-2024)]
 
 Note that there may be minor updates which are only on the HackMD pages. 
 
 ## Other materials 
 
-The course website, which also has the course schedule, can be found here: [https://www.hpc2n.umu.se/events/courses/2023/git-fall-2023](https://www.hpc2n.umu.se/events/courses/2023/git-fall-2023)
+The course website, which also has the course schedule, can be found here: [https://www.hpc2n.umu.se/events/courses/2024/fall/git](https://www.hpc2n.umu.se/events/courses/2024/fall/git)
 
 The recordings of the lectures can be found on [HPC2N's YouTube channel](https://www.youtube.com/user/HPC2N). There will be a playlist for the course. The recordings are usually uploaded within a day or so of the lecture. 
