@@ -24,8 +24,7 @@ Then cd to the folder that is created. The exercises will be found under each su
 
 The lectures are in the folder 'Lectures'.  
 
-You can also find the lectures, probably in a nicer format, on the HackMD page for this course: [https://hackmd.io/@git-fall-2023](https://hackmd.io/@git-fall-2024)]
-
+You can also find the lectures, probably in a nicer format, on the HackMD page for this course: [https://hackmd.io/@git-fall-2024](https://hackmd.io/@git-fall-2024)
 Note that there may be minor updates which are only on the HackMD pages. 
 
 ## Other materials 
