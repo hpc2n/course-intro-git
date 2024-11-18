@@ -1,20 +1,26 @@
 ---
+title: 'Lecture C: Brief intro to SSH-keys and using GitHub'
+tags: [Lecture, ' Birgitte', ' day 4']
+
+---
+
+---
 title: "Lecture C: Brief intro to SSH-keys and using GitHub"
 tags: Lecture, Birgitte, day 4
 description: "Git installation etc"
 ---
 
-Introduction to Git --- Fall 2023
+Introduction to Git --- Fall 2024
 ## Lecture C: Brief intro to SSH-keys and using GitHub
 
 <!-- .slide: data-background="#ffffff" -->
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
-Minor modifications done for the fall 2021, 2022, and 2023 versions of the course. -->
+Minor modifications done for the fall 2021, 2022, 2023, and 2024 versions of the course. -->
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2023/LC-github#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2024/LC-github</small>
 
 ---
 
@@ -107,7 +113,7 @@ $ ssh-add ~/.ssh/id_ed25519
 
 1. On GitHub, click your avatar in the top right corner and pick "Settings".
 2. Choose "SSH and GPG keys"
-3. Click "Add new SSH key"
+3. Click the green button labeled "New SSH key"
 4. Add a descriptive label for the key in the "Title" field. In the key field you paste the content of the key (~/.ssh/id_rsa.ed25519.pub or ~/.ssh/id_rsa.pub)
 ![](https://i.imgur.com/DzOFZTd.png =500x)
 5. Click "Add SSH key"
