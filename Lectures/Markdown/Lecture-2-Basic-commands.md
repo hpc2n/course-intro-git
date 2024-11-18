@@ -1,10 +1,16 @@
 ---
+title: 'Lecture 2: Basic commands'
+tags: [Lecture, ' Pedro', ' day 1']
+
+---
+
+---
 title: "Lecture 2: Basic commands"
 tags: Lecture, Pedro, day 1
 description: "Basic Git commands"
 ---
 
-Introduction to Git --- Fall 2023
+Introduction to Git --- Fall 2024
 # Lecture 2: Basic commands
 
 <!-- .slide: data-background="#ffffff" -->
@@ -13,7 +19,7 @@ Introduction to Git --- Fall 2023
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/logo-hpc2n-git-course.png =90x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2023/L2-commands#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2024/L2-commands</small>
 
 ---
 
@@ -126,7 +132,7 @@ nothing to commit, working directory clean
 ## Stages of files
 
 
-![](https://www.hpc2n.umu.se/sites/default/files/git-folders.png =780x)
+![](https://www.hpc2n.umu.se/sites/default/files/git-folders2.png =780x)
 
 
 ---
@@ -563,7 +569,7 @@ This is my first file
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-the status command tells us that we did some modifications to the file:
+The status command tells us that we did some modifications to the file:
 
 ```console
 On branch master
@@ -688,7 +694,7 @@ The following command will modify your last commit by adding more content to it:
 $ git commit --amend 
 ```
 
-the flag *-m* will allow you to write a short message and *--no-edit* will keep the message from the previous commit.
+the flag *-m* will allow you to write a short message and *- -no-edit* will keep the message from the previous commit.
 <span style="color:red">Note: use this command in commits that haven't been pushed on public branches. This command modifies the history.</span>
 
 ---
