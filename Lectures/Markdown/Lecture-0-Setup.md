@@ -1,20 +1,26 @@
 ---
+title: 'Lecture 0: Setup'
+tags: [Lecture, ' Birgitte', ' day 1']
+
+---
+
+---
 title: "Lecture 0: Setup"
 tags: Lecture, Birgitte, day 1
 description: "Git installation etc"
 ---
 
-Introduction to Git --- Fall 2023
+Introduction to Git --- Fall 2024
 # Lecture 0: Setup
 
 <!-- .slide: data-background="#ffffff" -->
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
-Minor modifications done for the fall 2021, 2022, and 2023 versions of the course. -->
+Minor modifications done for the fall 2021, 2022, 2023, and 2024 versions of the course. -->
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2023/L0-setup#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2024/L0-setup</small>
 
 ---
 
@@ -54,12 +60,12 @@ When this is done, you will clone the course materials.
 
 <!-- .slide: style="font-size: 30px;" -->
 
-**NOTE**: if you have a problem getting this to work on your own computer, and you have an account at Rackham, then you can use that. 
+**NOTE**: if you have a problem getting this to work on your own computer, and you have an account at Tetralith or any other HPC system, then you can use that instead. 
 
-We have some documentation for you: 
-https://hackmd.io/@git-fall-2023/LB-rackham. 
+We have some documentation for you for Tetralith: 
+https://hackmd.io/@git-fall-2024/tetralith. 
 
-You may also use any other HPC system you have an account at, of course. The above documentation would need only minor adjustements. 
+As mentioned, you may also use any other HPC system you have an account at, of course. The above documentation would need only minor adjustements. 
 
 ---
 
@@ -67,7 +73,7 @@ You may also use any other HPC system you have an account at, of course. The abo
 
 <!-- .slide: style="font-size: 30px;" -->
 
-* Go to the Git-scm website (https://git-scm.com/downloads) and click "Windows" to download the Windows version. It will automatically start download of the .exe file.
+* Go to the Git-scm website (https://git-scm.com/downloads) and click "Windows" to download the Windows version. It should automatically start download of the .exe file.
 * The downloaded file can be installed by double-clicking and choosing "Run". 
 * Click "Yes" to let it be installed and then "Next" to accept the GNU GPL. 
 * The default options you are presented with should work, and we recommend using those. 
@@ -94,6 +100,8 @@ If Git is not installed, you have several installation options. Apple maintains 
 
 <!-- .slide: style="font-size: 38px;" -->
 
+Git is usually already installed on Linux, but if not, this is how you install it. 
+
 Installing Git on Linux depends on which distro you are running. 
 
 * `sudo apt-get install git` (Ubuntu, Debian)
@@ -113,7 +121,7 @@ Installing Git on Linux depends on which distro you are running.
     * Go to repo
     * Pick "Settings" -> "General"
     * Change the name in "Default branch"
-* Instructions how to rename the primary branch in a repo from "master" to "main": https://gist.github.com/danieldogeanu/739f88ea5312aaa23180e162e3ae89ab
+* Instructions how to rename the primary branch in a repo from "master" to "main" on the command line: https://gist.github.com/danieldogeanu/739f88ea5312aaa23180e162e3ae89ab
 
 ---
 
@@ -178,7 +186,7 @@ $ cd <mydir>
 $ touch test.txt
 ```
 
-Now initialize a repository and stage the new file:
+Now initialize a repository and *stage* the new file:
 
 ```bash
 $ git init
@@ -186,7 +194,7 @@ Initialized empty Git repository in /home/bbrydsoe/test-git/.git/
 $ git add test.txt
 ```
 
-Now *commit* the change. The editor which you configured earlier should open. Add an example commit message:
+Now *commit* the change. The editor which you configured earlier should open. Add an example *commit message*:
 
 ```bash
 $ git commit test.txt 
@@ -212,13 +220,13 @@ Date:   Thu Sep 17 13:53:59 2020 +0200
     Test of git
 ```
 
-When you do `git log`, you should see something like the above, but with name, email, and commit message different. If that is the case, your Git should be configured correctly. 
+When you do `git log`, you should see something like the above, but with name, email, date, and commit message different. If that is the case, your Git should be configured correctly. 
 
 ---
 
 ## Download the course materials
 
-<!-- .slide: style="font-size: 28px;" -->
+<!-- .slide: style="font-size: 26px;" -->
 
 For the individual hands-on part of the course, we have created some course materials which you will download from the course GitHub: https://github.com/hpc2n/course-intro-git (normally you click the green "Code" button to get the link to clone or download)
 
@@ -226,7 +234,7 @@ For the individual hands-on part of the course, we have created some course mate
 * Change the directory to wherever you wish to have the course material.
 * *Do one of*: 
   - 1. `git clone https://github.com/hpc2n/course-intro-git.git`
-  - 2. Download the zipfile (directly with wget or elsewhere then transfer) and unzip. You get the link from the course GitHub. 
+  - 2. Download the zipfile (directly with `wget https://github.com/hpc2n/course-intro-git/archive/refs/heads/main.zip` or elsewhere then transfer) and unzip. You can also get the link from the course GitHub: https://github.com/hpc2n/course-intro-git. 
 
 ---
 
@@ -234,7 +242,7 @@ For the individual hands-on part of the course, we have created some course mate
 
 <!-- .slide: style="font-size: 32px;" -->
 
-There are several web based Git repository. Some of the more popular ones are: 
+There are several web based Git repositories. Some of the more popular ones are: 
 
 * GitHub (https://github.com/)
 * GitLab (https://www.gitlab.com)
@@ -324,7 +332,7 @@ $ ssh-add ~/.ssh/id_ed25519
 
 1. On GitHub, click your avatar in the top right corner and pick "Settings".
 2. Choose "SSH and GPG keys"
-3. Click "Add new SSH key"
+3. Click the green button labeled "New SSH key"
 4. Add a descriptive label for the key in the "Title" field. In the key field you paste the content of the key (~/.ssh/id_rsa.pub)
 ![](https://i.imgur.com/DzOFZTd.png =500x)
 5. Click "Add SSH key"
@@ -354,19 +362,20 @@ Hi bbrydsoe! You've successfully authenticated, but GitHub does not provide shel
 
 ## More on editors, Linux
 
-<!-- .slide: style="font-size: 26px;" -->
+<!-- .slide: style="font-size: 24px;" -->
 
 Vim
 * You may need to install it first. (`sudo apt-get install vim`)
 * Start with `vim <filename>` to open a file for editing. The file will be created if it does not exist before. 
 * Type `i` to enter 'insert' mode to be able to write in the editor. 
 * Use `ESC` to go to 'command' mode and then `:wq` to save and exit the editor.
+* If you decide you do not want to save your changes, instead type `:q!` while in 'command mode'. 
 * When you are in 'command' mode, typing `dd` will delete the whole line your cursor is on. 
 
 Nano
 * You may need to install it first. (`sudo apt-get install nano`)
 * Start with `nano <filename>` to open a file for editing. The file will be created if it does not exist before.
-* Ctrl-x will exit the editor, asking first if you want to save the file. 
+* Ctrl-x will exit the editor, asking first if you want to save the file. If you started with just `nano` and did not give a filename, it will ask you for a name. 
 
 ---
 
@@ -378,7 +387,7 @@ Nano
 * Using notepad: if you are using a newer version of Git, then you should be able to choose to install/use notepad during the Git install. 
     * `git config --global core.editor notepad`
 * Otherwise, you need to give the full path to notepad on your system
-    * `git config --global core.editor "<path-to>/notepad++.exe"`
+    * `git config --global core.editor "<path-to>\notepad++.exe"`
     * Example: 
         * `git config --global core-editor "C:\Program Files (x86)\Notepad++\notepad++.exe"`
 * Using vim: this is easy as it can be installed during the Git install and then setting it with `git config --global core.editor vim`
@@ -407,4 +416,7 @@ It is available for Windows, macOS, and Linux.
 
 You can use it if you prefer to do your workflow through a terminal, and you can call the GitHub API to script various actions as well as set a custom alias for any command.
 
-More information and download here: https://github.blog/2020-09-17-github-cli-1-0-is-now-available/ 
+More information and download here:
+
+- https://cli.github.com/
+- https://github.blog/2020-09-17-github-cli-1-0-is-now-available/ 
