@@ -1,19 +1,25 @@
 ---
+title: 'Lecture 3: Basic concepts'
+tags: [Lecture, ' Birgitte', ' day 2']
+
+---
+
+---
 title: "Lecture 3: Basic concepts"
 tags: Lecture, Birgitte, day 2
 description: "What are the basic concepts of Git?"
 ---
 
-Introduction to Git --- Fall 2023
+Introduction to Git --- Fall 2024
 # Lecture 3: Basic concepts
 
 <!-- .slide: data-background="#ffffff" -->
 
-<!-- Lecture material made by Mirko Myllykoski for the version of the course that was given in fall 2020. Lecture was first given by Mirko Myllykoski in fall 2020. Various small changes done by Birgitte Brydsö for the fall 2023 version of the course.-->
+<!-- Lecture material made by Mirko Myllykoski for the version of the course that was given in fall 2020. Lecture was first given by Mirko Myllykoski in fall 2020. Various small changes done by Birgitte Brydsö for the fall 2023 and fall 2024 versions of the course.-->
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2023/L3-concepts#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2024/L3-concepts</small>
 
 ---
 
@@ -1412,4 +1418,4 @@ digraph {
 
 The end.
 
-An idea: Try to play with different commands. See what happens to the `.git/` directory.
+An idea: Try to play with the different commands. See what happens to the `.git/` directory.
