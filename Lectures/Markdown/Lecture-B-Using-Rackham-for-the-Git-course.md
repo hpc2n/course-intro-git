@@ -1,20 +1,26 @@
 ---
+title: 'Lecture B: Using Rackham for the Git course'
+tags: [Lecture, ' Birgitte', ' day 1']
+
+---
+
+---
 title: "Lecture B: Using Rackham for the Git course"
 tags: Lecture, Birgitte, day 1
 description: "Git installation, use of Rackham, etc"
 ---
 
-Introduction to Git --- Fall 2023
+Introduction to Git --- Fall 2024
 # Lecture B: Using Rackham for the Git course
 
 <!-- .slide: data-background="#ffffff" -->
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
-Minor modifications done for the fall 2021 and 2022 versions of the course. For the 2023 version of the course the machine was changed from Kebnekaise to Rackham. -->
+Minor modifications done for the fall 2021 and 2022 versions of the course. For the 2023 version of the course the machine was changed from Kebnekaise to Rackham. In 2024, Rackham will also be used. -->
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2023/LB-rackham#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2024/LB-rackham</small>
 
 ---
 
@@ -47,7 +53,7 @@ If you prefer a different SSH client (terminal, etc.), you connect with ssh -Y <
     * logging in with a regular SSH-client (PuTTy or similar)
     * doing the 2FA and then logging out again
     * there is then a grace period of some minutes for you to login to ThinLinc. 
-* More info here: https://nbisweden.github.io/workshop-ngsintro/2203-canvas/lab_connect.html   
+* More info here: https://www.uu.se/en/centre/uppmax/get-started/2-factor   
 
 ---
 
@@ -128,7 +134,7 @@ If that is the case, your Git should be configured correctly.
 
 For the individual hands-on part of the course, we have created some course materials which you will download from either the course website, the course GitHub, or the "important information" page. 
 
-* Course website: https://www.hpc2n.umu.se/events/courses/2023/git-fall-2023
+* Course website: https://www.hpc2n.umu.se/events/courses/2024/fall/git
 * Course GitHub: https://github.com/hpc2n/course-intro-git
   - Click the green button labeled "Code" for links to clone or download the materials. 
   - Either do **1. CLONE** or **2. DOWNLOAD**, not both! 
