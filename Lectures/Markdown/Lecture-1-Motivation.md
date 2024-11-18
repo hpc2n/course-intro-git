@@ -1,20 +1,28 @@
 ---
+title: 'Lecture 1: Motivation'
+tags: [Lecture, ' Birgitte', ' day 1']
+
+---
+
+---
 title: "Lecture 1: Motivation"
 tags: Lecture, Birgitte, day 1
 description: "Why use version control?" 
 ---
 
-Introduction to Git --- Fall 2023
+Introduction to Git --- Fall 2024
 # Lecture 1: Why use version control?
 
 <!-- .slide: data-background="#ffffff" -->
 
+<!-- .slide: style="font-size: 32px;" -->
+
 <!-- Lecture material made by Mirko Myllykoski for the version of the course that was given in fall 2020. The lecture was first given by Mirko Myllykoski in fall 2020.
-Very minor modifications have been made by Birgitte Brydsö for the fall 2021, fall 2022, and fall 2023 versions of the course.-->
+Very minor modifications have been made by Birgitte Brydsö for the fall 2021, fall 2022, fall 2023, and fall 2024 versions of the course.-->
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2023/L1-motivation#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2024/L1-motivation/</small>
 
 ---
 
@@ -254,7 +262,7 @@ What are the practical use cases for VCS?
 
 ### HPC: batch files and data
 
- - Track different version of your batch scripts <!-- .element: class="fragment" -->
+ - Track different versions of your batch scripts <!-- .element: class="fragment" -->
      - Easy to check the used configuration afterwards
  - Track input and output files <!-- .element: class="fragment" -->
      - Limited to smallish files
