@@ -1,6 +1,6 @@
 # The lecture slides from the course, as PDF files
 
-**NOTE** You can also look at them on the course's HackMD page (https://hackmd.io/@git-fall-2023) in various versions. 
+**NOTE** You can also look at them on the course's HackMD page (https://hackmd.io/@git-fall-2024) in various versions. 
 
 * Lecture A, course info: **Lecture-A-Course-info.pdf**
 * Lecture B, information for those using Rackham for the hands-ons: **Lecture-B-Using-Rackham-for-the-Git-course.pdf**
