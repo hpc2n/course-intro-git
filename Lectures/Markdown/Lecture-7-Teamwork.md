@@ -1,19 +1,25 @@
 ---
+title: 'Lecture 7: Teamwork'
+tags: [Lecture, ' Birgitte', ' Day 5']
+
+---
+
+---
 title: "Lecture 7: Teamwork"
 tags: Lecture, Birgitte, Day 5
 description: "Teamwork. Will be done on GitHub"
 ---
 
-Introduction to Git --- Fall 2023
+Introduction to Git --- Fall 2024
 # Lecture 7: Teamwork
 
 <!-- .slide: data-background="#ffffff" -->
 
-<!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. Several changes done to the material in 2021 and 2022, mainly due to GitHub no longer allowing for password authentication. Minor changes and updates done for the 2023 version. -->
+<!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. Several changes done to the material in 2021 and 2022, mainly due to GitHub no longer allowing for password authentication. Minor changes and updates done for the 2023 and 2024 version. -->
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2023/L7-teamwork#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2024/L7-teamwork</small>
 
 ---
 
@@ -34,7 +40,7 @@ You will often have three types of branches for a project/specific release:
   - later merged to development/staging branch
 
 
-NOTE: GitHub previously used "master", but is now using "main" as the name for the first/default branch in a repo
+NOTE: GitHub previously used "master", but is now using "main" as the name for the first/default branch in a repo. This can be changed under the repo's settings. 
 
 ---
 
