@@ -1,10 +1,16 @@
 ---
+title: 'Lecture 5: Branches'
+tags: [Lecture, ' Diana', ' day 3', ' 4']
+
+---
+
+---
 title: "Lecture 5: Branches"
 tags: Lecture, Diana, day 3, 4
 description: "Branches, merges and conflicts"
 ---
 
-Introduction to Git --- Fall 2023
+Introduction to Git --- Fall 2024
 # Lecture 5: Branches
 
 <!-- .slide: data-background="#ffffff" -->
@@ -14,7 +20,7 @@ Minor modifications done for the fall 2021/2022/2023 versions of the course. -->
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2023/L5-branches#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2024/L5-branches</small>
 
 
 ---
@@ -271,7 +277,7 @@ $ git commit -m "Added text to the first file"
 
 ---
 
-<!-- .slide: style="font-size: 32px;" -->
+<!-- .slide: style="font-size: 30px;" -->
 
 - Switch back to the master branch, make some changes 
 ```shell
@@ -690,7 +696,7 @@ while standing on the branch you want to merge to.
 ---
 
 ### Merge strategies
-<!-- .slide: style="font-size: 26px;" -->
+<!-- .slide: style="font-size: 24px;" -->
 
 The most commonly used 
 
