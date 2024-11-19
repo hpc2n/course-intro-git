@@ -5,7 +5,7 @@
 * Lecture A, course info: **Lecture-A-Course-info.pdf**
 * Lecture B, information for those using Rackham for the hands-ons: **Lecture-B-Using-Rackham-for-the-Git-course.pdf**
 * Lecture C, information about setting up SSH keys on GitHub: **Lecture-C-Brief-intro-to-SSH-keys-and-GitHub.pdf**
-* Lecture D, information for those using Tetralith for the hands-ons: **Lecture-B-Using-Tetralith-for-the-Git-course.pdf**
+* Lecture D, information for those using Tetralith for the hands-ons: **Lecture-D-Using-Tetralith-for-the-Git-course.pdf**
 * Lecture 0, setup: **Lecture-0-Setup.pdf**
 * Lecture 1, motivation: **Lecture-1-Motivation.pdf**
 * Lecture 2, basic concepts: **Lecture-2-Basic-concepts.pdf**
