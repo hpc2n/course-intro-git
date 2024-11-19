@@ -1,10 +1,16 @@
 ---
+title: 'Lecture 4: Commits'
+tags: [Lecture, ' Diana', ' day 2', ' 3']
+
+---
+
+---
 title: "Lecture 4: Commits"
 tags: Lecture, Diana, day 2, 3
 description: "Commits and commit trees"
 ---
 
-Introduction to Git --- Fall 2023
+Introduction to Git --- Fall 2024
 # Lecture 4: Commits
 
 <!-- .slide: data-background="#ffffff" -->
@@ -13,7 +19,7 @@ Introduction to Git --- Fall 2023
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2023/L4-commits#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2024/L4-commits</small>
 
 ---
 
@@ -63,8 +69,8 @@ Date:   Tue Aug 25 09:55:17 2020 +0200
 
 ---
 
- - `git log -n <n> <ref> ` list only `<n>` most recent commits
- - `git log --oneline <ref> ` list only the shortened hash and the commit message:
+ - `git log -n <n> <ref> ` lists only `<n>` most recent commits
+ - `git log --oneline <ref> ` lists only the shortened hash and the commit message:
 
 ```shell
 $ git log --oneline
