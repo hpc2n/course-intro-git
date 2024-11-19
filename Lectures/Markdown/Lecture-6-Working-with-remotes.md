@@ -1,10 +1,16 @@
 ---
+title: 'Lecture 6: Working with remotes'
+tags: [Lecture, ' Pedro', ' Day 4']
+
+---
+
+---
 title: "Lecture 6: Working with remotes"
 tags: Lecture, Pedro, Day 4
 description: "TODO"
 ---
 
-Introduction to Git --- Fall 2023
+Introduction to Git --- Fall 2024
 # Lecture 6: Working with remotes
 
 <!-- .slide: data-background="#ffffff" -->
@@ -13,7 +19,7 @@ Introduction to Git --- Fall 2023
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/logo-hpc2n-git-course.png =90x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2023/L6-remotes#/</small>
+<small>Slides: https://hackmd.io/@git-fall-2024/L6-remotes</small>
 
 ---
 
@@ -47,7 +53,7 @@ In addition to this, a remote is a way to backup your repository.
 <!-- .slide: style="font-size: 30px;" -->
 ## Updated scheme for file stages
 
-![](https://www.hpc2n.umu.se/sites/default/files/git-folders.png =700x)
+![](https://www.hpc2n.umu.se/sites/default/files/git-folders2.png =700x)
 
 ---
 
@@ -257,7 +263,7 @@ git branch --set-upstream new origin/new
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-then, you will be able to push/pull the changes in the branch by simply typing **git push/pull**
+Then, you will be able to push/pull the changes in the branch by simply typing **git push/pull**
 
 ---
 
