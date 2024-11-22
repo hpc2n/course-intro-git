@@ -37,14 +37,14 @@ In an ideal world, things develop linearly:
 - Everyone knows what everyone else is doing 
 - In the end, things are simply finished. 
 
-```dot
-digraph {
-  rankdir=LR
-  Mon[label="Monday's\n improvements"] [fixedsize=circle]
-  Tue[label="Tuesday's\n improvements"] [fixedsize=circle]
-  Wed[label="Wednesday's\n improvements"] [fixedsize=circle]
-  Mon -> Tue
-  Tue -> Wed
+```graphviz dot improvements.svg
+digraph G {
+    rankdir=LR
+    Mon[label="Monday's\n improvements"] [fixedsize=circle]
+    Tue[label="Tuesday's\n improvements"] [fixedsize=circle]
+    Wed[label="Wednesday's\n improvements"] [fixedsize=circle]
+    Mon -> Tue
+    Tue -> Wed
 }
 ```
 
