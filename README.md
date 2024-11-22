@@ -2,6 +2,8 @@
 
 This repository contains the material for the exercises for the participants of the course "Introduction to Git" as well as copies of the lectures. 
 
+**NOTE** Ignore the subdirectory **docs** for now, as well as the file **mkdocs.yml** - the course is in the process of being moved to GitHub pages instead of HackMD. 
+
 ## Exercises
 
 The exercises are in the top-level file 'git_materials.zip'. 
