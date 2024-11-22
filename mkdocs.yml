@@ -61,6 +61,16 @@ plugins:
   - mkdocstrings
   - markdown-exec
   - open-in-new-tab
+  - mermaid2:
+      arguments:
+          theme: 'dark'
+          themeVariables:
+            primaryColor: '#BB2528'
+            primaryTextColor: '#fff'
+            primaryBorderColor: '#7C0000'
+            lineColor: '#F8B229'
+            secondaryColor: '#006100'
+            tertiaryColor: '#fff'
   #- markdown-footnotes
 
 markdown_extensions:
