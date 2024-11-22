@@ -38,6 +38,19 @@ In an ideal world, things develop linearly:
 - In the end, things are simply finished. 
 
 ```mermaid
+flowchart TD
+  new_ticket[New ticket]
+  owned_ticket[Owned ticket]
+  stalled_ticket[Stalled ticket]
+  resolved_ticket[Resolved ticket]
+
+  new_ticket --> |time and knowledge| owned_ticket
+  owned_ticket --> |when solution has been sent| resolved_ticket
+  owned_ticket --> |When ticket cannot be solved yet| stalled_ticket
+  stalled_ticket --> |When ticket can be solved| owned_ticket
+```
+
+```mermaid
   info
 ```
 
