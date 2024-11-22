@@ -43,6 +43,14 @@ flowchart TD
 </pre>
 
 ```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
+```mermaid
 flowchart G {
     rankdir=LR
     Mon[label="Monday's\n improvements"] [fixedsize=circle]
