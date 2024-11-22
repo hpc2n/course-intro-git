@@ -12,5 +12,4 @@ markdown-footnotes==0.1.1
 graphviz==0.20.3
 mkdocs_graphviz
 pydot
-dot
 Update github-actions.yml==10.8.1
