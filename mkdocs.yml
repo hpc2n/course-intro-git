@@ -29,8 +29,8 @@ extra_css:
     #  - js/popper.min.js
     #  - js/tippy-bundle.umd.js
     #  - js/clipboard.js
-extra_javascript:
-  - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
+    #extra_javascript:
+    #  - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
 
 nav:
   - Home: index.md
@@ -82,8 +82,7 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - codehilite
-    #  - inline_graphviz
-  - mkdocs_graphviz
+    #  - mkdocs_graphviz
   - pymdownx.mark
   - pymdownx.caret
   - pymdownx.tilde
