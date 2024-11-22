@@ -1,4 +1,4 @@
-# Welcome to "Introduction to Git" course material
+# Welcome to "Introduction to Git" course 
 
 !!! Note "This material"
    
