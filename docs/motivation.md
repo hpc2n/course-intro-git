@@ -37,6 +37,11 @@ In an ideal world, things develop linearly:
 - Everyone knows what everyone else is doing 
 - In the end, things are simply finished. 
 
+<pre class="mermaid">
+flowchart TD
+     A-->B
+</pre>
+
 ```mermaid
 flowchart G {
     rankdir=LR
