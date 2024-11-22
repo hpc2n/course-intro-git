@@ -11,4 +11,6 @@ python-markdown-comments==1.1.0
 markdown-footnotes==0.1.1
 graphviz=0.20.3
 mkdocs_graphviz
+python-pydot
+python-pydot-ng
 Update github-actions.yml==10.8.1
