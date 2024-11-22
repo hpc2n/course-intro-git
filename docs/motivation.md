@@ -37,8 +37,8 @@ In an ideal world, things develop linearly:
 - Everyone knows what everyone else is doing 
 - In the end, things are simply finished. 
 
-```graphviz dot improvements.svg
-digraph G {
+```mermaid
+flowchart G {
     rankdir=LR
     Mon[label="Monday's\n improvements"] [fixedsize=circle]
     Tue[label="Tuesday's\n improvements"] [fixedsize=circle]
