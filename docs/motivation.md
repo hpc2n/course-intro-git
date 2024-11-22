@@ -51,11 +51,12 @@ digraph {
 ---
 
 In the real world, things develop non-linearly: 
- - A new version can be anything between <!-- .element: class="fragment" data-fragment-index="1" -->
-     - a complete catastrophe and 
-     - a major breakthrough.
- - People do not know what others are doing <!-- .element: class="fragment" data-fragment-index="2" -->
- - Sometimes we are simply fixing earlier mistakes... <!-- .element: class="fragment" data-fragment-index="3" -->
+
+- A new version can be anything between 
+    - a complete catastrophe and 
+    - a major breakthrough.
+- People do not know what others are doing 
+- Sometimes we are simply fixing earlier mistakes... 
 
 ```graphviz
 digraph {

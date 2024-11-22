@@ -76,6 +76,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - codehilite
+  - inline_graphviz
   - pymdownx.mark
   - pymdownx.caret
   - pymdownx.tilde
