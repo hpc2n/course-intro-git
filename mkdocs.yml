@@ -1,0 +1,88 @@
+site_name: Introduction to Git
+site_url: https://hpc2n.github.io/course-intro-git/
+site_description: Material for the course Introduction to Git
+site_dir: site.build
+theme:
+  name: readthedocs
+  locale: en
+  logo: images/logo-text.png
+    #  static_templates:
+    #- sitemap.html
+  include_sidebar: true
+  font:
+    code: Robot Mono
+  features:
+    - toc.follow
+    - toc.integrate
+    - navigation.top
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  tabs: true
+  language: en
+extra_css:
+  - css/extra.css
+    #extra_javascript:
+    #  - js/popper.min.js
+    #  - js/tippy-bundle.umd.js
+    #  - js/clipboard.js
+
+nav:
+  - Home: index.md
+  - Introduction to Git: intro.md
+  - Setup: setup.md
+    #  - Introduction and setup: intro-setup.md
+  - Why use version management?: motivation.md
+  - Basic Commands: basic-commands.md
+  - Basic Concepts: basic-concepts.md
+  - Traversing the commit tree: commits.md
+  - Branches, merges, and conflicts: branches.md
+  - Working with remotes: remotes.md
+  - Teamwork: teamwork.md
+  - Exercises:
+    - Basic commands: basic-commands-exercises.md
+    - Basic concepts: basic-concepts-exercises.md
+    - Traversing the commit tree: commits-exercises.md
+    - Branches, merges, and conflicts: branches-exercises.md
+    - Working with remotes: remotes-exercises.md
+    - Teamwork: teamwork-exercises.md  
+  - Extra:
+    - Using Tetralith for the Git course: tetralith.md
+    - Using Rackham for the Git course: rackham.md
+    - Using Kebnekaise for the Git course: kebnekaise.md  
+plugins:
+  - search
+  - external-markdown
+  - mkdocstrings
+  - markdown-exec
+  - open-in-new-tab
+  #- markdown-footnotes
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - smarty
+  - pymdownx.details
+  - pymdownx.superfences
+  - codehilite
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.tabbed
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      separator: "__"
