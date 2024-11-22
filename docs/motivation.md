@@ -37,7 +37,7 @@ In an ideal world, things develop linearly:
 - Everyone knows what everyone else is doing 
 - In the end, things are simply finished. 
 
-```graphviz
+```dot
 digraph {
   rankdir=LR
   Mon[label="Monday's\n improvements"] [fixedsize=circle]
