@@ -20,7 +20,7 @@ In software engineering, version control (also known as revision control, source
 
 ---
 
-### Version control systems (VCS)
+## Version control systems (VCS)
 
 ... systems responsible for **managing changes** ...
 
@@ -31,10 +31,11 @@ In software engineering, version control (also known as revision control, source
 ---
 
 In an ideal world, things develop linearly: 
- - Every new version is an improvement upon the previous version. <!-- .element: class="fragment" data-fragment-index="1" -->
-     - No need to backtrack. <!-- .element: class="fragment" -->
- - Everyone knows what everyone else is doing <!-- .element: class="fragment" -->
- - In the end, things are simply finished. <!-- .element: class="fragment" -->
+
+- Every new version is an improvement upon the previous version. 
+    - No need to backtrack. 
+- Everyone knows what everyone else is doing 
+- In the end, things are simply finished. 
 
 ```graphviz
 digraph {
@@ -46,7 +47,6 @@ digraph {
   Tue -> Wed
 }
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ---
 
