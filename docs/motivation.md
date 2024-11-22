@@ -38,39 +38,9 @@ In an ideal world, things develop linearly:
 - In the end, things are simply finished. 
 
 ```mermaid
-flowchart TD
-  new_ticket[New ticket]
-  owned_ticket[Owned ticket]
-  stalled_ticket[Stalled ticket]
-  resolved_ticket[Resolved ticket]
-
-  new_ticket --> |time and knowledge| owned_ticket
-  owned_ticket --> |when solution has been sent| resolved_ticket
-  owned_ticket --> |When ticket cannot be solved yet| stalled_ticket
-  stalled_ticket --> |When ticket can be solved| owned_ticket
-```
-
-```mermaid
-  info
-```
-
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
-
-```mermaid
-flowchart G {
-    rankdir=LR
-    Mon[label="Monday's\n improvements"] [fixedsize=circle]
-    Tue[label="Tuesday's\n improvements"] [fixedsize=circle]
-    Wed[label="Wednesday's\n improvements"] [fixedsize=circle]
-    Mon -> Tue
-    Tue -> Wed
-}
+flowchart LR
+    A@{ shape: stadium, label: "Monday's improvements"} --> B@{ shape: stadium, label: "Tuesday's improvements"}
+    B --> C@{ shape: stadium, label: "Wednesday's improvements"}
 ```
 
 ---
