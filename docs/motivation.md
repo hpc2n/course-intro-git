@@ -38,7 +38,7 @@ In an ideal world, things develop linearly:
 - In the end, things are simply finished. 
 
 ```mermaid
-flowchart LR
+graph LR
     A@{ shape: stadium, label: "Monday's improvements"} --> B@{ shape: stadium, label: "Tuesday's improvements"}
     B --> C@{ shape: stadium, label: "Wednesday's improvements"}
 ```
