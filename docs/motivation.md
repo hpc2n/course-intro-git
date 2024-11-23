@@ -134,7 +134,6 @@ graph LR
   t2a --> t3a
   t2b --> t3b
   t2c --> t3c
-}
 ```
 
 *This compounds the problems!*
