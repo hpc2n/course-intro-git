@@ -26,6 +26,7 @@ theme:
 extra_css:
   - css/extra.css
     #extra_javascript:
+    #  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
     #  - js/popper.min.js
     #  - js/tippy-bundle.umd.js
     #  - js/clipboard.js
@@ -91,7 +92,8 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+          format: !!python/name:mermaid2.fence_mermaid
+            #          format: !!python/name:pymdownx.superfences.fence_code_format
   - codehilite
     #  - mkdocs_graphviz
   - pymdownx.mark
