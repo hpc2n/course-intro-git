@@ -109,31 +109,31 @@ graph LR
 ```mermaid
 graph LR
 
-  subgraph cluster1 ["Monday's changes"]
+  subgraph cluster1 [Monday's changes]
     t1a@{ shape: stadium, label: "Component A improvement"}
     t1b@{ shape: stadium, label: "Component B mistake"}
     t1c@{ shape: stadium, label: "Component C improvement"}
   end
 
-  subgraph cluster2 ["Tuesday's changes"]
+  subgraph cluster2 [Tuesday's changes]
     t2a@{ shape: stadium, label: "Component A improvement"}
     t2b@{ shape: stadium, label: "Component B correction"}
     t2c@{ shape: stadium, label: "Component C mistake"}
   end
 
-  subgraph cluster3 ["Wednesday's changes"]
+  subgraph cluster3 [Wednesday's changes]
     t3a@{ shape: stadium, label: "Component A mistake"}
     t3b@{ shape: stadium, label: "Component B improvement"}
     t3c@{ shape: stadium, label: "Component C correction"}
   end
   
-  t1a -> t2a
-  t1b -> t2b
-  t1c -> t2c
+  t1a --> t2a
+  t1b --> t2b
+  t1c --> t2c
 
-  t2a -> t3a
-  t2b -> t3b
-  t2c -> t3c
+  t2a --> t3a
+  t2b --> t3b
+  t2c --> t3c
 }
 ```
 
