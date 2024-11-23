@@ -68,15 +68,13 @@ graph LR
 
 Sometimes, it is easier to simply backtrack to an *earlier version*...
 
-```graphviz
-digraph {
-  rankdir=LR
-  Mon[label="Monday's\n improvements"] [fixedsize=circle]
-  Tue[label="Tuesday's\n mistakes"] [fixedsize=circle]
-  Wed[label="Wednesday's\n improvements"] [fixedsize=circle]
-  Mon -> Tue
-  Mon -> Wed
-}
+```mermaid
+graph LR
+  Mon@{ shape: stadium, label: "Monday's improvements"}
+  Tue@{ shape: stadium, label: "Tuesday's mistakes"}
+  Wed@{ shape: stadium, label: "Wednesday's improvements"} 
+  Mon --> Tue
+  Mon --> Wed
 ```
 
 ---
