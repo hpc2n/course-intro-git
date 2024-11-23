@@ -72,7 +72,7 @@ Sometimes, it is easier to simply backtrack to an *earlier version*...
 graph LR
   Mon@{ shape: stadium, label: "Monday's improvements"}
   Tue@{ shape: stadium, label: "Tuesday's mistakes"}
-  Wed@{ shape: stadium, label: "Wednesday's improvements"} 
+  Wed@{ shape: stadium, label: "Wednesday's improvements"}
   Mon --> Tue
   Mon --> Wed
 ```
