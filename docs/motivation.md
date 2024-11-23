@@ -106,9 +106,8 @@ graph LR
 
 #### What about the granularity?
 
-```graphviz
-digraph {
-  rankdir=LR
+```mermaid
+graph LR
 
   subgraph cluster1 {
     t1a [label="Component A\n improvement"] [fixedsize=circle]
