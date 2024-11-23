@@ -53,17 +53,14 @@ In the real world, things develop non-linearly:
 - People do not know what others are doing 
 - Sometimes we are simply fixing earlier mistakes... 
 
-```graphviz
-digraph {
-  rankdir=LR
-  Mon[label="Monday's\n improvements"] [fixedsize=circle]
-  Tue[label="Tuesday's\n mistakes"] [fixedsize=circle]
-  Wed[label="Wednesday's\n corrections"] [fixedsize=circle]
-  Mon -> Tue
-  Tue -> Wed
-}
+```mermaid
+graph LR
+  Mon@{ shape: stadium, label: "Monday's improvements"}
+  Tue@{ shape: stadium, label: "Tuesday's mistakes"}
+  Wed@{ shape: stadium, label: "Wednesday's corrections"}
+  Mon --> Tue
+  Tue --> Wed
 ```
-<!-- .element: class="fragment" data-fragment-index="3" -->
 
 ---
 
