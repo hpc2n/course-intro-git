@@ -67,14 +67,14 @@ plugins:
     #      javascript: https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs
       arguments:
           theme: 'neutral'
-            #          theme: 'dark'
-          themeVariables:
-            primaryColor: '#BB2528'
-            primaryTextColor: '#fff'
-            primaryBorderColor: '#7C0000'
-            lineColor: '#F8B229'
-            secondaryColor: '#006100'
-            tertiaryColor: '#fff'
+            #          Theme options: default, neutral, dark, forest, base
+            #themeVariables:
+            #            primaryColor: '#BB2528'
+            #    primaryTextColor: '#fff'
+            #primaryBorderColor: '#7C0000'
+            #lineColor: '#F8B229'
+            #secondaryColor: '#006100'
+            #tertiaryColor: '#fff'
   #- markdown-footnotes
 
 markdown_extensions:
