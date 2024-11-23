@@ -37,20 +37,6 @@ In an ideal world, things develop linearly:
 - Everyone knows what everyone else is doing 
 - In the end, things are simply finished. 
 
----
-title: Bank example
----
-
-```mermaid
-classDiagram
-    class BankAccount
-    BankAccount : +String owner
-    BankAccount : +Bigdecimal balance
-    BankAccount : +deposit(amount)
-    BankAccount : +withdrawal(amount)
-```
-
-
 ```mermaid
 graph LR
     A@{ shape: stadium, label: "Monday's improvements"} --> B@{ shape: stadium, label: "Tuesday's improvements"}
