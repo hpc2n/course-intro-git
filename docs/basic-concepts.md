@@ -163,30 +163,13 @@ graph TD
   C --> M
   C --> N
   I --> O
+  I --> P
+  I --> Q
+  I --> R
+  I --> S
+  J --> T
+  J --> U
 ```
-  ".git/" -> "branches/"
-  ".git/" -> "hooks/"
-  ".git/" -> "info/ "
-  ".git/" -> "logs/"
-  ".git/" -> "objects/"
-  ".git/" -> "refs/"
-  ".git/" -> "COMMIT_EDITMSG"
-  ".git/" -> "config"
-  ".git/" -> "description"
-  ".git/" -> "HEAD"
-  ".git/" -> "index"
-  "objects/" -> "23" -> "b3ed5b16..."
-  "objects/" -> "1a" -> "098a06bf..."
-  "objects/" -> "09" -> "c78e6e97..."
-  "objects/" -> "info/"
-  "objects/" -> "pack/"
-  "refs/" -> "heads/" -> "master"
-  "refs/" -> "tags/"
-}
-```
-
- <!-- .element: class="fragment" -->
-
 ---
 
 ### Working tree
