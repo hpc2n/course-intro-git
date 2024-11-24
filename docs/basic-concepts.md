@@ -114,17 +114,19 @@ $ find
 graph TD 
   A(["repository/"])
   B(["file.txt"]) 
-  style B stroke:#red
+  style B stroke:#FF0000
   C([".git/"])
   D(["logs/"]) 
-  style D stroke:#red
+  style D stroke:#FF0000
+  E(["COMMIT_EDITMSG"])
+  style E stroke:#FF0000
+  F(["index"])
+  style F stroke:#FF0000
+  G(["23"])
+  style G stroke:#FF0000
+  H(["b3ed5b16..."])
+  style H stroke:#FF0000
 ```
-
-  "master" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "COMMIT_EDITMSG" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "index" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "23" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "b3ed5b16..." [fontcolor=red fontsize=9 width=0.03 height=0.02]
   "1a" [fontcolor=red fontsize=9 width=0.03 height=0.02]
   "098a06bf..." [fontcolor=red fontsize=9 width=0.03 height=0.02]
   "09" [fontcolor=red fontsize=9 width=0.03 height=0.02]
