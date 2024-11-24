@@ -599,104 +599,99 @@ graph LR
 
 ---
 
- - `HEAD` and `master` are **references**.
-     - A reference points to commits and another reference. <!-- .element: class="fragment" -->
- - `HEAD` determines "most recent" commit. <!-- .element: class="fragment" -->
-     - Many commands **act on the current `HEAD`**. <!-- .element: class="fragment" --> 
-     - More on this later <!-- .element: class="fragment" -->
- - `master` is the current branch (more later). <!-- .element: class="fragment" --> 
+- `HEAD` and `master` are **references**.
+    - A reference points to commits and another reference.
+- `HEAD` determines "most recent" commit.
+    - Many commands **act on the current `HEAD`**. 
+    - More on this later
+- `master` is the current branch (more later). 
 
 ---
 
-<!-- .slide: style="font-size: 24px;" -->
-
- - You can create a reference yourself: 
+- You can create a reference yourself: 
 
 ```shell
 $ git tag first
 $ find
 ```
 
-```graphviz
-digraph { 
-  nodesep=0.04
-  "file.txt" [fontsize=9 width=0.03 height=0.02]
-  "logs/" [fontsize=9 width=0.03 height=0.02]
-  "master" [fontsize=9 width=0.03 height=0.02]
-  "COMMIT_EDITMSG" [fontsize=9 width=0.03 height=0.02]
-  "index" [fontsize=9 width=0.03 height=0.02]
-  "23" [fontsize=9 width=0.03 height=0.02]
-  "b3ed5b16..." [fontsize=9 width=0.03 height=0.02]
-  "1a" [fontsize=9 width=0.03 height=0.02]
-  "098a06bf..." [fontsize=9 width=0.03 height=0.02]
-  "09" [fontsize=9 width=0.03 height=0.02]
-  "c78e6e97..." [fontsize=9 width=0.03 height=0.02]
-  "repository/" [fontsize=9 width=0.03 height=0.02]
-  ".git/" [fontsize=9 width=0.03 height=0.02]
-  "branches/" [fontsize=9 width=0.03 height=0.02]
-  "hooks/" [fontsize=9 width=0.03 height=0.02]
-  "info/" [fontsize=9 width=0.03 height=0.02]
-  "objects/" [fontsize=9 width=0.03 height=0.02]
-  "refs/" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "config" [fontsize=9 width=0.03 height=0.02]
-  "description" [fontsize=9 width=0.03 height=0.02]
-  "HEAD" [fontsize=9 width=0.03 height=0.02]
-  "pack/" [fontsize=9 width=0.03 height=0.02]
-  "heads/" [fontsize=9 width=0.03 height=0.02]
-  "tags/" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "info/ " [fontsize=9 width=0.03 height=0.02]
-  "first" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  
-  "repository/" -> ".git/"
-  "repository/" -> "file.txt"
-  ".git/" -> "branches/"
-  ".git/" -> "hooks/"
-  ".git/" -> "info/ "
-  ".git/" -> "logs/"
-  ".git/" -> "objects/"
-  ".git/" -> "refs/"
-  ".git/" -> "COMMIT_EDITMSG"
-  ".git/" -> "config"
-  ".git/" -> "description"
-  ".git/" -> "HEAD"
-  ".git/" -> "index"
-  "objects/" -> "23" -> "b3ed5b16..."
-  "objects/" -> "1a" -> "098a06bf..."
-  "objects/" -> "09" -> "c78e6e97..."
-  "objects/" -> "info/"
-  "objects/" -> "pack/"
-  "refs/" -> "heads/" -> "master"
-  "refs/" -> "tags/"
-  "tags/" -> "first"
-}
-```
+```mermaid
+graph TD
+  A(["repository/"])
+  B(["file.txt"])
+  C([".git/"])
+  D(["logs/"])
+  E(["COMMIT_EDITMSG"])
+  F(["index"])
+  G(["branches/"])
+  H(["hooks/"])
+  I(["objects/"])
+  J(["refs/"])
+  style J color:#FF0000
+  K(["config"])
+  L(["description"])
+  M(["HEAD"])
+  N(["info/ "])
+  O(["23"])
+  P(["1a"])
+  Q(["09"])
+  R(["info/ "])
+  S(["pack/"])
+  T(["heads/"])
+  U(["tags/"])
+  style U color:#FF0000
+  V(["b3ed5b16..."])
+  W(["098a06bf..."])
+  X(["c78e6e97..."])
+  Y(["master"])
+  style Y color:#FF0000
+  Z(["first"])
+  style Z color:#FF0000
 
- <!-- .element: class="fragment" data-fragment-index="2" --> 
+  A --> B
+  A --> C
+  C --> D
+  C --> E
+  C --> F
+  C --> G
+  C --> H
+  C --> I
+  C --> J
+  C --> K
+  C --> L
+  C --> M
+  C --> N
+  I --> O
+  I --> P
+  I --> Q
+  I --> R
+  I --> S
+  J --> T
+  J --> U
+  O --> V
+  P --> W
+  Q --> X
+  T --> Y
+  U --> Z
+```
 
 ```shell
 $ git rev-parse first
 23b3ed5b16095bb84b18d06734fdd614c8982841
 ```
 
- <!-- .element: class="fragment" data-fragment-index="3" -->
-
-```graphviz
-digraph {
-  rankdir=LR
+```mermaid
+graph LR
   
-  "first" [shape=plaintext]
+  first["first"]
+  style first fill:#ffffff,stroke:#ffffff
   
-  first_blob [label="blob 09c78e6e...\nThis file is very interesting" shape=box]
+  first_blob["blob 09c78e6e...<br>This file is very interesting"]
   
-  "first" -> "commit\n23b3ed5b1..." -> "tree\n1a098a06b..." -> first_blob
-}
+  first --> commit(["commit<br>23b3ed5b1..."]) --> tree(["tree<br>1a098a06b..."]) --> first_blob
 ```
 
- <!-- .element: class="fragment" data-fragment-index="3" -->
-
 ---
-
-<!-- .slide: style="font-size: 24px;" -->
 
 ### Index (staging area)
 
@@ -707,8 +702,6 @@ $ echo "More content" >> file.txt
 $ git add file.txt
 $ find
 ```
-
-<!-- .element: class="fragment" -->
 
 ```graphviz
 digraph { 
