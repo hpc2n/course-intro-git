@@ -478,32 +478,31 @@ graph TD
 
 In a more general case, the associated tree can contain **several** levels and **multiple** blobs:
 
-```graphviz
-digraph {
-  file1 [label="file1.txt" shape=box]
-  file2 [label="file2.txt" shape=box]
-  file3 [label="file3.txt" shape=box]
-  file4 [label="file4.txt" shape=box]
+```mermaid
+graph TD
+  file1["file1.txt"]
+  file2["file2.txt"]
+  file3["file3.txt"]
+  file4["file4.txt"]
 
-  blob1 [label="blob 1" shape=box]
-  blob2 [label="blob 2" shape=box]
-  blob3 [label="blob 3" shape=box]
-  blob4 [label="blob 4" shape=box]
+  blob1["blob 1"]
+  blob2["blob 2"]
+  blob3["blob 3"]
+  blob4["blob 4"]
 
-  "commit 1" -> "tree 1"
-  "tree 1" -> blob1
-  "tree 1" -> blob2
-  "tree 1" -> "tree 2"
-  "tree 2" -> blob3
-  "tree 2" -> blob4
+  commit1(["commit 1"]) --> tree1(["tree 1"])
+  tree1 --> blob1
+  tree1 --> blob2
+  tree1 --> tree2(["tree 2"])
+  tree2 --> blob3
+  tree2 --> blob4
   
-  "metadata" -> "repository/"
-  "repository/" -> file1
-  "repository/" -> file2
-  "repository/" -> "directory/"
-  "directory/" -> file3
-  "directory/" -> file4
-}
+  metadata(["metadata"]) --> repo(["repository/"]
+  repo --> file1
+  repo --> file2
+  repo --> dir(["directory/"])
+  dir --> file3
+  dir --> file4
 ```
 
 ---
