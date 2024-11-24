@@ -936,7 +936,7 @@ $ git cat-file -p 22b5208b
 100644 blob 3b23ff0c411faf22c9253ed0....    file.txt
 ```
 
- - And a commit, that describes the state of the repository: <!-- .element: class="fragment" data-fragment-index="1" -->
+- And a commit, that describes the state of the repository:
 
 ```shell
 $ git cat-file -p d3c6c635
@@ -948,19 +948,17 @@ committer Mirko Myllykoski <mirko....> 1601228824 +0200
 This is the second commit
 ```
 
- <!-- .element: class="fragment" data-fragment-index="1" -->
-
 ---
 
 ### Parent
 
- - The major difference is that the commit contains a pointer to a **parent**:
+- The major difference is that the commit contains a pointer to a **parent**:
 
 ```
 parent 23b3ed5b16095bb84b18d06734fdd614c8982841
 ```
 
- - The parent pointer points to the previous commit: <!-- .element: class="fragment" data-fragment-index="1" -->
+- The parent pointer points to the previous commit: 
 
 ```graphviz
 digraph {
