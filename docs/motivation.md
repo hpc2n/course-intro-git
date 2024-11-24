@@ -11,7 +11,11 @@ Very minor modifications have been made by Birgitte Brydsö for the fall 2021, f
 
 ---
 
-# What is version control?
+# Lecture 1: Motivation
+
+---
+
+## What is version control?
 
 ---
 
