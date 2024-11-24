@@ -644,7 +644,6 @@ graph TD
   W(["098a06bf..."])
   X(["c78e6e97..."])
   Y(["master"])
-  style Y color:#FF0000
   Z(["first"])
   style Z color:#FF0000
 
@@ -703,65 +702,71 @@ $ git add file.txt
 $ find
 ```
 
-```graphviz
-digraph { 
-  nodesep=0.04
-  "file.txt" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "logs/" [fontsize=9 width=0.03 height=0.02]
-  "master" [fontsize=9 width=0.03 height=0.02]
-  "COMMIT_EDITMSG" [fontsize=9 width=0.03 height=0.02]
-  "index" [fontsize=9 width=0.03 height=0.02]
-  "23" [fontsize=9 width=0.03 height=0.02]
-  "b3ed5b16..." [fontsize=9 width=0.03 height=0.02]
-  "1a" [fontsize=9 width=0.03 height=0.02]
-  "098a06bf..." [fontsize=9 width=0.03 height=0.02]
-  "09" [fontsize=9 width=0.03 height=0.02]
-  "c78e6e97..." [fontsize=9 width=0.03 height=0.02]
-  "3b" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "23ff0c41..." [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "repository/" [fontsize=9 width=0.03 height=0.02]
-  ".git/" [fontsize=9 width=0.03 height=0.02]
-  "branches/" [fontsize=9 width=0.03 height=0.02]
-  "hooks/" [fontsize=9 width=0.03 height=0.02]
-  "info/" [fontsize=9 width=0.03 height=0.02]
-  "objects/" [fontsize=9 width=0.03 height=0.02]
-  "refs/" [fontsize=9 width=0.03 height=0.02]
-  "config" [fontsize=9 width=0.03 height=0.02]
-  "description" [fontsize=9 width=0.03 height=0.02]
-  "HEAD" [fontsize=9 width=0.03 height=0.02]
-  "pack/" [fontsize=9 width=0.03 height=0.02]
-  "heads/" [fontsize=9 width=0.03 height=0.02]
-  "tags/" [fontsize=9 width=0.03 height=0.02]
-  "info/ " [fontsize=9 width=0.03 height=0.02]
-  "first" [fontsize=9 width=0.03 height=0.02]
-  
-  "repository/" -> ".git/"
-  "repository/" -> "file.txt"
-  ".git/" -> "branches/"
-  ".git/" -> "hooks/"
-  ".git/" -> "info/ "
-  ".git/" -> "logs/"
-  ".git/" -> "objects/"
-  ".git/" -> "refs/"
-  ".git/" -> "COMMIT_EDITMSG"
-  ".git/" -> "config"
-  ".git/" -> "description"
-  ".git/" -> "HEAD"
-  ".git/" -> "index"
-  "objects/" -> "23" -> "b3ed5b16..."
-  "objects/" -> "1a" -> "098a06bf..."
-  "objects/" -> "09" -> "c78e6e97..."
-  "objects/" -> "3b" -> "23ff0c41..."
-  "objects/" -> "info/"
-  "objects/" -> "pack/"
-  "refs/" -> "heads/" -> "master"
-  "refs/" -> "tags/"
-  "tags/" -> "first"
-}
+```mermaid
+graph TD
+  A(["repository/"])
+  B(["file.txt"])
+  style B color:#FF0000
+  C([".git/"])
+  D(["logs/"])
+  E(["COMMIT_EDITMSG"])
+  F(["index"])
+  G(["branches/"])
+  H(["hooks/"])
+  I(["objects/"])
+  J(["refs/"])
+  style J color:#FF0000
+  K(["config"])
+  L(["description"])
+  M(["HEAD"])
+  N(["info/ "])
+  O(["23"])
+  P(["1a"])
+  Q(["09"])
+  QR(["3b"])
+  style QR color:#FF0000
+  R(["info/ "])
+  S(["pack/"])
+  T(["heads/"])
+  U(["tags/"])
+  style U color:#FF0000
+  V(["b3ed5b16..."])
+  W(["098a06bf..."])
+  X(["c78e6e97..."])
+  XY(["23ff0c41..."])
+  style XY color:#FF0000
+  Y(["master"])
+  Z(["first"])
+  style Z color:#FF0000
+
+  A --> B
+  A --> C
+  C --> D
+  C --> E
+  C --> F
+  C --> G
+  C --> H
+  C --> I
+  C --> J
+  C --> K
+  C --> L
+  C --> M
+  C --> N
+  I --> O
+  I --> P
+  I --> Q
+  I --> QR
+  I --> R
+  I --> S
+  J --> T
+  J --> U
+  O --> V
+  P --> W
+  Q --> X
+  QR --> XY
+  T --> Y
+  U --> Z
 ```
-
-
-<!-- .element: class="fragment" -->
 
 ```shell
 $ git cat-file -p 3b23ff0c
