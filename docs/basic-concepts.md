@@ -998,9 +998,8 @@ graph LR
 ```mermaid
 graph LR
   commit2(["commit 2"]) --> commit1(["commit 1"])
-  "commit 4" -> "commit 3"
-  "commit 4" -> "commit 2"
-}
+  commit4(["commit 4"]) --> commit3(["commit 3"])
+  commit4 --> commit2
 ```
 
  - These parents appear when two (or more) *branches* are **merged**. <!-- .element: class="fragment" -->
