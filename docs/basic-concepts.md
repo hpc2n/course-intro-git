@@ -1080,7 +1080,7 @@ graph LR
 
 ### Branches
 
- - We can modify the working tree and create a new commit:
+- We can modify the working tree and create a new commit:
 
 ```shell
 $ echo "Different content" >> file.txt 
@@ -1089,7 +1089,7 @@ $ git commit -a -m "This is the third commit"
  1 file changed, 1 insertion(+)
 ```
 
- - Let's investigate the newly created commit: <!-- .element: class="fragment" data-fragment-index="1" -->
+- Let's investigate the newly created commit:
 
 ```shell
 $ git cat-file -p a118ae8c
@@ -1101,11 +1101,9 @@ committer Mirko Myllykoski <mirko....> 1601286412 +0200
 This is the third commit
 ```
 
- <!-- .element: class="fragment" data-fragment-index="1" -->
-
 ---
 
- - First, the `parent` points to the **first commit**:
+- First, the `parent` points to the **first commit**:
 
 ```graphviz
 digraph {
