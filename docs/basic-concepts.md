@@ -273,7 +273,7 @@ $ git cat-file -p 09c78e6e971ce9e3d69e75bcb3ffd5de05b0d59a
 This file is very interesting
 ```
 
- - We can restore the file from the object: <!-- .element: class="fragment" data-fragment-index="1" -->
+- We can restore the file from the object:
 
 ```shell
 $ git restore file.txt
@@ -281,62 +281,64 @@ $ cat file.txt
 This file is very interesting
 ```
 
- <!-- .element: class="fragment" data-fragment-index="1" -->
-
 ---
 
 Let's take a second look at the repository:
 
-```graphviz
-digraph { 
-  nodesep=0.04
-  "file.txt" [fontsize=9 width=0.03 height=0.02]
-  "logs/" [fontsize=9 width=0.03 height=0.02]
-  "master" [fontsize=9 width=0.03 height=0.02]
-  "COMMIT_EDITMSG" [fontsize=9 width=0.03 height=0.02]
-  "index" [fontsize=9 width=0.03 height=0.02]
-  "23" [fontsize=9 width=0.03 height=0.02]
-  "b3ed5b16..." [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "1a" [fontsize=9 width=0.03 height=0.02]
-  "098a06bf..." [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "09" [fontsize=9 width=0.03 height=0.02]
-  "c78e6e97..." [fontsize=9 width=0.03 height=0.02]
-  "repository/" [fontsize=9 width=0.03 height=0.02]
-  ".git/" [fontsize=9 width=0.03 height=0.02]
-  "branches/" [fontsize=9 width=0.03 height=0.02]
-  "hooks/" [fontsize=9 width=0.03 height=0.02]
-  "info/" [fontsize=9 width=0.03 height=0.02]
-  "objects/" [fontsize=9 width=0.03 height=0.02]
-  "refs/" [fontsize=9 width=0.03 height=0.02]
-  "config" [fontsize=9 width=0.03 height=0.02]
-  "description" [fontsize=9 width=0.03 height=0.02]
-  "HEAD" [fontsize=9 width=0.03 height=0.02]
-  "pack/" [fontsize=9 width=0.03 height=0.02]
-  "heads/" [fontsize=9 width=0.03 height=0.02]
-  "tags/" [fontsize=9 width=0.03 height=0.02]
-  "info/ " [fontsize=9 width=0.03 height=0.02]
-  
-  "repository/" -> ".git/"
-  "repository/" -> "file.txt"
-  ".git/" -> "branches/"
-  ".git/" -> "hooks/"
-  ".git/" -> "info/ "
-  ".git/" -> "logs/"
-  ".git/" -> "objects/"
-  ".git/" -> "refs/"
-  ".git/" -> "COMMIT_EDITMSG"
-  ".git/" -> "config"
-  ".git/" -> "description"
-  ".git/" -> "HEAD"
-  ".git/" -> "index"
-  "objects/" -> "23" -> "b3ed5b16..."
-  "objects/" -> "1a" -> "098a06bf..."
-  "objects/" -> "09" -> "c78e6e97..."
-  "objects/" -> "info/"
-  "objects/" -> "pack/"
-  "refs/" -> "heads/" -> "master"
-  "refs/" -> "tags/"
-}
+```mermaid
+graph TD
+  A(["repository/"])
+  B(["file.txt"])
+  C([".git/"])
+  D(["logs/"])
+  E(["COMMIT_EDITMSG"])
+  F(["index"])
+  G(["branches/"])
+  H(["hooks/"])
+  I(["objects/"])
+  J(["refs/"])
+  K(["config"])
+  L(["description"])
+  M(["HEAD"])
+  N(["info/ "])
+  O(["23"])
+  P(["1a"])
+  Q(["09"])
+  R(["info/ "])
+  S(["pack/"])
+  T(["heads/"])
+  U(["tags/"])
+  V(["b3ed5b16..."])
+  style V color:#FF0000
+  W(["098a06bf..."])
+  style W color:#FF0000
+  X(["c78e6e97..."])
+  Y(["master"])
+
+  A --> B
+  A --> C
+  C --> D
+  C --> E
+  C --> F
+  C --> G
+  C --> H
+  C --> I
+  C --> J
+  C --> K
+  C --> L
+  C --> M
+  C --> N
+  I --> O
+  I --> P
+  I --> Q
+  I --> R
+  I --> S
+  J --> T
+  J --> U
+  O --> V
+  P --> W
+  Q --> X
+  T --> Y
 ```
 
 *What are these two other objects?*
@@ -345,7 +347,7 @@ digraph {
 
 ### Trees
 
- - Let's investigate one of the remaining objects:
+- Let's investigate one of the remaining objects:
 
 ```shell
 $ git cat-file -t 1a098a06
@@ -354,11 +356,11 @@ $ git cat-file -p 1a098a06
 100644 blob 09c78e6e971ce9e3d69e75b....    file.txt
 ```
 
- - We can see that the type of the object is **tree**: <!-- .element: class="fragment" -->
-     - A tree stores pointers to <!-- .element: class="fragment" -->
-         - files (blobs) and 
-         - other trees,
-     - Trees are used to represent directory structures. <!-- .element: class="fragment" -->
+- We can see that the type of the object is **tree**:
+    - A tree stores pointers to
+        - files (blobs) and 
+        - other trees,
+    - Trees are used to represent directory structures.
 
 ---
 
