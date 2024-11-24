@@ -1002,16 +1002,14 @@ graph LR
   commit4 --> commit2
 ```
 
- - These parents appear when two (or more) *branches* are **merged**. <!-- .element: class="fragment" -->
-     - More on this later...
+- These parents appear when two (or more) *branches* are **merged**.
+    - More on this later...
 
 ---
 
-<!-- .slide: style="font-size: 22px;" -->
-
 ### HEAD and other references (again)
 
- - Let's investigate `HEAD` and `master`:
+- Let's investigate `HEAD` and `master`:
 
 ```shell
 $ cat .git/HEAD 
@@ -1020,30 +1018,25 @@ $ cat .git/refs/heads/master
 d3c6c635fb44c7084797d47050bff7961853c19b
 ```
 
-```graphviz
-digraph {
-  rankdir=LR
+```mermaid
+graph LR
   
-  "HEAD" [fontsize=12 shape=plaintext]
-  "master" [fontsize=12 shape=plaintext]
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
   
-  second_commit [fontsize=12 label="commit d3c6c635...\ntree 22b5208b\nparent 23b3ed5b1\nMirko Myll..\nThis is the second commit"]
-
-  first_commit [fontsize=12 label="commit 23b3ed5b1...\ntree 1a098a06b\nMirko Myll...\nThis is the first commit"]
+  secondcommit(["commit d3c6c635...<br>tree 22b5208b<br>parent 23b3ed5b1<br>Mirko Myll..<br>This is the second commit"])
+  firstcommit["commit 23b3ed5b1...<br>tree 1a098a06b<br>Mirko Myll...<br>This is the first commit"]
   
-  second_commit -> first_commit
+  secondcommit --> firstcommit
   
-  "HEAD" -> "master" -> second_commit
+  head --> master --> secondcommit
   
-  subgraph cluster_working_tree {
-    label="Working tree"
-    subgraph cluster_file {
-      label="file.txt"
-        "This file is very interesting\nMore content
-" [fontsize=12 shape=plain]
-    }
-  }
-}
+  subgraph clusterworkingtree["Working tree"]
+    subgraph clusterfile(["file.txt<br><br>This file is very interesting<br>More content"])
+    end
+  end
 ```
 
  - Remember, many Git commands act on the current `HEAD`. <!-- .element: class="fragment" -->
