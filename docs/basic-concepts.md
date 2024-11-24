@@ -1031,7 +1031,7 @@ graph LR
   
   secondcommit --> firstcommit
   
-  head --> secondcommit
+  head --> firstcommit
   
   subgraph clusterworkingtree["Working tree"]
     clusterfile["file.txt<br><br>This file is very interesting<br>More content"]
@@ -1054,31 +1054,26 @@ $ cat file.txt
 This file is very interesting
 ```
 
-```graphviz
-digraph {
-  rankdir=LR
+```mermaid
+graph LR
   
-  "HEAD" [shape=plaintext]
-  "master" [shape=plaintext]
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
   
-  second_commit [label="commit d3c6c635...\ntree 22b5208b\nparent 23b3ed5b1\nMirko Myll..\nThis is the second commit"]
+  second_commit["commit d3c6c635...<br>tree 22b5208b<br>parent 23b3ed5b1<br>Mirko Myll..<br>This is the second commit"]
 
-  first_commit [label="commit 23b3ed5b1...\ntree 1a098a06b\nMirko Myll...\nThis is the first commit"]
+  first_commit["commit 23b3ed5b1...<br>tree 1a098a06b<br>Mirko Myll...<br>This is the first commit"]
   
-  second_commit -> first_commit
+  second_commit --> first_commit
   
-  "HEAD" -> first_commit 
-  "master" -> second_commit
+  head --> first_commit 
+  master --> second_commit
   
-  subgraph cluster_working_tree {
-    label="Working tree"
-    subgraph cluster_file {
-      label="file.txt"
-        "This file is very interesting
-" [shape=plain]
-    }
-  }
-}
+  subgraph cluster_working_tree["Working tree"]
+    cluster_file["file.txt<br><br>This file is very interesting"]
+  end
 ```
 
 ---
