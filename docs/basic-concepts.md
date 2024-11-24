@@ -114,7 +114,7 @@ $ find
 graph TD 
   A(["repository/"])
   B(["file.txt"]) 
-  style B stroke:#FF0000
+  style B color:#FF0000
   C([".git/"])
   D(["logs/"]) 
   style D stroke:#FF0000
