@@ -69,10 +69,10 @@ graph TD
   B --> H@["config"]
   B --> I@["description"]
   B --> J@["HEAD"]
-  B --> "info/"
-  B --> "pack/"
-  B --> "heads/"
-  G --> "tags/"
+  B --> K@["info/"]
+  B --> L@["pack/"]
+  B --> M@["heads/"]
+  G --> N@["tags/"]
 ```
 
 ---
