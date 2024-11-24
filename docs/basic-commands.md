@@ -133,7 +133,6 @@ If we ask about the status of the repository we will see the following message,
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ```console
 $ git status 
 On branch master
@@ -149,12 +148,9 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-![](https://www.hpc2n.umu.se/sites/default/files/git-folders-changes-wd.png)
+![](images/git-folders-changes-wd.png)
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 We can now add the <span style="color:brown">*first.txt* </span> file to the staging area:
 
@@ -177,14 +173,13 @@ Changes to be committed:
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-![](https://www.hpc2n.umu.se/sites/default/files/git-folders-changes-sa.png)
+![](images/git-folders-changes-sa.png)
 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Unstaging files' modifications part I
+
 If you want to unstage the changes (maybe you are not convinced of them) type the line suggested by Git:
 
 ```console
@@ -195,8 +190,8 @@ Notice that Git suggests this command because the repository is brand-new and no
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Committing changes
+
 Once the changes are staged, they can be commited with the command
 
 ```console
@@ -207,8 +202,6 @@ this will open a window of the default text editor in your system (in this case 
 
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 ```console
 First commit in myproject
@@ -229,8 +222,6 @@ write a commit message and upon saving the file the changes will be committed.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ```console
 $ git commit
 [master (root-commit) 3a7625b] First commit in myproject
@@ -249,8 +240,6 @@ nothing to commit, working tree clean
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 Fast (lazy?) commit option:
 
 
@@ -262,15 +251,14 @@ this command will add all files that were modified (and tracked) and commit them
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-![](https://www.hpc2n.umu.se/sites/default/files/git-folders-changes-lb.png)
+![](images/git-folders-changes-lb.png)
 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 
 ## Unstaging files' modifications part II
+
 Imagine that after doing the first commit for <span style="color:brown">*first.txt* </span> file, you modify this file and stage it (<span style="color:brown">*git add first.txt*</span>). If you check the status the output will be (version 2.25.1):
 
 ```console
@@ -281,8 +269,6 @@ Changes to be committed:
 ```
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 For versions before 2.23 the status would look like:
 
@@ -296,13 +282,9 @@ Changes to be committed:
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 Git suggests a different way to unstage the file as we saw before, because now there is a <span style="color:brown">HEAD </span> pointer. 
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 ```console
 $ git restore --staged filename
@@ -310,8 +292,6 @@ $ git restore --staged filename
 unstages the changes made to *filename*. From the website https://git-scm.com/docs/git-restore: THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 ```console
 $ git reset HEAD filename
@@ -325,8 +305,6 @@ with this command Git will untrack *filename* (staging for removal) leaving the 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Content of a commit message
 
 - why is this change needed?
@@ -339,8 +317,6 @@ with this command Git will untrack *filename* (staging for removal) leaving the 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Reverting to the previous commit
 
 If you made a commit and you regret it later, you can revert the changes to the previous
@@ -352,7 +328,6 @@ $ git revert HEAD
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Adding multiple files 
 
 In case you want to add multiple files, that follow a pattern, at the same time you can use Linux-type wild cards. As an example, we can add the files <span style="color:brown"> *file1.txt, file2.txt, file3.txt*</span>  at once with the commands (equivalent for this test case):
@@ -365,7 +340,6 @@ $ git add *.txt
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 If we want to add all the files for staging we can do:
 
 ```console
@@ -376,7 +350,6 @@ $ git add .         (all files in the sub-folders)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Renaming files/folders
 
 Imagine that you want to change the name of the file <span style="color:brown"> *first.txt*</span>  to <span style="color:brown"> *Readme.txt*</span>, in this case you can use the command:
@@ -388,7 +361,6 @@ $ git mv first.txt Readme.txt
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 Although there is not feedback from the command the status of the file has now changed
 
 ```console
@@ -403,7 +375,6 @@ you can now commit the changes. Renaming files, instead of creating new ones, ca
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Moving files
 
 Similar to the **mv** Linux command, the **git mv** command can be also used to move a file to a different location: 
