@@ -59,21 +59,20 @@ $ find
 ```
 
 ```mermaid
-graph
-  nodesep=0.2
-  "repository/" --> ".git/"
-  ".git/" --> "branches/"
-  ".git/" --> "hooks/"
-  ".git/" --> "info/ "
-  ".git/" --> "objects/"
-  ".git/" --> "refs/"
-  ".git/" --> "config"
-  ".git/" --> "description"
-  ".git/" --> "HEAD"
-  "objects/" --> "info/"
-  "objects/" --> "pack/"
-  "refs/" --> "heads/"
-  "refs/" --> "tags/"
+graph TD
+  A@["repository/"] --> B@[".git/"]
+  B --> C@["branches/"]
+  B --> D@["hooks/"]
+  B --> E@["info/ "]
+  B --> F@["objects/"]
+  B --> G@["refs/"]
+  B --> H@["config"]
+  B --> I@["description"]
+  B --> J@["HEAD"]
+  B --> "info/"
+  B --> "pack/"
+  B --> "heads/"
+  G --> "tags/"
 ```
 
 ---
