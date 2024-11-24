@@ -83,8 +83,6 @@ $ git clone repository_location path_where_it_will_be
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ```console
 $ git clone https://github.com/aliceuser2020/my-first-project.git  ./my-project  
 Cloning into 'GitCourse/Alice/my-project'...
@@ -103,16 +101,13 @@ nothing to commit, working directory clean
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Stages of files
 
 
-![](https://www.hpc2n.umu.se/sites/default/files/git-folders2.png =780x)
+![](images/git-folders2.png =780x)
 
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 ## Monitoring the differences in files
 
@@ -126,7 +121,6 @@ This command supports different options.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Adding files' modifications
 
 After initializing the repository, we decide to create a file called <span style="color:brown">*first.txt* </span>
