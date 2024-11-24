@@ -540,7 +540,6 @@ graph TD
   style T color:#FF0000
   U(["tags/"])
   V(["b3ed5b16..."])
-  style V color:#FF0000
   W(["098a06bf..."])
   X(["c78e6e97..."])
   Y(["master"])
@@ -576,7 +575,7 @@ graph TD
 
 ### HEAD and other references
 
- - `HEAD` points (indirectly) to `23b3ed5b1`:
+- `HEAD` points (indirectly) to `23b3ed5b1`:
 
 ```shell
 $ cat ./.git/HEAD
@@ -585,17 +584,17 @@ $ cat .git/refs/heads/master
 23b3ed5b16095bb84b18d06734fdd614c8982841
 ```
 
-```graphviz
-digraph {
-  rankdir=LR
+```mermaid
+graph LR
   
-  "HEAD" [shape=plaintext]
-  "master" [shape=plaintext]
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  master["master"]
+  style master fill:#ffffff, stroke:#ffffff
   
-  first_blob [label="blob 09c78e6e...\nThis file is very interesting" shape=box]
+  first_blob["blob 09c78e6e...<br>This file is very interesting"]
   
-  "HEAD" -> "master" -> "commit\n23b3ed5b1..." -> "tree\n1a098a06b..." -> first_blob
-}
+  head --> master --> commit(["commit<br>23b3ed5b1..."]) --> tree(["tree<br>1a098a06b..."]) --> first_blob
 ```
 
 ---
