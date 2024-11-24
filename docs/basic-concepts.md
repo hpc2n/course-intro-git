@@ -366,12 +366,11 @@ $ git cat-file -p 1a098a06
 
 In this case, the tree has one level and one blob:
 
-```graphviz
-digraph {
-  first_blob [label="blob 09c78e6e...\nThis file is very interesting" shape=box]
+```mermaid
+graph TD
+  first_blob["blob 09c78e6e...<br>This file is very interesting"]
 
-  "tree 1a098a06b...\nblob 09c78e6e.... file.txt" -> first_blob
-}
+  tree(["tree 1a098a06b...<br>blob 09c78e6e.... file.txt"]) --> first_blob
 ```
 
 ---
