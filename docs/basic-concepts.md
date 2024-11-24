@@ -98,8 +98,6 @@ repository.
 
 ---
 
-<!-- .slide: style="font-size: 26px;" -->
-
 Let's add some content:
 
 ```shell
@@ -112,11 +110,16 @@ $ git commit -m "This is the first commit"
 $ find
 ```
 
-```graphviz
-digraph { 
-  nodesep=0.04
-  "file.txt" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "logs/" [fontcolor=red fontsize=9 width=0.03 height=0.02]
+```mermaid
+graph TD 
+  A(["repository/"])
+  B(["file.txt"]) 
+  style B stroke:#red
+  C([".git/"])
+  D(["logs/"]) 
+  style D stroke:#red
+```
+
   "master" [fontcolor=red fontsize=9 width=0.03 height=0.02]
   "COMMIT_EDITMSG" [fontcolor=red fontsize=9 width=0.03 height=0.02]
   "index" [fontcolor=red fontsize=9 width=0.03 height=0.02]
