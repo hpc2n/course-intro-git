@@ -525,9 +525,11 @@ graph TD
   H(["hooks/"])
   I(["objects/"])
   J(["refs/"])
+  style J color:#FF0000
   K(["config"])
   L(["description"])
   M(["HEAD"])
+  style M color:#FF0000
   N(["info/ "])
   O(["23"])
   P(["1a"])
@@ -535,12 +537,14 @@ graph TD
   R(["info/ "])
   S(["pack/"])
   T(["heads/"])
+  style T color:#FF0000
   U(["tags/"])
   V(["b3ed5b16..."])
   style V color:#FF0000
   W(["098a06bf..."])
   X(["c78e6e97..."])
   Y(["master"])
+  style Y color:#FF0000
 
   A --> B
   A --> C
