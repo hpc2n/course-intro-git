@@ -122,32 +122,36 @@ graph TD
   style E stroke:#FF0000
   F(["index"])
   style F stroke:#FF0000
-  G(["23"])
-  style G stroke:#FF0000
-  H(["b3ed5b16..."])
-  style H stroke:#FF0000
+  G(["branches/"])
+  H(["hooks/"])
+  I(["objects/"])
+  J(["refs/"])
+  K(["config"])
+  L(["description"])
+  M(["HEAD"])
+  N(["info/ "])
+  O(["23"])
+  style O stroke:#FF0000
+  P(["1a"])
+  style P stroke:#FF0000
+  Q(["09"])
+  style Q stroke:#FF0000
+  R(["info/ "])
+  S(["pack/"])
+  T(["heads/"])
+  U(["tags/"]) 
+  V(["b3ed5b16..."])
+  style V stroke:#FF0000
+  W(["098a06bf..."])
+  style W stroke:#FF0000
+  X(["c78e6e97..."])
+  style X stroke:#FF0000
+  Y(["master"])
+  style Y stroke:#FF0000
+ 
+  A --> B
+  A --> C
 ```
-  "1a" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "098a06bf..." [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "09" [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "c78e6e97..." [fontcolor=red fontsize=9 width=0.03 height=0.02]
-  "repository/" [fontsize=9 width=0.03 height=0.02]
-  ".git/" [fontsize=9 width=0.03 height=0.02]
-  "branches/" [fontsize=9 width=0.03 height=0.02]
-  "hooks/" [fontsize=9 width=0.03 height=0.02]
-  "info/" [fontsize=9 width=0.03 height=0.02]
-  "objects/" [fontsize=9 width=0.03 height=0.02]
-  "refs/" [fontsize=9 width=0.03 height=0.02]
-  "config" [fontsize=9 width=0.03 height=0.02]
-  "description" [fontsize=9 width=0.03 height=0.02]
-  "HEAD" [fontsize=9 width=0.03 height=0.02]
-  "pack/" [fontsize=9 width=0.03 height=0.02]
-  "heads/" [fontsize=9 width=0.03 height=0.02]
-  "tags/" [fontsize=9 width=0.03 height=0.02]
-  "info/ " [fontsize=9 width=0.03 height=0.02]
-  
-  "repository/" -> ".git/"
-  "repository/" -> "file.txt"
   ".git/" -> "branches/"
   ".git/" -> "hooks/"
   ".git/" -> "info/ "
