@@ -978,25 +978,21 @@ graph LR
   second_commit --> first_commit
 ```
 
- <!-- .element: class="fragment" data-fragment-index="1" -->
-
 ---
 
 ### Commit tree
 
- - Usually, we have a complete tree of commits (**commit tree**):
+- Usually, we have a complete tree of commits (**commit tree**):
 
-```graphviz
-digraph {
-  rankdir=LR
-  "commit 1" -> "tree 1"
-  "commit 2" -> "tree 2"
-  "commit 2" -> "commit 1"
-  "commit 3" -> "tree 3"
-  "commit 3" -> "commit 2"
-  "commit 4" -> "tree 4"
-  "commit 4" -> "commit 3"
-}
+```mermaid
+graph LR
+  commit1(["commit 1"]) --> tree1(["tree 1"])
+  commit2(["commit 2"]) --> tree2(["tree 2"])
+  commit2 --> commit1
+  commit3(["commit 3"]) --> tree3(["tree 3"])
+  commit3 --> commit2
+  commit4(["commit 4"]) --> tree4(["tree 4"])
+  commit4 --> commit3
 ```
 
  - Each commit represents the state of the repository at a given point of time. <!-- .element: class="fragment" -->
