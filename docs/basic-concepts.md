@@ -976,9 +976,6 @@ graph LR
 
   firstcommit --> tree2 
   tree2 --> firstblob
-  
-  secondcommit --> tree1
-  tree1 --> secondblob
 ```
 
 ---
