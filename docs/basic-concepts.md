@@ -191,22 +191,22 @@ graph TD
 ### Objects
 
 - Git stores files etc as **objects**:
-     - Objects are stored under `.git/objects/`. <!-- .element: class="fragment" -->
- - Git uses *content-based addressing*. <!-- .element: class="fragment" -->
-     - A *hash sum* is computed from the **content** of the object. <!-- .element: class="fragment" -->
-     - The hash "uniquely" identifies the object. <!-- .element: class="fragment" -->
-     - Two objects with identical contents have the same hash and are stored only once. <!-- .element: class="fragment" -->
+    - Objects are stored under `.git/objects/`.
+- Git uses *content-based addressing*.
+    - A *hash sum* is computed from the **content** of the object.
+    - The hash "uniquely" identifies the object.
+    - Two objects with identical contents have the same hash and are stored only once.
 
 ---
 
- - We can compute the hash manually:
+- We can compute the hash manually:
 
 ```shell
 $ git hash-object file.txt
 09c78e6e971ce9e3d69e75bcb3ffd5de05b0d59a
 ```
 
- - We can find the corresponding object: <!-- .element: class="fragment" data-fragment-index="2" -->
+- We can find the corresponding object:
 
 ```shell
 $ find
@@ -215,9 +215,7 @@ $ find
 ...
 ```
 
- <!-- .element: class="fragment" data-fragment-index="2" -->
-
- - We can confirm that two files with identical contents have the same hash: <!-- .element: class="fragment" data-fragment-index="3" -->
+- We can confirm that two files with identical contents have the same hash:
 
 ```shell
 $ cp file.txt file2.txt 
@@ -226,25 +224,23 @@ $ git hash-object file.txt file2.txt
 09c78e6e971ce9e3d69e75bcb3ffd5de05b0d59a
 ```
 
- <!-- .element: class="fragment" data-fragment-index="3" -->
-
 ---
 
- - Note that we do not have to use the entire hash:
+- Note that we do not have to use the entire hash:
 
 ```shell
 git cat-file -p 09c78e6e
 This file is very interesting
 ```
 
- - We only need to use as many characters as is required to uniquely identify the object. <!-- .element: class="fragment" -->
-     - 7-8 is enough in most cases.
-     - 12 in larger projects.
- - If more characters is required, an error message is printed. <!-- .element: class="fragment" -->
+- We only need to use as many characters as is required to uniquely identify the object.
+    - 7-8 is enough in most cases.
+    - 12 in larger projects.
+- If more characters is required, an error message is printed.
 
 ---
 
- - Objects cannot (and should not) be accessed directly:
+- Objects cannot (and should not) be accessed directly:
 
 ```shell
 $ hexdump -C ./.git/objects/09/c78e6e97*
@@ -254,7 +250,7 @@ $ hexdump -C ./.git/objects/09/c78e6e97*
 0000002c
 ```
 
- - However, we can observe the type and the content of an object: <!-- .element: class="fragment" data-fragment-index="1" -->
+- However, we can observe the type and the content of an object:
 
 ```shell
 $ git cat-file -t 09c78e6e
@@ -263,11 +259,9 @@ $ git cat-file -p 09c78e6e
 This file is very interesting
 ```
 
- <!-- .element: class="fragment" data-fragment-index="1" -->
-
 ---
 
- - It is also important to realize that the object stays even when the file is removed:
+- It is also important to realize that the object stays even when the file is removed:
 
 ```shell
 $ rm file.txt
