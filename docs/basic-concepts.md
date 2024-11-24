@@ -971,10 +971,10 @@ graph LR
   tree2(["tree 1a098a06b...<br>blob 09c78e6e.... file.txt"])
   
   secondcommit --> tree1
-  tree1 --> second_blob
+  tree1 --> secondblob
 
   firstcommit --> tree2 
-  tree2 --> first_blob
+  tree2 --> firstblob
   
   secondcommit --> firstcommit
 ```
