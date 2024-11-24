@@ -178,18 +178,18 @@ graph TD
 
 ### Working tree
 
- - Everything inside `repository/` is a part of the *working tree* (or the *workspace*).
-     - `.git/` is not included. <!-- .element: class="fragment" -->
-     - At the moment, the working tree contains just one file, `file.txt`. <!-- .element: class="fragment" -->
-     - Working tree is just a regular directory. <!-- .element: class="fragment" -->
- - The `git add` and `git commit` commands tell Git to care about `file.txt`. <!-- .element: class="fragment" -->
-     - More on that later...
+- Everything inside `repository/` is a part of the *working tree* (or the *workspace*).
+    - `.git/` is not included.
+    - At the moment, the working tree contains just one file, `file.txt`.
+    - Working tree is just a regular directory.
+- The `git add` and `git commit` commands tell Git to care about `file.txt`.
+    - More on that later...
 
 ---
 
 ### Objects
 
- - Git stores files etc as **objects**:
+- Git stores files etc as **objects**:
      - Objects are stored under `.git/objects/`. <!-- .element: class="fragment" -->
  - Git uses *content-based addressing*. <!-- .element: class="fragment" -->
      - A *hash sum* is computed from the **content** of the object. <!-- .element: class="fragment" -->
