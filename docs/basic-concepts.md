@@ -61,12 +61,12 @@ $ find
 ```mermaid
 graph TD
   A@(["repository/"]) --> B@([".git/"])
-  B --> C@["branches/"]
-  B --> D@["hooks/"]
-  B --> E@["info/ "]
-  B --> F@["objects/"]
-  B --> G@["refs/"]
-  B --> H@["config"]
+  B --> C@(["branches/"])
+  B --> D@(["hooks/"])
+  B --> E@(["info/ "])
+  B --> F@(["objects/"])
+  B --> G@(["refs/"])
+  B --> H@(["config"])
   B --> I@["description"]
   B --> J@["HEAD"]
   B --> K@["info/"]
