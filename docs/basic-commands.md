@@ -392,9 +392,10 @@ Changes to be committed:
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Removing files
+
 If some file is not useful any longer and we want to delete it from our repository, we can issue the command, 
+
 ```bash
 $ git rm location/filename
 
@@ -405,18 +406,17 @@ Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
         deleted:    src/first.txt
 ```
+
 Sometimes it is more convenient to rename files instead of deleting them to keep the history more consistent.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Ignoring files
 
 If you want to ignore some files in your repository, for instance, temporary (.tmp) or binary (.bin) files. One way to accomplish this is by creating a file called **.gitignore** in the repository with some rules with a Linux-type wild cards syntax
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ```shell
 $ cat .gitignore
 *.tmp
@@ -427,8 +427,8 @@ then, you will have to commit the **.gitignore** file as usual.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 One caveat of using a **.gitignore** file is that it will be shared with all the collaborators. One can instead use the local exclude file in <span style="color:blue">*.git/info/exclude*</span> to define the rules. This file won't be shared. 
+
 ```console
 # $ git ls-files --others --exclude-from=.git/info/exclude
 # Lines that start with '#' are comments.
@@ -444,13 +444,16 @@ One caveat of using a **.gitignore** file is that it will be shared with all the
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Generating aliases 
+
 The following command shows a graph of the commits' tree in an organized way:
+
 ```java
 $ git log --all --decorate --oneline --graph
 ```
+
 This command is too long to type/remember. Git allows you to create shortcuts/aliases for commands:
+
 ```java
 $ git config --global alias.shortcut <git command>
 
@@ -459,9 +462,8 @@ $ git config --global alias.graph "log --all --graph --decorate --oneline"
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 In this way, you can use a customized **git graph** command:
+
 ```java
 $ git graph
 
@@ -472,21 +474,20 @@ $ git graph
 ```
 
 A second way to generate an alias is by adding it to your *.bashrc* file:
+
 ```java
 alias graph="git log --all --decorate --oneline --graph"
 ```
+
 which will make the command <span style="color:blue"> *graph*</span> available on the command line.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-# Intermediate/ Advanced commands
+## Intermediate/ Advanced commands
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-## Adding files' modifications interactively
+### Adding files' modifications interactively
 
 Suppose we create an empty file, stage it, and commit the changes as follows:
 
@@ -508,7 +509,6 @@ This is my first file
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 The status command tells us that we did some modifications to the file:
 
 ```console
@@ -523,12 +523,10 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 Let's suppose that the new text (5 lines) refer to different topics: *TODO list* and *Summary*. Then, it would be better to have them in different commits. We can add the modifications interactively:
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ```console
 $ git add -p first.txt
 ```
@@ -551,8 +549,6 @@ choose the **e** edit option to enter the editing mode.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ```console
 # Manual hunk edit mode -- see bottom for a quick guide.
 @@ -0,0 +1,5 @@
@@ -572,7 +568,6 @@ Because we don't want *Summary* in the first commit, we delete that line and sav
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 You can now take a look at the status of the file
 
 ```console
@@ -591,14 +586,12 @@ Changes not staged for commit:
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 Notice that the file <span style="color:brown">first.txt </span> has been partially staged. 
 
-![](https://www.hpc2n.umu.se/sites/default/files/git-folders-changes.png)
+![](images/git-folders-changes.png)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 The difference between staged changes and the unstaged ones can be seen with:
 
 ```console
@@ -614,7 +607,6 @@ $ git diff --cached
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 and the difference between the unstaged changes and the previous commit with:
 
 ```console
@@ -625,8 +617,7 @@ At this point, you can commit the staged changes and later on stage and commit t
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-## Amending commits
+### Amending commits
 
 The following command will modify your last commit by adding more content to it:
 
@@ -639,8 +630,7 @@ the flag *-m* will allow you to write a short message and *- -no-edit* will keep
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-## Simplifying commits
+### Simplifying commits
 
 Suppose that you have a series of commits which are close-related in your <span style="color:red"> *local repo*</span>:
 
@@ -657,8 +647,6 @@ $ git graph
 in this case, the three last commits are related and can be squashed into a single commit.
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 ```java
 $ git rebase -i HEAD~3
@@ -696,8 +684,8 @@ pick 39ecba2 Fourth commit
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 choose the option **s** (squash)
+
 ```java
 pick 7dce2ff Second commit
 s 3cd651b Third commit
@@ -732,7 +720,6 @@ s 39ecba2 Fourth commit
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 a text editor message will appear where you can type the message for the squashed commit:
 
 ```java
@@ -769,8 +756,8 @@ Summary of three commits
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 Finally, we check the log file and see that we have now only two commits with the new commit message:
+
 ```console
 $ git log --all --decorate --oneline --graph
 $ git graph
@@ -778,13 +765,16 @@ $ git graph
 * 62f921f (HEAD -> master) Summary of three commits
 * 1f2cdcc First commit
 ```
+
 <span style="color:red">Note: use this command in commits that haven't been pushed on public branches. This command modifies the history.</span>
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
+## Advanced
 
-## Git blame (Advanced)
+---
+
+### Git blame (Advanced)
 
 it displays information about the last modifications of authors line by line 
 
@@ -797,6 +787,7 @@ $git blame 1.basic-commands/README.md
 dd5db248 (Pedro Ojeda-May 2021-11-02 10:53:01 +0100 11)       - create a second file "Poem.md" without any text (hint: use touch command), stage and commit it
 
 ```
+
 here we can see the commit, author, timestamp, line number and line content.
 
 
