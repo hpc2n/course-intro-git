@@ -970,13 +970,15 @@ graph LR
   tree1(["tree 22b5208b...<br>blob 3b23ff0c file.txt"])
   tree2(["tree 1a098a06b...<br>blob 09c78e6e.... file.txt"])
   
+  secondcommit --> firstcommit
   secondcommit --> tree1
   tree1 --> secondblob
 
   firstcommit --> tree2 
   tree2 --> firstblob
   
-  secondcommit --> firstcommit
+  secondcommit --> tree1
+  tree1 --> secondblob
 ```
 
 ---
