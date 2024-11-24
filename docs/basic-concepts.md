@@ -1034,16 +1034,15 @@ graph LR
   head --> master --> secondcommit
   
   subgraph clusterworkingtree["Working tree"]
-    subgraph clusterfile(["file.txt<br><br>This file is very interesting<br>More content"])
-    end
+    clusterfile["file.txt<br><br>This file is very interesting<br>More content"]
   end
 ```
 
- - Remember, many Git commands act on the current `HEAD`. <!-- .element: class="fragment" -->
+- Remember, many Git commands act on the current `HEAD`.
 
 ---
 
- - We can change the `HEAD` to something else:
+- We can change the `HEAD` to something else:
 
 ```shell
 $ git checkout 23b3ed5b
