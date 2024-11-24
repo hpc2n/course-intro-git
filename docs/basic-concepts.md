@@ -69,12 +69,13 @@ graph TD
   B --> F(["objects/"])
   B --> G(["refs/"])
   B --> H(["config"])
-  B --> I["description"]
-  B --> J["HEAD"]
-  B --> K["info/"]
-  B --> L["pack/"]
-  B --> M["heads/"]
-  G --> N["tags/"]
+  B --> I(["description"])
+  B --> J(["HEAD"])
+  F --> K(["info/"])
+  F --> L(["pack/"])
+  G --> M(["heads/"])
+  G --> N(["tags/"])
+  
 ```
 
 ---
