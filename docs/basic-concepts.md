@@ -971,10 +971,11 @@ graph LR
   tree2(["tree 1a098a06b...<br>blob 09c78e6e.... file.txt"])
   
   secondcommit --> firstcommit
-  secondcommit --> tree1
-  tree1 --> secondblob
+  secondcommit --> tree1 
 
   firstcommit --> tree2 
+  tree1 --> secondblob
+
   tree2 --> firstblob
 ```
 
@@ -995,11 +996,11 @@ graph LR
   commit4 --> commit3
 ```
 
- - Each commit represents the state of the repository at a given point of time. <!-- .element: class="fragment" -->
+- Each commit represents the state of the repository at a given point of time.
 
 ---
 
- - Each commit is allowed to have **multiple** parents:
+- Each commit is allowed to have **multiple** parents:
 
 ```graphviz
 digraph {
