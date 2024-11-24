@@ -60,7 +60,7 @@ $ find
 
 ```mermaid
 graph TD
-  A@["repository/"] --> B@[".git/"]
+  A@(["repository/"]) --> B@([".git/"])
   B --> C@["branches/"]
   B --> D@["hooks/"]
   B --> E@["info/ "]
