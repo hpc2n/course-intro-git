@@ -438,7 +438,7 @@ graph TD
 
 ### Commits
 
- - Let's investigate the last object:
+- Let's investigate the last object:
 
 ```shell
 $ git cat-file -t 23b3ed5b
@@ -451,10 +451,10 @@ committer Mirko Myllykoski <....@gmail.com> 1600867851 +0200
 This is the first commit
 ```
 
- - The type of the object is **commit**. <!-- .element: class="fragment" --> It contains <!-- .element: class="fragment" -->
-     - a pointer to a tree, <!-- .element: class="fragment" -->
-     - an author and a committer (+time), and <!-- .element: class="fragment" -->
-     - a commit message <!-- .element: class="fragment" -->
+- The type of the object is **commit**. It contains 
+    - a pointer to a tree, 
+    - an author and a committer (+time), and 
+    - a commit message 
 
 ---
 
@@ -464,15 +464,14 @@ A commit stores the state of the project in a given point of time.
 
 In this case, the commit points to a tree that has one level and one blob:
 
-```graphviz
-digraph {
-  first_blob [label="blob 09c78e6e...\nThis file is very interesting" shape=box]
-  file [label="file.txt\nThis file is very interesting" shape=box]
+```mermaid
+graph TD
+  first_blob["blob 09c78e6e...<br>This file is very interesting"]
+  file["file.txt<br>This file is very interesting"]
 
-  "commit 23b3ed5b1...\ntree 1a098a06b\nMirko Myll...\nThis is the first commit" -> "tree 1a098a06b...\nblob 09c78e6e.... file.txt" -> first_blob
+  commit(["commit 23b3ed5b1...<br>tree 1a098a06b<br>Mirko Myll...<br>This is the first commit"]) --> tree(["tree 1a098a06b...<br>blob 09c78e6e.... file.txt"]) --> first_blob
   
-  "metadata" -> "repository/" -> file
-}
+  metadata(["metadata"]) --> repo(["repository/"]) --> file
 ```
 
 ---
