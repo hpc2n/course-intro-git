@@ -960,24 +960,22 @@ parent 23b3ed5b16095bb84b18d06734fdd614c8982841
 
 - The parent pointer points to the previous commit: 
 
-```graphviz
-digraph {
-  rankdir=LR
+```mermaid
+graph LR
   
-  second_commit [fontsize=10 label="commit d3c6c635...\ntree 22b5208b\nparent 23b3ed5b1\nMirko Myll..\nThis is the second commit"]
-  first_commit [fontsize=10 label="commit 23b3ed5b1...\ntree 1a098a06b\nMirko Myll...\nThis is the first commit"]
+  second_commit([commit d3c6c635...<br>tree 22b5208b<br>parent 23b3ed5b1<br>Mirko Myll..<br>This is the second commit"])
+  first_commit(["commit 23b3ed5b1...<br>tree 1a098a06b<br>Mirko Myll...<br>This is the first commit"])
   
-  second_blob [fontsize=10 label="blob 3b23ff0c\nThis file is very interesting\nMore content" shape=box]
-  first_blob [fontsize=10 label="blob 09c78e6e...\nThis file is very interesting" shape=box]
-  "tree 22b5208b...\nblob 3b23ff0c file.txt" [fontsize=10]
-  "tree 1a098a06b...\nblob 09c78e6e.... file.txt" [fontsize=10]
+  second_blob["blob 3b23ff0c<br>This file is very interesting<br>More content"]
+  first_blob["blob 09c78e6e...<br>This file is very interesting"]
+  tree1(["tree 22b5208b...<br>blob 3b23ff0c file.txt"])
+  tree2(["tree 1a098a06b...<br>blob 09c78e6e.... file.txt"])
   
-  second_commit -> "tree 22b5208b...\nblob 3b23ff0c file.txt" -> second_blob
+  second_commit --> tree1 --> second_blob
 
-  first_commit -> "tree 1a098a06b...\nblob 09c78e6e.... file.txt" -> first_blob
+  first_commit --> tree2 --> first_blob
   
-  second_commit -> first_commit
-}
+  second_commit --> first_commit
 ```
 
  <!-- .element: class="fragment" data-fragment-index="1" -->
