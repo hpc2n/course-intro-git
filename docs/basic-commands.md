@@ -104,7 +104,7 @@ nothing to commit, working directory clean
 ## Stages of files
 
 
-![](images/git-folders2.png =780x)
+![Git folders](images/git-folders2.png){: style="width: 700px;}
 
 
 ---
