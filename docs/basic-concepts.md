@@ -117,11 +117,11 @@ graph TD
   style B color:#FF0000
   C([".git/"])
   D(["logs/"]) 
-  style D stroke:#FF0000
+  style D color:#FF0000
   E(["COMMIT_EDITMSG"])
-  style E stroke:#FF0000
+  style E color:#FF0000
   F(["index"])
-  style F stroke:#FF0000
+  style F color:#FF0000
   G(["branches/"])
   H(["hooks/"])
   I(["objects/"])
@@ -131,26 +131,32 @@ graph TD
   M(["HEAD"])
   N(["info/ "])
   O(["23"])
-  style O stroke:#FF0000
+  style O color:#FF0000
   P(["1a"])
-  style P stroke:#FF0000
+  style P color:#FF0000
   Q(["09"])
-  style Q stroke:#FF0000
+  style Q color:#FF0000
   R(["info/ "])
   S(["pack/"])
   T(["heads/"])
   U(["tags/"]) 
   V(["b3ed5b16..."])
-  style V stroke:#FF0000
+  style V color:#FF0000
   W(["098a06bf..."])
-  style W stroke:#FF0000
+  style W color:#FF0000
   X(["c78e6e97..."])
-  style X stroke:#FF0000
+  style X color:#FF0000
   Y(["master"])
-  style Y stroke:#FF0000
+  style Y color:#FF0000
  
   A --> B
   A --> C
+  C --> D
+  C --> E
+  C --> F
+  C --> G
+  C --> H
+  C --> I
 ```
   ".git/" -> "branches/"
   ".git/" -> "hooks/"
