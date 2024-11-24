@@ -963,6 +963,7 @@ parent 23b3ed5b16095bb84b18d06734fdd614c8982841
 ```mermaid
 graph LR
   secondcommit(["commit d3c6c635...<br>tree 22b5208b<br>parent 23b3ed5b1<br>Mirko Myll..<br>This is the second commit"])
+
   firstcommit(["commit 23b3ed5b1...<br>tree 1a098a06b<br>Mirko Myll...<br>This is the first commit"])
   
   secondblob["blob 3b23ff0c<br>This file is very interesting<br>More content"]
@@ -970,11 +971,8 @@ graph LR
   tree1(["tree 22b5208b...<br>blob 3b23ff0c file.txt"])
   tree2(["tree 1a098a06b...<br>blob 09c78e6e.... file.txt"])
   
-  secondcommit --> firstcommit
-  secondcommit --> tree1 
-
-  firstcommit --> tree2 
-  tree1 --> secondblob
+  secondcommit --> firstcommit --> tree2
+  secondcommit --> tree1 --> secondblob
 
   tree2 --> firstblob
 ```
