@@ -968,7 +968,7 @@ graph LR
   secondblob["blob 3b23ff0c<br>This file is very interesting<br>More content"]
   firstblob["blob 09c78e6e...<br>This file is very interesting"]
   
-  tree2 -- firstblob
+  tree2 --> firstblob
   tree1 --> secondblob
 ```
 
