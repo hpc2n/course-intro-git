@@ -1095,22 +1095,15 @@ This is the third commit
 
 - First, the `parent` points to the **first commit**:
 
-```graphviz
-digraph {
-  rankdir=LR
+```mermaid
+graph LR
   
-  third_commit [label="commit a118ae8c...\nparent 23b3ed5b1...\nThis is the third commit"]
-  first_commit [label="commit 23b3ed5b1...\nThis is the first commit"]
-  
-  third_commit -> first_commit
-}
+  third_commit(["commit a118ae8c...<br>parent 23b3ed5b1...<br>This is the third commit"]) --> first_commit(["commit 23b3ed5b1...<br>This is the first commit"]) 
 ```
 
 ---
 
-<!-- .slide: style="font-size: 24px;" -->
-
- - Second, the commit tree now has **two** branches: 
+- Second, the commit tree now has **two** branches: 
 
 ```graphviz
 digraph {
