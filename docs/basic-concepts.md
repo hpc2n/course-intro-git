@@ -1222,7 +1222,7 @@ graph LR
     subgraph cluster_working_tree["Working tree"]
         cluster_file["file.txt<br><br>This file is very interesting<br>More content<br>Different content"]
     end
-  ```
+```
 
 ```mermaid
 graph LR
