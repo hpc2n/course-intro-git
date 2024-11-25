@@ -1308,10 +1308,8 @@ graph LR
 
   fourth_commit --> second_commit
   fourth_commit --> third_commit
-  third_commit --> first_commit
   second_commit --> first_commit
 
-  head --> first_commit
   master --> fourth_commit
   second_branch --> third_commit
 ```
