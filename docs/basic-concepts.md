@@ -1122,11 +1122,11 @@ graph LR
   first_blob["blob 09c78e6e...<br>This file is very interesting"]
   
   third_commit -.-> third_blob
-  second_commit -> second_blob [style=dashed]
-  first_commit -> first_blob [style=dashed]
+  second_commit -.-> second_blob
+  first_commit -.-> first_blob
   
-  third_commit -> first_commit
-  second_commit -> first_commit
+  third_commit --> first_commit
+  second_commit --> first_commit
   
   subgraph cluster_working_tree["Working tree"]
     cluster_file["file.txt<br><br>This file is very interesting<br>Different content"]
