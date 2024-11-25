@@ -1057,14 +1057,9 @@ graph LR
   master["master"]
   style master fill:#ffffff,stroke:#ffffff
   
-  second_commit["commit d3c6c635...<br>tree 22b5208b<br>parent 23b3ed5b1<br>Mirko Myll..<br>This is the second commit"]
-
-  first_commit["commit 23b3ed5b1...<br>tree 1a098a06b<br>Mirko Myll...<br>This is the first commit"]
-  
-  second_commit --> first_commit
+  master --> second_commit["commit d3c6c635...<br>tree 22b5208b<br>parent 23b3ed5b1<br>Mirko Myll..<br>This is the second commit"] --> first_commit["commit 23b3ed5b1...<br>tree 1a098a06b<br>Mirko Myll...<br>This is the first commit"]
   
   head --> first_commit 
-  master --> second_commit
   
   subgraph cluster_working_tree["Working tree"]
     cluster_file["file.txt<br><br>This file is very interesting"]
