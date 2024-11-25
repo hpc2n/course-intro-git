@@ -1105,21 +1105,21 @@ graph LR
 
 - Second, the commit tree now has **two** branches: 
 
-```graphviz
-digraph {
-  rankdir=LR
-  nodesep=0.2
+```mermaid
+graph LR
   
-  "HEAD" [fontsize=10 shape=plaintext]
-  "master" [fontsize=10 shape=plaintext]
+  head ["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  master ["master"]
+  style master fill:#ffffff,stroke:#ffffff
   
-  third_commit [fontsize=10 label="commit a118ae8c...\nThis is the third commit"]
-  second_commit [fontsize=10 label="commit d3c6c635...\nThis is the second commit"]
-  first_commit [fontsize=10 label="commit 23b3ed5b1...\nThis is the first commit"]
+  head --> third_commit(["commit a118ae8c...<br>This is the third commit"])
+  master --> second_commit(["commit d3c6c635...\nThis is the second commit"])
+  first_commit(["commit 23b3ed5b1...<br>This is the first commit"])
   
-  third_blob [fontsize=10 label="blob ea5f4b8e\nThis file is very interesting\nDifferent content" shape=box]
-  second_blob [fontsize=10 label="blob 3b23ff0c\nThis file is very interesting\nMore content" shape=box]
-  first_blob [fontsize=10 label="blob 09c78e6e...\nThis file is very interesting" shape=box]
+  third_blob["blob ea5f4b8e<br>This file is very interesting<br>Different content"]
+  second_blob["blob 3b23ff0c<br>This file is very interesting<br>More content"]
+  first_blob["blob 09c78e6e...<br>This file is very interesting"]
   
   third_commit -> third_blob [style=dashed]
   second_commit -> second_blob [style=dashed]
@@ -1128,21 +1128,9 @@ digraph {
   third_commit -> first_commit
   second_commit -> first_commit
   
-  "HEAD" -> third_commit 
-  "master" -> second_commit
-  
-  subgraph cluster_working_tree {
-    nodesep=0.2
-    fontsize=10
-    label="Working tree"
-    subgraph cluster_file {
-      fontsize=10
-      label="file.txt"
-        "This file is very interesting\nDifferent content
-" [fontsize=10 shape=plain]
-    }
-  }
-}
+  subgraph cluster_working_tree["Working tree"]
+    cluster_file["file.txt<br><br>This file is very interesting<br>Different content"]
+  end
 ```
 
 ---
