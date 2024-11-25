@@ -1114,14 +1114,14 @@ graph LR
   style master fill:#ffffff,stroke:#ffffff
   
   head --> third_commit(["commit a118ae8c...<br>This is the third commit"])
-  master --> second_commit(["commit d3c6c635...\nThis is the second commit"])
+  master --> second_commit(["commit d3c6c635...<br>This is the second commit"])
   first_commit(["commit 23b3ed5b1...<br>This is the first commit"])
   
   third_blob["blob ea5f4b8e<br>This file is very interesting<br>Different content"]
   second_blob["blob 3b23ff0c<br>This file is very interesting<br>More content"]
   first_blob["blob 09c78e6e...<br>This file is very interesting"]
   
-  third_commit -> third_blob [style=dashed]
+  third_commit -.-> third_blob
   second_commit -> second_blob [style=dashed]
   first_commit -> first_blob [style=dashed]
   
