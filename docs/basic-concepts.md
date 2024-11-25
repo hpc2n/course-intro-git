@@ -1057,7 +1057,7 @@ graph LR
   master["master"]
   style master fill:#ffffff,stroke:#ffffff
   
-  master --> second_commit["commit d3c6c635...<br>tree 22b5208b<br>parent 23b3ed5b1<br>Mirko Myll..<br>This is the second commit"] --> first_commit["commit 23b3ed5b1...<br>tree 1a098a06b<br>Mirko Myll...<br>This is the first commit"]
+  master --> second_commit(["commit d3c6c635...<br>tree 22b5208b<br>parent 23b3ed5b1<br>Mirko Myll..<br>This is the second commit"]) --> first_commit(["commit 23b3ed5b1...<br>tree 1a098a06b<br>Mirko Myll...<br>This is the first commit"])
   
   head --> first_commit 
   
