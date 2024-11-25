@@ -1152,7 +1152,7 @@ graph LR
   second_branch["second_branch"]
   style second_branch fill:#ffffff,stroke:#ffffff
   
-  third_commit(["commit a118ae8c...<br>This is the third commit"])
+  second_branch --> third_commit(["commit a118ae8c...<br>This is the third commit"])
   second_commit(["commit d3c6c635...<br>This is the second commit"])
   first_commit(["commit 23b3ed5b1...<br>This is the first commit"])
   
@@ -1169,7 +1169,6 @@ graph LR
   
   head --> third_commit
   master --> second_commit
-  second_branch --> third_commit
   
   subgraph cluster_working_tree["Working tree"]
     cluster_file["file.txt<br><br>This file is very interesting<br>Different content"]
@@ -1216,8 +1215,6 @@ Merge branch 'second_branch'
 ```
 
 ---
-
-<!-- .slide: style="font-size: 26px; text-align: left;" -->
 
 Finally, the tree looks like follows:
 
