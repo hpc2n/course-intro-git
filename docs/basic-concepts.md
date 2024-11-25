@@ -1273,56 +1273,39 @@ $ cat file.txt
 This file is very interesting
 ```
 
-```graphviz
-digraph {
-rankdir=LR
-nodesep=0.03
-    subgraph cluster_working_tree {
-    label="Working tree"
-    fontsize=8 width=0.03 height=0.02 
-    subgraph cluster_file {
-      label="file.txt"
-      fontsize=8 width=0.03 height=0.02 
-        "This file is very interesting" [fontsize=8 width=0.03 height=0.02 shape=plain]
-    }
-  }
-  }
-```
+```mermaid
+graph LR
 
-```graphviz
-digraph {
-  rankdir=LR
-  nodesep=0.2
-  
-  "HEAD" [fontsize=8 width=0.03 height=0.02 shape=plaintext]
-  "master" [fontsize=8 width=0.03 height=0.02 shape=plaintext]
-  "second_branch" [fontsize=8 width=0.03 height=0.02 shape=plaintext]
-  
-  fourth_commit [fontsize=8 width=0.03 height=0.02 label="commit f0d72989...\nMerge branch 'second_branch'"]
-  third_commit [fontsize=8 width=0.03 height=0.02 label="commit a118ae8c...\nThis is the third commit"]
-  second_commit [fontsize=8 width=0.03 height=0.02 label="commit d3c6c635...\nThis is the second commit"]
-  first_commit [fontsize=8 width=0.03 height=0.02 label="commit 23b3ed5b1...\nThis is the first commit"]
-  
-  fourth_blob [fontsize=8 width=0.03 height=0.02 label="blob e51364b9\nThis file is very interesting\nMore content\nDifferent content" shape=box]
-  third_blob [fontsize=8 width=0.03 height=0.02 label="blob ea5f4b8e\nThis file is very interesting\nDifferent content" shape=box]
-  second_blob [fontsize=8 width=0.03 height=0.02 label="blob 3b23ff0c\nThis file is very interesting\nMore content" shape=box]
-  first_blob [fontsize=8 width=0.03 height=0.02 label="blob 09c78e6e...\nThis file is very interesting" shape=box]
-  
-  fourth_commit -> fourth_blob [style=dashed]
-  third_commit -> third_blob [style=dashed]
-  second_commit -> second_blob [style=dashed]
-  first_commit -> first_blob [style=dashed]
-  
-  fourth_commit -> second_commit
-  fourth_commit -> third_commit
-  third_commit -> first_commit
-  second_commit -> first_commit
-  
-  "HEAD" -> first_commit
-  "master" -> fourth_commit
-  "second_branch" -> third_commit
-  
-}
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  second_branch["second_branch"]
+  style second_branch fill:#ffffff,stroke:#ffffff
+
+  fourth_commit(["commit f0d72989...<br>Merge branch 'second_branch'"])
+  third_commit(["commit a118ae8c...<br>This is the third commit"])
+  second_commit(["commit d3c6c635...<br>This is the second commit"])
+  first_commit(["commit 23b3ed5b1...<br>This is the first commit"])
+
+  fourth_blob["blob e51364b9<br>This file is very interesting<br>More content<br>Different content"]
+  third_blob["blob ea5f4b8e<br>This file is very interesting<br>Different content"]
+  second_blob["blob 3b23ff0c<br>This file is very interesting<br>More content"]
+  first_blob["blob 09c78e6e...<br>This file is very interesting"]
+
+  fourth_commit -.-> fourth_blob
+  third_commit -.-> third_blob
+  second_commit -.-> second_blob
+  first_commit -.-> first_blob
+
+  fourth_commit --> second_commit
+  fourth_commit --> third_commit
+  third_commit --> first_commit
+  second_commit --> first_commit
+
+  head --> first_commit
+  master --> fourth_commit
+  second_branch --> third_commit
 ```
 
 ---
