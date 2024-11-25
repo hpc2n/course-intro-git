@@ -1292,9 +1292,9 @@ graph LR
   style second_branch fill:#ffffff,stroke:#ffffff
 
   fourth_commit(["commit f0d72989...<br>Merge branch 'second_branch'"])
-  third_commit(["commit a118ae8c...<br>This is the third commit"])
+  third_commit(["commit a118ae8c...<br>This is the third commit"]) --> first_commit(["commit 23b3ed5b1...<br>This is the first commit"])
   second_commit(["commit d3c6c635...<br>This is the second commit"])
-  first_commit(["commit 23b3ed5b1...<br>This is the first commit"])
+  head --> first_commit
 
   fourth_blob["blob e51364b9<br>This file is very interesting<br>More content<br>Different content"]
   third_blob["blob ea5f4b8e<br>This file is very interesting<br>Different content"]
