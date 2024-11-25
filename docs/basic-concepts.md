@@ -1152,15 +1152,13 @@ graph LR
   second_branch["second_branch"]
   style second_branch fill:#ffffff,stroke:#ffffff
   
-  second_branch --> third_commit(["commit a118ae8c...<br>This is the third commit"])
+  second_branch --> third_commit(["commit a118ae8c...<br>This is the third commit"]) -.-> third_blob["blob ea5f4b8e<br>This file is very interesting<br>Different content"] 
   second_commit(["commit d3c6c635...<br>This is the second commit"])
   first_commit(["commit 23b3ed5b1...<br>This is the first commit"])
   
-  third_blob["blob ea5f4b8e<br>This file is very interesting<br>Different content"]
   second_blob["blob 3b23ff0c<br>This file is very interesting<br>More content"]
   first_blob["blob 09c78e6e...<br>This file is very interesting"]
   
-  third_commit -.-> third_blob
   second_commit -.-> second_blob
   first_commit -.-> first_blob
   
