@@ -1108,9 +1108,9 @@ graph LR
 ```mermaid
 graph LR
   
-  head ["HEAD"]
+  head["HEAD"]
   style head fill:#ffffff,stroke:#ffffff
-  master ["master"]
+  master["master"]
   style master fill:#ffffff,stroke:#ffffff
   
   third_blob["blob ea5f4b8e<br>This file is very interesting<br>Different content"]
@@ -1131,8 +1131,6 @@ graph LR
 
 ---
 
-<!-- .slide: style="font-size: 24px;" -->
-
 We can give the second branch a **name**:
 
 ```shell
@@ -1144,45 +1142,38 @@ $ cat .git/refs/heads/second_branch
 a118ae8cda10a8f0a966ab7b9158b4a6d3b48cfc
 ```
 
-```graphviz
-digraph {
-  rankdir=LR
-  nodesep=0.2
+```mermaid
+graph LR
   
-  "HEAD" [fontsize=10 shape=plaintext]
-  "master" [fontsize=10 shape=plaintext]
-  "second_branch" [fontsize=10 shape=plaintext]
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  second_branch["second_branch"]
+  style second_branch fill:#ffffff,stroke:#ffffff
   
-  third_commit [fontsize=10 label="commit a118ae8c...\nThis is the third commit"]
-  second_commit [fontsize=10 label="commit d3c6c635...\nThis is the second commit"]
-  first_commit [fontsize=10 label="commit 23b3ed5b1...\nThis is the first commit"]
+  third_commit(["commit a118ae8c...<br>This is the third commit"])
+  second_commit(["commit d3c6c635...<br>This is the second commit"])
+  first_commit(["commit 23b3ed5b1...<br>This is the first commit"])
   
-  third_blob [fontsize=10 label="blob ea5f4b8e\nThis file is very interesting\nDifferent content" shape=box]
-  second_blob [fontsize=10 label="blob 3b23ff0c\nThis file is very interesting\nMore content" shape=box]
-  first_blob [fontsize=10 label="blob 09c78e6e...\nThis file is very interesting" shape=box]
+  third_blob["blob ea5f4b8e<br>This file is very interesting<br>Different content"]
+  second_blob["blob 3b23ff0c<br>This file is very interesting<br>More content"]
+  first_blob["blob 09c78e6e...<br>This file is very interesting"]
   
-  third_commit -> third_blob [style=dashed]
-  second_commit -> second_blob [style=dashed]
-  first_commit -> first_blob [style=dashed]
+  third_commit -.-> third_blob
+  second_commit -.-> second_blob
+  first_commit -.-> first_blob
   
-  third_commit -> first_commit
-  second_commit -> first_commit
+  third_commit --> first_commit
+  second_commit --> first_commit
   
-  "HEAD" -> third_commit
-  "master" -> second_commit
-  "second_branch" -> third_commit
+  head --> third_commit
+  master --> second_commit
+  second_branch --> third_commit
   
-  subgraph cluster_working_tree {
-    fontsize=10
-    label="Working tree"
-    subgraph cluster_file {
-      fontsize=10
-      label="file.txt"
-        "This file is very interesting\nDifferent content
-" [fontsize=10 shape=plain]
-    }
-  }
-}
+  subgraph cluster_working_tree["Working tree"]
+    cluster_file["file.txt<br><br>This file is very interesting<br>Different content"]
+  end
 ```
 
 ---
