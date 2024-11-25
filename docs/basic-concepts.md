@@ -1276,6 +1276,14 @@ This file is very interesting
 ```mermaid
 graph LR
 
+    subgraph cluster_working_tree["Working tree"]
+        cluster_file["file.txt<br><br>This file is very interesting<br>More content<br>Different content"]
+    end
+```
+
+```mermaid
+graph LR
+
   head["HEAD"]
   style head fill:#ffffff,stroke:#ffffff
   master["master"]
