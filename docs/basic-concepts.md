@@ -1121,9 +1121,9 @@ graph LR
   second_blob["blob 3b23ff0c<br>This file is very interesting<br>More content"]
   first_blob["blob 09c78e6e...<br>This file is very interesting"]
   
-  third_commit -.-> third_blob
-  second_commit -.-> second_blob
-  first_commit -.-> first_blob
+  third_commit-.->third_blob;
+  second_commit-.->second_blob;
+  first_commit-.->first_blob;
   
   third_commit --> first_commit
   second_commit --> first_commit
