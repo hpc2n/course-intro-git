@@ -1113,22 +1113,17 @@ graph LR
   master ["master"]
   style master fill:#ffffff,stroke:#ffffff
   
-  head --> third_commit(["commit a118ae8c...<br>This is the third commit"])
-  master --> second_commit(["commit d3c6c635...<br>This is the second commit"])
-  first_commit(["commit 23b3ed5b1...<br>This is the first commit"])
-  
   third_blob["blob ea5f4b8e<br>This file is very interesting<br>Different content"]
   second_blob["blob 3b23ff0c<br>This file is very interesting<br>More content"]
   first_blob["blob 09c78e6e...<br>This file is very interesting"]
-  
-  third_commit --> third_blob
-  linkStyle 0 stroke:#000,fill:none,stroke-width:2px,stroke-dasharray:3;
-  second_commit --> second_blob;
-  first_commit --> first_blob;
+
+  head --> third_commit(["commit a118ae8c...<br>This is the third commit"]) -.-> third_blob 
+  master --> second_commit(["commit d3c6c635...<br>This is the second commit"]) --> first_commit(["commit 23b3ed5b1...<br>This is the first commit"])
   
   third_commit --> first_commit
-  second_commit --> first_commit
-  
+  second_commit -.-> second_blob  
+  first_commit -.-> first_blob
+
   subgraph cluster_working_tree["Working tree"]
     cluster_file["file.txt<br><br>This file is very interesting<br>Different content"]
   end
