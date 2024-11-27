@@ -451,7 +451,7 @@ graph LR
   head["HEAD"]
   style head fill:#ffffff,stroke:#ffffff
   old_head["HEAD"]
-  style old_head fill:#ffffff,stroke:#ececec
+  style old_head fill:#ffffff,stroke:#ffffff,color:#ececec
   B --> A
   C --> B
   master -.-> C
