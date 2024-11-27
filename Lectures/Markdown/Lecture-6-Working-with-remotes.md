@@ -19,7 +19,7 @@ Introduction to Git --- Fall 2024
 
 ![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/logo-hpc2n-git-course.png =90x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
 
-<small>Slides: https://hackmd.io/@git-fall-2024/L6-remotes</small>
+<small>Slides: https://hackmd.io/@git-fall-2023/L6-remotes#/</small>
 
 ---
 
@@ -170,7 +170,7 @@ $git graph
 
 <!-- .slide: data-background="#ffffff" -->
 ## Working with remotes
-One can push or fetch/pull to or from remotes by
+One can push or fetch/pull to or from remotes:
 
 ```shell
 $ git push  remote_name branch_name
@@ -209,7 +209,7 @@ The command:
 ```shell
 $ git pull
 ```
-brings all the changes (branches) that are in the remote and tries to merge them with your local repo. The default behavior of *git pull* is in the *$GIT_DIR/config* file:
+brings all the changes (branches) that are in the remote and tries to merge them with the current branch of the local repo. The default behavior of *git pull* (*fetch* part) is in the *$GIT_DIR/config* file:
 ```shell
 [remote "origin"]
   fetch = +refs/heads/*:refs/remotes/origin/*
@@ -224,7 +224,7 @@ $ git fetch remote_name branch_name
 $ git merge remote_name/branch_name
 ```
 
-or
+If you want to fetch all branches and merge the current one:
 
 ```shell
 $ git fetch 
@@ -239,7 +239,17 @@ The command
 ```shell
 $ git push 
 ```
-will send all the changes (branches) to the remote by default. This can be changed by applying:
+will send the changes in the current branch to the remote by default.
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+
+The default behavior can be seen with:
+```shell
+$ git config --get push.default
+```
+This can be changed by applying:
 ```shell
 git config --global push.default matching(default), current, ...
 ```
@@ -247,7 +257,7 @@ git config --global push.default matching(default), current, ...
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-If you have a brand-new branch called **new**, then it is recommended to push it the first time with the command:
+If you have a brand-new branch called **new**, you can push it the first time with the command:
 
 ```shell
 git push -u origin new
@@ -263,7 +273,7 @@ git branch --set-upstream new origin/new
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-Then, you will be able to push/pull the changes in the branch by simply typing **git push/pull**
+then, you will be able to push/pull the changes in the branch by simply typing **git push/pull**
 
 ---
 
@@ -400,7 +410,6 @@ $ ssh -T git@github.com
 ```
 
 
-
 ---
 
 <!-- .slide: data-background="#ffffff" -->
@@ -417,30 +426,78 @@ $ ssh -T git@github.com
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-## Pull requests
-In the following scenario, a developer, Bob, has its repo on GitHub. Another developer, Alice, finds it useful and forks it. After doing some changes, Alice push them and do a "pull request"
+## Working with other's repos
+In the following scenario, a developer, Bob, has its repo on GitHub. Another developer, Alice, finds it useful. Alice can clone it but she cannot push changes unless Bob allows it:
 ```graphviz
 digraph {
   rankdir=LR
   S [style=invis]
-  "Bob repo" [shape=diamond]
-  "Alice fork" [fixedsize=circle]
-  "Alice fork" -> "Alice local"
-  "Bob repo" -> "Alice fork"
-  "Alice local" -> "Bob repo" [style=dashed]
-  orig [label="origin" shape=plaintext fontcolor=red]
-  orig -> "Alice fork" [style=dashed color=red]
-  ups [label="upstream" shape=plaintext fontcolor=red]
-  ups -> "Bob repo" [style=dashed color=red]
+  "Bob repo" [shape=rectangle]
+  "Alice cloned" [fixedsize=circle]
+  "Bob repo" -> "Alice cloned" [label="cloning"]
+  "Alice cloned" -> "Bob repo" [label="cannot commit" fontcolor=red style=dashed color=red]
 }
 ```
 
 ---
 
 <!-- .slide: data-background="#ffffff" -->
+A better approach is to *fork* Bob's repository: 
+```graphviz
+digraph {
+  rankdir=LR
+  S [style=invis]
+  "Bob repo" [label="Bob's repo (upstream)" shape=rectangle]
+  "Alice fork" [label="Alice's repo (origin)" fixedsize=circle]
+  "Alice local" [label="Alice local copy (PC/laptop)" color=darkgreen fontcolor=darkgreen]
+  "Alice fork" -> "Alice local" [label="cloning"]
+  "Alice local" -> "Alice fork" [label="can commit"]
+  "Alice local" -> "Bob repo" [label="cannot commit" fontcolor=red color=red style=dashed]
+  "Bob repo" -> "Alice fork" [label="forking"]
+  "Alice local" -> "Bob repo" [label="can request pulls" fontcolor=blue color=blue style=dashed]
+}
+```
+In this way, Alice can push changes to her repository and eventually make Bob aware of them as well.
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+## Forking a repository
+To fork a repository, Alice go to the URL of the target repository and use the option *Fork* in Bob's repository: 
+![forking](https://hackmd.io/_uploads/HJiZrUNm1l.jpg)
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+## Forking a repository
+Then, Alice will see the forked repository on her user space:
+![forked](https://hackmd.io/_uploads/ry85IUVXyl.jpg)
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+After doing some changes, Alice push them to her forked repository but she wants Bob become aware of them (1 commit in this case, click on this commit)
+![pr1](https://hackmd.io/_uploads/S1c02UEXJe.png)
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+## Pull request
+A **pull request** will be suggested: 
+![pr2](https://hackmd.io/_uploads/HJeBTLEQke.png)
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+You can then create a the PR:
+![pr3](https://hackmd.io/_uploads/rkhj6IEm1l.png)
+
+
+---
+
+<!-- .slide: data-background="#ffffff" -->
+Another way to create PR is with "Pull request" option:
 ![](https://i.imgur.com/9SGeaEk.jpg)
-
-
 
 ---
 
@@ -450,14 +507,11 @@ digraph {
 Then, Bob receives an email with the pull request information about Alice modifications. On the GitHub site he sees the request:
 ![](https://i.imgur.com/JZ73bMu.jpg =700x)
 
-
-
 ---
 
 <!-- .slide: data-background="#ffffff" -->
-Because Bob find the changes from Alice useful and there are no conflicts he can merge them straight away, 
+Because Bob find the changes from Alice useful and there are no conflicts he can merge them, 
 ![](https://i.imgur.com/5yiTuCC.jpg)
-
 
 ---
 
@@ -466,14 +520,10 @@ Because Bob find the changes from Alice useful and there are no conflicts he can
 If you find some issues in the files/code you can open an "Issue" on GitHub
 ![](https://i.imgur.com/mJ9NfvF.jpg)
 
-
-
 ---
 
 <!-- .slide: data-background="#ffffff" -->
 ![](https://i.imgur.com/1M4f1Nr.jpg)
-
-
 
 ---
 
@@ -482,14 +532,12 @@ You may also assign people to the issues that are more related to that topic.
 
 In future commits you may refer to this issue by using the issue number, <span style="color:blue">#2</span> in this case. This will allow you to track the evolution of the issue on GitHub.
 
-
-
 ---
 
 <!-- .slide: data-background="#ffffff" -->
 ## Best practices
 
-- Talk with your colleagues.
+- Communicate with your colleagues.
 - Some commands such as **git rebase** change the history. It wouldn't be a good idea to use them on public branches. 
 - Don't accept pull requests right away.
 
