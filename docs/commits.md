@@ -971,25 +971,27 @@ HEAD is now at d3c6c63 This is the second commit
 
 Imagine a situation where you have just committed your changes and then realized that you have made a *mistake*.
 
-```graphviz
-digraph {
-  rankdir=LR
-  C [fixedsize=circle]
-  B [fixedsize=circle]
-  C -> B
-  B -> A
+```mermaid
+graph LR
+  C(["C"])
+  B(["B"])
+  C --> B
+  B --> A
   
-  HEAD [shape=plaintext]
-  HEAD -> C
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  head --> C
   
-  index [fixedsize=circle]
+  index(["index"])
   
-  mistake [shape=plaintext]
-  mistake -> C [style=dashed]
+  mistake["mistake"]
+  style mistake fill:"ffffff,stroke:#ffffff
+  mistake -.-> C 
   
-  file2 [label="modified: program.py" shape=plaintext fontcolor=red]
-  C -> file2 [style=dashed]
-}
+  file2["file2"]
+  style file2 fill:#ffffff,stroke:#ffffff,color:red
+  C -.-> file2
+  linkStyle 4 stroke:red,stroke-width:1px,stroke-dasharray:3;
 ```
 
 
