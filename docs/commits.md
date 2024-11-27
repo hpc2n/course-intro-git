@@ -528,9 +528,7 @@ $
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-`git restore`
+### `git restore`
 
  - from git version 2.23, under development
  
@@ -547,13 +545,9 @@ $ git restore --staged <filename>
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Tagging
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
  - We can give a commit a special name (tag).
  - All existing tags can be listed with:
@@ -576,8 +570,6 @@ v0.1-beta.2
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
  - In the simplest case, we can create a **lightweight** tag:
 
 ```shell
@@ -595,13 +587,9 @@ $ git tag -a <tag_name> -m <comment>
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Referring to commits
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
  - We can refer to commits in many different ways:
      - Hash (commit id): d3c6c635fb44c7....
@@ -609,8 +597,6 @@ $ git tag -a <tag_name> -m <comment>
      - Long names: `refs/heads/master`, `refs/tags/first`
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 We can also refer to the ancestors of a commit:
 
@@ -640,8 +626,6 @@ $ git rev-parse --short HEAD~~
 ```
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
  - `ref~n` returns the `n`'th ancestor of `ref`.
      - `ref = ref~0`
