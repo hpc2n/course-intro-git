@@ -58,6 +58,8 @@ Date:   Tue Aug 25 09:55:17 2020 +0200
 
 ---
 
+**More about listing commits** 
+
  - `git log -n <n> <ref> ` lists only `<n>` most recent commits
  - `git log --oneline <ref> ` lists only the shortened hash and the commit message:
 
