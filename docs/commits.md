@@ -76,7 +76,7 @@ d9290ba This is the second most recent commit
 
 ---
 
-Matching **regular expressions** with `git log`
+### Matching **regular expressions**
 
  - `git log --grep=<regexp> <ref>` displays commits that match a regular expression `<regexp>`:
 
@@ -91,7 +91,7 @@ Date:   Fri Jul 17 14:17:14 2020 +0200
 
 ---
 
-**Display changes by date**
+### Changes before/after date
 
  - `git log --{after,before} <date> <ref>` displays changes committed  after/before `<date>`:
 
@@ -109,6 +109,8 @@ Date:   Wed Jun 3 12:08:56 2020 +0200
 ```
 
 ---
+
+### List changed files
 
  - `git log --name-status <ref>` display files that were changed:
 
@@ -128,6 +130,8 @@ D       mistake.txt
  - `git log -p <ref>` displays even more information (diffs)
 
 ---
+
+### Visualizing the tree 
 
  - When working with multible branches, 
      - `--graph` visualizes the commit tree and 
@@ -154,6 +158,8 @@ $ git log --graph --all --oneline
      - Some of the information can be merged with a regular log (`git log -g <ref>`)
 
 ---
+
+### Discarding a commit
 
  - Let's create and discard a commit (more on this later):
 
@@ -228,6 +234,8 @@ index 09c78e6..3b23ff0 100644
 
 ---
 
+### Investigate a file 
+
  - We can also investigate an individual file:
 
 ```shell
@@ -242,6 +250,8 @@ index 09c78e6..3b23ff0 100644
 ```
 
 ---
+
+### List uncommitted changed 
 
  - We can list all **uncommited** changes by comparing against `HEAD`:
 
