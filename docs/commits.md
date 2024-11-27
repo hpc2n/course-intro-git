@@ -329,19 +329,19 @@ $ git log --graph --oneline master
 
 If we `git checkout` away from the tip of a branch...
 
-```graphviz
-digraph {
-  rankdir=LR
-  "A"
-  "B"
-  "C"
-  "master" [shape=plaintext]
-  "HEAD" [shape=plaintext]
-  "B" -> "A"
-  "C" -> "B"
-  "master" -> C [style=dashed]
-  "HEAD" -> C [style=dashed]
-}
+```mermaid
+graph LR
+  A["A"]
+  B["B"]
+  C["C"]
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  B --> A
+  C --> B
+  master -.-> C
+  head -.-> C
 ```
 
 Then we will get the following warning:
