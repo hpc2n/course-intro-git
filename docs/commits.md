@@ -458,7 +458,7 @@ graph LR
   head -.-> A
   old_head -.-> B
 ```
-  linkStyle 8 stroke:#ececec,stroke-width:1px,stroke-dasharray:3;
+  linkStyle default stroke:#ececec,stroke-width:1px,stroke-dasharray:3;
 ```
 
 - Otherwise, also the **branch tip gets moved**:
