@@ -76,6 +76,8 @@ d9290ba This is the second most recent commit
 
 ---
 
+Matching **regular expressions** with `git log`
+
  - `git log --grep=<regexp> <ref>` displays commits that match a regular expression `<regexp>`:
 
 ```shell
@@ -88,6 +90,8 @@ Date:   Fri Jul 17 14:17:14 2020 +0200
 ```
 
 ---
+
+**Display changes by date**
 
  - `git log --{after,before} <date> <ref>` displays changes committed  after/before `<date>`:
 
