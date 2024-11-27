@@ -482,7 +482,6 @@ graph LR
   old_head -.-> B
   linkStyle default stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
   old_master -.-> C
-  linkStyle default stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
 ```
 
 ---
