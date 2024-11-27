@@ -457,6 +457,7 @@ graph LR
   master -.-> C
   head -.-> A
   old_head -.-> B
+```
   linkStyle 8 stroke:#ececec,stroke-width:1px,stroke-dasharray:3;
 ```
 
