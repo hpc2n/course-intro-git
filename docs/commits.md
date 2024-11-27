@@ -451,14 +451,14 @@ graph LR
   head["HEAD"]
   style head fill:#ffffff,stroke:#ffffff
   old_head["HEAD"]
-  style old_head fill:#ffffff,stroke:#ffffff,color:#ececec
+  style old_head fill:#ffffff,stroke:#ffffff,color:#aeaeae
   B --> A
   C --> B
   master -.-> C
   head -.-> A
   old_head -.-> B
 ```
-  linkStyle default stroke:#ececec,stroke-width:1px,stroke-dasharray:3;
+  linkStyle default stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
 ```
 
 - Otherwise, also the **branch tip gets moved**:
