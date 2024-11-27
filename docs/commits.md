@@ -457,7 +457,6 @@ graph LR
   master -.-> C
   head -.-> A
   old_head -.-> B
-```
   linkStyle default stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
 ```
 
@@ -473,17 +472,17 @@ graph LR
   head["HEAD"]
   style head fill:#ffffff,stroke:#ffffff
   old_head["HEAD"]
-  style old_head fill:#ffffff,stroke:#ececec
+  style old_head fill:#ffffff,stroke:#ffffff,color:#aeaeae
   old_master["master"]
-  style old_master fill:#ffffff,stroke:#ececec
+  style old_master fill:#ffffff,stroke:#ffffff,color:#aeaeae 
   B --> A
   C --> B
   master -.-> A
   head -.-> C
   old_head -.-> B
-  linkStyle 8 stroke:#ececec,stroke-width:1px,stroke-dasharray:3;
+  linkStyle default stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
   old_master -.-> C
-  linkStyle 8 stroke:#ececec,stroke-width:1px,stroke-dasharray:3;
+  linkStyle default stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
 ```
 
 ---
