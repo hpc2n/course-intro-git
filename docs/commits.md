@@ -668,22 +668,16 @@ a118ae8
 
 ```mermaid
 graph LR
-  ref["ref"] --> refhat["ref^"]
-  ref["ref"] --> refhat2["ref^2"]
-  refhat["ref^"] --> refhathat["ref^^"]
+  refi(["ref"]) --> refhat(["ref^"])
+  ref(["ref"]) --> refhat2(["ref^2"])
+  refhat(["ref^"]) --> refhathat(["ref^^"])
 ```
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Cleaning the working tree
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 32px;" -->
 
 ### Cleaning tracked files (recap)
 
@@ -711,9 +705,7 @@ $ git restore --staged <filename>
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 32px;" -->
+#### Untracked files, clearing
 
 Untracked files are cleared with
 
