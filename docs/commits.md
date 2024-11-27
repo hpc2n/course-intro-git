@@ -988,7 +988,7 @@ graph LR
   style mistake fill:"ffffff,stroke:#ffffff
   mistake -.-> C 
   
-  file2["file2"]
+  file2["modified: program.py"]
   style file2 fill:#ffffff,stroke:#ffffff,color:red
   C -.-> file2
   linkStyle 4 stroke:red,stroke-width:1px,stroke-dasharray:3;
