@@ -749,8 +749,6 @@ $ git clean -dfx
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
  - Let's try to move the `HEAD` to `1cb12030`:
 
 ```shell
@@ -779,8 +777,6 @@ HEAD is now at 1cb1203 Use LANGUAGES argument in project
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
  - We can display the content of the entire stash:
 
 ```shell
@@ -799,8 +795,6 @@ parameter
      - the matching commit message.
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
  - We can also display the content of an individual stash entry:
 
@@ -825,7 +819,7 @@ index 942e9f4..8dbf1f6 100644
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
+### Apply previous entry from stack 
 
  - We can **pop** the previous entry from the stash and apply it to the working tree:
 
@@ -849,7 +843,7 @@ Dropped refs/stash@{0} (a3dd9b60b18c2....)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
+### Apply any entry from the stack 
 
  - We can also apply any entry from the stash (does not drop the entry):
 
@@ -862,17 +856,13 @@ $ git stash apply <stash_id>
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-#### Multiple commits from a single set of edits
+### Multiple commits from a single set of edits
 
  - Imagine the following situation: *You have spent 3 days coding and are finally ready to commit your changes. You wish to divide the changes into several self-contained commits.*
  - Each commit should both compile and function correctly
  - How would you do this?
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
  - Do the following for each commit you want to create:
      1. Stage changes that should go to the commit.
@@ -883,13 +873,9 @@ $ git stash apply <stash_id>
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Making changes to the commit tree
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 ### Remark
 
@@ -900,8 +886,6 @@ It is generally a **bad idea** to modify the commit tree if the changes have bee
 We will return to this during Lecture 6.
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 ### Reminder
 
