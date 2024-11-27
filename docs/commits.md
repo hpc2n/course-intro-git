@@ -668,7 +668,7 @@ a118ae8
 
 ```mermaid
 graph LR
-  refi(["ref"]) --> refhat(["ref^"])
+  ref(["ref"]) --> refhat(["ref^"])
   ref(["ref"]) --> refhat2(["ref^2"])
   refhat(["ref^"]) --> refhathat(["ref^^"])
 ```
