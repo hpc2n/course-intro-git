@@ -159,7 +159,7 @@ $ git log --graph --all --oneline
 
 ---
 
-### Discarding a commit
+#### Discarding a commit
 
  - Let's create and discard a commit (more on this later):
 
