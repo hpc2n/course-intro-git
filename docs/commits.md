@@ -724,8 +724,6 @@ $ git clean <options> <path>
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
  - Usually we first check what is going to be cleaned:
 
 ```shell
@@ -740,13 +738,9 @@ $ git clean -dfx
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Stashing changes
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
  - We sometimes find ourselves in a situation where we want to temporarily store the changes of the working tree.
  - This might happen, for example, when we are attempting to move the `HEAD`.
