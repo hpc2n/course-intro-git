@@ -636,8 +636,6 @@ $ git rev-parse --short HEAD~~
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 We can also refer to the parents of a commit:
 
 ```shell
@@ -662,21 +660,17 @@ a118ae8
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
  - `ref^n` returns the `n`'th parent of `ref`.
      - `ref = ref^0`
      - `ref^ = ref^1`
      - `ref^ = ref~`
  - Note that `ref^^ != ref^2`:
 
-```graphviz
-digraph {
-  rankdir=LR
-  "ref" -> "ref^"
-  "ref" -> "ref^2"
-  "ref^" -> "ref^^"
-}
+```mermaid
+graph LR
+  ref["ref"] --> refhat["ref^"]
+  ref["ref"] --> refhat2["ref^2"]
+  refhat["ref^"] --> refhathat["ref^^"]
 ```
 
 ---
