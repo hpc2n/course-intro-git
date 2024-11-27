@@ -462,23 +462,27 @@ graph LR
 
 - Otherwise, also the **branch tip gets moved**:
 
-```graphviz
-digraph {
-  rankdir=LR
-  "A"
-  "B"
-  "C"
-  "master" [shape=plaintext]
-  "HEAD" [shape=plaintext]
-  old_head [label="HEAD" shape=plaintext fontcolor=grey]
-  old_master [label="master" shape=plaintext fontcolor=grey]
-  "B" -> "A"
-  "C" -> "B"
-  "master" -> "A" [style=dashed]
-  "HEAD" -> "master" [style=dashed]
-  old_master -> "C" [style=dashed color=grey]
-  old_head -> old_master [style=dashed color=grey]
-}
+```mermaid
+graph LR
+  A["A"]
+  B["B"]
+  C["C"]
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  old_head["HEAD"]
+  style old_head fill:#ffffff,stroke:#ececec
+  old_master["master"]
+  style old_master fill:#ffffff,stroke:#ececec
+  B --> A
+  C --> B
+  master -.-> A
+  head -.-> C
+  old_head -.-> B
+  linkStyle 8 stroke:#ececec,stroke-width:1px,stroke-dasharray:3;
+  old_master -.-> C
+  linkStyle 8 stroke:#ececec,stroke-width:1px,stroke-dasharray:3;
 ```
 
 ---
