@@ -478,10 +478,11 @@ graph LR
   B --> A
   C --> B
   master -.-> A
-  head -.-> C
-  old_head -.-> B
-  linkStyle default stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
+  head -.-> master
+  old_head -.-> old_master
+  linkStyle 4 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
   old_master -.-> C
+  linkStyle 5 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
 ```
 
 ---
