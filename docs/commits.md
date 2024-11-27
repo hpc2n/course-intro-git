@@ -457,7 +457,7 @@ graph LR
   master -.-> C
   head -.-> A
   old_head -.-> B
-  linkStyle default stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
+  linkStyle 4 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
 ```
 
 - Otherwise, also the **branch tip gets moved**:
@@ -486,8 +486,6 @@ graph LR
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
  - Applying `git checkout` to a file **discards all unstaged changes** made to the file:
 
 ```shell
@@ -501,8 +499,6 @@ $ git reset <filename>
 
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 An example:
 
