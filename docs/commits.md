@@ -441,7 +441,7 @@ $ git reset <option> <ref>
  - The command can be **dangerous**!
  - If you are in the detached `HEAD` mode, then only the `HEAD` gets moved:
 
-```graphviz
+```mermaid
 graph LR
   A["A"]
   B["B"]
