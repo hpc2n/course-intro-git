@@ -3,4 +3,4 @@
 - 2024: Evaluations
 - 2023: Evaluations
 - 2022: Evaluations
-- 2021 (9 Nov-12 Nov): [Evaluations](evaluations/Evaluations-Introduction-to-Git.pdf
+- 2021 (9 Nov-12 Nov): [Evaluations](https://github.com/hpc2n/course-intro-git/blob/5602c24d84734d4e32ca200981da5c3c0f97165c/evaluations/Evaluations-Introduction-to-Git.pdf)
