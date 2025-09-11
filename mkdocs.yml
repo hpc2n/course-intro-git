@@ -101,7 +101,10 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.caret
   - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.tabbed
+      alternate_style: true
   - attr_list
   - md_in_html
   - tables
