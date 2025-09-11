@@ -103,7 +103,7 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
       alternate_style: true
   - attr_list
   - md_in_html
