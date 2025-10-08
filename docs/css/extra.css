@@ -1,4 +1,4 @@
-/* Styling to make the tabbed content work */
+/* Styling to make the tabbed content look nicer */
 
 /* General environment setup */
 /*html {
@@ -89,7 +89,8 @@ body {
 .tabbed-alternate input:nth-child(3):checked ~ .tabbed-content > :nth-child(3),
 .tabbed-alternate input:nth-child(4):checked ~ .tabbed-content > :nth-child(4),
 .tabbed-alternate input:nth-child(5):checked ~ .tabbed-content > :nth-child(5),
-.tabbed-alternate input:nth-child(6):checked ~ .tabbed-content > :nth-child(6) {
+.tabbed-alternate input:nth-child(6):checked ~ .tabbed-content > :nth-child(6),
+.tabbed-alternate input:nth-child(7):checked ~ .tabbed-content > :nth-child(7) {
   display: block;
 }
 .tabbed-alternate .tabbed-block {
@@ -99,8 +100,10 @@ body {
   .tabbed-alternate input:nth-child(1):checked ~ .tabbed-labels > :nth-child(1),
   .tabbed-alternate input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2),
   .tabbed-alternate input:nth-child(3):checked ~ .tabbed-labels > :nth-child(3),
-  .tabbed-alternate input:nth-child(4):checked ~ .tabbed-labels > :nth-child(4),  .tabbed-alternate input:nth-child(5):checked ~ .tabbed-labels > :nth-child(5),
-  .tabbed-alternate input:nth-child(6):checked ~ .tabbed-labels > :nth-child(6)
+  .tabbed-alternate input:nth-child(4):checked ~ .tabbed-labels > :nth-child(4),  
+  .tabbed-alternate input:nth-child(5):checked ~ .tabbed-labels > :nth-child(5),
+  .tabbed-alternate input:nth-child(6):checked ~ .tabbed-labels > :nth-child(6),
+  .tabbed-alternate input:nth-child(7):checked ~ .tabbed-labels > :nth-child(7)
   {
     color: red;
     border-color: red;
@@ -128,6 +131,9 @@ body {
   .tabbed-labels > label:nth-child(6) {
     order: 6;
   }
+  .tabbed-labels > label:nth-child(7) {
+    order: 7;
+  }
 
   .tabbed-alternate .tabbed-content {
     display: contents;
@@ -153,6 +159,9 @@ body {
   .tabbed-alternate .tabbed-block:nth-child(6) {
     order: 6;
   }
+  .tabbed-alternate .tabbed-block:nth-child(7) {
+    order: 7;
+  }
 }
 
 /* Add a border and background for styling of the tabbed environment */
@@ -168,3 +177,41 @@ div.tabbed-set.tabbed-alternate {
 	padding-left: 1rem;
 	padding-right: 1rem;
 }
+
+# Getting code copy to clipboard to work 
+
+.clipboard {
+  visibility: hidden;
+  border-radius:.1rem;
+  color:var(--md-default-fg-color--lightest);
+  cursor:pointer;
+  height:1.5em;
+  outline-color:var(--md-accent-fg-color);
+  outline-offset:.1rem;
+  position:absolute;
+  right:.5em;
+  top:.5em;
+  transition:color .25s;
+  width:1.5em;
+  z-index:1
+}
+
+.btn-clipboard {
+    position: relative;
+    top: .2rem;
+    right: 2.2em;
+    z-index: 10;
+    display: block;
+    padding: .15rem .1rem;
+    cursor: pointer;
+    width: 2.5em;
+    float: right;
+}
+
+.btn.btn-neutral.btn-clipboard {
+	float:right;
+    box-shadow: 0 0 0 0;
+    border: none;
+}
+
+
