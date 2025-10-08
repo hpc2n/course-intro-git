@@ -66,17 +66,6 @@ graph LR
   Tue --> Wed
 ```
 
-```mermaid
-digraph {
-  rankdir=LR
-  Mon[label="Monday's\n improvements"] [fixedsize=circle]
-  Tue[label="Tuesday's\n improvements"] [fixedsize=circle]
-  Wed[label="Wednesday's\n improvements"] [fixedsize=circle]
-  Mon -> Tue
-  Tue -> Wed
-}
-```
-
 ---
 
 ### Going back to an earlier version
