@@ -64,15 +64,15 @@ plugins:
   - mkdocstrings
   - markdown-exec
   - open-in-new-tab
-  - mermaid2
-    #      javascript: https://unpkg.com/mermaid/dist/mermaid.min.js
+  - mermaid2:
+      javascript: https://unpkg.com/mermaid/dist/mermaid.min.js
     #      javascript: https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs
-    # arguments:
-    #     theme: 'neutral'
+      arguments:
+      theme: 'neutral'
             #          Theme options: default, neutral, dark, forest, base
             #themeVariables:
             #            primaryColor: '#BB2528'
-            #    primaryTextColor: '#fff'
+             #primaryTextColor: '#fff'
             #primaryBorderColor: '#7C0000'
             #lineColor: '#F8B229'
             #secondaryColor: '#006100'
