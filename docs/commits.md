@@ -1063,19 +1063,12 @@ graph LR
   index -.-> file3
 
   A(["A"])
-  C(["C"])
   B(["B"])
   B --> A
 
   head["HEAD"]
   style head fill:#ffffff,stroke:#ffffff
   head --> B
-
-  amistake["mistake"]
-  style amistake fill:#ffffff,stroke:#ffffff
-
-  file2["modified: program.py"]
-  style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
 ```
 
  - It then creates a new commit from the *combined* index:
@@ -1084,9 +1077,6 @@ graph LR
 graph LR
 
   index(["index"])
-
-  file3["modified: file.txt"]
-  style file3 fill:#ffffff,stroke:#ffffff,color:#ff0000
 
   A(["A"])
   C(["C*"])
@@ -1097,9 +1087,6 @@ graph LR
   corr["corrected"]
   style corr fill:#ffffff,stroke:#ffffff
   corr --> C
-
-  amistake["mistake"]
-  style amistake fill:#ffffff,stroke:#ffffff
 
   file2["modified: file.txt program.py"]
   style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
