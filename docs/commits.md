@@ -985,12 +985,12 @@ graph LR
   style head fill:#ffffff,stroke:#ffffff
   head --> C
 
-  mistake["mistake"]
-  style mistake fill:"ffffff,stroke:#ffffff
+  amistake["mistake"]
+  style amistake fill:"ffffff,stroke:#ffffff
 ```  
 
 ```
-  mistake -.-> C 
+  amistake -.-> C 
 ```
 
 ```
