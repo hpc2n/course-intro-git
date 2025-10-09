@@ -276,7 +276,7 @@ graph LR
 
 ---
 
-Merge 'cool-feature' to 'master'
+Merge 'cool-feature' to 'master' (3-way merge)
 
 ```mermaid
 graph LR
@@ -292,14 +292,16 @@ graph LR
   commitY(["commitY"])
   commit3(["commit3"])
   commit4(["commit4"])
+  commit4Y(["New merge commit"])
 
   master -.-> commit4
   commit4 --> commit3
-  commit4 --> commitY
+  commit4 --> commit4Y
   cool-feature -.-> commitY
   commit3 --> commit2
   commit2 --> commit1
   commitY --> commitX
+  commitY --> commit4Y
   commitX --> commit1
 ```
 
@@ -308,21 +310,25 @@ Delete 'cool-feature'
 ```mermaid
 graph LR
 
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+
   commitX(["commitX"])
   commit1(["commit1"])
   commit2(["commit2"])
   commitY(["commitY"])
   commit3(["commit3"])
+  commit4(["commit4"])
+  commit4Y(["New merge commit"])
 
-  commit2 --> commit1
-  commitX --> commit1
-  commit3 --> commit2
-  commitY --> commitX
-
-  master["master"]
-  master -.-> commit4 
+  master -.-> commit4
   commit4 --> commit3
-  commit4 --> commitY
+  commit4 --> commit4Y
+  commit3 --> commit2
+  commit2 --> commit1
+  commitY --> commitX
+  commitY --> commit4Y
+  commitX --> commit1
 ```
 
 (Time goes leftwards)
