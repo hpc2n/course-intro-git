@@ -973,6 +973,7 @@ Imagine a situation where you have just committed your changes and then realized
 
 ```mermaid
 graph LR
+
   C(["C"])
   B(["B"])
   C --> B
@@ -987,7 +988,7 @@ graph LR
   mistake["mistake"]
   style mistake fill:"ffffff,stroke:#ffffff
   mistake -.-> C 
-``` 
+
   file2["modified: program.py"]
   style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
   C -.-> file2
