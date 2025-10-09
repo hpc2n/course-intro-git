@@ -278,6 +278,8 @@ graph LR
 
 Merge 'cool-feature' to 'master' (3-way merge)
 
+3-way merges use a dedicated commit for connecting the two merge histories. The name comes from the fact that Git uses three commits to generate the merge commit: the two branch tips and their common ancestor.
+
 ```mermaid
 graph LR
 
@@ -334,6 +336,74 @@ graph LR
 (Time goes leftwards)
 
 ---
+
+### Example, fast-forward merging
+
+If there is a linear path from the current branch tip and to the target branch, then it is possible to do a fast-forward merge. Git is not really merging the branches, just integrating the histories, i.e. it moves “fast forward” the current branch tip up to the target branch tip.
+
+When doing so the commit histories are combined and all commit histories can be reached from the current tip. An example would be to do a fast-forward merge of a feature into master/main.
+
+A fast-forward merge is not possible if the branches have diverged, like in the previous example. This means that there is no linear path to the target branch and Git has to combine them via a 3-way merge.
+
+This shows an example where a fast-forward merge would work.
+
+Before FF merge: 
+
+```mermaid
+graph LR
+
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  nice-feature["nice-feature"]
+  style nice-feature fill:#ffffff,stroke:#ffffff
+
+  commitX(["commitX"])
+  commit1(["commit1"])
+  commit2(["commit2"])
+  commitY(["commitY"])
+  commit3(["commit3"])
+  commit4(["commit4"])
+  commit4Y(["New merge commit"])
+
+  master -.-> commit4
+  commit4 --> commit3
+  commit4 --> commit4Y
+  cool-feature -.-> commitY
+  commit3 --> commit2
+  commit2 --> commit1
+  commitY --> commitX
+  commitY --> commit4Y
+  commitX --> commit1
+```
+
+After FF merge:
+
+```mermaid
+graph LR
+
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  cool-feature["cool-feature"]
+  style cool-feature fill:#ffffff,stroke:#ffffff
+
+  commitX(["commitX"])
+  commit1(["commit1"])
+  commit2(["commit2"])
+  commitY(["commitY"])
+  commit3(["commit3"])
+  commit4(["commit4"])
+  commit4Y(["New merge commit"])
+
+  master -.-> commit4
+  commit4 --> commit3
+  commit4 --> commit4Y
+  cool-feature -.-> commitY
+  commit3 --> commit2
+  commit2 --> commit1
+  commitY --> commitX
+  commitY --> commit4Y
+  commitX --> commit1
+```
 
 ## Switching with uncommitted changes
 
