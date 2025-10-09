@@ -1051,25 +1051,63 @@ $ git commit --amend
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
  - The **amend** command first removes the HEAD commit from the commit tree and combines it with the current index:
 
-```graphviz
-digraph {
-  rankdir=LR
-  B -> A
-  
-  HEAD [shape=plaintext]
-  HEAD -> B
-  
-  index [fixedsize=circle]
-  file [label="modified: file.txt program.py" shape=plaintext fontcolor=red]
-  index -> file [style=dashed]
-}
+```mermaid
+graph LR
+
+  index(["index"])
+
+  file3["modified: file.txt program.py"]
+  style file3 fill:#ffffff,stroke:#ffffff,color:#ff0000
+  index -.-> file3
+
+  A(["A"])
+  C(["C"])
+  B(["B"])
+  B --> A
+
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  head --> B
+
+  amistake["mistake"]
+  style amistake fill:#ffffff,stroke:#ffffff
+
+  file2["modified: program.py"]
+  style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
 ```
 
  - It then creates a new commit from the *combined* index:
+
+```mermaid
+graph LR
+
+  index(["index"])
+
+  file3["modified: file.txt"]
+  style file3 fill:#ffffff,stroke:#ffffff,color:#ff0000
+  index -.-> file3
+
+  A(["A"])
+  C(["C"])
+  B(["B"])
+  C --> B
+  B --> A
+
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  head --> C
+
+  amistake["mistake"]
+  style amistake fill:#ffffff,stroke:#ffffff
+  amistake -.-> C
+
+  file2["modified: program.py"]
+  style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
+  C -.-> file2
+```
+
 
 ```graphviz
 digraph {
