@@ -298,28 +298,32 @@ graph LR
 ```
 
 Delete 'cool-feature'
-```graphviz
-digraph {
-  rankdir=LR
-  "commit2" -> "commit1"
-  "commitX" -> "commit1"
-  "commit3" -> "commit2"
-  "commitY" -> "commitX"
-  "master" -> "commit4" [style=dashed]
-  "commit4" -> "commit3"
-  "commit4" -> "commitY"
-  master [shape=plaintext]
-}
+
+```mermaid
+graph LR
+
+  commitX(["commitX"])
+  commit1(["commit1"])
+  commit2(["commit2"])
+  commitY(["commitY"])
+  commit3(["commit3"])
+
+  commit2 --> commit1
+  commitX --> commit1
+  commit3 --> commit2
+  commitY --> commitX
+
+  master["master"]
+  master -.-> commit4 
+  commit4 --> commit3
+  commit4 --> commitY
 ```
+
 (Time goes leftwards)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Switching with uncommitted changes
-
-<!-- .slide: style="font-size: 26px;" -->
 
 As mentioned above, you switch between branches with: 
 
@@ -339,13 +343,8 @@ What if there is a conflict?
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Example - new file
 
-<!-- .slide: style="font-size: 30px;" -->
-
-**We continue in the same repository!**
 Here we create a new branch, switch to it, then add a new file. Then we switch back to the master branch without committing the changes: 
 
 ```shell
@@ -362,11 +361,7 @@ Git warns that there is a file added (`A`) in one branch but not the other, but 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-### Example - modified file
-
-<!-- .slide: style="font-size: 32px;" -->
+### Example - modified file 
 
 **We continue in the same repository!**
 First commit the `newfile.txt` in the cool-feature branch to clean the environment.
