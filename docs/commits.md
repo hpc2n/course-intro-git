@@ -974,19 +974,17 @@ Imagine a situation where you have just committed your changes and then realized
 ```mermaid
 graph LR
 
+  index(["index"])
+
   C(["C"])
   B(["B"])
   C --> B
   B --> A
   
-  head(["HEAD"])
+  head["HEAD"]
   style head fill:#ffffff,stroke:#ffffff
   head --> C
   
-  index(["index"])
-```
-
-```  
   mistake["mistake"]
   style mistake fill:"ffffff,stroke:#ffffff
   mistake -.-> C 
@@ -994,6 +992,10 @@ graph LR
   file2["modified: program.py"]
   style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
   C -.-> file2
+```
+
+
+```
   linkStyle 4 stroke:red,stroke-width:1px,stroke-dasharray:3;
 ```
 
