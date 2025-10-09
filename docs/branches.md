@@ -5,7 +5,7 @@ description: "Branches, merges and conflicts"
 ---
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
-Minor modifications done for the fall 2021/2022/2023 versions of the course. -->
+Minor modifications done for the fall 2021/2022/2023/2024 versions of the course. Moved to GitHub and some tweaks (mainly to graphs) done by Birgitte Brydsö to get it to work on GitHub pages for the 2025 version of the course. -->
 
 <!-- Slides: https://hackmd.io/@git-fall-2024/L5-branches --> 
 
@@ -252,21 +252,24 @@ We commit stuff to both branches
 ```mermaid
 graph LR
 
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  cool-feature["cool-feature"]
+  style cool-feature fill:#ffffff,stroke:#ffffff
+
   commitX(["commitX"])
   commit1(["commit1"])
   commit2(["commit2"])
   commitY(["commitY"])
   commit3(["commit3"])
 
+  master -.-> commit3
+  cool-feature -.-> commitY 
   commitX --> commit1
   commit2 --> commit1
   commitY --> commitX
   commit3 --> commit2
 
-  master["master"]
-  master -.-> commit3
-  cool-feature["cool-feature"] 
-  cool-feature -.-> commitY 
 ```
 
 (Time goes leftwards)

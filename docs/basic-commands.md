@@ -4,7 +4,7 @@ tags: Lecture, Pedro, day 1
 description: "Basic Git commands"
 ---
 
-<!-- Lecture material made by Pedro Ojeda-May for the version of the course that was given in fall 2020. Lecture was first given by Pedro Ojeda-May in fall 2020.-->
+<!-- Lecture material made by Pedro Ojeda-May for the version of the course that was given in fall 2020. Lecture was first given by Pedro Ojeda-May in fall 2020. Moved to GitHub and some tweaks (mainly to graphs) done by Birgitte Brydsö to get it to work on GitHub pages for the 2025 version of the course.-->
 
 <!-- Slides: https://hackmd.io/@git-fall-2024/L2-commands --> 
 

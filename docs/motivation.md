@@ -5,7 +5,7 @@ description: "Why use version control?"
 ---
 
 <!-- Lecture material made by Mirko Myllykoski for the version of the course that was given in fall 2020. The lecture was first given by Mirko Myllykoski in fall 2020.
-Very minor modifications have been made by Birgitte Brydsö for the fall 2021, fall 2022, fall 2023, and fall 2024 versions of the course.-->
+Very minor modifications have been made by Birgitte Brydsö for the fall 2021, fall 2022, fall 2023, and fall 2024 versions of the course. Moved to GitHub and some tweaks (mainly to graphs) done by Birgitte Brydsö to get it to work on GitHub pages for the 2025 version of the course. -->
 
 <!-- Slides: https://hackmd.io/@git-fall-2024/L1-motivation/ --> 
 

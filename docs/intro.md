@@ -5,7 +5,7 @@ description: "Introduction to Git"
 ---
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
-Minor modifications done for the fall 2021, 2022, 2023, and 2024 versions of the course. -->
+Minor modifications done for the fall 2021, 2022, 2023, and 2024 versions of the course. Moved to GitHub and some tweaks (mainly to graphs) done to work on GitHub pages for the 2025 version of the course. -->
 
 <!-- Slides: https://hackmd.io/@git-fall-2024/LA-intro --> 
 
