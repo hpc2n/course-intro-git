@@ -976,6 +976,7 @@ graph LR
 
   index(["index"])
 
+  A(["A"])
   C(["C"])
   B(["B"])
   C --> B
@@ -988,9 +989,7 @@ graph LR
   amistake["mistake"]
   style amistake fill:#ffffff,stroke:#ffffff
   amistake -.-> C 
-```
 
-```
   file2["modified: program.py"]
   style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
   C -.-> file2
