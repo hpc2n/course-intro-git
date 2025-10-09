@@ -352,6 +352,7 @@ Before FF merge:
 ```mermaid
 graph LR
 
+  commit4Y(["New merge commit"])
   master["master"]
   style master fill:#ffffff,stroke:#ffffff
   nice-feature["nice-feature"]
@@ -363,7 +364,6 @@ graph LR
   commitY(["commitY"])
   commit3(["commit3"])
   commit4(["commit4"])
-  commit4Y(["New merge commit"])
 
   master -.-> commit4
   commit4 --> commit3
