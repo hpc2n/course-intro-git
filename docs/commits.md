@@ -995,17 +995,9 @@ graph LR
   C -.-> file2
 ```
 
-
-```
-  linkStyle 4 stroke:red,stroke-width:1px,stroke-dasharray:3;
-```
-
 Forgotten file, incorrect commit message, etc
 
 ---
-
-
-<!-- .slide: data-background="#ffffff" -->
 
 The problem can be fixed easily in two steps:
 
@@ -1021,27 +1013,32 @@ Changes to be committed:
 ```
 
 
-```graphviz
-digraph {
-  rankdir=LR
-  C [fixedsize=circle]
-  B [fixedsize=circle]
-  C -> B
-  B -> A
+```mermaid
+graph LR
+
+  index(["index"])
+
+  A(["A"])
+  C(["C"])
+  B(["B"])
+  C --> B
+  B --> A
+
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  head --> C
+
+  amistake["mistake"]
+  style amistake fill:#ffffff,stroke:#ffffff
+  amistake -.-> C
+
+  file2["modified: program.py"]
+  style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
+  C -.-> file2
   
-  HEAD [shape=plaintext]
-  HEAD -> C
-  
-  mistake [shape=plaintext]
-  mistake -> C [style=dashed]
-  
-  index [fixedsize=circle]
-  file [label="modified: file.txt" shape=plaintext fontcolor=red]
-  index -> file [style=dashed]
-  
-  file2 [label="modified: program.py" shape=plaintext fontcolor=red]
-  C -> file2 [style=dashed]
-}
+  file3["modified: file.txt"]
+  index -.-> file3
+  style file3 fille:#ffffff,stroke:#ffffff,color=#ff0000
 ```
 
 
