@@ -278,16 +278,23 @@ Merge 'cool-feature' to 'master'
 ```mermaid
 graph LR
 
-  "commit2" -> "commit1"
-  "commitX" -> "commit1"
-  "commit3" -> "commit2"
-  "commitY" -> "commitX"
-  "master" -> "commit4" [style=dashed]
-  "cool-feature" -> "commitY" [style=dashed]
-  "commit4" -> "commit3"
-  "commit4" -> "commitY"
-  master [shape=plaintext]
-  "cool-feature" [shape=plaintext]
+  commitX(["commitX"])
+  commit1(["commit1"])
+  commit2(["commit2"])
+  commitY(["commitY"])
+  commit3(["commit3"])
+
+  commit2 --> commit1
+  commitX --> commit1
+  commit3 --> commit2
+  commitY --> commitX
+
+  master["master"]
+  master -.-> commit4
+  cool-feature["cool-feature"]
+  cool-feature -.-> commitY
+  commit4 --> commit3
+  commit4 --> commitY
 ```
 
 Delete 'cool-feature'
