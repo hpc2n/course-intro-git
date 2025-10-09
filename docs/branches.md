@@ -264,11 +264,11 @@ graph LR
   commit3(["commit3"])
 
   master -.-> commit3
-  cool-feature -.-> commitY 
-  commitX --> commit1
-  commit2 --> commit1
-  commitY --> commitX
   commit3 --> commit2
+  commit2 --> commit1
+  cool-feature -.-> commitY 
+  commitY --> commitX
+  commitX --> commit1
 
 ```
 
