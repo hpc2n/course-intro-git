@@ -1018,6 +1018,10 @@ graph LR
 
   index(["index"])
 
+  file3["modified: file.txt"]
+  style file3 fill:#ffffff,stroke:#ffffff,color:#ff0000
+  index -.-> file3
+
   A(["A"])
   C(["C"])
   B(["B"])
@@ -1035,16 +1039,9 @@ graph LR
   file2["modified: program.py"]
   style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
   C -.-> file2
-  
-  file3["modified: file.txt"]
-  style file3 fill:#ffffff,stroke:#ffffff,color:#ff0000
-  index -.-> file3
 ```
 
-
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 - Step #2 is to replace the current `HEAD` with a corrected commit:
 
