@@ -1087,48 +1087,26 @@ graph LR
 
   file3["modified: file.txt"]
   style file3 fill:#ffffff,stroke:#ffffff,color:#ff0000
-  index -.-> file3
 
   A(["A"])
-  C(["C"])
+  C(["C*"])
   B(["B"])
   C --> B
   B --> A
 
-  head["HEAD"]
-  style head fill:#ffffff,stroke:#ffffff
-  head --> C
+  corr["corrected"]
+  style corr fill:#ffffff,stroke:#ffffff
+  corr --> C
 
   amistake["mistake"]
   style amistake fill:#ffffff,stroke:#ffffff
-  amistake -.-> C
 
-  file2["modified: program.py"]
+  file2["modified: file.txt program.py"]
   style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
   C -.-> file2
 ```
 
-
-```graphviz
-digraph {
-  rankdir=LR
-  "C*" -> B
-  B -> A
-  
-  index [fixedsize=circle]
-  
-  corrected [shape=plaintext]
-  corrected -> "C*" [style=dashed]
-  
-  file [label="modified: file.txt program.py" shape=plaintext fontcolor=red]
-  "C*" -> file [style=dashed]
-}
-```
-
-
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 - `git commit --amend` is equivalent to:
 
