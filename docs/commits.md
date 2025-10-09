@@ -984,7 +984,9 @@ graph LR
   head["HEAD"]
   style head fill:#ffffff,stroke:#ffffff
   head --> C
-  
+```  
+
+```
   mistake["mistake"]
   style mistake fill:"ffffff,stroke:#ffffff
   mistake -.-> C 
