@@ -352,28 +352,23 @@ Before FF merge:
 ```mermaid
 graph LR
 
-  commit4Y(["New merge commit"])
   master["master"]
   style master fill:#ffffff,stroke:#ffffff
   nice-feature["nice-feature"]
   style nice-feature fill:#ffffff,stroke:#ffffff
 
-  commitX(["commitX"])
   commit1(["commit1"])
   commit2(["commit2"])
-  commitY(["commitY"])
   commit3(["commit3"])
-  commit4(["commit4"])
+  commitX(["commitX"])
+  commitY(["commitY"])
 
-  master -.-> commit4
-  commit4 --> commit3
-  commit4 --> commit4Y
+  master -.-> commit3
   cool-feature -.-> commitY
-  commit3 --> commit2
-  commit2 --> commit1
-  commitY --> commitX
-  commitY --> commit4Y
-  commitX --> commit1
+  commit1 --> commit2
+  commit2 --> commit3
+  commit3 --> commitX
+  commitX --> commitY
 ```
 
 After FF merge:
@@ -383,26 +378,21 @@ graph LR
 
   master["master"]
   style master fill:#ffffff,stroke:#ffffff
-  cool-feature["cool-feature"]
-  style cool-feature fill:#ffffff,stroke:#ffffff
+  nice-feature["nice-feature"]
+  style nice-feature fill:#ffffff,stroke:#ffffff
 
-  commitX(["commitX"])
   commit1(["commit1"])
   commit2(["commit2"])
-  commitY(["commitY"])
   commit3(["commit3"])
-  commit4(["commit4"])
-  commit4Y(["New merge commit"])
+  commitX(["commitX"])
+  commitY(["commitY"])
 
-  master -.-> commit4
-  commit4 --> commit3
-  commit4 --> commit4Y
+  master -.-> commitY
   cool-feature -.-> commitY
-  commit3 --> commit2
-  commit2 --> commit1
-  commitY --> commitX
-  commitY --> commit4Y
-  commitX --> commit1
+  commit1 --> commit2
+  commit2 --> commit3
+  commit3 --> commitX
+  commitX --> commitY
 ```
 
 ## Switching with uncommitted changes
@@ -463,11 +453,7 @@ Git warns that there is a file that is modified (`M`) in one branch but not the 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Example - uncommitted, conflicting changes
-
-<!-- .slide: style="font-size: 32px;" -->
 
 **We continue in the same repository!**
 Assume two branches, "cool-feature" and "morefeatures"
