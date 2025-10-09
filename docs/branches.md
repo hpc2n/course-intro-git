@@ -33,18 +33,6 @@ Minor modifications done for the fall 2021/2022/2023 versions of the course. -->
 
 ## What is a Git branch?
 
-<style type="text/css">
-  .reveal p {
-    text-align: left;
-  }
-  .reveal ul {
-    display: block;
-  }
-  .reveal ol {
-    display: block;
-  }
-</style>
-
 * A pointer to a commit (ref: named pointer)
 * Defined as all points reachable in the commit graph from the named commit (the "tip" of the branch)
 * The ref HEAD determines what branch you are on. 
@@ -53,11 +41,7 @@ Minor modifications done for the fall 2021/2022/2023 versions of the course. -->
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Why use branches?
-
-<!-- .slide: style="font-size: 32px;" -->
 
 There are many uses for branches:
 
@@ -67,37 +51,25 @@ There are many uses for branches:
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## What is a Git branch?
-
-<!-- .slide: style="font-size: 30px;" -->
 
 Until now, we have worked with a repository that only have one branch, with the commits done one at a time: 
 
-![](https://i.imgur.com/OjpgqBz.png)
+![Git branch](../images/git-branch.png)
 
 In the above picture, the master branch points to a commit. The current position is HEAD. (Time goes rightwards)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### What is a Git branch - basic concepts
-
-<!-- .slide: style="font-size: 30px;" -->
 
 Now we want to look at repositories with several branches: 
 
-![](https://i.imgur.com/9lvwmg9.png)
+![Git several branches](../images/git-several-branches.png)
 
 Branches are used to create another line of development.  They are "individual projects" within a git repository.
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 32px;" -->
 
 * The branch is the commit and all its parent commits, not just the one we are currently pointing at. 
 * The main line of development is usually called the "master" branch.
