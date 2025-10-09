@@ -1111,8 +1111,6 @@ $ git commit -c ORIG_HEAD
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### `git revert`
 
 We are first going to create a commit that replaces the content of a file:
@@ -1137,8 +1135,6 @@ $ git log --oneline --graph --all
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 We later discover that the commit was a mistake and revert it:
 
 ```shell
@@ -1161,8 +1157,6 @@ $ git log --oneline --graph --all
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 We can see that the revert commit simply removes the changes made in the first commit and restores changes make in the preceding commit:
 
 ```shell
@@ -1183,13 +1177,9 @@ Date:   Tue Sep 29 19:56:19 2020 +0200
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Exercises
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 |    Exercise    | Description                            |
 |----------------|----------------------------------------|
