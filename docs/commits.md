@@ -979,12 +979,14 @@ graph LR
   C --> B
   B --> A
   
-  head["HEAD"]
+  head(["HEAD"])
   style head fill:#ffffff,stroke:#ffffff
   head --> C
   
   index(["index"])
-  
+```
+
+```  
   mistake["mistake"]
   style mistake fill:"ffffff,stroke:#ffffff
   mistake -.-> C 
@@ -994,7 +996,6 @@ graph LR
   C -.-> file2
   linkStyle 4 stroke:red,stroke-width:1px,stroke-dasharray:3;
 ```
-
 
 Forgotten file, incorrect commit message, etc
 
