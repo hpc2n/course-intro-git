@@ -1037,8 +1037,8 @@ graph LR
   C -.-> file2
   
   file3["modified: file.txt"]
-  index -.-> file3
   style file3 fille:#ffffff,stroke:#ffffff,color=#ff0000
+  index -.-> file3
 ```
 
 
