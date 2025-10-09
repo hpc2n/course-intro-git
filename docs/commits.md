@@ -986,10 +986,7 @@ graph LR
   head --> C
 
   amistake["mistake"]
-  style amistake fill:"ffffff,stroke:#ffffff
-```  
-
-```
+  style amistake fill:"#ffffff,stroke:#ffffff
   amistake -.-> C 
 ```
 
