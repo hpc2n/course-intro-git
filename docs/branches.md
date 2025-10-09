@@ -202,10 +202,6 @@ $ git config --global alias.graph "log --all --graph --decorate --oneline"
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 32px;" -->
-
 This is on the master branch 
 
 ```shell
@@ -239,10 +235,6 @@ $ git graph
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 36px;" -->
-
 Now we can delete the new branch we had created, since all the content is now in the master branch. 
 
 ```shell
@@ -253,26 +245,30 @@ Comment: It is good practice to keep old branches for understanding of the devel
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 26px;" -->
-
 In a somewhat nicer format, it looks like this: 
 
 We commit stuff to both branches
-```graphviz
-digraph {
-  rankdir=LR
-  "commitX" -> "commit1"
-  "commit2" -> "commit1"
-  "commitY" -> "commitX"
-  "commit3" -> "commit2"
-  "master" -> "commit3" [style=dashed]
-  "cool-feature" -> "commitY"[style=dashed]
-  master [shape=plaintext]
-  "cool-feature" [shape=plaintext]
-}
+
+```mermaid
+graph LR
+
+  commitX(["commitX"])
+  commit1(["commit1"])
+  commit2(["commit2"])
+  commitY(["commitY"])
+  commit3(["commit3"])
+
+  commitX --> commit1
+  commit2 --> commit1
+  commitY --> commitX
+  commit3 --> commit2
+
+  master["master")
+  master -.-> commit3
+  cool-feature["cool-feature"] 
+  cool-feature -.-> commitY 
 ```
+
 (Time goes leftwards)
 
 ---
