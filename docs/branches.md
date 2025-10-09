@@ -283,6 +283,7 @@ Merge 'cool-feature' to 'master' (3-way merge)
 ```mermaid
 graph LR
 
+  commit4Y(["New merge commit"])
   master["master"]
   style master fill:#ffffff,stroke:#ffffff
   cool-feature["cool-feature"]
@@ -294,16 +295,15 @@ graph LR
   commitY(["commitY"])
   commit3(["commit3"])
   commit4(["commit4"])
-  commit4Y(["New merge commit"])
 
-  master -.-> commit4
+  master -.-> commit4Y
   commit4 --> commit3
-  commit4 --> commit4Y
+  commit4Y --> commit4
   cool-feature -.-> commitY
   commit3 --> commit2
   commit2 --> commit1
   commitY --> commitX
-  commitY --> commit4Y
+  commit4Y --> commitY
   commitX --> commit1
 ```
 
