@@ -263,7 +263,7 @@ graph LR
   commitY --> commitX
   commit3 --> commit2
 
-  master["master")
+  master["master"]
   master -.-> commit3
   cool-feature["cool-feature"] 
   cool-feature -.-> commitY 
