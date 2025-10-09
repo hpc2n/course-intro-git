@@ -79,23 +79,14 @@ Branches are used to create another line of development.  They are "individual p
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 32px;" -->
-
 Usually, a branch is created to work on a new feature. Once the feature is completed, it is merged back with the master branch.
 
 
-![](https://i.imgur.com/9Y4ymjG.png)
-
+![Git several branches and new features](../images/git-several-branches-new-feature.png)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Branches: Creation
-
-<!-- .slide: style="font-size: 36px;" -->
 
 Creating a new branch does not change the repository, it just adds a new reference to the commit. 
 
@@ -108,10 +99,6 @@ $ git branch cool-feature
 ```
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 36px;" -->
 
 To move to another branch (switch): 
 
@@ -131,14 +118,9 @@ To see which branch you are on:
 $ git branch
 ```
 
-
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Branches: merging, deletion
-
-<!-- .slide: style="font-size: 30px;" -->
 
 - When you have decided you are happy with the changes you made to the new branch, merge it back to the master branch (or another branch)
 - Note: The branch is always merged to the current HEAD.
@@ -159,11 +141,7 @@ $ git branch -d cool-feature
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Example - Type along if you wish
-
-<!-- .slide: style="font-size: 32px;" -->
 
 * Create a directory. Initialize a repository
 * Create a file, stage it, and commit it
@@ -180,12 +158,7 @@ $ git commit -m "Committing the first file"
  create mode 100644 file.txt
 ```
 
-
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 32px;" -->
 
 * Create a new branch, then switch to that branch
 * Make some changes - add files and text ( > overwrites or are suitable for new file)
@@ -202,10 +175,6 @@ $ git commit -m "Added text to the first file"
 ```
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 30px;" -->
 
 - Switch back to the master branch, make some changes 
 ```shell
