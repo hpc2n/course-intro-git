@@ -273,14 +273,11 @@ graph LR
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 26px;" -->
-
 Merge 'cool-feature' to 'master'
-```graphviz
-digraph {
-  rankdir=LR
+
+```mermaid
+graph LR
+
   "commit2" -> "commit1"
   "commitX" -> "commit1"
   "commit3" -> "commit2"
@@ -291,7 +288,6 @@ digraph {
   "commit4" -> "commitY"
   master [shape=plaintext]
   "cool-feature" [shape=plaintext]
-}
 ```
 
 Delete 'cool-feature'
