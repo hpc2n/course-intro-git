@@ -20,20 +20,17 @@ In addition to this, a remote is a way to backup your repository.
 
 ---
 
-![](https://i.imgur.com/z2FesR1.jpg)
+![Remote participants](../images/remote-participants.jpg)
 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-<!-- .slide: style="font-size: 30px;" -->
 ## Updated scheme for file stages
 
-![](https://www.hpc2n.umu.se/sites/default/files/git-folders2.png =700x)
+![Git folders](../images/git-folders2.png)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Concepts cont.
 The command 
 
@@ -48,7 +45,6 @@ displays the remotes that are already set up where you can *fetch* and *pull* ch
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 
 ```java
 $ git graph
@@ -60,8 +56,6 @@ $ git graph
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-<!-- .slide: style="font-size: 30px;" -->
 ## Adding remotes
 
 A remote repository can be added manually with the command
@@ -81,7 +75,6 @@ where the location of the remote can be an URL or the path if that is in your lo
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 Protocols:
 - local ->  git clone /opt/git/project.git
 - SSH   ->  git clone ssh://user@server:project.git
@@ -90,8 +83,6 @@ Protocols:
 
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 Why do we need more than one remote?
 
