@@ -326,7 +326,6 @@ graph LR
   master -.-> commit4Y
   commit4 --> commit3
   commit4Y --> commit4
-  cool-feature -.-> commitY
   commit3 --> commit2
   commit2 --> commit1
   commitY --> commitX
