@@ -1019,10 +1019,7 @@ Conflict?
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Exercises
-<!-- .slide: style="font-size: 32px;" -->
 
 Each of the exercises has a README.md file with explanations and descriptions of what to do. You can find all of them in the subdirectory 5.branches. You should do them in the below order: 
  
@@ -1032,12 +1029,8 @@ Each of the exercises has a README.md file with explanations and descriptions of
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Exercises
 
-<!-- .slide: style="font-size: 32px;" -->
- 
 3. Merge (BAD): This exercise gives an example of a merge that cannot be done automatically with the merge command. The exercise can be found in the subdirectory "3.merge-bad" 
 
 4. Rebasing (OK): In this exercise you will try the command rebase and see that it succeeds. The exercise can be found in the subdirectory "4.rebase-ok"  
