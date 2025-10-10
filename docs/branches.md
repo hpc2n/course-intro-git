@@ -918,41 +918,61 @@ Success!
 <!-- .slide: style="font-size: 28px;" -->
 
 Branch 'bugfix' was branched from 'master' 
-```graphviz
-digraph {
-  rankdir=LR
-  "commit2" -> "commit1"
-  "commit3" -> "commit2"
-  "commit4" -> "commit3"
-  "commitX" -> "commit2"
-  "master" -> "commit4" [style=dashed]
-  "bugfix" -> "commitY" [style=dashed]
-  "commitY" -> "commitX"
-  master [shape=plaintext]
-  "bugfix" [shape=plaintext]
-  "HEAD" -> "bugfix" [style=dashed]
-  HEAD [shape=plaintext]
 
-}
+```mermaid
+graph LR
+
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  bugfix["bugfix"]
+  style bugfix fill:#ffffff,stroke:#ffffff
+
+  commit1(["commit1"])
+  commit2(["commit2"])
+  commit3(["commit3"])
+  commit4(["commit4"])
+  commitX(["commitX"])
+  commitY(["commitY"])
+
+  master -.-> commit4
+  commit4 --> commit3
+  commit3 --> commit2
+  head -.-> bugfix
+  bugfix -.-> commitY
+  commitY --> commitX
+  commitX --> commit2
+  commit2 --> commit1
 ```
 
 
 Rebasing 'bugfix' onto the 'master' branch
-```graphviz
-digraph {
-  rankdir=LR
-  splines="line"
-  "commit2" -> "commit1"
-  "commit3" -> "commit2"
-  "master" -> "commitY'" [style=dashed]
-  "commit4" -> "commit3"
-  "commitX'" -> "commit4"
-  "commitY'" -> "commitX'"
-  master [shape=plaintext]
-  "HEAD" -> "master" [style=dashed]
-  HEAD [shape=plaintext]
 
-}
+```mermaid
+graph LR
+
+    master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  bugfix["bugfix"]
+  style bugfix fill:#ffffff,stroke:#ffffff
+
+  commit1(["commit1"])
+  commit2(["commit2"])
+  commit3(["commit3"])
+  commit4(["commit4"])
+  commitXp(["commitX'"])
+  commitYp(["commitY'"])
+
+  head -.-> master
+  master -.-> commitYp
+  commitYp --> commitXp
+  commitXp --> commit4
+  commit4 --> commit3
+  commit3 --> commit2
+  commit2 --> commit1
 ```
 
 ---
