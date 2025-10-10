@@ -312,6 +312,7 @@ Delete 'cool-feature'
 ```mermaid
 graph LR
 
+  commit4Y(["New merge commit"])
   master["master"]
   style master fill:#ffffff,stroke:#ffffff
 
@@ -321,15 +322,15 @@ graph LR
   commitY(["commitY"])
   commit3(["commit3"])
   commit4(["commit4"])
-  commit4Y(["New merge commit"])
 
-  master -.-> commit4
+  master -.-> commit4Y
   commit4 --> commit3
-  commit4 --> commit4Y
+  commit4Y --> commit4
+  cool-feature -.-> commitY
   commit3 --> commit2
   commit2 --> commit1
   commitY --> commitX
-  commitY --> commit4Y
+  commit4Y --> commitY
   commitX --> commit1
 ```
 
@@ -364,7 +365,7 @@ graph LR
   commitY(["commitY"])
 
   master -.-> commit3
-  cool-feature -.-> commitY
+  nice-feature -.-> commitY
   commit1 --> commit2
   commit2 --> commit3
   commit3 --> commitX
@@ -388,7 +389,7 @@ graph LR
   commitY(["commitY"])
 
   master -.-> commitY
-  cool-feature -.-> commitY
+  nice-feature -.-> commitY
   commit1 --> commit2
   commit2 --> commit3
   commit3 --> commitX
