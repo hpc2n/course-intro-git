@@ -476,10 +476,6 @@ $ git commit -m "Some text"
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 30px;" -->
-
 Switch to branch "morefeatures". Modify the same file, stage the file and commit it. Then try and switch back to the "cool-features" branch: 
 
 ```shell
@@ -498,11 +494,7 @@ Now Git complains and do not allow the switch.
 ---
 
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Handling uncommitted changes
-
-<!-- .slide: style="font-size: 36px;" -->
 
 So, what can we do if there is a conflict?
 
@@ -513,13 +505,7 @@ So, what can we do if there is a conflict?
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Stashing
-
-<!-- ## Handling uncommitted changes - stashing -->
-
-<!-- .slide: style="font-size: 32px;" -->
 
 The command "stash" can be described as a **drawer** where you store uncommitted changes temporarily. 
 
@@ -529,11 +515,7 @@ The uncommitted changes that are stored in the stash **can be taken out and appl
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Stashing, example (no type-along this time)
-
-<!-- .slide: style="font-size: 32px;" -->
 
 First do a `git status` in the branch where you may have uncommitted changes: 
 
@@ -550,10 +532,6 @@ Changes to be committed:
 You can see the dirty status. 
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 32px;" -->
 
 To fix it, let us use `git stash`:
 
@@ -575,8 +553,6 @@ You can now switch branches and work on something else.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Working with stashes (repetition)
 
 You can have several stashes stored. To see them, use 
@@ -596,8 +572,6 @@ stash@{2}: WIP on morefeatures: 4922606 Some text
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Working with stashes - continued (repetition)
 
 When you have done what you needed before committing the stashed changes you can reapply a stash (select branch first), using 
@@ -616,11 +590,7 @@ $ git stash apply stash@{0}
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Discarding uncommitted changes 
-
-<!-- .slide: style="font-size: 32px;" -->
 
 If you do not want to stash your changes, but just **get rid** of them, you can use `git clean`.
 
@@ -635,11 +605,7 @@ $ git clean --dry-run
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Handling uncommitted changes - merging
-
-<!-- .slide: style="font-size: 30px;" -->
 
 - There is a checkout with merge option. Add the flag `--merge` (or `-m`): 
 ```shell
@@ -654,11 +620,7 @@ $ git checkout --merge <branch>
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Merging and merge conflicts
-
-<!-- .slide: style="font-size: 32px;" -->
 
 - Merge conflicts will happen now and then when you are working with more than one branch and try to merge them. 
 - In many cases, Git is actually able to do a merge without problems. However, merge conflicts can happen.
@@ -673,10 +635,6 @@ Cannot merge. (Changes in staging area)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 32px;" -->
-
 Git can automatically try to merge when you give the command: 
 
 ```shell
@@ -687,10 +645,7 @@ while standing on the branch you want to merge to.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Merge strategies
-<!-- .slide: style="font-size: 24px;" -->
 
 The most commonly used 
 
@@ -708,11 +663,7 @@ The most commonly used
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Merge conflicts, example
-
-<!-- .slide: style="font-size: 30px;" -->
 
 Let's create a merge conflict:
 
@@ -734,10 +685,6 @@ $ git commit -a -m "start work on a cool feature"
 ```
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-<!-- .slide: style="font-size: 30px;" -->
-
 
 We now have two branches, **master** and **feature_1**:
 
@@ -774,10 +721,6 @@ Feature 1 is a good implementation
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 30px;" -->
-
 Let's try to merge the **feature_1** branch on to the **master** branch:
     
 ```shell
@@ -790,10 +733,6 @@ Automatic merge failed; fix conflicts and then commit the result.
 The merge failed due to a conflict. In this case, the conflict arises because there are changes in the same line on both branches.
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-
-<!-- .slide: style="font-size: 28px;" -->
 
 We can get some more information with the **git status** command: 
 
@@ -827,11 +766,7 @@ Or one may try to solve the conflict..
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Resolving merge conflicts 
-
-<!-- .slide: style="font-size: 28px;" -->
 
 - The most direct way to resolve the conflict is to edit the file yourself and stage it. 
 - When this has been done, you can attempt the merge again with:
@@ -857,11 +792,7 @@ If you made a mistake when you resolved a conflict and have completed the merge 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Workflow - merge goes well
-
-<!-- .slide: style="font-size: 32px;" -->
 
 - Work on files
 - Stage files
@@ -875,11 +806,7 @@ Success!
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Workflow - merge goes badly 
-
-<!-- .slide: style="font-size: 30px;" -->
 
 - Work on files
 - Stage files
@@ -899,11 +826,7 @@ Success!
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Rebasing
-
-<!-- .slide: style="font-size: 32px;" -->
 
 - Rebasing is the process of moving or combining a sequence of commits to a new base commit. 
 - It solves the same problem as git merge. The commands are both used to integrate changes from one branch into another branch, however the way they do it is very different.
@@ -911,11 +834,7 @@ Success!
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Rebasing - illustration 
-
-<!-- .slide: style="font-size: 28px;" -->
 
 Branch 'bugfix' was branched from 'master' 
 
@@ -952,12 +871,10 @@ Rebasing 'bugfix' onto the 'master' branch
 ```mermaid
 graph LR
 
-    master["master"]
+  master["master"]
   style master fill:#ffffff,stroke:#ffffff
   head["HEAD"]
   style head fill:#ffffff,stroke:#ffffff
-  bugfix["bugfix"]
-  style bugfix fill:#ffffff,stroke:#ffffff
 
   commit1(["commit1"])
   commit2(["commit2"])
@@ -977,11 +894,7 @@ graph LR
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Rebasing - continued
-
-<!-- .slide: style="font-size: 30px;" -->
 
 Assume a master branch and the branch "cool-features" and that you want to rebase the branch "cool-features" onto the master branch: 
 
@@ -1000,11 +913,7 @@ This works by
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Cherry-picking
-
-<!-- .slide: style="font-size: 30px;" -->
 
 Basically, cherry-picking in Git means that you choose a commit from one branch that you apply to another. 
 
@@ -1022,64 +931,71 @@ $ git cherry-pick <hash>
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ### Cherry-picking — illustration
-
-<!-- .slide: style="font-size: 28px;" -->
 
 Let's assume we have:
 
-```graphviz
-digraph {
-  rankdir=LR
-  "commitY" -> "commitX"
-  "commitZ" -> "commitY"
-  "master" -> "commit3" [style=dashed]
-  "feature" -> "commitZ" [style=dashed]
-  "HEAD" -> "master" [style=dashed]
+```mermaid
+graph LR
 
-  "commit2" -> "commit1"
-  "commitX" -> "commit2"
-  "commit3" -> "commit2"
-  
-  master [shape=plaintext]
-  feature [shape=plaintext]
-  HEAD [shape=plaintext]
- 
-}
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  feature["feature"]
+  style feature fill:#ffffff,stroke:#ffffff
+
+  commit1(["commit1"])
+  commit2(["commit2"])
+  commit3(["commit3"])
+  commitX(["commitX"])
+  commitY(["commitY"])
+  commitZ(["commitZ"])
+
+  head -.-> master
+  master -.-> commit3
+  commit3 --> commit2
+  feature -.-> commitZ
+  commitZ --> commitY
+  commitY --> commitX
+  commitX --> commit2
+  commit2 --> commit1
 ```
-
     
 Applying the commit Y to master  with `git cherry-pick <hash>` will result in a new commit Y´.
 
-```graphviz
-digraph {
-  rankdir=LR
-  "commitY" -> "commitX"
-  "commitZ" -> "commitY"
-  "master" -> "commitY'" [style=dashed]
-  "feature" -> "commitZ" [style=dashed]
-  "HEAD" -> "master" [style=dashed]
+```mermaid
+graph LR
 
-  "commit2" -> "commit1"
-  "commitX" -> "commit2"
-  "commit3" -> "commit2"
-  "commitY'" -> "commit3"
-  
-  master [shape=plaintext]
-  feature [shape=plaintext]
-  HEAD [shape=plaintext]
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  feature["feature"]
+  style feature fill:#ffffff,stroke:#ffffff
 
-}
+  commit1(["commit1"])
+  commit2(["commit2"])
+  commit3(["commit3"])
+  commitX(["commitX"])
+  commitY(["commitY"])
+  commitYp(["commitY'"])
+  commitZ(["commitZ"])
+
+  head -.-> master
+  master -.-> commitYp
+  commitYp --> commit3
+  commit3 --> commit2
+  feature -.-> commitZ
+  commitZ --> commitY
+  commitY --> commitX
+  commitX --> commit2
+  commit2 --> commit1
 ```
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
 ## Take aways
-<!-- .slide: style="font-size: 24px;" -->
 
 - create or parse branch - `git branch`
 - switch branch - `git checkout` or `git switch`
