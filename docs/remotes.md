@@ -134,7 +134,6 @@ $git graph
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Working with remotes
 One can push or fetch/pull to or from remotes:
 
@@ -146,7 +145,6 @@ $ git pull  remote_name branch_name
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 In case you obtained the repository by cloning an existing one you will have the **origin** remote. You can do push/fetch/pull for this remote with
 
 ```shell
@@ -157,7 +155,6 @@ $ git pull  origin master
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 or 
 
 ```shell
@@ -170,7 +167,6 @@ because the remote *origin* and the *master* branch are configured for pushing a
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 The command: 
 ```shell
 $ git pull
@@ -183,7 +179,6 @@ brings all the changes (branches) that are in the remote and tries to merge them
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 In fact, *git pull* is a combination of two commands:
 ```shell
 $ git fetch remote_name branch_name
@@ -199,7 +194,6 @@ $ git merge
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Advanced
 The command
 ```shell
@@ -209,7 +203,6 @@ will send the changes in the current branch to the remote by default.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 
 The default behavior can be seen with:
 ```shell
@@ -222,7 +215,6 @@ git config --global push.default matching(default), current, ...
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 If you have a brand-new branch called **new**, you can push it the first time with the command:
 
 ```shell
@@ -238,13 +230,10 @@ git branch --set-upstream new origin/new
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 then, you will be able to push/pull the changes in the branch by simply typing **git push/pull**
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-<!-- .slide: style="font-size: 30px;" -->
 ### Displaying remote information
 
 ```console
@@ -271,7 +260,6 @@ $ git remote show origin
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ### Renaming remotes
 
 ```shell
@@ -287,10 +275,9 @@ $ git remote remove remote_name
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Bare repositories
 
-![](https://www.hpc2n.umu.se/sites/default/files/git-folders-bare.png)
+![Git bare repositories](../images/git-folders-bare.png)
 
 
 
@@ -298,7 +285,6 @@ A bare repository is a repository with no working directory.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ### Creating a bare repository
 
 ```shell
@@ -314,47 +300,36 @@ $ git clone --bare location
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Using GitHub
 
-![](https://i.imgur.com/kj3WDWT.jpg)
+![Using GitHub](../images/github-remote.jpg)
 
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 Upon login into your GitHub account you will see the following option to create a new repository
 
-![](https://i.imgur.com/E8lMrMi.jpg)
+![GitHub account](../images/github-account.jpg)
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-<!-- .slide: style="font-size: 28px;" -->
 
 Here, you can choose the type of repository that is appropriate to your needs (public/private), if you want to add *README* and *.gitignore* files and also the type of license for your project,
 
-![](https://i.imgur.com/un2NdHE.jpg =700x)
+![GitHub type repo](../images/github-type-repo.jpeg)
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 GitHub will suggest some steps that you can take for your brand-new repository:
 
-![](https://i.imgur.com/9egKoEv.jpg)
+![GitHub new repo](../images/github-new-repo.jpg)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-![](https://i.imgur.com/qlUQxq3.jpg)
+![GitHub create new repo](../images/github-create-repo.jpg)
 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Setting ssh-keys
 
 1. ssh-keygen -t rsa -b 4096 -C "pedro@gemail.com"
@@ -364,8 +339,6 @@ GitHub will suggest some steps that you can take for your brand-new repository:
 
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
 
 5. Go to your remote repository on github.com and then **Settings** -> **SSH and GPG keys** ->new SSH key -> write a title and paste the copied SSH key and save it
 6. check if the key was properly set on github/bitbucket 
