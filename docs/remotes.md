@@ -86,21 +86,24 @@ Protocols:
 
 Why do we need more than one remote?
 
+  
+```mermaid
+graph TD
 
-```graphviz
-digraph {
-  rankdir=TD
-  S [style=invis]
-  "Bob repo" [shape=diamond]
-  "Alice fork" [fixedsize=circle]
-  "Alice fork" -> "Alice local"
-  "Bob repo" -> "Alice fork"
-  "Alice local" -> "Bob repo" [style=dashed]
-  orig [label="origin" shape=plaintext fontcolor=red]
-  orig -> "Alice fork" [style=dashed color=red]
-  ups [label="upstream" shape=plaintext fontcolor=red]
-  ups -> "Bob repo" [style=dashed color=red]
-}
+  origin["origin"]
+  style origin fill:#ffffff,stroke:#ffffff,color:#ff0000
+  upstream["upstream"]
+  style upstream fill:#ffffff,stroke:#ffffff,color:#ff0000
+ 
+  alicef(["Alice fork"])
+  origin -.-> alicef
+
+  alicel(["Alice local"])
+  bob{["Bob repo"]}
+  alicef --> alicel
+  upstream -.-> bob
+  bob --> alicef
+  alicel -.-> bob
 ```
 
 ---
