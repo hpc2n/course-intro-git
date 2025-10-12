@@ -325,7 +325,7 @@ GitHub will suggest some steps that you can take for your brand-new repository:
 
 ---
 
-![GitHub create new repo](../images/github-create-repo.jpg)
+![GitHub create new repo](../images/github-import.jpg)
 
 
 ---
