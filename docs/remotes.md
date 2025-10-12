@@ -99,6 +99,7 @@ graph TD
   origin -.-> alicef
 
   alicel(["Alice local"])
+```
   bob{["Bob repo"]}
   alicef --> alicel
   upstream -.-> bob
