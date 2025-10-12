@@ -76,6 +76,7 @@ where the location of the remote can be an URL or the path if that is in your lo
 ---
 
 Protocols:
+
 - local ->  git clone /opt/git/project.git
 - SSH   ->  git clone ssh://user@server:project.git
 - HTTP  ->  git clone http://example.com/gitproject.git
@@ -99,8 +100,7 @@ graph TD
   origin -.-> alicef
 
   alicel(["Alice local"])
-```
-  bob{["Bob repo"]}
+  bob{"Bob repo"}
   alicef --> alicel
   upstream -.-> bob
   bob --> alicef
@@ -109,9 +109,6 @@ graph TD
 
 ---
 
-
-<!-- .slide: data-background="#ffffff" -->
-<!-- .slide: style="font-size: 28px;" -->
 
 ```java
 $ git remote add upstream git@github.com:bob/my-first-project.git
