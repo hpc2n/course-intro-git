@@ -91,18 +91,18 @@ Why do we need more than one remote?
 ```mermaid
 graph TD
 
+  bob{"Bob repo"}
   origin["origin"]
   style origin fill:#ffffff,stroke:#ffffff,color:#ff0000
   upstream["upstream"]
   style upstream fill:#ffffff,stroke:#ffffff,color:#ff0000
- 
-  bob{"Bob repo"}
+  upstream -.-> bob 
+  origin -.-> alicef
+
   alicef(["Alice fork"])
   alicel(["Alice local"])
   
-  upstream -.-> bob
   bob --> alicef
-  origin -.-> alicef
 
   alicef --> alicel
   alicel -.-> bob
