@@ -96,14 +96,15 @@ graph TD
   upstream["upstream"]
   style upstream fill:#ffffff,stroke:#ffffff,color:#ff0000
  
-  alicef(["Alice fork"])
-  origin -.-> alicef
-
-  alicel(["Alice local"])
   bob{"Bob repo"}
-  alicef --> alicel
+  alicef(["Alice fork"])
+  alicel(["Alice local"])
+  
   upstream -.-> bob
   bob --> alicef
+  origin -.-> alicef
+
+  alicef --> alicel
   alicel -.-> bob
 ```
 
@@ -122,9 +123,6 @@ upstream	git@github.com:bobuser2020/my-first-project.git (push)
 
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-<!-- .slide: style="font-size: 30px;" -->
 
 ```java
 $git graph
