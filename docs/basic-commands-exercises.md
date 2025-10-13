@@ -48,7 +48,7 @@ Tasks:
    stage the changes and commit them. Now, we have the last four commits refering to the same topic (same poem). 
    The goal of this part of the exercise is to summarize those four commits into a single one.
 
-   hint: ``git rebase -i HEAD~4``
+   hint: ``git rebase -i HEAD~4``<br>
 5. End of exercise
 
 ## git diff usage 
