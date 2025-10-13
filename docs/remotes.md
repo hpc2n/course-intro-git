@@ -386,9 +386,12 @@ A better approach is to *fork* Bob's repository:
 graph LR
   bob["Bob's repo (upstream)"] 
   alicef(["Alice's repo (origin)"])
-  alicel(["Alice local copy (PC/laptop)"]) color=darkgreen fontcolor=darkgreen]
-  "Alice fork" -> "Alice local" [label="cloning"]
-  "Alice local" -> "Alice fork" [label="can commit"]
+  alicel(["Alice local copy (PC/laptop)"]) 
+  style alicel fill:#ffffff,stroke:#39742b,color:#39742b
+
+  alicef --> |cloning| alicel
+  alicel --> |can commit| alicef
+```
   "Alice local" -> "Bob repo" [label="cannot commit" fontcolor=red color=red style=dashed]
   "Bob repo" -> "Alice fork" [label="forking"]
   "Alice local" -> "Bob repo" [label="can request pulls" fontcolor=blue color=blue style=dashed]
