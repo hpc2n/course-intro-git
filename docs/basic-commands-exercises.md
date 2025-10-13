@@ -33,7 +33,7 @@ Tasks:
    Y el curioso color del colorado.
    ```      
 3. Create a folder called "FirstPoem" and move the Poem.md file to this new folder (use git mv). 
-   Check the status to confirm that the file was moved. Commit the changes. 
+   Check the status to confirm that the file was moved. Commit the changes.<br> 
 4. (Challenge task) Add the next paragraph of the poem:
    <pre><code>
    Esta lluvia que ciega los cristales
