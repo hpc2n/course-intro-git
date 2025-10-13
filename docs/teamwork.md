@@ -74,17 +74,17 @@ Before pushing:
 
 ```mermaid
 graph LR
-  A((" "))
+  A(("Anode"))
   style A fill:#ffffff,stroke:#000000,color:#ffffff
   origin["origin/main"]
   style origin fill:#add8e6,stroke:#000000,color:#000000
-  B((" "))
+  B(("Bnode"))
   style B fill:#ffffff,stroke:#000000,color:#ffffff
-  C((" "))
+  C(("Cnode"))
   style C fill:#ffffff,stroke:#000000,color:#ffffff
   main["main"]
   style main fill:#add8e6,stroke:#000000,color:#000000
-  D((" "))
+  D(("Dnode"))
   style D fill:#305cde,stroke:#000000,color:#305cde
   A --- B
   origin -.-> B
@@ -97,17 +97,17 @@ After pushing:
 
 ```mermaid 
 graph LR
-  A((" "))
+  A(("Anode"))
   style A fill:#ffffff,stroke:#000000,color:#ffffff
   origin["origin/main"]
   style origin fill:#add8e6,stroke:#000000,color:#000000
-  B((" "))
+  B(("Bnode"))
   style B fill:#ffffff,stroke:#000000,color:#ffffff
-  C((" "))
+  C(("Cnode"))
   style C fill:#ffffff,stroke:#000000,color:#ffffff
   main["main"]
   style main fill:#add8e6,stroke:#000000,color:#000000
-  D((" "))
+  D(("Dnode"))
   style D fill:#305cde,stroke:#000000,color:#305cde
   A --- B
   origin -.-> D
