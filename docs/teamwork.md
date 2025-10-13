@@ -436,10 +436,6 @@ I have a bunch of branches (created previously by me and another user, for testi
 
 ---
 
-<!-- .slide: style="font-size: 30px;" -->
-
-## Example - continued
-
 Switch to the branch we are merging to (main)
 
 ```shell
@@ -459,10 +455,6 @@ Merge made by the 'recursive' strategy.
 ```
 
 ---
-
-<!-- .slide: style="font-size: 27px;" -->
-
-## Example - continued
 
 Let us do a status check
 
@@ -505,8 +497,6 @@ nothing to commit, working tree clean
 
 ## First exercise - GitHub (if not setup already)
 
-<!-- .slide: style="font-size: 24px;" -->
-
 1. Create a repository (click on the + at the top right of the menu or picking "Start a new repository" on your "home screen")
 2. Under "Quick setup", pick "creating a new file". 
 3. Name the file "README.md" (at the top, over the file editor). 
@@ -523,30 +513,24 @@ nothing to commit, working tree clean
 
 ## Second exercise, SSH keys (if you have not set up already)
 
-<!-- .slide: style="font-size: 26px;" -->
-
 In this exercise you create SSH keys and upload to GitHub. Then test that it works. 
 
 **Create a new SSH key**
 
 1. Open a terminal (Git Bash on Windows). In the command below, "GitHub" is a label added to the key for clarity. You can add any you want: 
-    a. Do this
-    ```
-    $ ssh-keygen -t ed25519 -C "GitHub"
-    ```
-    b. If you have an older system, this may work better
-    ```
-    $ ssh-keygen -t rsa -b 4096 -C "GitHub"
-    ```
+    - a. Do this
+      ```
+      $ ssh-keygen -t ed25519 -C "GitHub"
+      ```
+    - b. If you have an older system, this may work better
+      ```
+      $ ssh-keygen -t rsa -b 4096 -C "GitHub"
+      ```
     
 2. You will be asked for a file to save the key. Unless you have an existing SSH key, accept the default.
 3. Enter a passphrase and repeat it.
 
 ---
-
-## Second exercise (cont.), SSH keys (if you have not set up already)
-
-<!-- .slide: style="font-size: 26px;" -->
 
 4. Add the key to the ssh-agent. Here we assume the default name: 
 ```
