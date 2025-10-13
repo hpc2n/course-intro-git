@@ -75,12 +75,15 @@ Before pushing:
 ```mermaid
 graph LR
   A((" "))
+  style A fill:#ffffff,stroke:#000000,color:#ffffff
   origin["origin/main"]
-  style origin fill:#ffffff,stroke:#000000,color:#add8e6
+  style origin fill:#add8e6,stroke:#000000,color:#000000
   B((" "))
+  style B fill:#ffffff,stroke:#000000,color:#ffffff
   C((" "))
+  style C fill:#ffffff,stroke:#000000,color:#ffffff
   main["main"]
-  style main fill:#ffffff,stroke:#000000,color:#add8e6
+  style main fill:#add8e6,stroke:#000000,color:#000000
   D((" "))
   style D fill:#305cde,stroke:#000000,color:#305cde
   A --- B
@@ -91,23 +94,26 @@ graph LR
 ```
 
 After pushing: 
-```graphviz
-digraph {
-  rankdir=LR
-  node [shape=circle width=0.5 fixedsize=shape]
-  edge [arrowhead=none][shape=none]
-  "a" -> "b" 
-  a [fixedsize=true label=" "]
-  "b" -> "c"
-  b [fixedsize=true label=" "]
-  "c" -> "d"
-  c [fixedsize=true label=" "]
-  d [fixedsize=true label=" " style=filled fillcolor=blue]
-  "main" -> "d" [style=dashed arrowhead=normal] 
-  "origin/main" -> "d" [style=dashed arrowhead=normal]
-  main [shape=box width=0.8  style=filled fillcolor=lightblue]
-  "origin/main" [shape=box width=1.2 style=filled fillcolor=lightblue]
-}
+
+```mermaid 
+graph LR
+  A((" "))
+  style A fill:#ffffff,stroke:#000000,color:#ffffff
+  origin["origin/main"]
+  style origin fill:#add8e6,stroke:#000000,color:#000000
+  B((" "))
+  style B fill:#ffffff,stroke:#000000,color:#ffffff
+  C((" "))
+  style C fill:#ffffff,stroke:#000000,color:#ffffff
+  main["main"]
+  style main fill:#add8e6,stroke:#000000,color:#000000
+  D((" "))
+  style D fill:#305cde,stroke:#000000,color:#305cde
+  A --- B
+  origin -.-> D
+  B --- C
+  C --- D
+  main -.-> D
 ```
 
 ---
