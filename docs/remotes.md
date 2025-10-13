@@ -395,16 +395,17 @@ graph LR
   alicel -.- n1["cannot commit"]
   n1 -.-> bob
 
+  alicel -.- n2["can request pulls"]
+  n2 -.-> bob 
+
   n1@{ shape: text}
   n2@{ shape: text}
   style n1 color:#D50000
-  linkStyle 2 stroke:#D50000,fill:none
-```
-linkStyle 3 stroke:#D50000,fill:none
-```
-"Alice local" -> "Bob repo" [label="cannot commit" fontcolor=red color=red style=dashed]
-  "Bob repo" -> "Alice fork" [label="forking"]
-  "Alice local" -> "Bob repo" [label="can request pulls" fontcolor=blue color=blue style=dashed]
+  linkStyle 3 stroke:#D50000,fill:none
+  linkStyle 4 stroke:#D50000,fill:none
+  style n2 color:#4169E1
+  linkstyle 5 stroke:#4169E1,fill none
+  linkstyle 6 stroke:#4169E1,fill none
 ```
 In this way, Alice can push changes to her repository and eventually make Bob aware of them as well.
 
