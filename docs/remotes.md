@@ -410,80 +410,79 @@ In this way, Alice can push changes to her repository and eventually make Bob aw
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Forking a repository
+
 To fork a repository, Alice go to the URL of the target repository and use the option *Fork* in Bob's repository: 
-![forking](https://hackmd.io/_uploads/HJiZrUNm1l.jpg)
+
+![forking](../images/git-fork.jpg)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Forking a repository
+
 Then, Alice will see the forked repository on her user space:
-![forked](https://hackmd.io/_uploads/ry85IUVXyl.jpg)
+
+![forked](../images/alice-fork.jpg)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 After doing some changes, Alice push them to her forked repository but she wants Bob become aware of them (1 commit in this case, click on this commit)
-![pr1](https://hackmd.io/_uploads/S1c02UEXJe.png)
+
+![push repo](../images/alice-commit.png)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Pull request
+
 A **pull request** will be suggested: 
-![pr2](https://hackmd.io/_uploads/HJeBTLEQke.png)
+
+![pull request](../images/pull-request.png)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 You can then create a the PR:
-![pr3](https://hackmd.io/_uploads/rkhj6IEm1l.png)
+
+![Create a pull request](../images/create-pr.png)
 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 Another way to create PR is with "Pull request" option:
-![](https://i.imgur.com/9SGeaEk.jpg)
+
+![Another way to create a pull request](../images/also-pr.jpg)
 
 ---
-
-<!-- .slide: data-background="#ffffff" -->
-<!-- .slide: style="font-size: 30px;" -->
 
 Then, Bob receives an email with the pull request information about Alice modifications. On the GitHub site he sees the request:
-![](https://i.imgur.com/JZ73bMu.jpg =700x)
+
+![Get pull request](../images/get-pr.jpg)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 Because Bob find the changes from Alice useful and there are no conflicts he can merge them, 
-![](https://i.imgur.com/5yiTuCC.jpg)
+
+![Pull request is OK - merge](../images/pr-ok.jpg)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Issues
+
 If you find some issues in the files/code you can open an "Issue" on GitHub
-![](https://i.imgur.com/mJ9NfvF.jpg)
+
+![GitHub issue](../images/GH-issue.jpg)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-![](https://i.imgur.com/1M4f1Nr.jpg)
+![GitHub issue - continued](../images/GH-issue-cont.jpg)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 You may also assign people to the issues that are more related to that topic. 
 
 In future commits you may refer to this issue by using the issue number, <span style="color:blue">#2</span> in this case. This will allow you to track the evolution of the issue on GitHub.
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Best practices
 
 - Communicate with your colleagues.
