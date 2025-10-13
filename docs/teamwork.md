@@ -4,34 +4,27 @@ tags: Lecture, Birgitte, Day 5
 description: "Teamwork. Will be done on GitHub"
 ---
 
-Introduction to Git --- Fall 2024
 # Lecture 7: Teamwork
-
-<!-- .slide: data-background="#ffffff" -->
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. Several changes done to the material in 2021 and 2022, mainly due to GitHub no longer allowing for password authentication. Minor changes and updates done for the 2023 and 2024 version. -->
 
-![TOC](https://www.hpc2n.umu.se/sites/default/files/umu-logo-left-se.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/hpc2n-logo-text5.png =200x)  ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/Uppsala_Universitet-logo-2E2D20E6B3-seeklogo.com.png =100x) ![](https://www.hpc2n.umu.se/sites/default/files/conferences-courses/2023/naiss-narrow.jpg =200x)
-
-<small>Slides: https://hackmd.io/@git-fall-2024/L7-teamwork</small>
+<!-- Slides: https://hackmd.io/@git-fall-2024/L7-teamwork -->
 
 ---
 
 ## Teamwork
 
-<!-- .slide: style="font-size: 30px;" -->
-
 Git is very useful for teamwork. 
 You will often have three types of branches for a project/specific release:
 
 * main (or master) branch
-  - exist for the entire project
+    - exist for the entire project
 * development/staging branch
-  - developing, preparing new releases 
-  - exists for the entire release of the project, then merged to main (master)
+    - developing, preparing new releases 
+    - exists for the entire release of the project, then merged to main (master)
 * feature branch(es) 
-  - created just for the feature development
-  - later merged to development/staging branch
+    - created just for the feature development
+    - later merged to development/staging branch
 
 
 NOTE: GitHub previously used "master", but is now using "main" as the name for the first/default branch in a repo. This can be changed under the repo's settings. 
@@ -39,8 +32,6 @@ NOTE: GitHub previously used "master", but is now using "main" as the name for t
 ---
 
 ## Teamwork
-
-<!-- .slide: style="font-size: 30px;" -->
 
 * In this session you will be working in small groups of 2-4 people. 
 * Each group will go to a Zoom break-out room and work together there. 
