@@ -373,11 +373,17 @@ graph LR
 ```
 
 ```mermaid
-graph LR
-  bob["Bob repo"]
-  alice(["Alice cloned"])
-  bob --cloning--> alice
-  alice -.cannot commit.-> bob
+flowchart LR
+    bob["Bob repo"] --- n1["cloning"]
+    n1 --> alice(["Alice cloned"])
+    alice -.- n2["cannot commit"]
+    n2 -.-> bob
+
+    n1@{ shape: text}
+    n2@{ shape: text}
+    style n2 color:#D50000
+    linkStyle 2 stroke:#D50000,fill:none
+    linkStyle 3 stroke:#D50000,fill:none
 ```
 
 
