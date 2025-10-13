@@ -373,6 +373,24 @@ graph LR
   alice -.cannot commit.-> bob
 ```
 
+```mermaid
+%%{init: {'themeVariables': { 'edgeLabelBackground': 'transparent'}}}%%
+graph TD
+    A([Start]):::start_node ==> B(Step 1)
+    B:::active_node ==> C{Flow}:::active_node
+    C:::active_node -- Choice 1.1 --> D[Step 2.1]
+    C == Choice 1.2 ==> E[Step 2.2]:::active_node
+    D --> F{Flow 2}:::active_node
+    E ==> F{Flow 2}
+    F{Flow 2} == Choice 2.1 ==> H(Feedback node):::active_node
+    H(Feedback node) ==> B(Step 1)
+    F{Flow 2} == Choice 2.2 ==> G((Finish)):::finish_node
+    
+    classDef start_node fill:#00a000,stroke:#333,stroke-width:7px
+    classDef active_node fill:#FFAE42,stroke:#333,stroke-width:3px
+    classDef finish_node fill:#0EBFE9,stroke:#333,stroke-width:7px
+```
+
 ---
 
 <!-- .slide: data-background="#ffffff" -->
