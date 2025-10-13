@@ -198,32 +198,43 @@ graph LR
   a --- b
   f --- g
   b --- c
-  origin -.-> c 
+  main -.-> c 
 ```
 
 Now we do a `git pull`:
-```graphviz
-digraph {
-  rankdir=LR
-  node [shape=circle width=0.5 fixedsize=shape]
-  edge [arrowhead=none][shape=none]
-  "d" -> "e"
-  "e" -> "a" 
-  "e" -> "f"
-  a [fixedsize=true label="a"]
-  "a" -> "b"
-  "b" -> "c"
-  b [fixedsize=true label="b"]
-  c [fixedsize=true label="c"]
-  d [fixedsize=true label="d"]
-  "f" -> "g"
-  "c" -> "h"
-  "g" -> "h"
-  "main" -> "c" [style=dashed arrowhead=normal] 
-  "origin/main" -> "c" [style=dashed arrowhead=normal]
-  main [shape=box width=0.8  style=filled fillcolor=lightblue]
-  "origin/main" [shape=box width=1.2 style=filled fillcolor=lightblue]
-}
+
+```mermaid
+graph LR
+  d(("d"))
+  style d fill:#ffffff,stroke:#000000,color:#ffffff
+  e(("e"))
+  style e fill:#ffffff,stroke:#000000,color:#ffffff
+  origin["origin/main"]
+  style origin fill:#add8e6,stroke:#000000,color:#000000
+  d --- e
+  a(("a"))
+  style a fill:#ffffff,stroke:#000000,color:#ffffff
+  f(("f"))
+  style f fill:#ffffff,stroke:#000000,color:#ffffff
+  e --- a
+  e --- f
+  b(("b"))
+  style b fill:#ffffff,stroke:#000000,color:#ffffff
+  g(("g"))
+  style g fill:#ffffff,stroke:#000000,color:#ffffff
+  main["main"]
+  style main fill:#add8e6,stroke:#000000,color:#000000
+  c(("c"))
+  style c fill:#ffffff,stroke:#000000,color:#ffffff
+  h(("h"))
+  style h fill:#ffffff,stroke:#000000,color:#ffffff
+  a --- b
+  f --- g
+  b --- c
+  origin -.-> c
+  main -.-> c
+  c --- h
+  g --- h
 ```
 
 ---
