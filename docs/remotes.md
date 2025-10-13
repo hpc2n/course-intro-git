@@ -380,21 +380,18 @@ graph LR
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 A better approach is to *fork* Bob's repository: 
-```graphviz
-digraph {
-  rankdir=LR
-  S [style=invis]
-  "Bob repo" [label="Bob's repo (upstream)" shape=rectangle]
-  "Alice fork" [label="Alice's repo (origin)" fixedsize=circle]
-  "Alice local" [label="Alice local copy (PC/laptop)" color=darkgreen fontcolor=darkgreen]
+
+```mermaid
+graph LR
+  bob["Bob's repo (upstream)"] 
+  alicef(["Alice's repo (origin)"])
+  alicel(["Alice local copy (PC/laptop)"]) color=darkgreen fontcolor=darkgreen]
   "Alice fork" -> "Alice local" [label="cloning"]
   "Alice local" -> "Alice fork" [label="can commit"]
   "Alice local" -> "Bob repo" [label="cannot commit" fontcolor=red color=red style=dashed]
   "Bob repo" -> "Alice fork" [label="forking"]
   "Alice local" -> "Bob repo" [label="can request pulls" fontcolor=blue color=blue style=dashed]
-}
 ```
 In this way, Alice can push changes to her repository and eventually make Bob aware of them as well.
 
