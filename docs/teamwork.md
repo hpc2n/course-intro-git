@@ -76,13 +76,13 @@ Before pushing:
 graph LR
   A((" "))
   origin["origin/main"]
-  style origin fill:#ffffff,stroke:#ffffff,color:#add8e6
+  style origin fill:#ffffff,stroke:#000000,color:#add8e6
   B((" "))
   C((" "))
   main["main"]
-  style main fill:#ffffff,stroke:#ffffff,color:#add8e6
+  style main fill:#ffffff,stroke:#000000,color:#add8e6
   D((" "))
-  style D fill:#305cde,stroke:#ffffff,color:#305cde
+  style D fill:#305cde,stroke:#000000,color:#305cde
   A --- B
   origin -.-> B
   B --- C 
