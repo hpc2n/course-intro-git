@@ -366,14 +366,6 @@ In the following scenario, a developer, Bob, has its repo on GitHub. Another dev
 
 ```mermaid
 graph LR
-  bob["Bob repo"]
-  alice(["Alice cloned"])
-  bob --cloning--> alice
-  alice -.cannot commit.-> bob
-```
-
-```mermaid
-flowchart LR
     bob["Bob repo"] --- n1["cloning"]
     n1 --> alice(["Alice cloned"])
     alice -.- n2["cannot commit"]
@@ -384,25 +376,6 @@ flowchart LR
     style n2 color:#D50000
     linkStyle 2 stroke:#D50000,fill:none
     linkStyle 3 stroke:#D50000,fill:none
-```
-
-
-```mermaid
-%%{init: {'themeVariables': { 'edgeLabelBackground': 'transparent'}}}%%
-graph TD
-    A([Start]):::start_node ==> B(Step 1)
-    B:::active_node ==> C{Flow}:::active_node
-    C:::active_node -- Choice 1.1 --> D[Step 2.1]
-    C == Choice 1.2 ==> E[Step 2.2]:::active_node
-    D --> F{Flow 2}:::active_node
-    E ==> F{Flow 2}
-    F{Flow 2} == Choice 2.1 ==> H(Feedback node):::active_node
-    H(Feedback node) ==> B(Step 1)
-    F{Flow 2} == Choice 2.2 ==> G((Finish)):::finish_node
-    
-    classDef start_node fill:#00a000,stroke:#333,stroke-width:7px
-    classDef active_node fill:#FFAE42,stroke:#333,stroke-width:3px
-    classDef finish_node fill:#0EBFE9,stroke:#333,stroke-width:7px
 ```
 
 ---
