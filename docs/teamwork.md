@@ -31,8 +31,6 @@ NOTE: GitHub previously used "master", but is now using "main" as the name for t
 
 ---
 
-## Teamwork
-
 * In this session you will be working in small groups of 2-4 people. 
 * Each group will go to a Zoom break-out room and work together there. 
 * You will be using GitHub for the remote repository. 
@@ -529,9 +527,6 @@ In this exercise you create SSH keys and upload to GitHub. Then test that it wor
     
 2. You will be asked for a file to save the key. Unless you have an existing SSH key, accept the default.
 3. Enter a passphrase and repeat it.
-
----
-
 4. Add the key to the ssh-agent. Here we assume the default name: 
 ```
 $ eval "$(ssh-agent -s)"
@@ -542,21 +537,17 @@ $ ssh-add ~/.ssh/id_rsa
 
 ---
 
-<!-- .slide: style="font-size: 28px;" -->
-
 **Adding the SSH key to GitHub**
 
 1. On GitHub, click your avatar in the top right corner and pick "Settings".
 2. Choose "SSH and GPG keys"
 3. Click "Add new SSH key"
 4. Add a descriptive label for the key in the "Title" field. In the key field you paste the content of the key (~/.ssh/id_rsa.pub)
-![](https://i.imgur.com/DzOFZTd.png =500x)
+![Add new SSH key to GithHub](../images/key-add-new.png)
 5. Click "Add SSH key"
 6. Confirm your GitHub password if you are prompted for it. 
 
 ---
-
-<!-- .slide: style="font-size: 28px;" -->
 
 **Testing the SSH keys**
 
@@ -577,8 +568,6 @@ Hi bbrydsoe! You've successfully authenticated, but GitHub does not provide shel
 ---
 
 ## Third exercise, clone, push, pull
-
-<!-- .slide: style="font-size: 28px;" -->
 
 We now have SSH keys set up. Time to test it from your own machine: 
 
