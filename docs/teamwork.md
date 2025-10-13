@@ -45,20 +45,16 @@ NOTE: GitHub previously used "master", but is now using "main" as the name for t
 
 ## Concepts and commands
 
-<!-- .slide: style="font-size: 28px;" -->
-
 In these exercises we will use only a few commands. These have all been mentioned before in this course, but as a refresher I will briefly discuss a couple commands here, namely: 
 
 - `git fetch`: This is a primary command used to download contents from a remote repository. 
-  - example: your teammate has created a new feature branch which they have pushed to the remote repository, but which you do not yet have in your local repository
+    - example: your teammate has created a new feature branch which they have pushed to the remote repository, but which you do not yet have in your local repository
 - `git push`: This is essentially the same as running `git merge main` from inside the remote repository. It is mostly used to upload local changes to a remote repository. 
 - `git pull`: This will fetch the latest changes from the current branch from a remote, then apply the changes to your local copy of the branch. It is similar to doing a fetch and a merge.
 
 ---
 
 ## Git push
-
-<!-- .slide: style="font-size: 30px;" -->
 
 ```shell
 $ git push  <remote-repo> <branch> 
@@ -74,26 +70,24 @@ where the default behaviour is pushing to repository "origin" and the same branc
 
 ---
 
-<!-- .slide: style="font-size: 30px;" -->
-
 Before pushing: 
-```graphviz
-digraph {
-  rankdir=LR
-  node [shape=circle width=0.5 fixedsize=shape]
-  edge [arrowhead=none][shape=none]
-  "a" -> "b"
-  a [fixedsize=true label=" "]
-  "b" -> "c"
-  b [fixedsize=true label=" "]
-  "c" -> "d"
-  c [fixedsize=true label=" "]
-  d [fixedsize=true label=" " style=filled fillcolor=blue]
-  "main" -> "d" [style=dashed arrowhead=normal] 
-  "origin/main" -> "b" [style=dashed arrowhead=normal]
-  main [shape=box width=0.8  style=filled fillcolor=lightblue]
-  "origin/main" [shape=box width=1.2 style=filled fillcolor=lightblue]
-}
+
+```mermaid
+graph LR
+  A((" "))
+  origin["origin/main"]
+  style origin fill:#ffffff,stroke:#ffffff,color:#add8e6
+  B((" "))
+  C((" "))
+  main["main"]
+  style main fill:#ffffff,stroke:#ffffff,color:#add8e6
+  D((" "))
+  style D fill:#305cde,stroke:#ffffff,color:#305cde
+  A --- B
+  origin -.-> B
+  B --- C 
+  C --- D 
+  main -.-> D 
 ```
 
 After pushing: 
