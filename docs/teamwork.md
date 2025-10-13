@@ -174,27 +174,27 @@ Assume this situation:
 ```mermaid
 graph LR
   d(("d"))
-  style d fill:#ffffff,stroke:#000000,color:#ffffff
+  style d fill:#ffffff,stroke:#000000,color:#000000
   e(("e"))
-  style e fill:#ffffff,stroke:#000000,color:#ffffff
+  style e fill:#ffffff,stroke:#000000,color:#000000
   origin["origin/main"]
   style origin fill:#add8e6,stroke:#000000,color:#000000
   d --- e 
   origin -.-> e
   a(("a"))
-  style a fill:#ffffff,stroke:#000000,color:#ffffff
+  style a fill:#ffffff,stroke:#000000,color:#000000
   f(("f"))
-  style f fill:#ffffff,stroke:#000000,color:#ffffff
+  style f fill:#ffffff,stroke:#000000,color:#000000
   e --- a
   e --- f 
   b(("b"))
-  style b fill:#ffffff,stroke:#000000,color:#ffffff
+  style b fill:#ffffff,stroke:#000000,color:#000000
   g(("g"))
-  style g fill:#ffffff,stroke:#000000,color:#ffffff
+  style g fill:#ffffff,stroke:#000000,color:#000000
   main["main"]
   style main fill:#add8e6,stroke:#000000,color:#000000
   c(("c"))
-  style c fill:#ffffff,stroke:#000000,color:#ffffff
+  style c fill:#ffffff,stroke:#000000,color:#000000
   a --- b
   f --- g
   b --- c
@@ -206,28 +206,28 @@ Now we do a `git pull`:
 ```mermaid
 graph LR
   d(("d"))
-  style d fill:#ffffff,stroke:#000000,color:#ffffff
+  style d fill:#ffffff,stroke:#000000,color:#000000
   e(("e"))
-  style e fill:#ffffff,stroke:#000000,color:#ffffff
+  style e fill:#ffffff,stroke:#000000,color:#000000
   origin["origin/main"]
-  style origin fill:#add8e6,stroke:#000000,color:#000000
+  style origin fill:#add8e6,stroke:#000000,color:000000
   d --- e
   a(("a"))
-  style a fill:#ffffff,stroke:#000000,color:#ffffff
+  style a fill:#ffffff,stroke:#000000,color:#000000
   f(("f"))
-  style f fill:#ffffff,stroke:#000000,color:#ffffff
+  style f fill:#ffffff,stroke:#000000,color:#000000
   e --- a
   e --- f
   b(("b"))
-  style b fill:#ffffff,stroke:#000000,color:#ffffff
+  style b fill:#ffffff,stroke:#000000,color:#000000
   g(("g"))
-  style g fill:#ffffff,stroke:#000000,color:#ffffff
+  style g fill:#ffffff,stroke:#000000,color:#000000
   main["main"]
   style main fill:#add8e6,stroke:#000000,color:#000000
   c(("c"))
-  style c fill:#ffffff,stroke:#000000,color:#ffffff
+  style c fill:#ffffff,stroke:#000000,color:#000000
   h(("h"))
-  style h fill:#ffffff,stroke:#000000,color:#ffffff
+  style h fill:#ffffff,stroke:#000000,color:#000000
   a --- b
   f --- g
   b --- c
