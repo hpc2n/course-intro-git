@@ -12,7 +12,7 @@ Tasks:
       - commit the changes
       - create a second file "Poem.md" without any text (hint: use touch command), stage and commit it
 2. Copy and paste the two paragraphs below of the poem *la lluvia* by Jorge Luis Borges into the Poem.md file:
-Tasks:
+   Tasks:
       - stage the first paragraph only
       - confirm that the file has been partially staged by checking the status. 
       - check if the staged changes correspond to just the first paragraph by looking at the differences between: 
@@ -33,7 +33,7 @@ Tasks:
    Y el curioso color del colorado.
    ```      
 3. Create a folder called "FirstPoem" and move the Poem.md file to this new folder (use git mv). 
-Check the status to confirm that the file was moved. Commit the changes. 
+   Check the status to confirm that the file was moved. Commit the changes. 
 4. (Challenge task) Add the next paragraph of the poem:
    <pre><code>
    Esta lluvia que ciega los cristales
