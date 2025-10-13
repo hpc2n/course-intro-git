@@ -365,13 +365,21 @@ $ ssh -T git@github.com
 In the following scenario, a developer, Bob, has its repo on GitHub. Another developer, Alice, finds it useful. Alice can clone it but she cannot push changes unless Bob allows it:
 
 ```mermaid
-%%{init: {'themeVariables': { 'edgeLabelBackground': 'transparent'}}}%%
 graph LR
   bob["Bob repo"]
   alice(["Alice cloned"])
   bob --cloning--> alice
   alice -.cannot commit.-> bob
 ```
+
+```mermaid
+graph LR
+  bob["Bob repo"]
+  alice(["Alice cloned"])
+  bob --cloning--> alice
+  alice -.cannot commit.-> bob
+```
+
 
 ```mermaid
 %%{init: {'themeVariables': { 'edgeLabelBackground': 'transparent'}}}%%
