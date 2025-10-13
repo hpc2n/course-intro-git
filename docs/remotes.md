@@ -351,31 +351,26 @@ $ ssh -T git@github.com
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
-
-![](https://i.imgur.com/j1PivRS.jpg)
+![Github SSH keys](../images/git-ssh.jpg)
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Network visualization
-![](https://i.imgur.com/q9f0ZFH.jpg)
+![Git network visualization](../images/git-network.jpg)
 
 
 ---
 
-<!-- .slide: data-background="#ffffff" -->
 ## Working with other's repos
 In the following scenario, a developer, Bob, has its repo on GitHub. Another developer, Alice, finds it useful. Alice can clone it but she cannot push changes unless Bob allows it:
-```graphviz
-digraph {
-  rankdir=LR
-  S [style=invis]
-  "Bob repo" [shape=rectangle]
-  "Alice cloned" [fixedsize=circle]
-  "Bob repo" -> "Alice cloned" [label="cloning"]
-  "Alice cloned" -> "Bob repo" [label="cannot commit" fontcolor=red style=dashed color=red]
-}
+
+```mermaid
+%%{init: {'themeVariables': { 'edgeLabelBackground': 'transparent'}}}%%
+graph LR
+  bob["Bob repo"]
+  alice(["Alice cloned"])
+  bob --cloning--> alice
+  alice -.cannot commit.-> bob
 ```
 
 ---
