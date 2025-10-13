@@ -399,7 +399,8 @@ graph LR
   n2@{ shape: text}
   style n1 color:#D50000
   linkStyle 2 stroke:#D50000,fill:none
-  linkStyle 3 stroke:#D50000,fill:none
+```
+linkStyle 3 stroke:#D50000,fill:none
 ```
 "Alice local" -> "Bob repo" [label="cannot commit" fontcolor=red color=red style=dashed]
   "Bob repo" -> "Alice fork" [label="forking"]
