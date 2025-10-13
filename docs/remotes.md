@@ -455,7 +455,7 @@ Another way to create PR is with "Pull request" option:
 
 Then, Bob receives an email with the pull request information about Alice modifications. On the GitHub site he sees the request:
 
-![Get pull request](../images/get-pr.jpg)
+![Get pull request](../images/get-pr.jpeg)
 
 ---
 
