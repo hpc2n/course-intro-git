@@ -37,7 +37,7 @@
         - <a href="https://docs.hpc2n.umu.se/tutorials/linuxguide/" target="_blank">Linux tutorial and "cheat sheet"</a>
         - <a href="https://github.com/hpc2n/intro-linux" target="_blank">HPC2N's Linux intro course material (including link to recordings)</a> 
 - Basic knowledge of using a text editor of your choice on your system.
-        - Information about Linux editors here: https://docs.hpc2n.umu.se/tutorials/linuxguide/#editors 
+    - Information about Linux editors here: <a href="https://docs.hpc2n.umu.se/tutorials/linuxguide/#editors" target="_blank">https://docs.hpc2n.umu.se/tutorials/linuxguide/#editors</a>
 - A <a href="https://github.com/" target="_blank">GitHub user account</a> (free - can be created for the course).
 - A reasonably recent version of Git installed on your system. See <a href="https://git-scm.com/" target="_blank">the Git homepage</a>.
 

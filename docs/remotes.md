@@ -403,6 +403,7 @@ graph LR
   style n2 color:#4169E1
   linkStyle 3 stroke:#D50000,fill:none
   linkStyle 4 stroke:#D50000,fill:none
+```
   linkstyle 5 stroke:#4169E1,fill:none
   linkstyle 6 stroke:#4169E1,fill:none
 ```

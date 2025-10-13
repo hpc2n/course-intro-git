@@ -1,8 +1,8 @@
-# Materials for the participants of the course "Introduction to Git" (November 2024) 
+# Materials for the participants of the course "Introduction to Git" (3-7 November 2025) 
 
 This repository contains the material for the exercises for the participants of the course "Introduction to Git" as well as copies of the lectures. 
 
-**NOTE** Ignore the subdirectory **docs** for now, as well as the file **mkdocs.yml** - the course is in the process of being moved to GitHub pages instead of HackMD. 
+**NOTE** Ignore the subdirectory **docs**, as well as the file **mkdocs.yml** - the course has been moved to these GitHub pages instead of HackMD. 
 
 ## Exercises
 
@@ -24,13 +24,17 @@ Then cd to the folder that is created. The exercises will be found under each su
 
 ## Lectures 
 
-The lectures are in the folder 'Lectures'.  
+The current lectures are found as rendered pages on: https://hpc2n.github.io/course-intro-git/
 
-You can also find the lectures, probably in a nicer format, on the HackMD page for this course: [https://hackmd.io/@git-fall-2024](https://hackmd.io/@git-fall-2024)
+**Older version (2024)**
+
+The 2024 lectures are in the folder 'Lectures'.  
+
+You can also find the 2024 lectures, probably in a nicer format, on the HackMD page for this course: [https://hackmd.io/@git-fall-2024](https://hackmd.io/@git-fall-2024)
 Note that there may be minor updates which are only on the HackMD pages. 
 
 ## Other materials 
 
-The course website, which also has the course schedule, can be found here: [https://www.hpc2n.umu.se/events/courses/2024/fall/git](https://www.hpc2n.umu.se/events/courses/2024/fall/git)
+The course website, which also has the course schedule, can be found here: [https://www.hpc2n.umu.se/events/courses/2025/git](https://www.hpc2n.umu.se/events/courses/2025/git)
 
 The recordings of the lectures can be found on [HPC2N's YouTube channel](https://www.youtube.com/user/HPC2N). There will be a playlist for the course. The recordings are usually uploaded within a day or so of the lecture. 
