@@ -582,8 +582,6 @@ We now have SSH keys set up. Time to test it from your own machine:
 
 ## Fourth exercise, teamwork, clone, push, pull 
 
-<!-- .slide: style="font-size: 25px;" -->
-
 One of you should create a repository on GitHub and invite their team. Remember, on the GitHub webpage the option to create a new repository is in the top right corner - click the "+". To add members: "Settings" -> "Manage access". 
 
 1. Each person should create a file in the repository (Add and commit the file)
@@ -598,8 +596,6 @@ One of you should create a repository on GitHub and invite their team. Remember,
 
 ## Fifth exercise, teamwork, branches and merging 
 
-<!-- .slide: style="font-size: 28px;" -->
-
 1. Each person creates a branch in the repo you created in the previous exercise. You can use `git branch yourbranchname` where you put any name you want for the new branch. 
 2. Switch to the new branch with `git checkout yourbranchname`
 3. Create a uniquely named file. Put anything you want in it. 
@@ -613,8 +609,6 @@ One of you should create a repository on GitHub and invite their team. Remember,
 
 ## Sixth exercise, teamwork, branches and merging, pull requests
 
-<!-- .slide: style="font-size: 28px;" -->
-
 1. Go to the repository on the GitHub page. Submit a pull-request from your branch to the main branch
 2. The owner of the repository (the person who created it) can then accept them and click to merge them. 
 3. After doing so, everyone should again do a `git pull` (on the command line)
@@ -626,8 +620,6 @@ One of you should create a repository on GitHub and invite their team. Remember,
 
 ## Seventh exercise, teamwork and branches
 
-<!-- .slide: style="font-size: 28px;" -->
-
 1. Everyone in the group create a new branch in the repo - this time you could try doing it from the GitHub page
 2. Check which remote branches exist with `git branch -r`
 3. Check which local branches you have with `git branch` 
@@ -635,13 +627,6 @@ One of you should create a repository on GitHub and invite their team. Remember,
 5. Check with `git branch -a` to see all local and remote branches
 6. Do a `git pull` from the command line to get a list of all branches. Switch to the branch you created on GitHub with `git checkout --track origin/mynewbranch`. Again do `git branch` to see which branch you are on. 
 7. Create a new file and put some content to it. Add and commit it. Check for changes (`git status`, `git log`). Push the changes.
-
----
-
-## Seventh exercise, teamwork and branches - continued
-
-<!-- .slide: style="font-size: 30px;" -->
-
 8. Try and merge the branches from the command line. Remember to first pull any changes from your other group members. Also remember to switch to the branch you want to merge it to (main in this case). 
 9. Were you succesful? Why or why not? Is there are difference between what happens when the owner of the branch tries this and when everyone else does?
 10. After doing this, everyone should again do a `git pull` (on the command line)
@@ -650,8 +635,6 @@ One of you should create a repository on GitHub and invite their team. Remember,
 ---
 
 ## Eighth exercise, deleting branches
-
-<!-- .slide: style="font-size: 30px;" -->
 
 1. Everyone should now create two more branches in the repo. In each case, switch to the branch, create a file in it, and push the branch
 2. Check which branches exist, remotely and locally 
@@ -663,8 +646,6 @@ One of you should create a repository on GitHub and invite their team. Remember,
 ---
 
 ## Ninth exercise, merge conflicts
-
-<!-- .slide: style="font-size: 25px;" -->
 
 In this exercise everyone in the team will be working in the same branch, for instance the main branch. 
 
