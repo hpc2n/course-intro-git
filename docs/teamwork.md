@@ -118,8 +118,6 @@ graph LR
 
 ---
 
-<!-- .slide: style="font-size: 30px;" -->
-
 Pushing a staged and committed file: 
 
 ```shell
@@ -146,8 +144,6 @@ Date:   Sun Nov 13 15:43:05 2022 +0100
 
 ## Git pull 
 
-<!-- .slide: style="font-size: 30px;" -->
-
 Fetch the given remote's copy of the current branch and merge to the local copy: 
 ```shell
 $ git pull  <remote-repo> 
@@ -163,8 +159,6 @@ $ git pull
 
 ## Hint
 
-<!-- .slide: style="font-size: 30px;" -->
-
 If you have forgotten to pull before staging and committing new stuff, and your colleague has added something to the remote repository in between, this is a handy command: 
 
 ```shell
@@ -175,29 +169,36 @@ It fetches the remote content but does not create a new merge commit.
 
 ---
 
-<!-- .slide: style="font-size: 30px;" -->
-
 Assume this situation:
-```graphviz
-digraph {
-  rankdir=LR
-  node [shape=circle width=0.5 fixedsize=shape]
-  edge [arrowhead=none][shape=none]
-  "d" -> "e"
-  "e" -> "a" 
-  "e" -> "f"
-  a [fixedsize=true label="a"]
-  "a" -> "b"
-  "b" -> "c"
-  b [fixedsize=true label="b"]
-  c [fixedsize=true label="c"]
-  d [fixedsize=true label="d"]
-  "f" -> "g"
-  "main" -> "c" [style=dashed arrowhead=normal] 
-  "origin/main" -> "e" [style=dashed arrowhead=normal]
-  main [shape=box width=0.8  style=filled fillcolor=lightblue]
-  "origin/main" [shape=box width=1.2 style=filled fillcolor=lightblue]
-}
+
+```mermaid
+graph LR
+  d(("d"))
+  style d fill:#ffffff,stroke:#000000,color:#ffffff
+  e(("e"))
+  style e fill:#ffffff,stroke:#000000,color:#ffffff
+  origin["origin/main"]
+  style origin fill:#add8e6,stroke:#000000,color:#000000
+  d --- e 
+  origin -.-> e
+  a(("a"))
+  style a fill:#ffffff,stroke:#000000,color:#ffffff
+  f(("f"))
+  style f fill:#ffffff,stroke:#000000,color:#ffffff
+  e --- a
+  e --- f 
+  b(("b"))
+  style b fill:#ffffff,stroke:#000000,color:#ffffff
+  g(("g"))
+  style g fill:#ffffff,stroke:#000000,color:#ffffff
+  main["main"]
+  style main fill:#add8e6,stroke:#000000,color:#000000
+  c(("c"))
+  style c fill:#ffffff,stroke:#000000,color:#ffffff
+  a --- b
+  f --- g
+  b --- c
+  origin -.-> c 
 ```
 
 Now we do a `git pull`:
