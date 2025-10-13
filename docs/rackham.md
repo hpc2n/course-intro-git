@@ -4,8 +4,6 @@ tags: Lecture, Birgitte, day 1
 description: "Git installation, use of Rackham, etc"
 ---
 
-# Lecture B: Using Rackham for the Git course
-
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
 Minor modifications done for the fall 2021 and 2022 versions of the course. For the 2023 version of the course the machine was changed from Kebnekaise to Rackham. In 2024, Rackham will also be used. -->
 
@@ -13,7 +11,7 @@ Minor modifications done for the fall 2021 and 2022 versions of the course. For 
 
 ---
 
-## Connecting to Rackham
+# Connecting to Rackham
 
 For this course we recommend using ThinLinc, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only. 
 
@@ -28,8 +26,6 @@ ThinLinc can also be used from a browser: https://rackham-gui.uppmax.uu.se
 If you prefer a different SSH client (terminal, etc.), you connect with ssh -Y <user>@rackham.uppmax.uu.se
 
 ---
-
-## Connecting to Rackham - continued
 
 **NOTE** If you are not connecting from within the domain of a Swedish university, **2FA may be needed**.
     
