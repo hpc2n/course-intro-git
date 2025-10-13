@@ -206,6 +206,8 @@ There are several web based Git repositories. Some of the more popular ones are:
 * Bitbucket (<a href="https://bitbucket.org" target="_blank">https://bitbucket.org</a>)
 * SourceForge (<a href="https://sourceforge.net/" target="_blank">https://sourceforge.net/</a>)
 
+### GitHub 
+
 We are going to use GitHub for the part of the hands-on where you will be working together in groups. 
 
 Please go to 
@@ -235,9 +237,6 @@ This part will be done before the section "Working with remotes" on day 4, but y
     ```    
 2. You will be asked for a file to save the key. Unless you have an existing SSH key, accept the default.
 3. Enter a passphrase and repeat it.
-
----
-
 4. Add the key to the ssh-agent. Here we assume the default name for the new systems - change to what your key was called (`.ssh/id_rsa` for the legacy system): 
 ```
 $ eval "$(ssh-agent -s)"
@@ -263,9 +262,6 @@ This part will be done during the exercises on day 5, but you can create and add
     ```    
 2. You will be asked for a file to save the key. Unless you have an existing SSH key, accept the default.
 3. Enter a passphrase and repeat it.
-
----
-
 4. Add the key to the ssh-agent. Here we assume the default name for the new systems - change to what your key was called (`.ssh/id_rsa` for the legacy system): 
 ```
 $ eval "$(ssh-agent -s)"
