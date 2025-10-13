@@ -391,8 +391,9 @@ graph LR
 
   alicef --> |cloning| alicel
   alicel --> |can commit| alicef
-```
-  "Alice local" -> "Bob repo" [label="cannot commit" fontcolor=red color=red style=dashed]
+  bob --> |forking| alicef
+```  
+"Alice local" -> "Bob repo" [label="cannot commit" fontcolor=red color=red style=dashed]
   "Bob repo" -> "Alice fork" [label="forking"]
   "Alice local" -> "Bob repo" [label="can request pulls" fontcolor=blue color=blue style=dashed]
 ```
