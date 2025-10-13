@@ -22,17 +22,17 @@ Tasks:
       - commit the staged changes and check the status
       - stage the second paragraph and commit the changes
       
-<pre><code>
-Bruscamente la tarde se ha aclarado
-Porque ya cae la lluvia minuciosa.
-Cae o cayó. La lluvia es una cosa
-Que sin duda sucede en el pasado.
+   ```
+   Bruscamente la tarde se ha aclarado
+   Porque ya cae la lluvia minuciosa.
+   Cae o cayó. La lluvia es una cosa
+   Que sin duda sucede en el pasado.
 
-Quien la oye caer ha recobrado
-El tiempo en que la suerte venturosa
-Le reveló una flor llamada rosa
-Y el curioso color del colorado.
-</code></pre>      
+   Quien la oye caer ha recobrado
+   El tiempo en que la suerte venturosa
+   Le reveló una flor llamada rosa
+   Y el curioso color del colorado.
+   ```      
 
 3. Create a folder called "FirstPoem" and move the Poem.md file to this new folder (use git mv). 
 Check the status to confirm that the file was moved. Commit the changes. 
