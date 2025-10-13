@@ -394,7 +394,6 @@ graph LR
   bob --> |forking| alicef
   alicel -.- n1["cannot commit"]
   n1 -.-> bob
-
   alicel -.- n2["can request pulls"]
   n2 -.-> bob 
 
