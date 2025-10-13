@@ -227,8 +227,6 @@ digraph {
 
 ---
 
-<!-- .slide: style="font-size: 30px;" -->
-
 ## Pull from remote repo, new file
 
 Let us do an example where there is a new file on the remote repository: 
@@ -250,8 +248,6 @@ Fast-forward
 ```
 
 ---
-
-<!-- .slide: style="font-size: 26px;" -->
 
 ## Example: creating a new branch, pushing changes
 
@@ -285,10 +281,6 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ---
 
-<!-- .slide: style="font-size: 30px;" -->
-
-## Example continued
-
 ```shell
 bbrydsoe@enterprise-a:~/mytestrepo$ git log --graph --oneline --decorate --all
 * accef46 (HEAD -> mynewbranch, main) Updating the file funny.txt
@@ -317,11 +309,6 @@ Note: when you do this it should be coloured for easier readability
 
 ---
 
-<!-- .slide: style="font-size: 30px;" -->
-
-## Example continued 
-
-
 I stage and commit the file. 
 
 ```shell
@@ -343,10 +330,6 @@ bbrydsoe@enterprise-a:~/mytestrepo$
 ```
 
 ---
-
-<!-- .slide: style="font-size: 30px;" -->
-
-## Example continued
 
 Let us again check with `git status` and `git log ...`
 
@@ -384,10 +367,6 @@ bbrydsoe@enterprise-a:~/mytestrepo$
 
 ---
 
-<!-- .slide: style="font-size: 28px;" -->
-
-## Example continued 
-
 Push your changes with `git push origin -u yourbranchname` (or with `git push -u origin HEAD`)
 
 ```shell
@@ -422,8 +401,6 @@ bbrydsoe@enterprise-a:~/mytestrepo$
 ```
 
 ---
-
-<!-- .slide: style="font-size: 30px;" -->
 
 ## Example: Merging branches
 
