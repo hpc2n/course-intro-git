@@ -402,8 +402,8 @@ graph LR
   style n1 color:#D50000
   style n2 color:#4169E1
   linkStyle 3 stroke:#D50000,fill:none
-  linkStyle 4 stroke:#D50000,fill:none
-  linkStyle 5 stroke:#4169E1,fill:none
+  linkStyle 4 stroke:#4169E1,fill:none
+  linkStyle 5 stroke:#D50000,fill:none
   linkStyle 6 stroke:#4169E1,fill:none
 ```
 In this way, Alice can push changes to her repository and eventually make Bob aware of them as well.
