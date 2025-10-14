@@ -2,30 +2,29 @@
 
 1. Create a repository, add (stage) and commit a file
 
-```bash
-mkdir repository 
-cd repository 
-git init 
-nano file.txt 
-git add file.txt 
-git commit -m "This is quite interesting" 
-```
-
+   ```bash
+   mkdir repository 
+   cd repository 
+   git init 
+   nano file.txt 
+   git add file.txt 
+   git commit -m "This is quite interesting" 
+   ```
 2. Take a look at the stuff under the .git directory 
 
-```bash
-cd repository
-tree .git 
-git cat-file -p <hash> 
-```
+   ```bash
+   cd repository
+   tree .git 
+   git cat-file -p <hash> 
+   ```
 
-where <hash> is the various hash'es you can see with 
+   where <hash> is the various hash'es you can see with 
 
-```bash
-tree .git
-```
-
-Remember that the two-letter name of the subdirectory under objects-dir is included in the hash 
+   ```bash
+   tree .git
+   ```
+ 
+   Remember that the two-letter name of the subdirectory under objects-dir is included in the hash 
 
 3. Make some changes. 
 
