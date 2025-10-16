@@ -17,24 +17,21 @@
    tree .git 
    git cat-file -p <hash> 
    ```
-
    where <hash> is the various hash'es you can see with 
 
    ```bash
    tree .git
    ```
- 
    Remember that the two-letter name of the subdirectory under objects-dir is included in the hash 
-
 3. Make some changes. 
 
-Change one or more files. Add and commit. Make some changes. Add and commit. 
+   Change one or more files. Add and commit. Make some changes. Add and commit. 
 
-Look at what happens in the .git tree 
+   Look at what happens in the .git tree 
 
 4. Go to earlier commits and make a new branch 
 
-Try go back to an earlier commit with “git checkout <hash>” 
+   Try go back to an earlier commit with “git checkout <hash>” 
 
 Make come changes to a file there, or try adding a new file (and add+commit) 
 
