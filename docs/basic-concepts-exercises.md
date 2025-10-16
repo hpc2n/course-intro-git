@@ -22,29 +22,28 @@
    ```bash
    tree .git
    ```
-   Remember that the two-letter name of the subdirectory under objects-dir is included in the hash 
+   Remember that the two-letter name of the subdirectory under objects-dir is included in the hash<br> 
 3. Make some changes. 
 
    Change one or more files. Add and commit. Make some changes. Add and commit. 
 
    Look at what happens in the .git tree 
-
+<br>
 4. Go to earlier commits and make a new branch 
 
    Try go back to an earlier commit with “git checkout <hash>” 
 
-Make come changes to a file there, or try adding a new file (and add+commit) 
+   Make come changes to a file there, or try adding a new file (and add+commit) 
 
-Create a new branch from that commit: “git checkout -b second_branch” 
+   Create a new branch from that commit: “git checkout -b second_branch” 
 
-Find the hash of the commit the HEAD points to now  
-
+   Find the hash of the commit the HEAD points to now  
 ```bash 
 cat .git/HEAD    
 cat <path you got above> 
 git cat-file -p <hash you just got from above command> 
 ```
-
+<br>
 5. Go back on primary branch and merge the branches
 
 Go back to the primary branch (main or master) with “git checkout main” or “git checkout master” 
