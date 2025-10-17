@@ -41,3 +41,88 @@ Start by making sure you are in the directory `git_materials/5.branches/1.merge-
 4. Do `git log` and `git status` after the merge and compare what you got before.<br>
 5. Think about why git could merge the two braches automatically and why it used "fast-forward" merge. 
 
+## 2. Merging two local branches, recursive 
+
+!!! note 
+
+    In this exercise you will again try the command `git merge` and it should again go well. However, this time git will do a recursive merge, or in newer version an "ort" merge.
+
+    **Situation:** The ingredient list in branch "master" has an error in the ingredients which is fixed in the branch "fixed-recipes". After that fix, a small change was made to the recipe in the "master" branch. 
+
+Start by making sure you are in the directory `git_materials/5.branches/2.merge-ok-recursive/recipes`. 
+
+1. First do `git status` to look at the status. Also run `git log` and see the commits that  have been made and to which branches. <br>
+2. Now try to merge the two branches. You will see that the merge happens with "recursive" merge. <br>
+   NOTE: Remember to check you are on the right branch before you try to merge!    <br>
+   Merge the branch "fixed-recipe" to the "master" branch using the `git merge`command. 
+   <br>
+3. Notice that the merge goes well and that git reports using "recursive" merge. <br>
+4. Do `git log`and `git status` after the merge and compare with what you got before.<br> 
+5. Why did git use "recursive" merge? 
+
+## 3. Merging two local branches resulting in a merge conflict 
+
+!!! note 
+
+    This exercise will again feature the command `git merge`, but this time the merge will fail and git will give a merge conflict. 
+
+    **Situation:** In the branch "metric" we change the recipe to use the metric system for measurements. Then we change back to the "master" branch and **add some coffee** to that version of the recipe.
+
+Start by making sure you are in the directory `git_materials/5.branches/3.merge-bad/recipes`. 
+
+1. Do a `git status`first and note the result. Run `git log`. You could also look at the output from the longer command: 
+   <br>   
+   ```
+   $ git log --oneline --abbrev-commit --all --graph
+   ```
+   or with the alias command `git graph`
+   <br>
+   NOTE: Remember to change to the subdirectory "recipes" first!
+   <br>
+2. Now try to merge the two branches with the `git merge` command and see that a conflict happens. 
+   <br>
+   NOTE: Check with `git branch` to find out if you are on the right branch before trying to merge.
+   <br>
+   You will get an error similar to this: 
+   <br>
+   ```
+   $ git merge metric
+   Auto-merging cakerecipe.txt
+   CONFLICT (content): Merge conflict in cakerecipe.txt
+   Automatic merge failed; fix conflicts and then commit the result.
+   ```
+   <br>
+3. Use `git log` (including with the above mentioned flags) and `git status` to see where the problems are and see if you can fix the conflict and then reattempt the merge.
+
+## 4. Rebase two local branches
+
+!!! note 
+
+    In this exercise you will try to use the command `git rebase`. You will see that it succeeds. 
+
+    **Situation:** The ingredient list in branch "master" has an error in the ingredients which is fixed in the branch "fixed-recipe". Then we decide to make a small change to the recipe, and we do it in the "master" branch. 
+
+Start by making sure you are in the directory `git_materials/5.branches/4.rebase-ok/recipes`. 
+
+1. First do a `git status` and a `git log` and look at the results. Also look at the output at the longer command (git graph): 
+   <br>
+   ```
+   $ git log --oneline --abbrev-commit --all --graph
+   ```
+   <br>
+   And save the result somewhere for later comparison. 
+   <br>
+2. Now try to rebase the "master" with the new branch, "fixed-recipe". You will see that the rebase succeeds.  
+   <br>
+   NOTE: Remember to check with `git branch` that you are on the right branch before you try to rebase! 
+   <br>
+3. You should now validate the operation with `git log` and `git status`.
+   <br>
+   Also run `git graph` or `git log` with the following flags:  
+   <br>
+   ```
+   $ git log --oneline --abbrev-commit --all --graph
+   ```
+
+## 5. 
+
