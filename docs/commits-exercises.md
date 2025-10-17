@@ -120,25 +120,25 @@ Enter the `repository/` `directory git_materials/4.commits/7.workflow` and perfo
    As you can probably guess, the **first commit** we are creating is going to convert the measurements to metric.
    <br> 
    The changes that are related to the pan size and the oven temperature (8th step the the directions) are going to be committed **separately**.<br>
- 3. Store the the unstaged changes to the stash:
+3. Store the the unstaged changes to the stash:
  
-    ```
-    $ git stash --keep-index
-    ```
+   ```
+   $ git stash --keep-index
+   ```
     
-    The `--keep-index` options tells Git to keep the staged changes. Otherwise Git would stash them.<br>
- 4. Now, investigate the content of the `repository/recipe.txt` file. You can see that the 7th step in the directions contains an unconverted measurement.
-    This means that whoever created this exercise forgot to stage this line.
-    This would correspond to a situation where the source code does not compile or does not function correctly. <br>
- 5. Pop the unstaged changes from the stash:
+   The `--keep-index` options tells Git to keep the staged changes. Otherwise Git would stash them.<br>
+4. Now, investigate the content of the `repository/recipe.txt` file. You can see that the 7th step in the directions contains an unconverted measurement.
+   This means that whoever created this exercise forgot to stage this line.
+   This would correspond to a situation where the source code does not compile or does not function correctly. <br>
+5. Pop the unstaged changes from the stash:
  
-    ```
-    $ git stash pop
-    ```
-6. Stage the 7th step in the directions and stash the unstaged changes while keeping the index. 
-    
-   Remember to do partial staging (Lecture 2: Basic commands).
-    
+   ```
+   $ git stash pop
+   ```
+6. Stage the 7th step in the directions and stash the unstaged changes while keeping the index. <br>
+   <br>
+   Remember to do partial staging (Lecture 2: Basic commands).<br> 
+
    Verify the `repository/recipe.txt` file. <br>
 7. Commit changes. <br>
 8. Pop the unstaged changes, and stage and commit changes that are related to the pan size and the oven temperature. 
