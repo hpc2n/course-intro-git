@@ -96,8 +96,9 @@ Enter the `repository/` directory under git_materials/4.commits/5.amend` and per
 
 !!! note 
 
-    The goal of this exercise is to learn to revert the latest commit. Enter the
-`repository/` directory under `git_materials/4.commits/6.revert` and perform the following steps:
+    The goal of this exercise is to learn to revert the latest commit. 
+
+Enter the `repository/` directory under `git_materials/4.commits/6.revert` and perform the following steps:
 
 1. Revert the latest commit.
 2. Confirm that the commit tree indeed contains the revert commit. Confirm that the `recipe.txt` file no longer contains the section "Other ideas and hints".
@@ -116,17 +117,17 @@ Enter the `repository/` `directory git_materials/4.commits/7.workflow` and perfo
 
 1. You can confirm (`git diff HEAD`) that the `repository/recipe.txt` file contains uncommitted changes. That is, the recipe have been converted to metric system.
 2. You can also confirm (`git diff --cached`) that some of these changes have been already staged. 
-    
+   <br>    
    As you can probably guess, the **first commit** we are creating is going to convert the measurements to metric.
-    
-   The changes that are related to the pan size and the oven temperature (8th step the the directions) are going to be committed **separately**.
+   <br> 
+   The changes that are related to the pan size and the oven temperature (8th step the the directions) are going to be committed **separately**.<br>
  3. Store the the unstaged changes to the stash:
  
     ```
     $ git stash --keep-index
     ```
     
-    The `--keep-index` options tells Git to keep the staged changes. Otherwise Git would stash them.
+    The `--keep-index` options tells Git to keep the staged changes. Otherwise Git would stash them.<br>
  4. Now, investigate the content of the `repository/recipe.txt` file. You can see that the 7th step in the directions contains an unconverted measurement.
     This means that whoever created this exercise forgot to stage this line.
     This would correspond to a situation where the source code does not compile or does not function correctly.
