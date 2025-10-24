@@ -75,7 +75,7 @@
 
 ## Preliminary schedule
 
-**Monday, 2024-11-25**
+**Monday, 2025-11-03**
 
 | Time | Topic | Activity | Teacher |
 | ---- | ----- | -------- | ------- |
@@ -89,7 +89,7 @@
 | 11:30 | 2. Basic commands, part 2 | Lecture+code along+exercises | Pedro |
 | 12:00 | End of first day | |
 
-**Tuesday, 2024-11-26**
+**Tuesday, 2025-11-04**
 
 | Time | Topic | Activity |
 | ---- | ----- | -------- | 
@@ -100,7 +100,7 @@
 | 11:30 | 4. Traversing the commit tree, part 1 | Lecture+code along | Diana |
 | 12:00 | End of second day | 
 
-**Wednesday, 2024-11-27**
+**Wednesday, 2025-11-05**
 
 | Time | Topic | Activity |
 | ---- | ----- | -------- |  
@@ -111,7 +111,7 @@
 | 11:10 | 5. Branches, merges, and conflicts, part 1 | Lecture+code along | Diana |
 | 12:00 | End of third day | | 
 
-**Thursday, 2024-11-28**
+**Thursday, 2025-11-06**
 
 | Time | Topic | Activity |
 | ---- | ----- | -------- |  
@@ -123,7 +123,7 @@
 | 11:05 | 6. Working with remotes, part 2 | Lecture+code along+exercises | Pedro |
 | 12:00 | End of fourth day | | 
 
-**Friday, 2024-11-29** 
+**Friday, 2025-11-07** 
 
 | Time | Topic | Activity |
 | ---- | ----- | -------- |
