@@ -25,7 +25,7 @@
 
     **Target group**
  
-    - This NAISS course is a cooperation between HPC2N and UPPMAX. 
+    - This NAISS course is a given as a cooperation between trainers from the NAISS branches HPC2N and UPPMAX. 
     - It is open for anyone in Swedish academia. 
     - You will be using your own computer or other existing computer access for the course. If you do not have access to a computer that can run Git (or which you can install Git on), then there will be an option to use NAISS resources for this (Tetralith).
 
@@ -77,62 +77,61 @@
 
 **Monday, 2024-11-25**
 
-| Time | Topic | Activity |
-| ---- | ----- | -------- | 
-| 08:30 | Optional installation help (Git) | |
-| 09:00 | Introduction and course info | Lecture | 
-| 09:10 | 0. Setup | Lecture+code along | 
-| 09:30 | 1. Why use version management? | Lecture | 
-| 10:00 | Break (15 min) | | 
-| 10:15 | 2. Basic commands, part 1 | Lecture+code along+exercises | 
+| Time | Topic | Activity | Teacher |
+| ---- | ----- | -------- | ------- |
+| 08:30 | Optional installation help (Git) | | All |
+| 09:00 | Introduction and course info | Lecture | Birgitte |
+| 09:10 | 0. Setup | Lecture+code along | Birgitte |
+| 09:30 | 1. Why use version management? | Lecture | Birgitte | 
+| 10:00 | Break (15 min) | | |
+| 10:15 | 2. Basic commands, part 1 | Lecture+code along+exercises | Pedro |
 | 11:15 | Break (15 min) | | 
-| 11:30 | 2. Basic commands, part 2 | Lecture+code along+exercises | 
+| 11:30 | 2. Basic commands, part 2 | Lecture+code along+exercises | Pedro |
 | 12:00 | End of first day | |
 
 **Tuesday, 2024-11-26**
 
 | Time | Topic | Activity |
 | ---- | ----- | -------- | 
-| 09:00 | 3. Basic concepts, part 1 | Lecture+code along | 
+| 09:00 | 3. Basic concepts, part 1 | Lecture+code along | Birgitte |
 | 10:15 | Break (15 min) | | 
-| 10:30 | 3. Basic concepts, part 2 | Lecture+code along+exercises |
+| 10:30 | 3. Basic concepts, part 2 | Lecture+code along+exercises | Birgitte |
 | 11:20 | Break (10 min) | |
-| 11:30 | 4. Traversing the commit tree, part 1 | Lecture+code along | 
+| 11:30 | 4. Traversing the commit tree, part 1 | Lecture+code along | Diana |
 | 12:00 | End of second day | 
 
 **Wednesday, 2024-11-27**
 
 | Time | Topic | Activity |
 | ---- | ----- | -------- |  
-| 09:00 | 4. Traversing the commit tree, part 2 | Lecture+code along+exercises | 
+| 09:00 | 4. Traversing the commit tree, part 2 | Lecture+code along+exercises | Diana |
 | 10:15 | Break (15 min) | | 
-| 10:30 | 4. Traversing the commit tree, part 3 | Lecture+code along+exercises
- |
+| 10:30 | 4. Traversing the commit tree, part 3 | Lecture+code along+exercises | Diana |
 | 11:00 | Break (10 min) | | 
-| 11:10 | 5. Branches, merges, and conflicts, part 1 | Lecture+code along | 
+| 11:10 | 5. Branches, merges, and conflicts, part 1 | Lecture+code along | Diana |
 | 12:00 | End of third day | | 
 
 **Thursday, 2024-11-28**
 
 | Time | Topic | Activity |
 | ---- | ----- | -------- |  
-| 09:00 | 5. Branches, merges, and conflicts, part 2 | Lecture+code along+exercises | 
+| 09:00 | 5. Branches, merges, and conflicts, part 2 | Lecture+code along+exercises | Diana |
 | 09:55 | Break (10 min) | | 
-| 10:05 | Brief intro to SSH-keys and using GitHub | Lecture+code along | 
-| 10:15 | 6. Working with remotes, part 1 | Lecture+code along | 
+| 10:05 | Brief intro to SSH-keys and using GitHub | Lecture+code along | Birgitte |
+| 10:15 | 6. Working with remotes, part 1 | Lecture+code along | Pedro |
 | 10:55 | Break (10 min) | | 
-| 11:05 | 6. Working with remotes, part 2 | Lecture+code along+exercises | 
+| 11:05 | 6. Working with remotes, part 2 | Lecture+code along+exercises | Pedro |
 | 12:00 | End of fourth day | | 
 
 **Friday, 2024-11-29** 
 
 | Time | Topic | Activity |
 | ---- | ----- | -------- |
-| 09:00 | 7. Teamwork, part 1 | Lecture+code along+exercises | 
+| 09:00 | 7. Teamwork, part 1 | Lecture+code along+exercises | Birgitte |
 | 09:55 | Break (10 min) | | 
-| 10:05 | 7. Teamwork, part 2 | exercises | 
+| 10:05 | 7. Teamwork, part 2 | exercises | All |
 | 10:50 | Break (10 min) | 
-| 11:00 | 7. Team work, part 3 | exercises | 
+| 11:00 | 7. Team work, part 3 | exercises | All |
 | 11:50 | Summary+evaluation | | 
 | 12:00 | End of the course | | 
      
