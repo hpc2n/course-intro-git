@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/course-intro-git/commits-exercises/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Traversing the commit tree - Introduction to Git</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Traversing the commit tree";
+        var mkdocs_page_input_path = "commits-exercises.md";
+        var mkdocs_page_url = "/course-intro-git/commits-exercises/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/logo-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Exercises</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Traversing the commit tree</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1__investigating__the__commit__history">1. Investigating the commit history</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2__recovering__the__head">2. Recovering the HEAD</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3__stashing__uncommitted__changes">3. Stashing uncommitted changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4__discarding__the__latest__commit">4. Discarding the latest commit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5__amending__previous__commit">5. Amending previous commit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6__revert__the__latest__commit">6. Revert the latest commit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7__proper__commit__workflow">7. Proper commit workflow</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Git</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Exercises</li>
+      <li class="breadcrumb-item active">Traversing the commit tree</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercises__-__traversing__the__commit__tree">Exercises - Traversing the commit tree<a class="headerlink" href="#exercises__-__traversing__the__commit__tree" title="Anchor link to this section for reference">&para;</a></h1>
+<p>In order to do these exercises, you need to download the exercises zip file. You can do that either by cloning the repository or by just getting the zip file with <code>wget</code>.</p>
+<ul>
+<li>Do ONE of the following: <ul>
+<li><strong>git clone</strong> <ol>
+<li><code>git clone https://github.com/hpc2n/course-intro-git.git</code></li>
+<li><code>cd course-intro-git</code></li>
+<li><code>unzip git_materials.zip</code></li>
+<li><code>cd git_materials</code></li>
+<li><code>cd 4.commits</code> </li>
+</ol>
+</li>
+<li><strong>Fetch with wget</strong><ol>
+<li><code>wget https://github.com/hpc2n/course-intro-git/raw/refs/heads/main/git_materials.zip</code></li>
+<li><code>unzip git_materials.zip</code></li>
+<li><code>cd git_materials</code></li>
+<li><code>cd 4.commits</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>You are now in a directory with 7 subdirectories, one for each exercise. </p>
+<h2 id="1__investigating__the__commit__history">1. Investigating the commit history<a class="headerlink" href="#1__investigating__the__commit__history" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The goal of this exercise is to learn to use the <code>git log</code> command. </p>
+</div>
+<p>Found under <code>git_materials/4.commits/1.log</code> there is a directory named <code>repository</code>. Enter it and perform the following steps: </p>
+<ol>
+<li>Investigate the history. How many commit does the <code>main</code> branch contain?</li>
+<li>Can you make the output of the command cleaner?</li>
+<li>Are there any other branches? How many? What are they called?</li>
+<li>Try to filter the output so that only commits that contain the word &ldquo;abandon&rdquo; in the commit message are shown.</li>
+<li>Does the reference log contain anything interesting? Can you see where the <code>HEAD</code> was 6 steps ago?</li>
+</ol>
+<div class="admonition hint">
+<p class="admonition-title">Hints for this exercise</p>
+<ul>
+<li>oneline</li>
+<li>graph</li>
+<li>reflog</li>
+</ul>
+</div>
+<h2 id="2__recovering__the__head">2. Recovering the HEAD<a class="headerlink" href="#2__recovering__the__head" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The goal of this exercise is to learn to identify a &ldquo;detached HEAD&rdquo; situation and recover from it. </p>
+</div>
+<p>Enter the <code>repository/</code> directory under <code>git_materials/4.commits/2.recover_head</code> and perform the following steps:</p>
+<ol>
+<li>Enter the <code>repository/</code> directory and check whether the HEAD is detached. </li>
+<li>If the HEAD is detached, return the <code>HEAD</code> back to the tip of the branch. </li>
+<li>Confirm that that the <code>HEAD</code> indeed points to the tip of the branch`</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Hints for this exercise</p>
+<ul>
+<li>git checkout <ref></li>
+<li>rev-parse</li>
+<li>cat .git/something</li>
+</ul>
+</div>
+<h2 id="3__stashing__uncommitted__changes">3. Stashing uncommitted changes<a class="headerlink" href="#3__stashing__uncommitted__changes" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The goal of this exercise is to learn to checkout a different commit and stash uncommited changes, if necessary. </p>
+</div>
+<p>Enter the <code>repository/</code> directory under <code>git_materials/4.commits/3.stash</code> and perform the following steps: </p>
+<ol>
+<li>Identify the first commit (<code>This is going to be a cake recipe</code>).</li>
+<li>Try to checkout the commit in order to identify the initial title of the recipe. If necessary, stash the changes. What was the initial title of the recipe?</li>
+<li>Restore the <code>HEAD</code> and pop the changes from the stash.</li>
+<li>Confirm that the changes were applied correctly and that the stash is empty.</li>
+</ol>
+<h2 id="4__discarding__the__latest__commit">4. Discarding the latest commit<a class="headerlink" href="#4__discarding__the__latest__commit" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The goal of this exercise is to learn to discard the latest commit. </p>
+</div>
+<p>Enter the <code>repository/</code> directory under <code>git_materials/4.commits/4.discard</code> and perform the following steps: </p>
+<ol>
+<li>Discard the latest commit. Also discard the changes in the working tree.</li>
+<li>Confirm that the commit is no longer reachable from <code>master</code>. Confirm that the <code>recipe.txt</code> no longer contains the section &ldquo;Other ideas and hints&rdquo;.</li>
+<li>Try to restore the discarded commit. (optional)</li>
+</ol>
+<h2 id="5__amending__previous__commit">5. Amending previous commit<a class="headerlink" href="#5__amending__previous__commit" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The goal of this exercise is to learn to amend the latest commit. </p>
+</div>
+<p>Enter the <code>repository/</code> directory under git_materials/4.commits/5.amend` and perform the following steps:</p>
+<ol>
+<li>The ingredient list in the <code>repository/recipe.txt</code> file is missing an ingredient. Add two eggs to the ingredient list.</li>
+<li>Stage the changes and amend the previous commit (<code>Add remaining ingredients and directions</code>).</li>
+<li>Validate the operation. The log (<code>git log</code>) should contain three commits and the most recent commit (<code>Add remaining ingredients and directions</code>) should contain the new added ingredient (<code>git show &lt;commit&gt;</code>).</li>
+</ol>
+<h2 id="6__revert__the__latest__commit">6. Revert the latest commit<a class="headerlink" href="#6__revert__the__latest__commit" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The goal of this exercise is to learn to revert the latest commit. </p>
+</div>
+<p>Enter the <code>repository/</code> directory under <code>git_materials/4.commits/6.revert</code> and perform the following steps:</p>
+<ol>
+<li>Revert the latest commit.</li>
+<li>Confirm that the commit tree indeed contains the revert commit. Confirm that the <code>recipe.txt</code> file no longer contains the section &ldquo;Other ideas and hints&rdquo;.</li>
+</ol>
+<h2 id="7__proper__commit__workflow">7. Proper commit workflow<a class="headerlink" href="#7__proper__commit__workflow" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This exercise is meant to demonstrate the proper workflow for making multiple commits from a <strong>single set of edits</strong>. </p>
+<p>The overall goal is to make sure that each commit produces a valid revision. This type of workflow is beneficial when working with source code since each revision should both compile and function correctly. </p>
+<p>The workflow is not that beneficial with the the example below but it is used as an example only.</p>
+</div>
+<p>Enter the <code>repository/</code> <code>directory git_materials/4.commits/7.workflow</code> and perform the following steps: </p>
+<ol>
+<li>You can confirm (<code>git diff HEAD</code>) that the <code>repository/recipe.txt</code> file contains uncommitted changes. That is, the recipe have been converted to metric system.</li>
+<li>You can also confirm (<code>git diff --cached</code>) that some of these changes have been already staged.<br>  <br />
+   As you can probably guess, the <strong>first commit</strong> we are creating is going to convert the measurements to metric.
+   <br> 
+   The changes that are related to the pan size and the oven temperature (8th step the the directions) are going to be committed <strong>separately</strong>.<br></li>
+<li>Store the the unstaged changes to the stash:</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$ git stash --keep-index
+</span></code></pre></div>
+<p>The <code>--keep-index</code> options tells Git to keep the staged changes. Otherwise Git would stash them.<br>
+4. Now, investigate the content of the <code>repository/recipe.txt</code> file. You can see that the 7th step in the directions contains an unconverted measurement.
+   This means that whoever created this exercise forgot to stage this line.
+   This would correspond to a situation where the source code does not compile or does not function correctly. <br>
+5. Pop the unstaged changes from the stash:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ git stash pop
+</span></code></pre></div>
+6. Stage the 7th step in the directions and stash the unstaged changes while keeping the index. <br>
+   <br>
+   Remember to do partial staging (Lecture 2: Basic commands).<br> </p>
+<p>Verify the <code>repository/recipe.txt</code> file. <br>
+7. Commit changes. <br>
+8. Pop the unstaged changes, and stage and commit changes that are related to the pan size and the oven temperature. </p>
+<p>This is going to be the <strong>second commit</strong>.</p>
+<p>Confirm that the two commits you created indeed contain the desired changes.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../basic-concepts-exercises/" class="btn btn-neutral float-left" title="Basic concepts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../branches-exercises/" class="btn btn-neutral float-right" title="Branches, merges, and conflicts">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../basic-concepts-exercises/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../branches-exercises/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

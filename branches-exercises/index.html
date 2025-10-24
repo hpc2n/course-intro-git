@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/course-intro-git/branches-exercises/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Branches, merges, and conflicts - Introduction to Git</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Branches, merges, and conflicts";
+        var mkdocs_page_input_path = "branches-exercises.md";
+        var mkdocs_page_url = "/course-intro-git/branches-exercises/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/logo-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Exercises</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Branches, merges, and conflicts</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1__merging__two__local__branches">1. Merging two local branches</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2__merging__two__local__branches__recursive">2. Merging two local branches, recursive</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3__merging__two__local__branches__resulting__in__a__merge__conflict">3. Merging two local branches resulting in a merge conflict</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4__rebase__two__local__branches">4. Rebase two local branches</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5__rebase__two__local__branches__resulting__in__a__conflict">5. Rebase two local branches resulting in a conflict</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Git</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Exercises</li>
+      <li class="breadcrumb-item active">Branches, merges, and conflicts</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercises__-__branches__merges__and__conflicts">Exercises - Branches, merges, and conflicts<a class="headerlink" href="#exercises__-__branches__merges__and__conflicts" title="Anchor link to this section for reference">&para;</a></h1>
+<p>In order to do these exercises, you need to download the exercises zip file (if you already did so for the previous exercise, you do not need to do so again, of course). </p>
+<p>You can do that either by cloning the repository or by just getting the zip file with <code>wget</code>.</p>
+<ul>
+<li>Do ONE of the following:<ul>
+<li><strong>git clone</strong><ol>
+<li><code>git clone https://github.com/hpc2n/course-intro-git.git</code></li>
+<li><code>cd course-intro-git</code></li>
+<li><code>unzip git_materials.zip</code></li>
+<li><code>cd git_materials</code></li>
+<li><code>cd 5.branches</code> </li>
+</ol>
+</li>
+<li><strong>Fetch with wget</strong><ol>
+<li><code>wget https://github.com/hpc2n/course-intro-git/raw/refs/heads/main/git_materials.zip</code> </li>
+<li><code>unzip git_materials.zip</code></li>
+<li><code>cd git_materials</code></li>
+<li><code>cd 5.branches</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>You are now in a directory with 5 subdirectories, one for each exercise.</p>
+<h2 id="1__merging__two__local__branches">1. Merging two local branches<a class="headerlink" href="#1__merging__two__local__branches" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The purpose of this exercise is to test the command <code>git merge</code> and see that the merge goes well in this case. </p>
+<p><strong>Situation:</strong> The ingredient list in branch &ldquo;master&rdquo; has an error in the ingredients which is fixed in the branch &ldquo;fixed-recipe&rdquo;.</p>
+</div>
+<p>Start by making sure you are in the directory <code>git_materials/5.branches/1.merge-ok/recipes</code>. </p>
+<ol>
+<li>First do <code>git status</code> to look at the status. You can also run <code>git log</code> so you can compare before and after merging. </li>
+<li>Now try to merge the two branches. You will see that it merges with a &ldquo;fast-forward&rdquo; merge. <br>
+   NOTE: Remember to check that you are on the right branch! Use <code>git branch</code> to check. <br>
+   Merging the branch &ldquo;fixed-recipe&rdquo; to the &ldquo;master&rdquo; branch: 
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git merge fixed-recipe
+</span></code></pre></div>
+   <br></li>
+<li>See that the merge goes well, and that git reports using &ldquo;fast-forward&rdquo; merge. <br></li>
+<li>Do <code>git log</code> and <code>git status</code> after the merge and compare what you got before.<br></li>
+<li>Think about why git could merge the two braches automatically and why it used &ldquo;fast-forward&rdquo; merge. </li>
+</ol>
+<h2 id="2__merging__two__local__branches__recursive">2. Merging two local branches, recursive<a class="headerlink" href="#2__merging__two__local__branches__recursive" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this exercise you will again try the command <code>git merge</code> and it should again go well. However, this time git will do a recursive merge, or in newer version an &ldquo;ort&rdquo; merge.</p>
+<p><strong>Situation:</strong> The ingredient list in branch &ldquo;master&rdquo; has an error in the ingredients which is fixed in the branch &ldquo;fixed-recipes&rdquo;. After that fix, a small change was made to the recipe in the &ldquo;master&rdquo; branch. </p>
+</div>
+<p>Start by making sure you are in the directory <code>git_materials/5.branches/2.merge-ok-recursive/recipes</code>. </p>
+<ol>
+<li>First do <code>git status</code> to look at the status. Also run <code>git log</code> and see the commits that  have been made and to which branches. <br></li>
+<li>Now try to merge the two branches. You will see that the merge happens with &ldquo;recursive&rdquo; merge. <br>
+   NOTE: Remember to check you are on the right branch before you try to merge!    <br>
+   Merge the branch &ldquo;fixed-recipe&rdquo; to the &ldquo;master&rdquo; branch using the <code>git merge</code>command. 
+   <br></li>
+<li>Notice that the merge goes well and that git reports using &ldquo;recursive&rdquo; merge. <br></li>
+<li>Do <code>git log</code>and <code>git status</code> after the merge and compare with what you got before.<br> </li>
+<li>Why did git use &ldquo;recursive&rdquo; merge? </li>
+</ol>
+<h2 id="3__merging__two__local__branches__resulting__in__a__merge__conflict">3. Merging two local branches resulting in a merge conflict<a class="headerlink" href="#3__merging__two__local__branches__resulting__in__a__merge__conflict" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This exercise will again feature the command <code>git merge</code>, but this time the merge will fail and git will give a merge conflict. </p>
+<p><strong>Situation:</strong> In the branch &ldquo;metric&rdquo; we change the recipe to use the metric system for measurements. Then we change back to the &ldquo;master&rdquo; branch and <strong>add some coffee</strong> to that version of the recipe.</p>
+</div>
+<p>Start by making sure you are in the directory <code>git_materials/5.branches/3.merge-bad/recipes</code>. </p>
+<ol>
+<li>Do a <code>git status</code>first and note the result. Run <code>git log</code>. You could also look at the output from the longer command: 
+   <br> <br />
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ git log --oneline --abbrev-commit --all --graph
+</span></code></pre></div>
+   or with the alias command <code>git graph</code>
+   <br>
+   NOTE: Remember to change to the subdirectory &ldquo;recipes&rdquo; first!
+   <br></li>
+<li>Now try to merge the two branches with the <code>git merge</code> command and see that a conflict happens. 
+   <br>
+   NOTE: Check with <code>git branch</code> to find out if you are on the right branch before trying to merge.
+   <br>
+   You will get an error similar to this: 
+   <br>
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ git merge metric
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Auto-merging cakerecipe.txt
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>CONFLICT (content): Merge conflict in cakerecipe.txt
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Automatic merge failed; fix conflicts and then commit the result.
+</span></code></pre></div>
+   <br></li>
+<li>Use <code>git log</code> (including with the above mentioned flags) and <code>git status</code> to see where the problems are and see if you can fix the conflict and then reattempt the merge.</li>
+</ol>
+<h2 id="4__rebase__two__local__branches">4. Rebase two local branches<a class="headerlink" href="#4__rebase__two__local__branches" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this exercise you will try to use the command <code>git rebase</code>. You will see that it succeeds. </p>
+<p><strong>Situation:</strong> The ingredient list in branch &ldquo;master&rdquo; has an error in the ingredients which is fixed in the branch &ldquo;fixed-recipe&rdquo;. Then we decide to make a small change to the recipe, and we do it in the &ldquo;master&rdquo; branch. </p>
+</div>
+<p>Start by making sure you are in the directory <code>git_materials/5.branches/4.rebase-ok/recipes</code>. </p>
+<ol>
+<li>First do a <code>git status</code> and a <code>git log</code> and look at the results. Also look at the output at the longer command (git graph): 
+   <br>
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ git log --oneline --abbrev-commit --all --graph
+</span></code></pre></div>
+   <br>
+   And save the result somewhere for later comparison. 
+   <br></li>
+<li>Now try to rebase the &ldquo;master&rdquo; with the new branch, &ldquo;fixed-recipe&rdquo;. You will see that the rebase succeeds.<br />
+   <br>
+   NOTE: Remember to check with <code>git branch</code> that you are on the right branch before you try to rebase! 
+   <br></li>
+<li>You should now validate the operation with <code>git log</code> and <code>git status</code>.
+   <br>
+   Also run <code>git graph</code> or <code>git log</code> with the following flags:<br />
+   <br>
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$ git log --oneline --abbrev-commit --all --graph
+</span></code></pre></div></li>
+</ol>
+<h2 id="5__rebase__two__local__branches__resulting__in__a__conflict">5. Rebase two local branches resulting in a conflict<a class="headerlink" href="#5__rebase__two__local__branches__resulting__in__a__conflict" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This exercise will again let you rebase two branches, using the command <code>git rebase</code>. In this case the rebase will fail. </p>
+<p><strong>Situation:</strong> In the branch &ldquo;metric&rdquo; we change the recipe to use the metric system for measurements. Then we switch back to the &ldquo;master&rdquo; branch and <strong>add some coffee</strong> to that version of the recipe.</p>
+</div>
+<p>Start by making sure you are in the directory <code>git_materials/5.branches/5.rebase-bad/recipes</code>. </p>
+<ol>
+<li>Check status and history with <code>git status</code> and <code>git graph</code> or <code>git log</code> first, including with the following flags to <code>git log</code>: </li>
+</ol>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$ git log --oneline --abbrev-commit --all --graph
+</span></code></pre></div>
+2. Try to rebase the &ldquo;master&rdquo; branch to the &ldquo;metric&rdquo; branch using the <code>git rebase</code> command and see that a conflict happens. </p>
+<p>NOTE: Remember to check with <code>git branch</code> to find out if you are on the right branch before trying to rebase. </p>
+<p>You will get an error more or less similar to this: </p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$ git rebase master
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>First, rewinding head to replay your work on top of it...
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Applying: Change from imperial units to metric units.
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Using index info to reconstruct a base tree...
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>M        cakerecipe.txt
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Falling back to patching base and 3-way merge...
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Auto-merging cakerecipe.txt
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>CONFLICT (content): Merge conflict in cakerecipe.txt
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>error: Failed to merge in the changes.
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>Patch failed at 0001 Change from imperial units to metric units.
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>Use &#39;git am --show-current-patch&#39; to see the failed patch
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>Resolve all conflicts manually, mark them as resolved with
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>&quot;git add/rm &lt;conflicted_files&gt;&quot;, then run &quot;git rebase --continue&quot;.
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>You can instead skip this commit: run &quot;git rebase --skip&quot;.
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>To abort and get back to the state before &quot;git rebase&quot;, run &quot;git rebase --abort&quot;.
+</span></code></pre></div>
+<br>
+3. Use <code>git log</code> (with the above flags) or <code>git graph</code>and <code>git status</code> to see where the problems are. See if you can fix the conflict and then reattempt the rebase.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../commits-exercises/" class="btn btn-neutral float-left" title="Traversing the commit tree"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../remotes-exercises/" class="btn btn-neutral float-right" title="Working with remotes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../commits-exercises/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../remotes-exercises/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://hpc2n.github.io/course-intro-git/motivation/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Why use version management? - Introduction to Git</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Why use version management?";
+        var mkdocs_page_input_path = "motivation.md";
+        var mkdocs_page_url = "/course-intro-git/motivation/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="..">
+<img alt="Logo" class="logo" src="../images/logo-text.png"/>
+</a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Why use version management?</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#what__is__version__control">What is version control?</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#version__control__systems__vcs">Version control systems (VCS)</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#why__use__version__control">Why use version control?</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#going__back__to__an__earlier__version">Going back to an earlier version</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#comparing__and__joining">Comparing and joining</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#collaboration">Collaboration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#backup">Backup</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integration">Integration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#summing__up">Summing up</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#practical__use__cases">Practical use cases</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#source__code">Source code</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#latex__files">Latex files</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hpc__batch__files__and__data">HPC: batch files and data</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#examples__of__vcs">Examples of VCS</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Exercises</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Introduction to Git</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item active">Why use version management?</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<!-- Lecture material made by Mirko Myllykoski for the version of the course that was given in fall 2020. The lecture was first given by Mirko Myllykoski in fall 2020.
+Very minor modifications have been made by Birgitte Brydsö for the fall 2021, fall 2022, fall 2023, and fall 2024 versions of the course. Moved to GitHub and some tweaks (mainly to graphs) done by Birgitte Brydsö to get it to work on GitHub pages for the 2025 version of the course. -->
+<!-- Slides: https://hackmd.io/@git-fall-2024/L1-motivation/ -->
+<hr/>
+<h1 id="lecture__1__motivation">Lecture 1: Motivation<a class="headerlink" href="#lecture__1__motivation" title="Anchor link to this section for reference">¶</a></h1>
+<hr/>
+<h2 id="what__is__version__control">What is version control?<a class="headerlink" href="#what__is__version__control" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<p>In software engineering, version control (also known as revision control, source control, or source code management) is a class of systems responsible for <strong>managing changes</strong> to computer programs, documents, large web sites, or other collections of information.
+— Wikipedia</p>
+<hr/>
+<h2 id="version__control__systems__vcs">Version control systems (VCS)<a class="headerlink" href="#version__control__systems__vcs" title="Anchor link to this section for reference">¶</a></h2>
+<p>… systems responsible for <strong>managing changes</strong> …</p>
+<hr/>
+<h2 id="why__use__version__control">Why use version control?<a class="headerlink" href="#why__use__version__control" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<p>In an ideal world, things develop linearly: </p>
+<ul>
+<li>Every new version is an improvement upon the previous version. <ul>
+<li>No need to backtrack. </li>
+</ul>
+</li>
+<li>Everyone knows what everyone else is doing </li>
+<li>In the end, things are simply finished. </li>
+</ul>
+<div class="mermaid">graph LR
+    A@{ shape: stadium, label: "Monday's improvements"} --&gt; B@{ shape: stadium, label: "Tuesday's improvements"}
+    B --&gt; C@{ shape: stadium, label: "Wednesday's improvements"}
+</div>
+<hr/>
+<p>In the real world, things develop non-linearly: </p>
+<ul>
+<li>A new version can be anything between <ul>
+<li>a complete catastrophe and </li>
+<li>a major breakthrough.</li>
+</ul>
+</li>
+<li>People do not know what others are doing </li>
+<li>Sometimes we are simply fixing earlier mistakes… </li>
+</ul>
+<div class="mermaid">graph LR
+  Mon@{ shape: stadium, label: "Monday's improvements"}
+  Tue@{ shape: stadium, label: "Tuesday's mistakes"}
+  Wed@{ shape: stadium, label: "Wednesday's corrections"}
+  Mon --&gt; Tue
+  Tue --&gt; Wed
+</div>
+<hr/>
+<h3 id="going__back__to__an__earlier__version">Going back to an earlier version<a class="headerlink" href="#going__back__to__an__earlier__version" title="Anchor link to this section for reference">¶</a></h3>
+<p>Sometimes, it is easier to simply backtrack to an <em>earlier version</em>…</p>
+<div class="mermaid">graph LR
+  Mon@{ shape: stadium, label: "Monday's improvements"}
+  Tue@{ shape: stadium, label: "Tuesday's mistakes"}
+  Wed@{ shape: stadium, label: "Wednesday's improvements"}
+  Mon --&gt; Tue
+  Mon --&gt; Wed
+</div>
+<hr/>
+<h4 id="where__is__this__earlier__version">Where is this <em>earlier version</em>?<a class="headerlink" href="#where__is__this__earlier__version" title="Anchor link to this section for reference">¶</a></h4>
+<ul>
+<li>CTRL + Z <!-- .element: class="fragment" --></li>
+<li>my_file.txt, my_file.txt.old, … <!-- .element: class="fragment" --></li>
+<li>My project/ <!-- .element: class="fragment" --><ul>
+<li>2020-08-12/</li>
+<li>2020-08-13/</li>
+<li>…</li>
+</ul>
+</li>
+<li>Daily home directory backup <!-- .element: class="fragment" --></li>
+</ul>
+<hr/>
+<h4 id="challenges__and__obstacles">Challenges and obstacles<a class="headerlink" href="#challenges__and__obstacles" title="Anchor link to this section for reference">¶</a></h4>
+<ul>
+<li>Prone to mistakes <!-- .element: class="fragment" --><ul>
+<li>CTRL + Z has limits, overwritten/deleted files, human/hardware error <!-- .element: class="fragment" --></li>
+</ul>
+</li>
+<li>How much to save? <!-- .element: class="fragment" --><ul>
+<li>Individual files? Everything? How much space is required? <!-- .element: class="fragment" --></li>
+</ul>
+</li>
+<li>How to organize versions? <!-- .element: class="fragment" --><ul>
+<li>What is the difference between different versions? <!-- .element: class="fragment" --></li>
+</ul>
+</li>
+</ul>
+<p><em>Overall, difficult to manage!</em> <!-- .element: class="fragment" --></p>
+<hr/>
+<h4 id="what__about__the__granularity">What about the granularity?<a class="headerlink" href="#what__about__the__granularity" title="Anchor link to this section for reference">¶</a></h4>
+<div class="mermaid">graph LR
+
+  subgraph cluster1 [Monday's changes]
+    t1a@{ shape: stadium, label: "Component A improvement"}
+    t1b@{ shape: stadium, label: "Component B mistake"}
+    t1c@{ shape: stadium, label: "Component C improvement"}
+  end
+
+  subgraph cluster2 [Tuesday's changes]
+    t2a@{ shape: stadium, label: "Component A improvement"}
+    t2b@{ shape: stadium, label: "Component B correction"}
+    t2c@{ shape: stadium, label: "Component C mistake"}
+  end
+
+  subgraph cluster3 [Wednesday's changes]
+    t3a@{ shape: stadium, label: "Component A mistake"}
+    t3b@{ shape: stadium, label: "Component B improvement"}
+    t3c@{ shape: stadium, label: "Component C correction"}
+  end
+
+  t1a --&gt; t2a
+  t1b --&gt; t2b
+  t1c --&gt; t2c
+
+  t2a --&gt; t3a
+  t2b --&gt; t3b
+  t2c --&gt; t3c
+</div>
+<p><em>This compounds the problems!</em></p>
+<hr/>
+<h4 id="how__does__vcs__solve__this">How does VCS solve this?<a class="headerlink" href="#how__does__vcs__solve__this" title="Anchor link to this section for reference">¶</a></h4>
+<ul>
+<li>Stores the history using snapshots (commits) <!-- .element: class="fragment" --><ul>
+<li>Each snapshot represents the project at a given point in time <!-- .element: class="fragment" --></li>
+</ul>
+</li>
+<li>Manages snapshots and associated metadata <!-- .element: class="fragment" --><ul>
+<li>Naming (tags), comments, dates, authors, etc <!-- .element: class="fragment" --></li>
+</ul>
+</li>
+<li>Easy to move between different snapshots <!-- .element: class="fragment" --></li>
+<li>Can handle different degrees of granularity <!-- .element: class="fragment" --></li>
+<li>Can handle multiple development paths (branches) <!-- .element: class="fragment" --></li>
+</ul>
+<hr/>
+<h3 id="comparing__and__joining">Comparing and joining<a class="headerlink" href="#comparing__and__joining" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>VCS makes it easy to compare different snapshots <!-- .element: class="fragment" --><ul>
+<li>Named revisions, comments, time information, author information <!-- .element: class="fragment" --></li>
+<li>Diff tools <!-- .element: class="fragment" --></li>
+<li>Search tools <!-- .element: class="fragment" --></li>
+<li>Bisection search <!-- .element: class="fragment" --></li>
+</ul>
+</li>
+<li>VCS also allows the joining (merging) of different snapshots  <!-- .element: class="fragment" --><ul>
+<li>Easy to experiment with ideas <!-- .element: class="fragment" --></li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h3 id="collaboration">Collaboration<a class="headerlink" href="#collaboration" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>One of the primary functions of VCS is to allow collaboration <!-- .element: class="fragment" --></li>
+<li>Usual setup: server (remote) + multiple clients <!-- .element: class="fragment" --><ul>
+<li>People work locally and send (push) the changes to the server <!-- .element: class="fragment" --></li>
+<li>VCS keeps track of what has been done and by whom <!-- .element: class="fragment" --></li>
+</ul>
+</li>
+<li>Safer since mistakes can be easily remedied <!-- .element: class="fragment" --></li>
+<li>The contributions of several people can be merged <!-- .element: class="fragment" --></li>
+</ul>
+<hr/>
+<h3 id="backup">Backup<a class="headerlink" href="#backup" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>VCS functions as a backup <!-- .element: class="fragment" --></li>
+<li>Locally, the system maintains a copy of each file <!-- .element: class="fragment" --><ul>
+<li>Usually only the changes or the files that have changed are stored <!-- .element: class="fragment" --></li>
+</ul>
+</li>
+<li>Globally, lost files can be recovered from the server <!-- .element: class="fragment" --></li>
+</ul>
+<hr/>
+<h3 id="integration">Integration<a class="headerlink" href="#integration" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>VCSs such as Git have been integrated with several services <!-- .element: class="fragment" --><ul>
+<li>HackMD, Overleaf, …</li>
+</ul>
+</li>
+<li>Services such as GitHub can do almost everything for you <!-- .element: class="fragment" --><ul>
+<li>Store history, distribute, testing / continuous integration, bug reports, milestones, website, … <!-- .element: class="fragment" --></li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h3 id="summing__up">Summing up<a class="headerlink" href="#summing__up" title="Anchor link to this section for reference">¶</a></h3>
+<p>Version control systems</p>
+<ul>
+<li>keeps track of your files and other output</li>
+<li>tracks what is created and modified</li>
+<li>tracks who made the modifications</li>
+<li>tracks why the modifications were made (if you make good commit comments)</li>
+</ul>
+<hr/>
+<h2 id="practical__use__cases">Practical use cases<a class="headerlink" href="#practical__use__cases" title="Anchor link to this section for reference">¶</a></h2>
+<p>What are the practical use cases for VCS?</p>
+<hr/>
+<h3 id="source__code">Source code<a class="headerlink" href="#source__code" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>Many VCSs are designed for managing source code <!-- .element: class="fragment" --></li>
+<li>Manage deployment (production, development, testing, etc) <!-- .element: class="fragment" --></li>
+<li>Manage published versions (v0.1 etc) <!-- .element: class="fragment" --></li>
+<li>Manage (experimental) features <!-- .element: class="fragment" --></li>
+<li>Bug hunting <!-- .element: class="fragment" --></li>
+<li>But also for: writers, artists, composers… <!-- .element: class="fragment" --></li>
+</ul>
+<hr/>
+<h3 id="latex__files">Latex files<a class="headerlink" href="#latex__files" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>Track which version of a manuscript has been <!-- .element: class="fragment" --><ul>
+<li>submitted, </li>
+<li>revised and/or </li>
+<li>accepted</li>
+</ul>
+</li>
+<li>Collaboration between several authors <!-- .element: class="fragment" --></li>
+</ul>
+<hr/>
+<h3 id="hpc__batch__files__and__data">HPC: batch files and data<a class="headerlink" href="#hpc__batch__files__and__data" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>Track different versions of your batch scripts <!-- .element: class="fragment" --><ul>
+<li>Easy to check the used configuration afterwards</li>
+</ul>
+</li>
+<li>Track input and output files <!-- .element: class="fragment" --><ul>
+<li>Limited to smallish files</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h3 id="examples__of__vcs">Examples of VCS<a class="headerlink" href="#examples__of__vcs" title="Anchor link to this section for reference">¶</a></h3>
+<!-- .slide: style="font-size: 24px;" -->
+<ul>
+<li>SCCS: The first VCS. Created in 1972 at Bell Labs. Was available only for UNIX and worked with Source Code files only.</li>
+<li>RCS (Revision Control System): First release July 1985. Usually superseded by other systems such as CVS, which began as a wrapper on top of RCS. </li>
+<li>CVS (centralized version control system): First release July 1986; based on RCS. Expands on RCS by adding support for repository-level change tracking, and a client-server model. </li>
+<li>Apache Subversion (SVN): First release in 2004 by CVS developers with the goal of replacing CVS. </li>
+<li>BitKeeper: Initial release May 2000. Distributed version control. Was shortly used for developing the Linux kernel. Proprietary. No longer maintained.</li>
+<li><strong>Git</strong>: Started by Linus Torvalds in April 2005, originally for developing the Linux kernel. Distributed version control. Open source. </li>
+<li>…</li>
+</ul>
+<hr/>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../setup/" title="Setup"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../basic-commands/" title="Basic Commands">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../setup/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../basic-commands/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../assets/_markdown_exec_pyodide.js"></script>
+<script src="../search/main.js"></script>
+<script src="../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/course-intro-git/teamwork-exercises/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Teamwork - Introduction to Git</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Teamwork";
+        var mkdocs_page_input_path = "teamwork-exercises.md";
+        var mkdocs_page_url = "/course-intro-git/teamwork-exercises/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/logo-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Exercises</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Teamwork</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1__setting__up__a__repository__on__github">1. Setting up a repository on GitHub</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2__creating__and__using__ssh-keys">2. Creating and using SSH-keys</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3__clone__push__pull">3. clone, push, pull</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4__teamwork__push__and__pull">4. Teamwork, push and pull</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5__teamwork__branches__and__merging">5. Teamwork, branches and merging</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6__teamwork__branches__and__merging__pull__requests">6. Teamwork, branches and merging, pull requests</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7__teamwork__and__branches">7. Teamwork and branches</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8__deleting__branches">8. Deleting branches</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#9__merge__conflicts">9. Merge conflicts</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Git</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Exercises</li>
+      <li class="breadcrumb-item active">Teamwork</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercises__-__teamwork">Exercises - Teamwork<a class="headerlink" href="#exercises__-__teamwork" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="1__setting__up__a__repository__on__github">1. Setting up a repository on GitHub<a class="headerlink" href="#1__setting__up__a__repository__on__github" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this exercise you will create a repository on GitHub and work with that. </p>
+<p>You will be working on the GitHub website (so you need to have signed up for an account). </p>
+</div>
+<ol>
+<li>Create a repository (click on the + at the top right of the menu or picking &ldquo;Start a new repository&rdquo; on your &ldquo;home screen&rdquo;)
+<br></li>
+<li>Under &ldquo;Quick setup&rdquo;, pick &ldquo;creating a new file&rdquo;.
+<br></li>
+<li>Name the file &ldquo;README.md&rdquo; (at the top, over the file editor).
+<br></li>
+<li>Put some text in the file &ldquo;README.md&rdquo;.
+<br></li>
+<li>At the bottom, where it says &ldquo;Commit new file&rdquo; you should put a useful commit message. Then click &ldquo;Commit new file&rdquo;
+<br></li>
+<li>Notice: the content of README.md appears at top level of the repo
+<br></li>
+<li>Try creating another file in a subdirectory (create subdirectories by adding the name you want after the name of your repo, then adding a &ldquo;/&rdquo; and your filename).
+<br></li>
+<li>Try adding a file that you have created on your computer and uploads (Add file -&gt; Upload files)
+<br></li>
+<li>Test out making edits to your files and committing them - all through the GitHub site.
+<br></li>
+<li>If you put a file &ldquo;README.md&rdquo; in a subdirectory then it will be shown as a &ldquo;description&rdquo; for the directory
+<br></li>
+<li>When you have made some commits, try click &ldquo;commits&rdquo; above the files in the repo and see a list of your commits.</li>
+</ol>
+<h2 id="2__creating__and__using__ssh-keys">2. Creating and using SSH-keys<a class="headerlink" href="#2__creating__and__using__ssh-keys" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only do this if you did not do that earlier in the week/before! </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this exercise you create SSH keys and upload to GitHub. Then test that it works.</p>
+<p>Everyone in the team should do this! </p>
+</div>
+<p><strong>Create a new SSH key</strong></p>
+<ol>
+<li>Open a terminal (Git Bash on Windows). In the command below, &ldquo;GitHub&rdquo; is a label added to the key for clarity. You can add any you want:
+    a. Do this
+    <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$ ssh-keygen -t ed25519 -C &quot;GitHub&quot;
+</span></code></pre></div>
+    b. If you have an older system, this may work better
+    <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ ssh-keygen -t rsa -b 4096 -C &quot;GitHub&quot;
+</span></code></pre></div>
+<br></li>
+<li>You will be asked for a file to save the key. Unless you have an existing SSH key, accept the default.
+<br></li>
+<li>Enter a passphrase and repeat it.
+<br></li>
+<li>Add the key to the ssh-agent. Here we assume the default name: 
+<br>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ eval &quot;$(ssh-agent -s)&quot;
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>$ ssh-add ~/.ssh/id_rsa
+</span></code></pre></div>
+<br></li>
+<li>Switch to the <code>.ssh</code> folder, open the file <code>id_rsa.pub</code> and copy it. Do NOT add any newlines or whitespace! 
+<br></li>
+</ol>
+<p><strong>Adding the SSH key to GitHub</strong></p>
+<ol>
+<li>On GitHub, click your avatar in the top right corner and pick &ldquo;Settings&rdquo;.
+<br></li>
+<li>Choose &ldquo;SSH and GPG keys&rdquo;
+<br></li>
+<li>Click &ldquo;Add new SSH key&rdquo;
+<br></li>
+<li>Add a descriptive label for the key in the &ldquo;Title&rdquo; field. In the key field you paste the content of the key (~/.ssh/id_rsa.pub)
+<br>
+<img alt="Add new SSH key" src="../images/new-key.png" />
+<br></li>
+<li>Click &ldquo;Add SSH key&rdquo;
+<br></li>
+<li>Confirm your GitHub password if you are prompted for it. 
+<br></li>
+</ol>
+<p><strong>Testing the SSH keys</strong></p>
+<ol>
+<li>Open a terminal (or Git Bash) 
+<br></li>
+<li><code>$ ssh -T git@github.com</code>
+<br></li>
+<li>It will look similar to this: 
+<br>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ ssh -T git@github.com
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>The authenticity of host &#39;github.com (140.82.121.4)&#39; can&#39;t be established.
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Are you sure you want to continue connecting (yes/no)? yes
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Warning: Permanently added &#39;github.com,140.82.121.4&#39; (RSA) to the list of known hosts.
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Enter passphrase for key &#39;/home/bbrydsoe/.ssh/id_rsa&#39;: 
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Hi bbrydsoe! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+</span></code></pre></div>
+<br></li>
+<li>Verify that the resulting message contains your username. 
+<br></li>
+<li>NOTE: Optionally, you could run <code>ssh-add</code> to add the key. Then you will only be asked for the passphrase once per session. This is relatively safe on Linux and macOS, but not on Windows where it usually saves the key passphrase permanently.</li>
+</ol>
+<h2 id="3__clone__push__pull">3. clone, push, pull<a class="headerlink" href="#3__clone__push__pull" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We now have SSH keys set up. Time to test it from your own machine</p>
+</div>
+<ol>
+<li>Clone the repository, using the SSH address (click &ldquo;CODE&rdquo; on the GitHub repository and pick &ldquo;SSH&rdquo;). You will be asked for the key passphrase.
+<br></li>
+<li>Enter the local repository. Do a <code>git pull</code> and see that it works. You will have to enter the key passphrase.
+<br></li>
+<li>Create a file (or edit a file).
+<br></li>
+<li>Add the file. Commit the file (<code>git add</code>, <code>git commit</code>)
+<br></li>
+<li>Push the file. Again it will ask for the key passphrase. Success!
+<br></li>
+<li>NOTE: Optionally, you could run <code>ssh-add</code> to add the key. Then you will only be asked for the passphrase once per session. This is relatively safe on Linux and macOS, but <strong>not</strong> on Windows where it usually saves the key passphrase permanently.
+<br> </li>
+</ol>
+<h2 id="4__teamwork__push__and__pull">4. Teamwork, push and pull<a class="headerlink" href="#4__teamwork__push__and__pull" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>One of you should create a repository on GitHub and invite their team. </p>
+<p>Remember, on the GitHub webpage the option to create a new repository is in the top right corner - click the &ldquo;+&rdquo;. To add members: &ldquo;Settings&rdquo; -&gt; &ldquo;Manage access&rdquo;.</p>
+</div>
+<ol>
+<li>Each person should create a file in the repository (Add and commit the file)
+<br></li>
+<li>On the command line, do a <code>git status</code>. Do a <code>git log --graph --oneline --decorate --all</code>
+<br></li>
+<li>NOTE! To avoid errors, do <code>git pull</code> before you stage and commit your file and also the team members should use different names for their files. See the changes appear when you do a <code>git pull</code> after all have added their file(s).
+<br></li>
+<li>You could also try to push a new change before pulling the changes your team members have made. Git will complain, but you should be able to solve this kind of simple problem with <code>git pull --rebase</code> before you re-do <code>git push</code>
+<br></li>
+<li>Try create more files then add and commit. Do <code>git status</code> and <code>git log --graph --oneline --decorate --all</code> before and after each step. Push the files to the repository. Check the log and status again.
+<br></li>
+<li>NOTE: You will be asked for the key passphrase each time you do a push
+<br></li>
+</ol>
+<h2 id="5__teamwork__branches__and__merging">5. Teamwork, branches and merging<a class="headerlink" href="#5__teamwork__branches__and__merging" title="Anchor link to this section for reference">&para;</a></h2>
+<ol>
+<li>Each person creates a branch in the repo you created in the previous exercise. You can use <code>git branch yourbranchname</code> where you put any name you want for the new branch.
+<br></li>
+<li>Switch to the new branch with <code>git checkout yourbranchname</code>
+<br></li>
+<li>Create a uniquely named file. Put anything you want in it.
+<br></li>
+<li>Do <code>git log</code> and <code>git status</code> to see any changes.
+<br></li>
+<li>Stage and commit the file. Check again with <code>git log</code> and <code>git status</code>
+<br></li>
+<li>Push your changes with <code>git push origin -u yourbranchname</code> (or with <code>git push -u origin HEAD</code> for a fast way when using the same name)
+<br></li>
+<li>When everyone has done this, all do a <code>git pull</code>
+<br></li>
+<li>Use <code>git status</code>, <code>git branch</code>, and <code>git log</code> to see what has happened.
+<br></li>
+</ol>
+<h2 id="6__teamwork__branches__and__merging__pull__requests">6. Teamwork, branches and merging, pull requests<a class="headerlink" href="#6__teamwork__branches__and__merging__pull__requests" title="Anchor link to this section for reference">&para;</a></h2>
+<ol>
+<li>(Members) Go to the repository you have worked in on the GitHub page. Submit a pull-request from your branch to the main branch
+<br></li>
+<li>(Owner) The owner of the repository (the person who created it) can then accept them and click to merge them.
+<br></li>
+<li>After doing so, everyone should again do a <code>git pull</code> (on the command line)
+<br></li>
+<li>Use <code>git status</code>, <code>git branch --all</code>, and <code>git log --graph --oneline --decorate --all</code> to see what has happened.
+<br>
+<strong>Note</strong>: It is possible to make the main branch &ldquo;protected&rdquo; so it is not changed without a review from the owner. Try doing this (on GitHub).
+<br> </li>
+</ol>
+<h2 id="7__teamwork__and__branches">7. Teamwork and branches<a class="headerlink" href="#7__teamwork__and__branches" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Now you will be creating a new branch in the repo your group is sharing, but you will create in from the GitHub page </p>
+</div>
+<ol>
+<li>Everyone in the group create a new branch in the repo - this time you could try doing it <strong>from the GitHub page</strong>
+<br>
+Now you are working on the command line
+<br></li>
+<li>Check which remote branches exist with <code>git branch -r</code> 
+<br></li>
+<li>Check which local branches you have with <code>git branch</code> 
+<br></li>
+<li>Use <code>git status</code> to see which branch you are on.
+<br></li>
+<li>Check with <code>git branch -a</code> to see all local and remote branches
+<br></li>
+<li>Do a <code>git pull</code> from the command line to get a list of all branches. Switch to the branch you created on GitHub with <code>git checkout --track origin/mynewbranch</code>. Again do <code>git branch</code> to see which branch you are on.
+<br></li>
+<li>Create a new file and put some content to it. Add and commit it. Check for changes (<code>git status</code>, <code>git log</code>). Push the changes.
+<br></li>
+<li>Try and merge the branches from the command line. Remember to first pull any changes from your other group members. Also remember to switch to the branch you want to merge it to (main in this case).
+<br></li>
+<li>Were you succesful? Why or why not? Is there are difference between what happens when the owner of the branch tries this and when everyone else does?
+<br></li>
+<li>After doing this, everyone should again do a <code>git pull</code> (on the command line)
+<br></li>
+<li>Use <code>git status</code>, <code>git branch</code>, and <code>git log</code> to see what has happened. If you want a &ldquo;prettier&rdquo; and sometimes easier to read view, use <code>git log --graph --oneline --decorate --all</code>
+<br></li>
+</ol>
+<h2 id="8__deleting__branches">8. Deleting branches<a class="headerlink" href="#8__deleting__branches" title="Anchor link to this section for reference">&para;</a></h2>
+<ol>
+<li>Everyone should now create two more branches in the repo. In each case, switch to the branch, create a file in it, and push the branch. (You could try this both on the command line and in the web repo on GitHub) 
+<br></li>
+<li>Check which branches exist, remotely and locally (on the command line)
+<br></li>
+<li>Try and delete a remote branch with <code>git push origin --delete myownbranch</code> (on the command line)
+<br></li>
+<li>Try delete a local branch with <code>git branch -D &lt;alsomyownbranch&gt;</code> (on the command line)
+<br></li>
+<li>On the command line, do a <code>git status</code>, <code>git log</code> and <code>git branch</code> to see what has happened
+<br></li>
+<li>The branch you deleted locally is still on the repo. Get another copy of it (<code>git pull</code> and <code>git fetch</code>, possibly with suitable flags will get it back for you - this is again done on the command line)
+<br> </li>
+</ol>
+<h2 id="9__merge__conflicts">9. Merge conflicts<a class="headerlink" href="#9__merge__conflicts" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this exercise everyone in the team will be working in the same branch, for instance the main branch.</p>
+<p>Merge conflicts generally happen when two (or more) teammembers edit the same file and the same line, or when one edits a file and another deletes it.</p>
+</div>
+<ol>
+<li>(One in the team do this) Create a new repository on GitHub. Add your team members as in the previous exercises. Everyone clones the repository (from the command line).
+<br></li>
+<li>Create a couple files. Add, commit, and push.<ul>
+<li>If more than one person creates files, remember to either pull your teammates work first, or do a <code>git pull --rebase</code> before pushing.
+<br></li>
+</ul>
+</li>
+<li>After doing this, everyone should again do a <code>git pull</code>
+<br></li>
+<li>Now one or more of the team members make changes to the same file, in the same line. Add, commit, push.
+<br></li>
+<li>Did you get a conflict? Use <code>git status</code>, <code>git branch</code>, and <code>git log</code> to see what has happened. Try to resolve the conflict.
+<br></li>
+<li>Now again all will work on one file. One or more will edit it and one deletes it (<code>git rm file</code>). What happens when you push your work? You should get a conflict. 
+<br></li>
+<li>Try and resolve the conflict you got. Should the file be kept or deleted?
+<br> </li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../remotes-exercises/" class="btn btn-neutral float-left" title="Working with remotes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tetralith/" class="btn btn-neutral float-right" title="Using Tetralith for the Git course">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../remotes-exercises/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../tetralith/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

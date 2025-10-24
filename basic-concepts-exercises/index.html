@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/course-intro-git/basic-concepts-exercises/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Basic concepts - Introduction to Git</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Basic concepts";
+        var mkdocs_page_input_path = "basic-concepts-exercises.md";
+        var mkdocs_page_url = "/course-intro-git/basic-concepts-exercises/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/logo-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Exercises</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basic concepts</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Git</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Exercises</li>
+      <li class="breadcrumb-item active">Basic concepts</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercises__-__basic__concepts">Exercises - Basic Concepts<a class="headerlink" href="#exercises__-__basic__concepts" title="Anchor link to this section for reference">&para;</a></h1>
+<ol>
+<li>Create a repository, add (stage) and commit a file</li>
+</ol>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>repository<span class="w"> </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>repository<span class="w"> </span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>init<span class="w"> </span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>nano<span class="w"> </span>file.txt<span class="w"> </span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>git<span class="w"> </span>add<span class="w"> </span>file.txt<span class="w"> </span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;This is quite interesting&quot;</span><span class="w"> </span>
+</span></code></pre></div>
+2. Take a look at the stuff under the .git directory </p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>repository
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tree<span class="w"> </span>.git<span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>cat-file<span class="w"> </span>-p<span class="w"> </span>&lt;hash&gt;<span class="w"> </span>
+</span></code></pre></div>
+   where <hash> is the various hash&rsquo;es you can see with </p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>tree<span class="w"> </span>.git
+</span></code></pre></div>
+   Remember that the two-letter name of the subdirectory under objects-dir is included in the hash<br>
+   <br> 
+3. Make some changes. </p>
+<p>Change one or more files. Add and commit. Make some changes. Add and commit. </p>
+<p>Look at what happens in the .git tree 
+<br>
+4. Go to earlier commits and make a new branch </p>
+<p>Try go back to an earlier commit with “git checkout <hash>” </p>
+<p>Make come changes to a file there, or try adding a new file (and add+commit) </p>
+<p>Create a new branch from that commit: “git checkout -b second_branch” </p>
+<p>Find the hash of the commit the HEAD points to now  
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cat<span class="w"> </span>.git/HEAD<span class="w">    </span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cat<span class="w"> </span>&lt;path<span class="w"> </span>you<span class="w"> </span>got<span class="w"> </span>above&gt;<span class="w"> </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>git<span class="w"> </span>cat-file<span class="w"> </span>-p<span class="w"> </span>&lt;<span class="nb">hash</span><span class="w"> </span>you<span class="w"> </span>just<span class="w"> </span>got<span class="w"> </span>from<span class="w"> </span>above<span class="w"> </span>command&gt;<span class="w"> </span>
+</span></code></pre></div>
+<br>
+5. Go back on primary branch and merge the branches</p>
+<p>Go back to the primary branch (main or master) with “git checkout main” or “git checkout master” </p>
+<p>Merge the new branch you created to master with “git merge &ndash;no-ff second_branch” (or whatever you called the new branch) </p>
+<p>Fix any conflict by going into the conflicting file(s) and removing the stuff you don’t want and also the git markers set there </p>
+<p>Add the fixed file and do “git merge &ndash;continue&rdquo;  </p>
+<p>Now look at what the HEAD is pointing to 
+<br><br>
+6. Check out the commit tree   </p>
+<p>You can also just try jump around in the commit tree with “git checkout <hash>” and see how your working tree looks in various places (see that files are there or not, and with different content). </p>
+<p>You get the list of hash’s and commit messages with “git log” </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../basic-commands-exercises/" class="btn btn-neutral float-left" title="Basic commands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../commits-exercises/" class="btn btn-neutral float-right" title="Traversing the commit tree">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../basic-commands-exercises/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../commits-exercises/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

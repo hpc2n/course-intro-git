@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/course-intro-git/remotes-exercises/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Working with remotes - Introduction to Git</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Working with remotes";
+        var mkdocs_page_input_path = "remotes-exercises.md";
+        var mkdocs_page_url = "/course-intro-git/remotes-exercises/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/logo-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Exercises</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Working with remotes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#adding__remotes">Adding remotes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#merge__conflicts__and__rebasing">Merge conflicts and rebasing</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Git</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Exercises</li>
+      <li class="breadcrumb-item active">Working with remotes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercises__-__working__with__remotes">Exercises - Working with remotes<a class="headerlink" href="#exercises__-__working__with__remotes" title="Anchor link to this section for reference">&para;</a></h1>
+<p>In order to do these exercises, you need to download the exercises zip file (if you already did so for the previous exercise, you do not need to do so again, of course).</p>
+<p>You can do that either by cloning the repository or by just getting the zip file with <code>wget</code>.</p>
+<ul>
+<li>Do ONE of the following:<ul>
+<li><strong>git clone</strong><ol>
+<li><code>git clone https://github.com/hpc2n/course-intro-git.git</code></li>
+<li><code>cd course-intro-git</code></li>
+<li><code>unzip git_materials.zip</code></li>
+<li><code>cd git_materials</code></li>
+<li><code>cd 6.remotes</code></li>
+</ol>
+</li>
+<li><strong>Fetch with wget</strong><ol>
+<li><code>wget https://github.com/hpc2n/course-intro-git/raw/refs/heads/main/git_materials.zip</code></li>
+<li><code>unzip git_materials.zip</code></li>
+<li><code>cd git_materials</code></li>
+<li><code>cd 6.remotes</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>You are now in a directory with 2 subdirectories, one for each exercise.</p>
+<h2 id="adding__remotes">Adding remotes<a class="headerlink" href="#adding__remotes" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Make sure you are in the subdirectory <code>git_materials/6.remotes/1.adding-remotes</code>. </p>
+<ol>
+<li>Fork the following repository <code>https://github.com/pojeda/pull-request-course.git</code><br></li>
+<li>Clone the forked repository and check the available remotes<br></li>
+<li>Add the upstream repository with the name &ldquo;upstream&rdquo;<br></li>
+<li>Using your cloned version of the forked repository, make some modification to the &ldquo;README.md&rdquo; file and commit them locally. Then, push the changes to the remote.<br>
+Finally, make a &ldquo;pull request&rdquo; from your GitHub account.</li>
+</ol>
+<h2 id="merge__conflicts__and__rebasing">Merge conflicts and rebasing<a class="headerlink" href="#merge__conflicts__and__rebasing" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Make sure you are in the subdirectory <code>git_materials/6.remotes/2.merge-rebase</code>. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This exercise demonstrates how to solve a merge conflict using rebasing.</p>
+<p><strong>Note:</strong> for the present example you don&rsquo;t need to add a remote. It has been added for this example already.</p>
+</div>
+<p>Tasks:</p>
+<ol>
+<li>Enter the <code>repository</code> directory and check the current status.
+<br></li>
+<li>Check that the file <code>file.txt</code> has been modified since the last commit
+using the <em>diff</em> command
+<br></li>
+<li>Try commiting the changes and push them to the remote
+<br></li>
+<li>Why do the push was unsuccesful?
+<br>
+<strong>hint:</strong> the remote contains changes that are missing from your local
+remote. 
+<br></li>
+<li>Pull the changes from the remote
+<br></li>
+<li>When the text editor opens save the commit message. This means that
+Git is able to merge the remote and your local changes.
+<br></li>
+<li>Take a look at the commits&rsquo; tree graph:
+<br>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git log --all --decorate --oneline --graph
+</span></code></pre></div>
+and save it into a text file for further investigations.
+<br></li>
+<li>You could simply continue to work normally from here but the merge commit you just created is not actually necessary in this situation. Try falling back to the previous commit:
+<br>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ git reset --hard HEAD~
+</span></code></pre></div>
+<br></li>
+<li>Now, pull again but tell Git to rebase your branch:
+<br>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ git pull --rebase
+</span></code></pre></div>
+<br></li>
+<li>Take a look at the graph once again with:
+<br>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git log --all --decorate --oneline --graph
+</span></code></pre></div>
+<br>
+and compare it with the one you saved into a text file. 
+You can now see that the merge commit was not necessary.
+<br></li>
+<li>Finally, you can now push the changes to the remote.
+<br></li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../branches-exercises/" class="btn btn-neutral float-left" title="Branches, merges, and conflicts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../teamwork-exercises/" class="btn btn-neutral float-right" title="Teamwork">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../branches-exercises/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../teamwork-exercises/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

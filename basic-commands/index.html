@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/course-intro-git/basic-commands/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Basic Commands - Introduction to Git</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Basic Commands";
+        var mkdocs_page_input_path = "basic-commands.md";
+        var mkdocs_page_url = "/course-intro-git/basic-commands/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/logo-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Basic Commands</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#getting__help">Getting help</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creating__a__repository__from__scratch">Creating a repository from scratch</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creating__a__repository__by__cloning__an__existing__repository">Creating a repository by cloning an existing repository</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stages__of__files">Stages of files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#monitoring__the__differences__in__files">Monitoring the differences in files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adding__files__modifications">Adding files&rsquo; modifications</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unstaging__files__modifications__part__i">Unstaging files&rsquo; modifications part I</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#committing__changes">Committing changes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unstaging__files__modifications__part__ii">Unstaging files&rsquo; modifications part II</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#content__of__a__commit__message">Content of a commit message</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reverting__to__the__previous__commit">Reverting to the previous commit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adding__multiple__files">Adding multiple files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#renaming__filesfolders">Renaming files/folders</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#moving__files">Moving files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#removing__files">Removing files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ignoring__files">Ignoring files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#generating__aliases">Generating aliases</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#intermediate__advanced__commands">Intermediate/ Advanced commands</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#adding__files__modifications__interactively">Adding files&rsquo; modifications interactively</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#amending__commits">Amending commits</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#simplifying__commits">Simplifying commits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#advanced">Advanced</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#git__blame__advanced">Git blame (Advanced)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Exercises</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Git</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Basic Commands</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!-- Lecture material made by Pedro Ojeda-May for the version of the course that was given in fall 2020. Lecture was first given by Pedro Ojeda-May in fall 2020. Moved to GitHub and some tweaks (mainly to graphs) done by Birgitte Brydsö to get it to work on GitHub pages for the 2025 version of the course.-->
+
+<!-- Slides: https://hackmd.io/@git-fall-2024/L2-commands -->
+
+<hr />
+<h1 id="lecture__2__basic__commands">Lecture 2: Basic commands<a class="headerlink" href="#lecture__2__basic__commands" title="Anchor link to this section for reference">&para;</a></h1>
+<hr />
+<h2 id="getting__help">Getting help<a class="headerlink" href="#getting__help" title="Anchor link to this section for reference">&para;</a></h2>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">$ </span>git<span class="w"> </span><span class="nb">help</span><span class="w"> </span>&lt;command&gt;<span class="w"> </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">$ </span>man<span class="w"> </span>git-&lt;command&gt;
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">$ </span>git<span class="w"> </span><span class="nb">help</span><span class="w"> </span>commit<span class="w"> </span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="go">GIT-COMMIT(1)                                     Git Manual                      GIT-COMMIT(1)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="go">NAME</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="go">       git-commit - Record changes to the repository</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="go">SYNOPSIS</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="go">       git commit [-a | --interactive | --patch] [-s] [-v] [-u&lt;mode&gt;] [--amend]</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="go">                  [--dry-run] [(-c | -C | --fixup | --squash) &lt;commit&gt;]</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="go">                  [-F &lt;file&gt; | -m &lt;msg&gt;] [--reset-author] [--allow-empty]</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="go">                  [--allow-empty-message] [--no-verify] [-e] [--author=&lt;author&gt;]</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="go">                  [--date=&lt;date&gt;] [--cleanup=&lt;mode&gt;] [--[no-]status]</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="go">                  [-i | -o] [-S[&lt;keyid&gt;]] [--] [&lt;file&gt;...]</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="go">DESCRIPTION</span>
+</span></code></pre></div>
+<hr />
+<h2 id="creating__a__repository__from__scratch">Creating a repository from scratch<a class="headerlink" href="#creating__a__repository__from__scratch" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In case you want to start a project from scratch called <strong>myproject</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>myproject
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>myproject
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>$<span class="w"> </span>git<span class="w"> </span>init
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Initialized<span class="w"> </span>empty<span class="w"> </span>Git<span class="w"> </span>repository<span class="w"> </span><span class="k">in</span><span class="w"> </span>.../myproject/.git/
+</span></code></pre></div>
+<p>this will create a folder called <em>.git</em> in the current folder which contains the Git-related files. </p>
+<hr />
+<p>We can now ask about the status of the repository:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>git<span class="w"> </span>status<span class="w"> </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>No<span class="w"> </span>commits<span class="w"> </span>yet
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>create/copy<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>to<span class="w"> </span>track<span class="o">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="creating__a__repository__by__cloning__an__existing__repository">Creating a repository by cloning an existing repository<a class="headerlink" href="#creating__a__repository__by__cloning__an__existing__repository" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Use the command:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>repository_location<span class="w"> </span>path_where_it_will_be
+</span></code></pre></div>
+<p><span style="color:red"><em>repository_location</em> </span> is the path of the Git repository (if it is in your local machine) or a URL if it is on the internet. <span style="color:red"><em>path_where_it_will_be</em> </span> is the path for the cloned repository.</p>
+<hr />
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/aliceuser2020/my-first-project.git<span class="w">  </span>./my-project<span class="w">  </span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">Cloning into &#39;GitCourse/Alice/my-project&#39;...</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="go">remote: Enumerating objects: 3, done.</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="go">remote: Counting objects: 100% (3/3), done.</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="go">remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="go">Unpacking objects: 100% (3/3), done.</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="go">Checking connectivity... done.</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>./my-project
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="gp">$ </span>git<span class="w"> </span>status
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="go">On branch master</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="go">Your branch is up-to-date with &#39;origin/master&#39;.</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="go">nothing to commit, working directory clean</span>
+</span></code></pre></div>
+<hr />
+<h2 id="stages__of__files">Stages of files<a class="headerlink" href="#stages__of__files" title="Anchor link to this section for reference">&para;</a></h2>
+<p><img 700px_="700px;" alt="Git folders" src="../images/git-folders2.png" style="&quot;width:" /></p>
+<hr />
+<h2 id="monitoring__the__differences__in__files">Monitoring the differences in files<a class="headerlink" href="#monitoring__the__differences__in__files" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Differences or changes in files can be seen with the command</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="gp">$ </span>git<span class="w"> </span>diff
+</span></code></pre></div>
+<p>This command supports different options.</p>
+<hr />
+<h2 id="adding__files__modifications">Adding files&rsquo; modifications<a class="headerlink" href="#adding__files__modifications" title="Anchor link to this section for reference">&para;</a></h2>
+<p>After initializing the repository, we decide to create a file called <span style="color:brown"><em>first.txt</em> </span></p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This is my first file&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>first.txt
+</span></code></pre></div>
+<p>If we ask about the status of the repository we will see the following message,</p>
+<hr />
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="gp">$ </span>git<span class="w"> </span>status<span class="w"> </span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">On branch master</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="go">No commits yet</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="go">Untracked files:</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="go">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="go">    first.txt</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="go">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span>
+</span></code></pre></div>
+<hr />
+<p><img alt="" src="../images/git-folders-changes-wd.png" /></p>
+<hr />
+<p>We can now add the <span style="color:brown"><em>first.txt</em> </span> file to the staging area:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>first.txt<span class="w"> </span>
+</span></code></pre></div>
+<p>and then check the status of the repository:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="gp">$ </span>git<span class="w"> </span>status<span class="w"> </span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="go">On branch master</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="go">No commits yet</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="go">Changes to be committed:</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="go">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="go">    new file:   first.txt</span>
+</span></code></pre></div>
+<hr />
+<p><img alt="" src="../images/git-folders-changes-sa.png" /></p>
+<hr />
+<h2 id="unstaging__files__modifications__part__i">Unstaging files&rsquo; modifications part I<a class="headerlink" href="#unstaging__files__modifications__part__i" title="Anchor link to this section for reference">&para;</a></h2>
+<p>If you want to unstage the changes (maybe you are not convinced of them) type the line suggested by Git:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="gp">$ </span>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>first.txt
+</span></code></pre></div>
+<p>Notice that Git suggests this command because the repository is brand-new and nothing has been committed yet. </p>
+<hr />
+<h2 id="committing__changes">Committing changes<a class="headerlink" href="#committing__changes" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Once the changes are staged, they can be commited with the command</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="gp">$ </span>git<span class="w"> </span>commit<span class="w"> </span>
+</span></code></pre></div>
+<p>this will open a window of the default text editor in your system (in this case <strong>Vim</strong>)</p>
+<hr />
+<div class="language-console highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="go">First commit in myproject</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="gp"># </span>Please<span class="w"> </span>enter<span class="w"> </span>the<span class="w"> </span>commit<span class="w"> </span>message<span class="w"> </span><span class="k">for</span><span class="w"> </span>your<span class="w"> </span>changes.<span class="w"> </span>Lines<span class="w"> </span>starting
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="gp"># </span>with<span class="w"> </span><span class="s1">&#39;#&#39;</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>ignored,<span class="w"> </span>and<span class="w"> </span>an<span class="w"> </span>empty<span class="w"> </span>message<span class="w"> </span>aborts<span class="w"> </span>the<span class="w"> </span>commit.
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="gp">#</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="gp"># </span>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="gp">#</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="gp"># </span>Initial<span class="w"> </span>commit
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="gp">#</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="gp"># </span>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="gp">#       </span>new<span class="w"> </span>file:<span class="w">   </span>first.txt
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="gp">#</span>
+</span></code></pre></div>
+<p>write a commit message and upon saving the file the changes will be committed.</p>
+<hr />
+<div class="language-console highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="gp">$ </span>git<span class="w"> </span>commit
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">[master (root-commit) 3a7625b] First commit in myproject</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="go"> 1 file changed, 1 insertion(+)</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="go"> create mode 100644 first.txt</span>
+</span></code></pre></div>
+<p>the status after committing is</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="gp">$ </span>git<span class="w"> </span>status
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="go">On branch master</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="go">nothing to commit, working tree clean</span>
+</span></code></pre></div>
+<hr />
+<p>Fast (lazy?) commit option:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">$ </span>git<span class="w"> </span>commit<span class="w"> </span>-a<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Commit message&quot;</span>
+</span></code></pre></div>
+<p>this command will add all files that were modified (and tracked) and commit them with the quoted message.</p>
+<hr />
+<p><img alt="" src="../images/git-folders-changes-lb.png" /></p>
+<hr />
+<h2 id="unstaging__files__modifications__part__ii">Unstaging files&rsquo; modifications part II<a class="headerlink" href="#unstaging__files__modifications__part__ii" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Imagine that after doing the first commit for <span style="color:brown"><em>first.txt</em> </span> file, you modify this file and stage it (<span style="color:brown"><em>git add first.txt</em></span>). If you check the status the output will be (version 2.25.1):</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="go">On branch master</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="go">Changes to be committed:</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="go">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="go">    modified:   first.txt</span>
+</span></code></pre></div>
+<hr />
+<p>For versions before 2.23 the status would look like:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="go">On branch master</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="go">Changes to be committed:</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="go">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="go">    modified:   first.txt</span>
+</span></code></pre></div>
+<hr />
+<p>Git suggests a different way to unstage the file as we saw before, because now there is a <span style="color:brown">HEAD </span> pointer. </p>
+<hr />
+<p><div class="language-console highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="gp">$ </span>git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>filename
+</span></code></pre></div>
+unstages the changes made to <em>filename</em>. From the website https://git-scm.com/docs/git-restore: THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.</p>
+<hr />
+<p><div class="language-console highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="gp">$ </span>git<span class="w"> </span>reset<span class="w"> </span>HEAD<span class="w"> </span>filename
+</span></code></pre></div>
+is an old command for unstaging,</p>
+<p><div class="language-console highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="gp">$ </span>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>filename
+</span></code></pre></div>
+with this command Git will untrack <em>filename</em> (staging for removal) leaving the file in the working directory</p>
+<hr />
+<h2 id="content__of__a__commit__message">Content of a commit message<a class="headerlink" href="#content__of__a__commit__message" title="Anchor link to this section for reference">&para;</a></h2>
+<ul>
+<li>why is this change needed?</li>
+<li>how is the problem approached?</li>
+<li>are there side effects?</li>
+<li>write structured text (~70 characters)</li>
+<li>one can include the ticket numbers for related issues for instance (#1112)</li>
+</ul>
+<p><strong>Important:</strong> check that the code works before commiting. Here, test cases are very handy. Git kurz &amp; gut, O&rsquo;Reillys, Nina Siessegger.  </p>
+<hr />
+<h2 id="reverting__to__the__previous__commit">Reverting to the previous commit<a class="headerlink" href="#reverting__to__the__previous__commit" title="Anchor link to this section for reference">&para;</a></h2>
+<p>If you made a commit and you regret it later, you can revert the changes to the previous
+commit with the command:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="gp">$ </span>git<span class="w"> </span>revert<span class="w"> </span>HEAD
+</span></code></pre></div>
+<hr />
+<h2 id="adding__multiple__files">Adding multiple files<a class="headerlink" href="#adding__multiple__files" title="Anchor link to this section for reference">&para;</a></h2>
+<p>In case you want to add multiple files, that follow a pattern, at the same time you can use Linux-type wild cards. As an example, we can add the files <span style="color:brown"> <em>file1.txt, file2.txt, file3.txt</em></span>  at once with the commands (equivalent for this test case):</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>file?.txt
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>file<span class="o">[</span><span class="m">1</span>-3<span class="o">]</span>.txt
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>*.txt
+</span></code></pre></div>
+<hr />
+<p>If we want to add all the files for staging we can do:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>-A<span class="w">        </span><span class="o">(</span>all<span class="w"> </span>files<span class="w"> </span>including<span class="w"> </span>those<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>parent<span class="w"> </span>folder<span class="o">)</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w">         </span><span class="o">(</span>all<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>sub-folders<span class="o">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="renaming__filesfolders">Renaming files/folders<a class="headerlink" href="#renaming__filesfolders" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Imagine that you want to change the name of the file <span style="color:brown"> <em>first.txt</em></span>  to <span style="color:brown"> <em>Readme.txt</em></span>, in this case you can use the command:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="gp">$ </span>git<span class="w"> </span>mv<span class="w"> </span>oldfilename<span class="w"> </span>newfilename
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="gp">$ </span>git<span class="w"> </span>mv<span class="w"> </span>first.txt<span class="w"> </span>Readme.txt
+</span></code></pre></div>
+<hr />
+<p>Although there is not feedback from the command the status of the file has now changed</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="gp">$ </span>git<span class="w"> </span>status
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="go">On branch master</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="go">Changes to be committed:</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="go">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="go">        renamed:    first.txt -&gt; Readme.txt</span>
+</span></code></pre></div>
+<p>you can now commit the changes. Renaming files, instead of creating new ones, can help you to keep a consistent history of the files.</p>
+<hr />
+<h2 id="moving__files">Moving files<a class="headerlink" href="#moving__files" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Similar to the <strong>mv</strong> Linux command, the <strong>git mv</strong> command can be also used to move a file to a different location: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>$<span class="w"> </span>git<span class="w"> </span>mv<span class="w"> </span>filename<span class="w"> </span>newlocation
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>$<span class="w"> </span>git<span class="w"> </span>mv<span class="w"> </span>first.txt<span class="w"> </span>src/<span class="w"> </span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>$<span class="w"> </span>git<span class="w"> </span>status<span class="w"> </span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">        </span>renamed:<span class="w">    </span>first.txt<span class="w"> </span>-&gt;<span class="w"> </span>src/first.txt
+</span></code></pre></div>
+<hr />
+<h2 id="removing__files">Removing files<a class="headerlink" href="#removing__files" title="Anchor link to this section for reference">&para;</a></h2>
+<p>If some file is not useful any longer and we want to delete it from our repository, we can issue the command, </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>$<span class="w"> </span>git<span class="w"> </span>rm<span class="w"> </span>location/filename
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>$<span class="w"> </span>git<span class="w"> </span>rm<span class="w"> </span>src/first.txt
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">        </span>deleted:<span class="w">    </span>src/first.txt
+</span></code></pre></div>
+<p>Sometimes it is more convenient to rename files instead of deleting them to keep the history more consistent.</p>
+<hr />
+<h2 id="ignoring__files">Ignoring files<a class="headerlink" href="#ignoring__files" title="Anchor link to this section for reference">&para;</a></h2>
+<p>If you want to ignore some files in your repository, for instance, temporary (.tmp) or binary (.bin) files. One way to accomplish this is by creating a file called <strong>.gitignore</strong> in the repository with some rules with a Linux-type wild cards syntax</p>
+<hr />
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>$<span class="w"> </span>cat<span class="w"> </span>.gitignore
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>*.tmp
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>*.bin
+</span></code></pre></div>
+<p>then, you will have to commit the <strong>.gitignore</strong> file as usual.</p>
+<hr />
+<p>One caveat of using a <strong>.gitignore</strong> file is that it will be shared with all the collaborators. One can instead use the local exclude file in <span style="color:blue"><em>.git/info/exclude</em></span> to define the rules. This file won&rsquo;t be shared. </p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="gp"># </span>$<span class="w"> </span>git<span class="w"> </span>ls-files<span class="w"> </span>--others<span class="w"> </span>--exclude-from<span class="o">=</span>.git/info/exclude
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="gp"># </span>Lines<span class="w"> </span>that<span class="w"> </span>start<span class="w"> </span>with<span class="w"> </span><span class="s1">&#39;#&#39;</span><span class="w"> </span>are<span class="w"> </span>comments.
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="gp"># </span>For<span class="w"> </span>a<span class="w"> </span>project<span class="w"> </span>mostly<span class="w"> </span><span class="k">in</span><span class="w"> </span>C,<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>would<span class="w"> </span>be<span class="w"> </span>a<span class="w"> </span>good<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="gp"># </span>exclude<span class="w"> </span>patterns<span class="w"> </span><span class="o">(</span>uncomment<span class="w"> </span>them<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>them<span class="o">)</span>:
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="gp"># </span>*.<span class="o">[</span>oa<span class="o">]</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="gp"># </span>*~
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="go">*.tmp</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="go">*.bin</span>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="go">~</span>
+</span></code></pre></div>
+<hr />
+<h2 id="generating__aliases">Generating aliases<a class="headerlink" href="#generating__aliases" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The following command shows a graph of the commits&rsquo; tree in an organized way:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="o">--</span><span class="n">all</span><span class="w"> </span><span class="o">--</span><span class="n">decorate</span><span class="w"> </span><span class="o">--</span><span class="n">oneline</span><span class="w"> </span><span class="o">--</span><span class="n">graph</span>
+</span></code></pre></div>
+<p>This command is too long to type/remember. Git allows you to create shortcuts/aliases for commands:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="n">global</span><span class="w"> </span><span class="n">alias</span><span class="p">.</span><span class="na">shortcut</span><span class="w"> </span><span class="o">&lt;</span><span class="n">git</span><span class="w"> </span><span class="n">command</span><span class="o">&gt;</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">--</span><span class="n">global</span><span class="w"> </span><span class="n">alias</span><span class="p">.</span><span class="na">graph</span><span class="w"> </span><span class="s">&quot;log --all --graph --decorate --oneline&quot;</span>
+</span></code></pre></div>
+<hr />
+<p>In this way, you can use a customized <strong>git graph</strong> command:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">graph</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="o">*</span><span class="w"> </span><span class="mi">39</span><span class="n">ecba2</span><span class="w"> </span><span class="p">(</span><span class="n">HEAD</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">master</span><span class="p">)</span><span class="w"> </span><span class="n">Fourth</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="n">cd651b</span><span class="w"> </span><span class="n">Third</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="o">*</span><span class="w"> </span><span class="mf">7d</span><span class="n">ce2ff</span><span class="w"> </span><span class="n">Second</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="o">*</span><span class="w"> </span><span class="mf">1f</span><span class="mi">2</span><span class="n">cdcc</span><span class="w"> </span><span class="n">First</span><span class="w"> </span><span class="n">commit</span>
+</span></code></pre></div>
+<p>A second way to generate an alias is by adding it to your <em>.bashrc</em> file:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">alias</span><span class="w"> </span><span class="n">graph</span><span class="o">=</span><span class="s">&quot;git log --all --decorate --oneline --graph&quot;</span>
+</span></code></pre></div>
+<p>which will make the command <span style="color:blue"> <em>graph</em></span> available on the command line.</p>
+<hr />
+<h2 id="intermediate__advanced__commands">Intermediate/ Advanced commands<a class="headerlink" href="#intermediate__advanced__commands" title="Anchor link to this section for reference">&para;</a></h2>
+<hr />
+<h3 id="adding__files__modifications__interactively">Adding files&rsquo; modifications interactively<a class="headerlink" href="#adding__files__modifications__interactively" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Suppose we create an empty file, stage it, and commit the changes as follows:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>touch<span class="w"> </span>first.txt
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>git<span class="w"> </span>add<span class="w"> </span>first.txt
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;first file&quot;</span>
+</span></code></pre></div>
+<p>Now, we add a couple of lines to our file <span style="color:brown"> <em>first.txt</em></span> and now it looks like</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>This<span class="w"> </span>is<span class="w"> </span>my<span class="w"> </span>first<span class="w"> </span>file
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>*<span class="w"> </span>TODO<span class="w"> </span>list
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>*<span class="w"> </span>Summary
+</span></code></pre></div>
+<hr />
+<p>The status command tells us that we did some modifications to the file:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="go">On branch master</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="go">Changes not staged for commit:</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="go">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="go">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="go">        modified:   first.txt</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="go">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span>
+</span></code></pre></div>
+<hr />
+<p>Let&rsquo;s suppose that the new text (5 lines) refer to different topics: <em>TODO list</em> and <em>Summary</em>. Then, it would be better to have them in different commits. We can add the modifications interactively:</p>
+<hr />
+<div class="language-console highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>-p<span class="w"> </span>first.txt
+</span></code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="go">diff --git a/first.txt b/first.txt</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="go">index e69de29..96dd9a2 100644</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="go">--- a/first.txt</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="go">+++ b/first.txt</span>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="go">@@ -0,0 +1,5 @@</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="go">+This is my first file</span>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="go">+</span>
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="go">+* TODO list</span>
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="go">+</span>
+</span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="go">+* Summary</span>
+</span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a><span class="gp gp-VirtualEnv">(1/1)</span> <span class="go">Stage this hunk [y,n,q,a,d,e,?]?</span>
+</span></code></pre></div>
+<p>choose the <strong>e</strong> edit option to enter the editing mode.</p>
+<hr />
+<div class="language-console highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="gp"># </span>Manual<span class="w"> </span>hunk<span class="w"> </span>edit<span class="w"> </span>mode<span class="w"> </span>--<span class="w"> </span>see<span class="w"> </span>bottom<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>quick<span class="w"> </span>guide.
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="go">@@ -0,0 +1,5 @@</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="go">+This is my first file</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="go">+</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="go">+* TODO list</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="go">+                                                                                                                                       </span>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="go">+* Summary</span>
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="gp"># </span>---
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="gp"># </span>To<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="w"> </span>lines,<span class="w"> </span>make<span class="w"> </span>them<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span>lines<span class="w"> </span><span class="o">(</span>context<span class="o">)</span>.
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="gp"># </span>To<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;+&#39;</span><span class="w"> </span>lines,<span class="w"> </span>delete<span class="w"> </span>them.
+</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="gp"># </span>Lines<span class="w"> </span>starting<span class="w"> </span>with<span class="w"> </span><span class="c1"># will be removed.</span>
+</span></code></pre></div>
+<p>Because we don&rsquo;t want <em>Summary</em> in the first commit, we delete that line and save the file.</p>
+<hr />
+<p>You can now take a look at the status of the file</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="gp">$ </span>git<span class="w"> </span>status
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="go">On branch master</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="go">Changes to be committed:</span>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="go">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span>
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="go">        modified:   first.txt</span>
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>
+</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="go">Changes not staged for commit:</span>
+</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="go">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+</span><span id="__span-40-9"><a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="go">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span>
+</span><span id="__span-40-10"><a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a><span class="go">        modified:   first.txt</span>
+</span></code></pre></div>
+<hr />
+<p>Notice that the file <span style="color:brown">first.txt </span> has been partially staged. </p>
+<p><img alt="" src="../images/git-folders-changes.png" /></p>
+<hr />
+<p>The difference between staged changes and the unstaged ones can be seen with:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="gp">$ </span>git<span class="w"> </span>diff
+</span></code></pre></div>
+<p>the difference between staged changes and the previous commit with:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="gp">$ </span>git<span class="w"> </span>diff<span class="w"> </span>--staged
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="gp">$ </span>git<span class="w"> </span>diff<span class="w"> </span>--cached
+</span></code></pre></div>
+<hr />
+<p>and the difference between the unstaged changes and the previous commit with:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="gp">$ </span>git<span class="w"> </span>diff<span class="w"> </span>HEAD
+</span></code></pre></div>
+<p>At this point, you can commit the staged changes and later on stage and commit the remaining changes.</p>
+<hr />
+<h3 id="amending__commits">Amending commits<a class="headerlink" href="#amending__commits" title="Anchor link to this section for reference">&para;</a></h3>
+<p>The following command will modify your last commit by adding more content to it:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>
+</span></code></pre></div>
+<p>the flag <em>-m</em> will allow you to write a short message and <em>- -no-edit</em> will keep the message from the previous commit.
+<span style="color:red">Note: use this command in commits that haven&rsquo;t been pushed on public branches. This command modifies the history.</span></p>
+<hr />
+<h3 id="simplifying__commits">Simplifying commits<a class="headerlink" href="#simplifying__commits" title="Anchor link to this section for reference">&para;</a></h3>
+<p>Suppose that you have a series of commits which are close-related in your <span style="color:red"> <em>local repo</em></span>:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="o">--</span><span class="n">all</span><span class="w"> </span><span class="o">--</span><span class="n">decorate</span><span class="w"> </span><span class="o">--</span><span class="n">oneline</span><span class="w"> </span><span class="o">--</span><span class="n">graph</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">graph</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="o">*</span><span class="w"> </span><span class="mi">39</span><span class="n">ecba2</span><span class="w"> </span><span class="p">(</span><span class="n">HEAD</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">master</span><span class="p">)</span><span class="w"> </span><span class="n">Fourth</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="n">cd651b</span><span class="w"> </span><span class="n">Third</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-45-6"><a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a><span class="o">*</span><span class="w"> </span><span class="mf">7d</span><span class="n">ce2ff</span><span class="w"> </span><span class="n">Second</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-45-7"><a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a><span class="o">*</span><span class="w"> </span><span class="mf">1f</span><span class="mi">2</span><span class="n">cdcc</span><span class="w"> </span><span class="n">First</span><span class="w"> </span><span class="n">commit</span>
+</span></code></pre></div>
+<p>in this case, the three last commits are related and can be squashed into a single commit.</p>
+<hr />
+<div class="language-java highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">HEAD</span><span class="o">~</span><span class="mi">3</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="n">pick</span><span class="w"> </span><span class="mf">7d</span><span class="n">ce2ff</span><span class="w"> </span><span class="n">Second</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="n">pick</span><span class="w"> </span><span class="mi">3</span><span class="n">cd651b</span><span class="w"> </span><span class="n">Third</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="n">pick</span><span class="w"> </span><span class="mi">39</span><span class="n">ecba2</span><span class="w"> </span><span class="n">Fourth</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>
+</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="err">#</span><span class="w"> </span><span class="n">Rebase</span><span class="w"> </span><span class="mf">1f</span><span class="mi">2</span><span class="n">cdcc</span><span class="p">.</span><span class="mf">.39</span><span class="n">ecba2</span><span class="w"> </span><span class="n">onto</span><span class="w"> </span><span class="mf">1f</span><span class="mi">2</span><span class="n">cdcc</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="n">commands</span><span class="p">)</span>
+</span><span id="__span-46-8"><a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a><span class="err">#</span>
+</span><span id="__span-46-9"><a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a><span class="err">#</span><span class="w"> </span><span class="n">Commands</span><span class="p">:</span>
+</span><span id="__span-46-10"><a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a><span class="err">#</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">pick</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-46-11"><a id="__codelineno-46-11" name="__codelineno-46-11" href="#__codelineno-46-11"></a><span class="err">#</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">reword</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">commit</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">edit</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-46-12"><a id="__codelineno-46-12" name="__codelineno-46-12" href="#__codelineno-46-12"></a><span class="err">#</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">edit</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">commit</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">amending</span>
+</span><span id="__span-46-13"><a id="__codelineno-46-13" name="__codelineno-46-13" href="#__codelineno-46-13"></a><span class="err">#</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">squash</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">commit</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">meld</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-46-14"><a id="__codelineno-46-14" name="__codelineno-46-14" href="#__codelineno-46-14"></a><span class="err">#</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">fixup</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="s">&quot;squash&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">discard</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">commit</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-46-15"><a id="__codelineno-46-15" name="__codelineno-46-15" href="#__codelineno-46-15"></a><span class="err">#</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="nf">command</span><span class="w"> </span><span class="p">(</span><span class="n">the</span><span class="w"> </span><span class="n">rest</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">shell</span>
+</span><span id="__span-46-16"><a id="__codelineno-46-16" name="__codelineno-46-16" href="#__codelineno-46-16"></a><span class="err">#</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="nf">here</span><span class="w"> </span><span class="p">(</span><span class="k">continue</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="n">later</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="err">&#39;</span><span class="n">git</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="o">--</span><span class="k">continue</span><span class="err">&#39;</span><span class="p">)</span>
+</span><span id="__span-46-17"><a id="__codelineno-46-17" name="__codelineno-46-17" href="#__codelineno-46-17"></a><span class="err">#</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">drop</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-46-18"><a id="__codelineno-46-18" name="__codelineno-46-18" href="#__codelineno-46-18"></a><span class="err">#</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">HEAD</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-46-19"><a id="__codelineno-46-19" name="__codelineno-46-19" href="#__codelineno-46-19"></a><span class="err">#</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="n">HEAD</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">label</span>
+</span><span id="__span-46-20"><a id="__codelineno-46-20" name="__codelineno-46-20" href="#__codelineno-46-20"></a><span class="err">#</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="o">[-</span><span class="n">C</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="err">#</span><span class="w"> </span><span class="o">&lt;</span><span class="n">oneline</span><span class="o">&gt;]</span>
+</span><span id="__span-46-21"><a id="__codelineno-46-21" name="__codelineno-46-21" href="#__codelineno-46-21"></a><span class="err">#</span><span class="w"> </span><span class="p">.</span><span class="w">       </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">original</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="n">commit</span><span class="err">&#39;</span><span class="n">s</span>
+</span><span id="__span-46-22"><a id="__codelineno-46-22" name="__codelineno-46-22" href="#__codelineno-46-22"></a><span class="err">#</span><span class="w"> </span><span class="p">.</span><span class="w">       </span><span class="n">message</span><span class="w"> </span><span class="p">(</span><span class="n">or</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">oneline</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">original</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">was</span>
+</span><span id="__span-46-23"><a id="__codelineno-46-23" name="__codelineno-46-23" href="#__codelineno-46-23"></a><span class="err">#</span><span class="w"> </span><span class="p">.</span><span class="w">       </span><span class="n">specified</span><span class="p">).</span><span class="w"> </span><span class="n">Use</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">reword</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">message</span><span class="p">.</span>
+</span><span id="__span-46-24"><a id="__codelineno-46-24" name="__codelineno-46-24" href="#__codelineno-46-24"></a><span class="err">#</span>
+</span><span id="__span-46-25"><a id="__codelineno-46-25" name="__codelineno-46-25" href="#__codelineno-46-25"></a><span class="err">#</span><span class="w"> </span><span class="n">These</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">re</span><span class="o">-</span><span class="n">ordered</span><span class="p">;</span><span class="w"> </span><span class="n">they</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">executed</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">bottom</span><span class="p">.</span>
+</span><span id="__span-46-26"><a id="__codelineno-46-26" name="__codelineno-46-26" href="#__codelineno-46-26"></a><span class="err">#</span>
+</span><span id="__span-46-27"><a id="__codelineno-46-27" name="__codelineno-46-27" href="#__codelineno-46-27"></a><span class="err">#</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="n">THAT</span><span class="w"> </span><span class="n">COMMIT</span><span class="w"> </span><span class="n">WILL</span><span class="w"> </span><span class="n">BE</span><span class="w"> </span><span class="n">LOST</span><span class="p">.</span>
+</span><span id="__span-46-28"><a id="__codelineno-46-28" name="__codelineno-46-28" href="#__codelineno-46-28"></a><span class="err">#</span>
+</span><span id="__span-46-29"><a id="__codelineno-46-29" name="__codelineno-46-29" href="#__codelineno-46-29"></a><span class="err">#</span><span class="w"> </span><span class="n">However</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="n">everything</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">aborted</span><span class="p">.</span>
+</span><span id="__span-46-30"><a id="__codelineno-46-30" name="__codelineno-46-30" href="#__codelineno-46-30"></a><span class="err">#</span>
+</span><span id="__span-46-31"><a id="__codelineno-46-31" name="__codelineno-46-31" href="#__codelineno-46-31"></a><span class="err">#</span><span class="w"> </span><span class="n">Note</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">commits</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">commented</span><span class="w"> </span><span class="n">out</span>
+</span></code></pre></div>
+<hr />
+<p>choose the option <strong>s</strong> (squash)</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">pick</span><span class="w"> </span><span class="mf">7d</span><span class="n">ce2ff</span><span class="w"> </span><span class="n">Second</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="n">s</span><span class="w"> </span><span class="mi">3</span><span class="n">cd651b</span><span class="w"> </span><span class="n">Third</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="n">s</span><span class="w"> </span><span class="mi">39</span><span class="n">ecba2</span><span class="w"> </span><span class="n">Fourth</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="err">#</span><span class="w"> </span><span class="n">Rebase</span><span class="w"> </span><span class="mf">1f</span><span class="mi">2</span><span class="n">cdcc</span><span class="p">.</span><span class="mf">.39</span><span class="n">ecba2</span><span class="w"> </span><span class="n">onto</span><span class="w"> </span><span class="mf">1f</span><span class="mi">2</span><span class="n">cdcc</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="n">commands</span><span class="p">)</span>
+</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="err">#</span>
+</span><span id="__span-47-7"><a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="err">#</span><span class="w"> </span><span class="n">Commands</span><span class="p">:</span>
+</span><span id="__span-47-8"><a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a><span class="err">#</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">pick</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-47-9"><a id="__codelineno-47-9" name="__codelineno-47-9" href="#__codelineno-47-9"></a><span class="err">#</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">reword</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">commit</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">edit</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-47-10"><a id="__codelineno-47-10" name="__codelineno-47-10" href="#__codelineno-47-10"></a><span class="err">#</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">edit</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">commit</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">amending</span>
+</span><span id="__span-47-11"><a id="__codelineno-47-11" name="__codelineno-47-11" href="#__codelineno-47-11"></a><span class="err">#</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">squash</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">commit</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">meld</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-47-12"><a id="__codelineno-47-12" name="__codelineno-47-12" href="#__codelineno-47-12"></a><span class="err">#</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">fixup</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="s">&quot;squash&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">discard</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">commit</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-47-13"><a id="__codelineno-47-13" name="__codelineno-47-13" href="#__codelineno-47-13"></a><span class="err">#</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="nf">command</span><span class="w"> </span><span class="p">(</span><span class="n">the</span><span class="w"> </span><span class="n">rest</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">shell</span>
+</span><span id="__span-47-14"><a id="__codelineno-47-14" name="__codelineno-47-14" href="#__codelineno-47-14"></a><span class="err">#</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="nf">here</span><span class="w"> </span><span class="p">(</span><span class="k">continue</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="n">later</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="err">&#39;</span><span class="n">git</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="o">--</span><span class="k">continue</span><span class="err">&#39;</span><span class="p">)</span>
+</span><span id="__span-47-15"><a id="__codelineno-47-15" name="__codelineno-47-15" href="#__codelineno-47-15"></a><span class="err">#</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">drop</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-47-16"><a id="__codelineno-47-16" name="__codelineno-47-16" href="#__codelineno-47-16"></a><span class="err">#</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">HEAD</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-47-17"><a id="__codelineno-47-17" name="__codelineno-47-17" href="#__codelineno-47-17"></a><span class="err">#</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="n">HEAD</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">label</span>
+</span><span id="__span-47-18"><a id="__codelineno-47-18" name="__codelineno-47-18" href="#__codelineno-47-18"></a><span class="err">#</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="o">[-</span><span class="n">C</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="err">#</span><span class="w"> </span><span class="o">&lt;</span><span class="n">oneline</span><span class="o">&gt;]</span>
+</span><span id="__span-47-19"><a id="__codelineno-47-19" name="__codelineno-47-19" href="#__codelineno-47-19"></a><span class="err">#</span><span class="w"> </span><span class="p">.</span><span class="w">       </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">original</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="n">commit</span><span class="err">&#39;</span><span class="n">s</span>
+</span><span id="__span-47-20"><a id="__codelineno-47-20" name="__codelineno-47-20" href="#__codelineno-47-20"></a><span class="err">#</span><span class="w"> </span><span class="p">.</span><span class="w">       </span><span class="n">message</span><span class="w"> </span><span class="p">(</span><span class="n">or</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">oneline</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">original</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">was</span>
+</span><span id="__span-47-21"><a id="__codelineno-47-21" name="__codelineno-47-21" href="#__codelineno-47-21"></a><span class="err">#</span><span class="w"> </span><span class="p">.</span><span class="w">       </span><span class="n">specified</span><span class="p">).</span><span class="w"> </span><span class="n">Use</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">reword</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">message</span><span class="p">.</span>
+</span><span id="__span-47-22"><a id="__codelineno-47-22" name="__codelineno-47-22" href="#__codelineno-47-22"></a><span class="err">#</span>
+</span><span id="__span-47-23"><a id="__codelineno-47-23" name="__codelineno-47-23" href="#__codelineno-47-23"></a><span class="err">#</span><span class="w"> </span><span class="n">These</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">re</span><span class="o">-</span><span class="n">ordered</span><span class="p">;</span><span class="w"> </span><span class="n">they</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">executed</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">bottom</span><span class="p">.</span>
+</span><span id="__span-47-24"><a id="__codelineno-47-24" name="__codelineno-47-24" href="#__codelineno-47-24"></a><span class="err">#</span>
+</span><span id="__span-47-25"><a id="__codelineno-47-25" name="__codelineno-47-25" href="#__codelineno-47-25"></a><span class="err">#</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="n">THAT</span><span class="w"> </span><span class="n">COMMIT</span><span class="w"> </span><span class="n">WILL</span><span class="w"> </span><span class="n">BE</span><span class="w"> </span><span class="n">LOST</span><span class="p">.</span>
+</span><span id="__span-47-26"><a id="__codelineno-47-26" name="__codelineno-47-26" href="#__codelineno-47-26"></a><span class="err">#</span>
+</span><span id="__span-47-27"><a id="__codelineno-47-27" name="__codelineno-47-27" href="#__codelineno-47-27"></a><span class="err">#</span><span class="w"> </span><span class="n">However</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="n">everything</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">aborted</span><span class="p">.</span>
+</span><span id="__span-47-28"><a id="__codelineno-47-28" name="__codelineno-47-28" href="#__codelineno-47-28"></a><span class="err">#</span>
+</span><span id="__span-47-29"><a id="__codelineno-47-29" name="__codelineno-47-29" href="#__codelineno-47-29"></a><span class="err">#</span><span class="w"> </span><span class="n">Note</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">commits</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">commented</span><span class="w"> </span><span class="n">out</span>
+</span></code></pre></div>
+<hr />
+<p>a text editor message will appear where you can type the message for the squashed commit:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="err">#</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">combination</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">commits</span><span class="p">.</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="err">#</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="mi">1</span><span class="n">st</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">message</span><span class="p">:</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="n">Summary</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">three</span><span class="w"> </span><span class="n">commits</span>
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="err">#</span><span class="n">Second</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a>
+</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a><span class="err">#</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="err">#</span><span class="mi">2</span><span class="p">:</span>
+</span><span id="__span-48-8"><a id="__codelineno-48-8" name="__codelineno-48-8" href="#__codelineno-48-8"></a>
+</span><span id="__span-48-9"><a id="__codelineno-48-9" name="__codelineno-48-9" href="#__codelineno-48-9"></a><span class="err">#</span><span class="n">Third</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-48-10"><a id="__codelineno-48-10" name="__codelineno-48-10" href="#__codelineno-48-10"></a>
+</span><span id="__span-48-11"><a id="__codelineno-48-11" name="__codelineno-48-11" href="#__codelineno-48-11"></a><span class="err">#</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="err">#</span><span class="mi">3</span><span class="p">:</span>
+</span><span id="__span-48-12"><a id="__codelineno-48-12" name="__codelineno-48-12" href="#__codelineno-48-12"></a>
+</span><span id="__span-48-13"><a id="__codelineno-48-13" name="__codelineno-48-13" href="#__codelineno-48-13"></a><span class="err">#</span><span class="n">Fourth</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-48-14"><a id="__codelineno-48-14" name="__codelineno-48-14" href="#__codelineno-48-14"></a>
+</span><span id="__span-48-15"><a id="__codelineno-48-15" name="__codelineno-48-15" href="#__codelineno-48-15"></a><span class="err">#</span><span class="w"> </span><span class="n">Please</span><span class="w"> </span><span class="n">enter</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">changes</span><span class="p">.</span><span class="w"> </span><span class="n">Lines</span><span class="w"> </span><span class="n">starting</span>
+</span><span id="__span-48-16"><a id="__codelineno-48-16" name="__codelineno-48-16" href="#__codelineno-48-16"></a><span class="err">#</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="sc">&#39;#&#39;</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">ignored</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="n">aborts</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">commit</span><span class="p">.</span>
+</span><span id="__span-48-17"><a id="__codelineno-48-17" name="__codelineno-48-17" href="#__codelineno-48-17"></a><span class="err">#</span>
+</span><span id="__span-48-18"><a id="__codelineno-48-18" name="__codelineno-48-18" href="#__codelineno-48-18"></a><span class="err">#</span><span class="w"> </span><span class="n">Date</span><span class="p">:</span><span class="w">      </span><span class="n">Mon</span><span class="w"> </span><span class="n">Sep</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="mi">16</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">36</span><span class="w"> </span><span class="mi">2020</span><span class="w"> </span><span class="o">+</span><span class="mo">0200</span>
+</span><span id="__span-48-19"><a id="__codelineno-48-19" name="__codelineno-48-19" href="#__codelineno-48-19"></a><span class="err">#</span>
+</span><span id="__span-48-20"><a id="__codelineno-48-20" name="__codelineno-48-20" href="#__codelineno-48-20"></a><span class="err">#</span><span class="w"> </span><span class="n">interactive</span><span class="w"> </span><span class="n">rebase</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">progress</span><span class="p">;</span><span class="w"> </span><span class="n">onto</span><span class="w"> </span><span class="mf">1f</span><span class="mi">2</span><span class="n">cdcc</span>
+</span><span id="__span-48-21"><a id="__codelineno-48-21" name="__codelineno-48-21" href="#__codelineno-48-21"></a><span class="err">#</span><span class="w"> </span><span class="n">Last</span><span class="w"> </span><span class="n">commands</span><span class="w"> </span><span class="nf">done</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="n">commands</span><span class="w"> </span><span class="n">done</span><span class="p">):</span>
+</span><span id="__span-48-22"><a id="__codelineno-48-22" name="__codelineno-48-22" href="#__codelineno-48-22"></a><span class="err">#</span><span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="mi">3</span><span class="n">cd651b</span><span class="w"> </span><span class="n">Third</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-48-23"><a id="__codelineno-48-23" name="__codelineno-48-23" href="#__codelineno-48-23"></a><span class="err">#</span><span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="mi">39</span><span class="n">ecba2</span><span class="w"> </span><span class="n">Fourth</span><span class="w"> </span><span class="n">commit</span>
+</span><span id="__span-48-24"><a id="__codelineno-48-24" name="__codelineno-48-24" href="#__codelineno-48-24"></a><span class="err">#</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="n">commands</span><span class="w"> </span><span class="n">remaining</span><span class="p">.</span>
+</span><span id="__span-48-25"><a id="__codelineno-48-25" name="__codelineno-48-25" href="#__codelineno-48-25"></a><span class="err">#</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">currently</span><span class="w"> </span><span class="n">rebasing</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="err">&#39;</span><span class="n">master</span><span class="err">&#39;</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="err">&#39;</span><span class="mf">1f</span><span class="mi">2</span><span class="n">cdcc</span><span class="err">&#39;</span><span class="p">.</span>
+</span><span id="__span-48-26"><a id="__codelineno-48-26" name="__codelineno-48-26" href="#__codelineno-48-26"></a><span class="err">#</span>
+</span><span id="__span-48-27"><a id="__codelineno-48-27" name="__codelineno-48-27" href="#__codelineno-48-27"></a><span class="err">#</span><span class="w"> </span><span class="n">Changes</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">committed</span><span class="p">:</span>
+</span><span id="__span-48-28"><a id="__codelineno-48-28" name="__codelineno-48-28" href="#__codelineno-48-28"></a><span class="err">#</span><span class="w">       </span><span class="n">modified</span><span class="p">:</span><span class="w">   </span><span class="n">Commits</span><span class="p">.</span><span class="na">txt</span>
+</span><span id="__span-48-29"><a id="__codelineno-48-29" name="__codelineno-48-29" href="#__codelineno-48-29"></a><span class="err">#</span>
+</span></code></pre></div>
+<hr />
+<p>Finally, we check the log file and see that we have now only two commits with the new commit message:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>--all<span class="w"> </span>--decorate<span class="w"> </span>--oneline<span class="w"> </span>--graph
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="gp">$ </span>git<span class="w"> </span>graph
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a><span class="go">* 62f921f (HEAD -&gt; master) Summary of three commits</span>
+</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a><span class="go">* 1f2cdcc First commit</span>
+</span></code></pre></div>
+<p><span style="color:red">Note: use this command in commits that haven&rsquo;t been pushed on public branches. This command modifies the history.</span></p>
+<hr />
+<h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Anchor link to this section for reference">&para;</a></h2>
+<hr />
+<h3 id="git__blame__advanced">Git blame (Advanced)<a class="headerlink" href="#git__blame__advanced" title="Anchor link to this section for reference">&para;</a></h3>
+<p>it displays information about the last modifications of authors line by line </p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="n">git</span><span class="w"> </span><span class="n">blame</span><span class="w"> </span><span class="n">filename</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="n">$git</span><span class="w"> </span><span class="n">blame</span><span class="w"> </span><span class="mf">1.</span><span class="n">basic</span><span class="o">-</span><span class="n">commands</span><span class="o">/</span><span class="n">README</span><span class="p">.</span><span class="na">md</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a><span class="o">^</span><span class="n">a18abd1</span><span class="w"> </span><span class="p">(</span><span class="n">Birgitte</span><span class="w"> </span><span class="n">Brydsö</span><span class="w"> </span><span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">28</span><span class="w"> </span><span class="mi">12</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mo">06</span><span class="w"> </span><span class="o">+</span><span class="mo">0200</span><span class="w">  </span><span class="mi">9</span><span class="p">)</span><span class="w">       </span><span class="o">-</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">file</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="o">^</span><span class="n">a18abd1</span><span class="w"> </span><span class="p">(</span><span class="n">Birgitte</span><span class="w"> </span><span class="n">Brydsö</span><span class="w"> </span><span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">28</span><span class="w"> </span><span class="mi">12</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mo">06</span><span class="w"> </span><span class="o">+</span><span class="mo">0200</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">       </span><span class="o">-</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">changes</span>
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a><span class="nf">dd5db248</span><span class="w"> </span><span class="p">(</span><span class="n">Pedro</span><span class="w"> </span><span class="n">Ojeda</span><span class="o">-</span><span class="n">May</span><span class="w"> </span><span class="mi">2021</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">02</span><span class="w"> </span><span class="mi">10</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mo">01</span><span class="w"> </span><span class="o">+</span><span class="mo">0100</span><span class="w"> </span><span class="mi">11</span><span class="p">)</span><span class="w">       </span><span class="o">-</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="s">&quot;Poem.md&quot;</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="nf">text</span><span class="w"> </span><span class="p">(</span><span class="n">hint</span><span class="p">:</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">touch</span><span class="w"> </span><span class="n">command</span><span class="p">),</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="n">it</span>
+</span></code></pre></div>
+<p>here we can see the commit, author, timestamp, line number and line content.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../motivation/" class="btn btn-neutral float-left" title="Why use version management?"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../basic-concepts/" class="btn btn-neutral float-right" title="Basic Concepts">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../motivation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../basic-concepts/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

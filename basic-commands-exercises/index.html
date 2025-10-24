@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/course-intro-git/basic-commands-exercises/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Basic commands - Introduction to Git</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Basic commands";
+        var mkdocs_page_input_path = "basic-commands-exercises.md";
+        var mkdocs_page_url = "/course-intro-git/basic-commands-exercises/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/logo-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Exercises</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basic commands</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#try__out__the__basic__commands">Try out the basic commands</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#git__diff__usage">git diff usage</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Git</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Exercises</li>
+      <li class="breadcrumb-item active">Basic commands</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercises__-__basic__commands">Exercises - Basic Commands<a class="headerlink" href="#exercises__-__basic__commands" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="try__out__the__basic__commands">Try out the basic commands<a class="headerlink" href="#try__out__the__basic__commands" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The purpose of this exercise is to learn about basic commands further.</p>
+<ol>
+<li>Create a folder called &ldquo;mysecondrepo&rdquo; which will contain your repository. 
+Tasks:<ul>
+<li>initialize the repository</li>
+<li>create a README.md file and add this text on the first line: &ldquo;File created on Sep. 30, 2020&rdquo; </li>
+<li>stage the file</li>
+<li>commit the changes</li>
+<li>create a second file &ldquo;Poem.md&rdquo; without any text (hint: use touch command), stage and commit it</li>
+</ul>
+</li>
+<li>Copy and paste the two paragraphs below of the poem <em>la lluvia</em> by Jorge Luis Borges into the Poem.md file:
+   Tasks:<ul>
+<li>stage the first paragraph only</li>
+<li>confirm that the file has been partially staged by checking the status. </li>
+<li>check if the staged changes correspond to just the first paragraph by looking at the differences between: 
+  &ndash; the working directory vs. the staging area 
+  &ndash; the staging area vs. the committed changes region (Repo) </li>
+<li>commit the staged changes and check the status</li>
+<li>stage the second paragraph and commit the changes</li>
+</ul>
+</li>
+</ol>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Bruscamente la tarde se ha aclarado
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Porque ya cae la lluvia minuciosa.
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Cae o cayó. La lluvia es una cosa
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Que sin duda sucede en el pasado.
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Quien la oye caer ha recobrado
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>El tiempo en que la suerte venturosa
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Le reveló una flor llamada rosa
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Y el curioso color del colorado.
+</span></code></pre></div>
+3. Create a folder called &ldquo;FirstPoem&rdquo; and move the Poem.md file to this new folder (use git mv). 
+   Check the status to confirm that the file was moved. Commit the changes.<br> 
+4. (Challenge task) Add the next paragraph of the poem:
+ <br />
+<pre><code>
+   Esta lluvia que ciega los cristales
+   Alegrará en perdidos arrabales
+   Las negras uvas de una parra en cierto
+
+   Patio que ya no existe. La mojada
+   Tarde me trae la voz, la voz deseada,
+   De mi padre que vuelve y que no ha muerto.
+   </code></pre>
+</p>
+<p>stage the changes and commit them. Now, we have the last four commits refering to the same topic (same poem). 
+   The goal of this part of the exercise is to summarize those four commits into a single one.</p>
+<p>hint: <code>git rebase -i HEAD~4</code><br>
+5. End of exercise</p>
+<h2 id="git__diff__usage">git diff usage<a class="headerlink" href="#git__diff__usage" title="Anchor link to this section for reference">&para;</a></h2>
+<p>The purpose of this exercise is to show you the usage of the <em>git diff</em> command.</p>
+<ol>
+<li>Create a folder called &ldquo;myfirstrepo&rdquo; which will contain your repository. <br>
+   Tasks:<ul>
+<li>initialize the repository</li>
+<li>create a README.md file and add this text on the first line: &ldquo;File created on Sep. 30, 2020&rdquo; </li>
+<li>stage the file</li>
+<li>commit the changes
+   At this point, your working directory, the staging area, and the local repository (committed changes) are all synchronized.<br></li>
+</ul>
+</li>
+<li>Make a change to the README.md file by adding a line with the string &ldquo;TODO list&rdquo;. Now, the staging area and the local repository are synchronized with each other but the working directory is not synchronized with them. <ul>
+<li>check the differences between the working directory and the staging area
+    (hint: git diff)</li>
+<li>check the differences between the working directory and the local repository (hint: git diff HEAD)
+   <br>
+   confirm that the changes correspond to what you expected by looking at the diff outputs.</li>
+</ul>
+</li>
+<li>Add the file README.md to the staging area. Now, the working directory and the staging area are synchronized with each other but they are not synchronized with the local repository.<ul>
+<li>check the differences between the staging area and the local repository
+    (hint: git diff &ndash;staged)</li>
+<li>check the differences between the working directory and the local repository (hint: git diff HEAD)
+   <br>
+   confirm that the changes correspond to what you expected by looking at the diff outputs.</li>
+</ul>
+</li>
+<li>Make an additional modification to the README.md file by adding a line with the string &ldquo;Add the support email&rdquo;. 
+   Now, all the three areas working directory, the staging area and the local repository are not synchronized with each other. <ul>
+<li>check the differences between the working directory and the staging area
+    (hint: git diff)</li>
+<li>check the differences between the staging area and the local repository
+    (hint: git diff &ndash;staged)</li>
+<li>check the differences between the working directory and the local repository (hint: git diff HEAD)
+   <br>
+   confirm that the changes correspond to what you expected by looking at the diff outputs.</li>
+</ul>
+</li>
+<li>End of exercise</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../teamwork/" class="btn btn-neutral float-left" title="Teamwork"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../basic-concepts-exercises/" class="btn btn-neutral float-right" title="Basic concepts">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../teamwork/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../basic-concepts-exercises/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

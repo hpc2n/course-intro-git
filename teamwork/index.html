@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://hpc2n.github.io/course-intro-git/teamwork/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Teamwork - Introduction to Git</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Teamwork";
+        var mkdocs_page_input_path = "teamwork.md";
+        var mkdocs_page_url = "/course-intro-git/teamwork/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="..">
+<img alt="Logo" class="logo" src="../images/logo-text.png"/>
+</a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Teamwork</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#teamwork">Teamwork</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#concepts__and__commands">Concepts and commands</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#git__push">Git push</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#git__pull">Git pull</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hint">Hint</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pull__from__remote__repo__new__file">Pull from remote repo, new file</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example__creating__a__new__branch__pushing__changes">Example: creating a new branch, pushing changes</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example__merging__branches">Example: Merging branches</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#first__exercise__-__github__if__not__setup__already">First exercise - GitHub (if not setup already)</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#second__exercise__ssh__keys__if__you__have__not__set__up__already">Second exercise, SSH keys (if you have not set up already)</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#third__exercise__clone__push__pull">Third exercise, clone, push, pull</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fourth__exercise__teamwork__clone__push__pull">Fourth exercise, teamwork, clone, push, pull</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fifth__exercise__teamwork__branches__and__merging">Fifth exercise, teamwork, branches and merging</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sixth__exercise__teamwork__branches__and__merging__pull__requests">Sixth exercise, teamwork, branches and merging, pull requests</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#seventh__exercise__teamwork__and__branches">Seventh exercise, teamwork and branches</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#eighth__exercise__deleting__branches">Eighth exercise, deleting branches</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ninth__exercise__merge__conflicts">Ninth exercise, merge conflicts</a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Exercises</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Introduction to Git</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item active">Teamwork</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="lecture__7__teamwork">Lecture 7: Teamwork<a class="headerlink" href="#lecture__7__teamwork" title="Anchor link to this section for reference">¶</a></h1>
+<!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. Several changes done to the material in 2021 and 2022, mainly due to GitHub no longer allowing for password authentication. Minor changes and updates done for the 2023 and 2024 version. -->
+<!-- Slides: https://hackmd.io/@git-fall-2024/L7-teamwork -->
+<hr/>
+<h2 id="teamwork">Teamwork<a class="headerlink" href="#teamwork" title="Anchor link to this section for reference">¶</a></h2>
+<p>Git is very useful for teamwork. 
+You will often have three types of branches for a project/specific release:</p>
+<ul>
+<li>main (or master) branch<ul>
+<li>exist for the entire project</li>
+</ul>
+</li>
+<li>development/staging branch<ul>
+<li>developing, preparing new releases </li>
+<li>exists for the entire release of the project, then merged to main (master)</li>
+</ul>
+</li>
+<li>feature branch(es) <ul>
+<li>created just for the feature development</li>
+<li>later merged to development/staging branch</li>
+</ul>
+</li>
+</ul>
+<p>NOTE: GitHub previously used “master”, but is now using “main” as the name for the first/default branch in a repo. This can be changed under the repo’s settings. </p>
+<hr/>
+<ul>
+<li>In this session you will be working in small groups of 2-4 people. </li>
+<li>Each group will go to a Zoom break-out room and work together there. </li>
+<li>You will be using GitHub for the remote repository. </li>
+<li>Since GitHub no longer allows you to use username and password unless you are working directly on the site, you will set up and use SSH keys. </li>
+<li>First you will look around GitHub a little and try creating a repository there, as well as creating and editing a file on the site. </li>
+<li>The rest of the exercises will be about working together on a small project, and will be done from the command line with GitHub as the remote repository. </li>
+<li>There will be nine exercises in total in this part.</li>
+</ul>
+<hr/>
+<h2 id="concepts__and__commands">Concepts and commands<a class="headerlink" href="#concepts__and__commands" title="Anchor link to this section for reference">¶</a></h2>
+<p>In these exercises we will use only a few commands. These have all been mentioned before in this course, but as a refresher I will briefly discuss a couple commands here, namely: </p>
+<ul>
+<li><code>git fetch</code>: This is a primary command used to download contents from a remote repository. <ul>
+<li>example: your teammate has created a new feature branch which they have pushed to the remote repository, but which you do not yet have in your local repository</li>
+</ul>
+</li>
+<li><code>git push</code>: This is essentially the same as running <code>git merge main</code> from inside the remote repository. It is mostly used to upload local changes to a remote repository. </li>
+<li><code>git pull</code>: This will fetch the latest changes from the current branch from a remote, then apply the changes to your local copy of the branch. It is similar to doing a fetch and a merge.</li>
+</ul>
+<hr/>
+<h2 id="git__push">Git push<a class="headerlink" href="#git__push" title="Anchor link to this section for reference">¶</a></h2>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>$<span class="w"> </span>git<span class="w"> </span>push<span class="w">  </span>&lt;remote-repo&gt;<span class="w"> </span>&lt;branch&gt;<span class="w"> </span>
+</span></code></pre></div>
+<p>or in some cases just</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>$<span class="w"> </span>git<span class="w"> </span>push
+</span></code></pre></div>
+<p>where the default behaviour is pushing to repository “origin” and the same branch as the local. </p>
+<hr/>
+<p>Before pushing: </p>
+<div class="mermaid">graph LR
+  A(("Anode"))
+  style A fill:#ffffff,stroke:#000000,color:#ffffff
+  origin["origin/main"]
+  style origin fill:#add8e6,stroke:#000000,color:#000000
+  B(("Bnode"))
+  style B fill:#ffffff,stroke:#000000,color:#ffffff
+  C(("Cnode"))
+  style C fill:#ffffff,stroke:#000000,color:#ffffff
+  main["main"]
+  style main fill:#add8e6,stroke:#000000,color:#000000
+  D(("Dnode"))
+  style D fill:#305cde,stroke:#000000,color:#305cde
+  A --- B
+  origin -.-&gt; B
+  B --- C 
+  C --- D 
+  main -.-&gt; D 
+</div>
+<p>After pushing: </p>
+<div class="mermaid">graph LR
+  A(("Anode"))
+  style A fill:#ffffff,stroke:#000000,color:#ffffff
+  origin["origin/main"]
+  style origin fill:#add8e6,stroke:#000000,color:#000000
+  B(("Bnode"))
+  style B fill:#ffffff,stroke:#000000,color:#ffffff
+  C(("Cnode"))
+  style C fill:#ffffff,stroke:#000000,color:#ffffff
+  main["main"]
+  style main fill:#add8e6,stroke:#000000,color:#000000
+  D(("Dnode"))
+  style D fill:#305cde,stroke:#000000,color:#305cde
+  A --- B
+  origin -.-&gt; D
+  B --- C
+  C --- D
+  main -.-&gt; D
+</div>
+<hr/>
+<p>Pushing a staged and committed file: </p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="k">for</span><span class="w"> </span>key<span class="w"> </span><span class="s1">'/home/bbrydsoe/.ssh/id_rsa'</span>:<span class="w"> </span>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">5</span>/5<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>Delta<span class="w"> </span>compression<span class="w"> </span>using<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span><span class="m">4</span><span class="w"> </span>threads
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>Writing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="m">287</span><span class="w"> </span>bytes<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">287</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>Total<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">1</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>remote:<span class="w"> </span>Resolving<span class="w"> </span>deltas:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">1</span>/1<span class="o">)</span>,<span class="w"> </span>completed<span class="w"> </span>with<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>object.
+</span><span id="__span-2-10"><a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a>To<span class="w"> </span>github.com:bbrydsoe/mytestrepo.git
+</span><span id="__span-2-11"><a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">   </span>43110f8..5fd2960<span class="w">  </span>main<span class="w"> </span>-&gt;<span class="w"> </span>main
+</span><span id="__span-2-12"><a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>log
+</span><span id="__span-2-13"><a href="#__codelineno-2-13" id="__codelineno-2-13" name="__codelineno-2-13"></a>commit<span class="w"> </span>5fd2960d91a86f8c581d7470b42b1f3814e24d73<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>main,<span class="w"> </span>origin/main,<span class="w"> </span>origin/HEAD<span class="o">)</span>
+</span><span id="__span-2-14"><a href="#__codelineno-2-14" id="__codelineno-2-14" name="__codelineno-2-14"></a>Author:<span class="w"> </span>Birgitte<span class="w"> </span>Brydsö<span class="w"> </span>&lt;bbrydsoe@cs.umu.se&gt;
+</span><span id="__span-2-15"><a href="#__codelineno-2-15" id="__codelineno-2-15" name="__codelineno-2-15"></a>Date:<span class="w">   </span>Sun<span class="w"> </span>Nov<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">15</span>:43:05<span class="w"> </span><span class="m">2022</span><span class="w"> </span>+0100
+</span><span id="__span-2-16"><a href="#__codelineno-2-16" id="__codelineno-2-16" name="__codelineno-2-16"></a>
+</span><span id="__span-2-17"><a href="#__codelineno-2-17" id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">    </span>Adding<span class="w"> </span>a<span class="w"> </span>file
+</span></code></pre></div>
+<hr/>
+<h2 id="git__pull">Git pull<a class="headerlink" href="#git__pull" title="Anchor link to this section for reference">¶</a></h2>
+<p>Fetch the given remote’s copy of the current branch and merge to the local copy: 
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>$<span class="w"> </span>git<span class="w"> </span>pull<span class="w">  </span>&lt;remote-repo&gt;<span class="w"> </span>
+</span></code></pre></div></p>
+<p>or often just</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>$<span class="w"> </span>git<span class="w"> </span>pull
+</span></code></pre></div>
+<hr/>
+<h2 id="hint">Hint<a class="headerlink" href="#hint" title="Anchor link to this section for reference">¶</a></h2>
+<p>If you have forgotten to pull before staging and committing new stuff, and your colleague has added something to the remote repository in between, this is a handy command: </p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>--rebase<span class="w"> </span>&lt;remote&gt;
+</span></code></pre></div>
+<p>It fetches the remote content but does not create a new merge commit.</p>
+<hr/>
+<p>Assume this situation:</p>
+<div class="mermaid">graph LR
+  d(("d"))
+  style d fill:#ffffff,stroke:#000000,color:#000000
+  e(("e"))
+  style e fill:#ffffff,stroke:#000000,color:#000000
+  origin["origin/main"]
+  style origin fill:#add8e6,stroke:#000000,color:#000000
+  d --- e 
+  origin -.-&gt; e
+  a(("a"))
+  style a fill:#ffffff,stroke:#000000,color:#000000
+  f(("f"))
+  style f fill:#ffffff,stroke:#000000,color:#000000
+  e --- a
+  e --- f 
+  b(("b"))
+  style b fill:#ffffff,stroke:#000000,color:#000000
+  g(("g"))
+  style g fill:#ffffff,stroke:#000000,color:#000000
+  main["main"]
+  style main fill:#add8e6,stroke:#000000,color:#000000
+  c(("c"))
+  style c fill:#ffffff,stroke:#000000,color:#000000
+  a --- b
+  f --- g
+  b --- c
+  main -.-&gt; c 
+</div>
+<p>Now we do a <code>git pull</code>:</p>
+<div class="mermaid">graph LR
+  d(("d"))
+  style d fill:#ffffff,stroke:#000000,color:#000000
+  e(("e"))
+  style e fill:#ffffff,stroke:#000000,color:#000000
+  origin["origin/main"]
+  style origin fill:#add8e6,stroke:#000000,color:000000
+  d --- e
+  a(("a"))
+  style a fill:#ffffff,stroke:#000000,color:#000000
+  f(("f"))
+  style f fill:#ffffff,stroke:#000000,color:#000000
+  e --- a
+  e --- f
+  b(("b"))
+  style b fill:#ffffff,stroke:#000000,color:#000000
+  g(("g"))
+  style g fill:#ffffff,stroke:#000000,color:#000000
+  main["main"]
+  style main fill:#add8e6,stroke:#000000,color:#000000
+  c(("c"))
+  style c fill:#ffffff,stroke:#000000,color:#000000
+  h(("h"))
+  style h fill:#ffffff,stroke:#000000,color:#000000
+  a --- b
+  f --- g
+  b --- c
+  origin -.-&gt; c
+  main -.-&gt; c
+  c --- h
+  g --- h
+</div>
+<hr/>
+<h2 id="pull__from__remote__repo__new__file">Pull from remote repo, new file<a class="headerlink" href="#pull__from__remote__repo__new__file" title="Anchor link to this section for reference">¶</a></h2>
+<p>Let us do an example where there is a new file on the remote repository: </p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>$<span class="w"> </span>git<span class="w"> </span>pull
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>remote:<span class="w"> </span>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>remote:<span class="w"> </span>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">4</span>/4<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>remote:<span class="w"> </span>Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-6-5"><a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>Unpacking<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-6-6"><a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>remote:<span class="w"> </span>Total<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>pack-reused<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-6-7"><a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a>From<span class="w"> </span>github.com:bbrydsoe/testrepo
+</span><span id="__span-6-8"><a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">   </span>55f35b9..e6ca68c<span class="w">  </span>main<span class="w">     </span>-&gt;<span class="w"> </span>origin/main
+</span><span id="__span-6-9"><a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a>Updating<span class="w"> </span>55f35b9..e6ca68c
+</span><span id="__span-6-10"><a href="#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a>Fast-forward
+</span><span id="__span-6-11"><a href="#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w"> </span>newfile.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>+
+</span><span id="__span-6-12"><a href="#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>
+</span><span id="__span-6-13"><a href="#__codelineno-6-13" id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w"> </span>create<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>newfile.txt
+</span></code></pre></div>
+<hr/>
+<h2 id="example__creating__a__new__branch__pushing__changes">Example: creating a new branch, pushing changes<a class="headerlink" href="#example__creating__a__new__branch__pushing__changes" title="Anchor link to this section for reference">¶</a></h2>
+<p>Here we create a new branch on a remote repository and add a file to it, then push: </p>
+<p>Create the branch
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>mynewbranch
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>bbrydsoe@enterprise-a:~/mytestrepo$
+</span></code></pre></div></p>
+<p>Switch to it
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>mynewbranch
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>Switched<span class="w"> </span>to<span class="w"> </span>branch<span class="w"> </span><span class="s1">'mynewbranch'</span>
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>bbrydsoe@enterprise-a:~/mytestrepo$
+</span></code></pre></div></p>
+<p>I then create a file on my new branch. After this, check the status and log</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>On<span class="w"> </span>branch<span class="w"> </span>mynewbranch
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>Changes<span class="w"> </span>not<span class="w"> </span>staged<span class="w"> </span><span class="k">for</span><span class="w"> </span>commit:
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git restore &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working<span class="w"> </span>directory<span class="o">)</span>
+</span><span id="__span-9-6"><a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">    </span>modified:<span class="w">   </span>myfile.txt
+</span><span id="__span-9-7"><a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a>
+</span><span id="__span-9-8"><a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a>no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add"</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">"git commit -a"</span><span class="o">)</span>
+</span></code></pre></div>
+<hr/>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline<span class="w"> </span>--decorate<span class="w"> </span>--all
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>*<span class="w"> </span>accef46<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>mynewbranch,<span class="w"> </span>main<span class="o">)</span><span class="w"> </span>Updating<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>funny.txt
+</span><span id="__span-10-3"><a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>*<span class="w"> </span>43110f8<span class="w"> </span><span class="o">(</span>origin/main,<span class="w"> </span>origin/HEAD<span class="o">)</span><span class="w"> </span>Update<span class="w"> </span>funny.txt
+</span><span id="__span-10-4"><a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a>*<span class="w"> </span>af9e1cb<span class="w"> </span>Create<span class="w"> </span>Weird.txt
+</span><span id="__span-10-5"><a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a>*<span class="w"> </span>db2e945<span class="w"> </span>Create<span class="w"> </span>funny.txt
+</span><span id="__span-10-6"><a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a>*<span class="w"> </span>c74b74c<span class="w"> </span>Adding<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>file4.txt
+</span><span id="__span-10-7"><a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a>*<span class="w"> </span>805d9b3<span class="w"> </span>Create<span class="w"> </span>newfile.txt
+</span><span id="__span-10-8"><a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a>*<span class="w"> </span>c8e5214<span class="w"> </span>Adding<span class="w"> </span>some<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>play<span class="w"> </span>with<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>exercise.
+</span><span id="__span-10-9"><a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a>*<span class="w"> </span>1c8156d<span class="w"> </span><span class="o">(</span>origin/mytestbranch,<span class="w"> </span>mytestbranch<span class="o">)</span><span class="w"> </span>Adding<span class="w"> </span>testfile.txt<span class="w"> </span>to<span class="w"> </span>mytestbranch
+</span><span id="__span-10-10"><a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a>*<span class="w">   </span>333d5e5<span class="w"> </span>Merge<span class="w"> </span>pull<span class="w"> </span>request<span class="w"> </span><span class="c1">#2 from bbrydsoe/birgittesbranch</span>
+</span><span id="__span-10-11"><a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="p">|</span><span class="se">\ </span><span class="w"> </span>
+</span><span id="__span-10-12"><a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>92901fa<span class="w"> </span><span class="o">(</span>origin/birgittesbranch,<span class="w"> </span>birgittesbranch<span class="o">)</span><span class="w"> </span>Adding<span class="w"> </span>my<span class="w"> </span>new<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>my<span class="w"> </span>new<span class="w"> </span>branch.
+</span><span id="__span-10-13"><a href="#__codelineno-10-13" id="__codelineno-10-13" name="__codelineno-10-13"></a>*<span class="w"> </span><span class="p">|</span><span class="w">   </span>e7741d8<span class="w"> </span>Merge<span class="w"> </span>pull<span class="w"> </span>request<span class="w"> </span><span class="c1">#1 from bbrydsoe/spocksbranch</span>
+</span><span id="__span-10-14"><a href="#__codelineno-10-14" id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="p">|</span><span class="se">\ \ </span><span class="w"> </span>
+</span><span id="__span-10-15"><a href="#__codelineno-10-15" id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="p">|</span><span class="w"> </span><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-10-16"><a href="#__codelineno-10-16" id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="p">|</span>/<span class="p">|</span><span class="w">   </span>
+</span><span id="__span-10-17"><a href="#__codelineno-10-17" id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>6814eb4<span class="w"> </span><span class="o">(</span>origin/spocksbranch<span class="o">)</span><span class="w"> </span>Added<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>by<span class="w"> </span>user<span class="w"> </span>spock
+</span><span id="__span-10-18"><a href="#__codelineno-10-18" id="__codelineno-10-18" name="__codelineno-10-18"></a><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-10-19"><a href="#__codelineno-10-19" id="__codelineno-10-19" name="__codelineno-10-19"></a>*<span class="w"> </span>d4a666e<span class="w"> </span>Adding<span class="w"> </span>my<span class="w"> </span>new<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>repository.
+</span><span id="__span-10-20"><a href="#__codelineno-10-20" id="__codelineno-10-20" name="__codelineno-10-20"></a>*<span class="w"> </span>303bf63<span class="w"> </span>Create<span class="w"> </span>README.md
+</span><span id="__span-10-21"><a href="#__codelineno-10-21" id="__codelineno-10-21" name="__codelineno-10-21"></a>bbrydsoe@enterprise-a:~/mytestrepo$
+</span></code></pre></div>
+<p>Note: when you do this it should be coloured for easier readability </p>
+<hr/>
+<p>I stage and commit the file. </p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>myfile.txt<span class="w"> </span>
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">" Adding a file to my new branch"</span>
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="o">[</span>mynewbranch<span class="w"> </span>c997da0<span class="o">]</span><span class="w">  </span>Adding<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>my<span class="w"> </span>new<span class="w"> </span>branch
+</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>
+</span></code></pre></div>
+<p>I will check to confirm I am on the right branch: </p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>branch
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">  </span>birgittesbranch
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">  </span>main
+</span><span id="__span-12-4"><a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a>*<span class="w"> </span>mynewbranch
+</span><span id="__span-12-5"><a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">  </span>mytestbranch
+</span><span id="__span-12-6"><a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>
+</span></code></pre></div>
+<hr/>
+<p>Let us again check with <code>git status</code> and <code>git log ...</code></p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>On<span class="w"> </span>branch<span class="w"> </span>mynewbranch
+</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
+</span><span id="__span-13-4"><a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline<span class="w"> </span>--decorate<span class="w"> </span>--all
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>*<span class="w"> </span>c997da0<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>mynewbranch<span class="o">)</span><span class="w">  </span>Adding<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>my<span class="w"> </span>new<span class="w"> </span>branch
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>*<span class="w"> </span>accef46<span class="w"> </span><span class="o">(</span>main<span class="o">)</span><span class="w"> </span>Updating<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>funny.txt
+</span><span id="__span-14-4"><a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a>*<span class="w"> </span>43110f8<span class="w"> </span><span class="o">(</span>origin/main,<span class="w"> </span>origin/HEAD<span class="o">)</span><span class="w"> </span>Update<span class="w"> </span>funny.txt
+</span><span id="__span-14-5"><a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a>*<span class="w"> </span>af9e1cb<span class="w"> </span>Create<span class="w"> </span>Weird.txt
+</span><span id="__span-14-6"><a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a>*<span class="w"> </span>db2e945<span class="w"> </span>Create<span class="w"> </span>funny.txt
+</span><span id="__span-14-7"><a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a>*<span class="w"> </span>c74b74c<span class="w"> </span>Adding<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>file4.txt
+</span><span id="__span-14-8"><a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a>*<span class="w"> </span>805d9b3<span class="w"> </span>Create<span class="w"> </span>newfile.txt
+</span><span id="__span-14-9"><a href="#__codelineno-14-9" id="__codelineno-14-9" name="__codelineno-14-9"></a>*<span class="w"> </span>c8e5214<span class="w"> </span>Adding<span class="w"> </span>some<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>play<span class="w"> </span>with<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>exercise.
+</span><span id="__span-14-10"><a href="#__codelineno-14-10" id="__codelineno-14-10" name="__codelineno-14-10"></a>*<span class="w"> </span>1c8156d<span class="w"> </span><span class="o">(</span>origin/mytestbranch,<span class="w"> </span>mytestbranch<span class="o">)</span><span class="w"> </span>Adding<span class="w"> </span>testfile.txt<span class="w"> </span>to<span class="w"> </span>mytestbranch
+</span><span id="__span-14-11"><a href="#__codelineno-14-11" id="__codelineno-14-11" name="__codelineno-14-11"></a>*<span class="w">   </span>333d5e5<span class="w"> </span>Merge<span class="w"> </span>pull<span class="w"> </span>request<span class="w"> </span><span class="c1">#2 from bbrydsoe/birgittesbranch</span>
+</span><span id="__span-14-12"><a href="#__codelineno-14-12" id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="p">|</span><span class="se">\ </span><span class="w"> </span>
+</span><span id="__span-14-13"><a href="#__codelineno-14-13" id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>92901fa<span class="w"> </span><span class="o">(</span>origin/birgittesbranch,<span class="w"> </span>birgittesbranch<span class="o">)</span><span class="w"> </span>Adding<span class="w"> </span>my<span class="w"> </span>new<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>my<span class="w"> </span>new<span class="w"> </span>branch.
+</span><span id="__span-14-14"><a href="#__codelineno-14-14" id="__codelineno-14-14" name="__codelineno-14-14"></a>*<span class="w"> </span><span class="p">|</span><span class="w">   </span>e7741d8<span class="w"> </span>Merge<span class="w"> </span>pull<span class="w"> </span>request<span class="w"> </span><span class="c1">#1 from bbrydsoe/spocksbranch</span>
+</span><span id="__span-14-15"><a href="#__codelineno-14-15" id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="p">|</span><span class="se">\ \ </span><span class="w"> </span>
+</span><span id="__span-14-16"><a href="#__codelineno-14-16" id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="p">|</span><span class="w"> </span><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-14-17"><a href="#__codelineno-14-17" id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="p">|</span>/<span class="p">|</span><span class="w">   </span>
+</span><span id="__span-14-18"><a href="#__codelineno-14-18" id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>6814eb4<span class="w"> </span><span class="o">(</span>origin/spocksbranch<span class="o">)</span><span class="w"> </span>Added<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>by<span class="w"> </span>user<span class="w"> </span>spock
+</span><span id="__span-14-19"><a href="#__codelineno-14-19" id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-14-20"><a href="#__codelineno-14-20" id="__codelineno-14-20" name="__codelineno-14-20"></a>*<span class="w"> </span>d4a666e<span class="w"> </span>Adding<span class="w"> </span>my<span class="w"> </span>new<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>repository.
+</span><span id="__span-14-21"><a href="#__codelineno-14-21" id="__codelineno-14-21" name="__codelineno-14-21"></a>*<span class="w"> </span>303bf63<span class="w"> </span>Create<span class="w"> </span>README.md
+</span><span id="__span-14-22"><a href="#__codelineno-14-22" id="__codelineno-14-22" name="__codelineno-14-22"></a>bbrydsoe@enterprise-a:~/mytestrepo$
+</span></code></pre></div>
+<hr/>
+<p>Push your changes with <code>git push origin -u yourbranchname</code> (or with <code>git push -u origin HEAD</code>)</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>HEAD
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="k">for</span><span class="w"> </span>key<span class="w"> </span><span class="s1">'/home/bbrydsoe/.ssh/id_rsa'</span>:<span class="w"> </span>
+</span><span id="__span-15-3"><a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">9</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-15-4"><a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">9</span>/9<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-15-5"><a href="#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a>Delta<span class="w"> </span>compression<span class="w"> </span>using<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span><span class="m">4</span><span class="w"> </span>threads
+</span><span id="__span-15-6"><a href="#__codelineno-15-6" id="__codelineno-15-6" name="__codelineno-15-6"></a>Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">5</span>/5<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-15-7"><a href="#__codelineno-15-7" id="__codelineno-15-7" name="__codelineno-15-7"></a>Writing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">6</span>/6<span class="o">)</span>,<span class="w"> </span><span class="m">619</span><span class="w"> </span>bytes<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">619</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-15-8"><a href="#__codelineno-15-8" id="__codelineno-15-8" name="__codelineno-15-8"></a>Total<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">2</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-15-9"><a href="#__codelineno-15-9" id="__codelineno-15-9" name="__codelineno-15-9"></a>remote:<span class="w"> </span>Resolving<span class="w"> </span>deltas:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>,<span class="w"> </span>completed<span class="w"> </span>with<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>object.
+</span><span id="__span-15-10"><a href="#__codelineno-15-10" id="__codelineno-15-10" name="__codelineno-15-10"></a>remote:<span class="w"> </span>
+</span><span id="__span-15-11"><a href="#__codelineno-15-11" id="__codelineno-15-11" name="__codelineno-15-11"></a>remote:<span class="w"> </span>Create<span class="w"> </span>a<span class="w"> </span>pull<span class="w"> </span>request<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">'mynewbranch'</span><span class="w"> </span>on<span class="w"> </span>GitHub<span class="w"> </span>by<span class="w"> </span>visiting:
+</span><span id="__span-15-12"><a href="#__codelineno-15-12" id="__codelineno-15-12" name="__codelineno-15-12"></a>remote:<span class="w">      </span>https://github.com/bbrydsoe/mytestrepo/pull/new/mynewbranch
+</span><span id="__span-15-13"><a href="#__codelineno-15-13" id="__codelineno-15-13" name="__codelineno-15-13"></a>remote:<span class="w"> </span>
+</span><span id="__span-15-14"><a href="#__codelineno-15-14" id="__codelineno-15-14" name="__codelineno-15-14"></a>To<span class="w"> </span>github.com:bbrydsoe/mytestrepo.git
+</span><span id="__span-15-15"><a href="#__codelineno-15-15" id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="w"> </span>*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>branch<span class="o">]</span><span class="w">      </span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>mynewbranch
+</span><span id="__span-15-16"><a href="#__codelineno-15-16" id="__codelineno-15-16" name="__codelineno-15-16"></a>Branch<span class="w"> </span><span class="s1">'mynewbranch'</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>track<span class="w"> </span>remote<span class="w"> </span>branch<span class="w"> </span><span class="s1">'mynewbranch'</span><span class="w"> </span>from<span class="w"> </span><span class="s1">'origin'</span>.
+</span><span id="__span-15-17"><a href="#__codelineno-15-17" id="__codelineno-15-17" name="__codelineno-15-17"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>
+</span></code></pre></div>
+<p>Let us check the status</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-16-2"><a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a>On<span class="w"> </span>branch<span class="w"> </span>mynewbranch
+</span><span id="__span-16-3"><a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>up-to-date<span class="w"> </span>with<span class="w"> </span><span class="s1">'origin/mynewbranch'</span>.
+</span><span id="__span-16-4"><a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
+</span><span id="__span-16-6"><a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>
+</span></code></pre></div>
+<hr/>
+<h2 id="example__merging__branches">Example: Merging branches<a class="headerlink" href="#example__merging__branches" title="Anchor link to this section for reference">¶</a></h2>
+<p>We will merge the branches from the command line. Let us first see which branches exist in my repo - in this case I will check for both local and remote branches</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--all
+</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="w">  </span>birgittesbranch
+</span><span id="__span-17-3"><a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">  </span>main
+</span><span id="__span-17-4"><a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a>*<span class="w"> </span>mynewbranch
+</span><span id="__span-17-5"><a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">  </span>mytestbranch
+</span><span id="__span-17-6"><a href="#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="w">  </span>remotes/origin/HEAD<span class="w"> </span>-&gt;<span class="w"> </span>origin/main
+</span><span id="__span-17-7"><a href="#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="w">  </span>remotes/origin/birgittesbranch
+</span><span id="__span-17-8"><a href="#__codelineno-17-8" id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="w">  </span>remotes/origin/main
+</span><span id="__span-17-9"><a href="#__codelineno-17-9" id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="w">  </span>remotes/origin/mynewbranch
+</span><span id="__span-17-10"><a href="#__codelineno-17-10" id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="w">  </span>remotes/origin/mytestbranch
+</span><span id="__span-17-11"><a href="#__codelineno-17-11" id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="w">  </span>remotes/origin/spocksbranch
+</span></code></pre></div>
+<p>I have a bunch of branches (created previously by me and another user, for testing). As you can see, I am on my newest branch “mynewbranch”</p>
+<hr/>
+<p>Switch to the branch we are merging to (main)</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>main
+</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>Switched<span class="w"> </span>to<span class="w"> </span>branch<span class="w"> </span><span class="s1">'main'</span>
+</span><span id="__span-18-3"><a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>up-to-date<span class="w"> </span>with<span class="w"> </span><span class="s1">'origin/main'</span>.
+</span><span id="__span-18-4"><a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>
+</span></code></pre></div>
+<p>Do the merge (it will also open an editor where you should write a commit message for why the merge should happen)</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>git<span class="w"> </span>merge<span class="w"> </span>mynewbranch<span class="w"> </span>
+</span><span id="__span-19-2"><a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a>Merge<span class="w"> </span>made<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span><span class="s1">'recursive'</span><span class="w"> </span>strategy.
+</span><span id="__span-19-3"><a href="#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="w"> </span>myfile.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>+
+</span><span id="__span-19-4"><a href="#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>
+</span></code></pre></div>
+<hr/>
+<p>Let us do a status check</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-20-2"><a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a>On<span class="w"> </span>branch<span class="w"> </span>main
+</span><span id="__span-20-3"><a href="#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>ahead<span class="w"> </span>of<span class="w"> </span><span class="s1">'origin/main'</span><span class="w"> </span>by<span class="w"> </span><span class="m">2</span><span class="w"> </span>commits.
+</span><span id="__span-20-4"><a href="#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git push"</span><span class="w"> </span>to<span class="w"> </span>publish<span class="w"> </span>your<span class="w"> </span><span class="nb">local</span><span class="w"> </span>commits<span class="o">)</span>
+</span><span id="__span-20-5"><a href="#__codelineno-20-5" id="__codelineno-20-5" name="__codelineno-20-5"></a>
+</span><span id="__span-20-6"><a href="#__codelineno-20-6" id="__codelineno-20-6" name="__codelineno-20-6"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
+</span></code></pre></div>
+<p>Pushing</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>push
+</span><span id="__span-21-2"><a href="#__codelineno-21-2" id="__codelineno-21-2" name="__codelineno-21-2"></a>Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="k">for</span><span class="w"> </span>key<span class="w"> </span><span class="s1">'/home/bbrydsoe/.ssh/id_rsa'</span>:<span class="w"> </span>
+</span><span id="__span-21-3"><a href="#__codelineno-21-3" id="__codelineno-21-3" name="__codelineno-21-3"></a>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-21-4"><a href="#__codelineno-21-4" id="__codelineno-21-4" name="__codelineno-21-4"></a>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">4</span>/4<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-21-5"><a href="#__codelineno-21-5" id="__codelineno-21-5" name="__codelineno-21-5"></a>Delta<span class="w"> </span>compression<span class="w"> </span>using<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span><span class="m">4</span><span class="w"> </span>threads
+</span><span id="__span-21-6"><a href="#__codelineno-21-6" id="__codelineno-21-6" name="__codelineno-21-6"></a>Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-21-7"><a href="#__codelineno-21-7" id="__codelineno-21-7" name="__codelineno-21-7"></a>Writing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>,<span class="w"> </span><span class="m">303</span><span class="w"> </span>bytes<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">303</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span><span class="k">done</span>.
+</span><span id="__span-21-8"><a href="#__codelineno-21-8" id="__codelineno-21-8" name="__codelineno-21-8"></a>Total<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">1</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-21-9"><a href="#__codelineno-21-9" id="__codelineno-21-9" name="__codelineno-21-9"></a>remote:<span class="w"> </span>Resolving<span class="w"> </span>deltas:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">1</span>/1<span class="o">)</span>,<span class="w"> </span>completed<span class="w"> </span>with<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>object.
+</span><span id="__span-21-10"><a href="#__codelineno-21-10" id="__codelineno-21-10" name="__codelineno-21-10"></a>To<span class="w"> </span>github.com:bbrydsoe/mytestrepo.git
+</span><span id="__span-21-11"><a href="#__codelineno-21-11" id="__codelineno-21-11" name="__codelineno-21-11"></a><span class="w">   </span>5fd2960..2032676<span class="w">  </span>main<span class="w"> </span>-&gt;<span class="w"> </span>main
+</span></code></pre></div>
+<p>Checking status again</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>bbrydsoe@enterprise-a:~/mytestrepo$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-22-2"><a href="#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>On<span class="w"> </span>branch<span class="w"> </span>main
+</span><span id="__span-22-3"><a href="#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>up-to-date<span class="w"> </span>with<span class="w"> </span><span class="s1">'origin/main'</span>.
+</span><span id="__span-22-4"><a href="#__codelineno-22-4" id="__codelineno-22-4" name="__codelineno-22-4"></a>
+</span><span id="__span-22-5"><a href="#__codelineno-22-5" id="__codelineno-22-5" name="__codelineno-22-5"></a>nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
+</span></code></pre></div>
+<hr/>
+<h2 id="first__exercise__-__github__if__not__setup__already">First exercise - GitHub (if not setup already)<a class="headerlink" href="#first__exercise__-__github__if__not__setup__already" title="Anchor link to this section for reference">¶</a></h2>
+<ol>
+<li>Create a repository (click on the + at the top right of the menu or picking “Start a new repository” on your “home screen”)</li>
+<li>Under “Quick setup”, pick “creating a new file”. </li>
+<li>Name the file “README.md” (at the top, over the file editor). </li>
+<li>Put some text in the file “README.md”. </li>
+<li>At the bottom, where it says “Commit new file” you should put a useful commit message. Then click “Commit new file”</li>
+<li>Notice: the content of README.md appears at top level of the repo </li>
+<li>Try creating another file in a subdirectory (create subdirectories by adding the name you want after the name of your repo, then adding a “/” and your filename). </li>
+<li>Try adding a file that you have created on your computer and uploads (Add file -&gt; Upload files)</li>
+<li>Test out making edits to your files and committing them - all through the GitHub site. </li>
+<li>If you put a file “README.md” in a subdirectory then it will be shown as a “description” for the directory</li>
+<li>When you have made some commits, try click “commits” above the files in the repo and see a list of your commits. </li>
+</ol>
+<hr/>
+<h2 id="second__exercise__ssh__keys__if__you__have__not__set__up__already">Second exercise, SSH keys (if you have not set up already)<a class="headerlink" href="#second__exercise__ssh__keys__if__you__have__not__set__up__already" title="Anchor link to this section for reference">¶</a></h2>
+<p>In this exercise you create SSH keys and upload to GitHub. Then test that it works. </p>
+<p><strong>Create a new SSH key</strong></p>
+<ol>
+<li>
+<p>Open a terminal (Git Bash on Windows). In the command below, “GitHub” is a label added to the key for clarity. You can add any you want: </p>
+<ul>
+<li>a. Do this
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>$ ssh-keygen -t ed25519 -C "GitHub"
+</span></code></pre></div></li>
+<li>b. If you have an older system, this may work better
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a>$ ssh-keygen -t rsa -b 4096 -C "GitHub"
+</span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>You will be asked for a file to save the key. Unless you have an existing SSH key, accept the default.</p>
+</li>
+<li>Enter a passphrase and repeat it.</li>
+<li>Add the key to the ssh-agent. Here we assume the default name: 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a>$ eval "$(ssh-agent -s)"
+</span><span id="__span-25-2"><a href="#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a>
+</span><span id="__span-25-3"><a href="#__codelineno-25-3" id="__codelineno-25-3" name="__codelineno-25-3"></a>$ ssh-add ~/.ssh/id_rsa
+</span></code></pre></div></li>
+<li>Switch to the <code>.ssh</code> folder, open the file <code>id_rsa.pub</code> and copy it. Do NOT add any newlines or whitespace! </li>
+</ol>
+<hr/>
+<p><strong>Adding the SSH key to GitHub</strong></p>
+<ol>
+<li>On GitHub, click your avatar in the top right corner and pick “Settings”.</li>
+<li>Choose “SSH and GPG keys”</li>
+<li>Click “Add new SSH key”</li>
+<li>Add a descriptive label for the key in the “Title” field. In the key field you paste the content of the key (~/.ssh/id_rsa.pub)
+<img alt="Add new SSH key to GithHub" src="../images/key-add-new.png"/></li>
+<li>Click “Add SSH key”</li>
+<li>Confirm your GitHub password if you are prompted for it. </li>
+</ol>
+<hr/>
+<p><strong>Testing the SSH keys</strong></p>
+<ol>
+<li>Open a terminal</li>
+<li><code>$ ssh -T git@github.com</code></li>
+<li>It will look similar to this: 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a>$ ssh -T git@github.com
+</span><span id="__span-26-2"><a href="#__codelineno-26-2" id="__codelineno-26-2" name="__codelineno-26-2"></a>The authenticity of host 'github.com (140.82.121.4)' can't be established.
+</span><span id="__span-26-3"><a href="#__codelineno-26-3" id="__codelineno-26-3" name="__codelineno-26-3"></a>RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+</span><span id="__span-26-4"><a href="#__codelineno-26-4" id="__codelineno-26-4" name="__codelineno-26-4"></a>Are you sure you want to continue connecting (yes/no)? yes
+</span><span id="__span-26-5"><a href="#__codelineno-26-5" id="__codelineno-26-5" name="__codelineno-26-5"></a>Warning: Permanently added 'github.com,140.82.121.4' (RSA) to the list of known hosts.
+</span><span id="__span-26-6"><a href="#__codelineno-26-6" id="__codelineno-26-6" name="__codelineno-26-6"></a>Enter passphrase for key '/home/bbrydsoe/.ssh/id_rsa': 
+</span><span id="__span-26-7"><a href="#__codelineno-26-7" id="__codelineno-26-7" name="__codelineno-26-7"></a>Hi bbrydsoe! You've successfully authenticated, but GitHub does not provide shell access.
+</span></code></pre></div></li>
+<li>Verify that the resulting message contains your username. </li>
+</ol>
+<hr/>
+<h2 id="third__exercise__clone__push__pull">Third exercise, clone, push, pull<a class="headerlink" href="#third__exercise__clone__push__pull" title="Anchor link to this section for reference">¶</a></h2>
+<p>We now have SSH keys set up. Time to test it from your own machine: </p>
+<ol>
+<li>Clone the repository, using the SSH address (click CODE on the GitHub repository and pick SSH). You will be asked for the key passphrase.</li>
+<li>Enter the local repository. Do a <code>git pull</code> and see that it works. You will have to enter the key passphrase. </li>
+<li>Create a file (or edit a file). </li>
+<li>Add the file. Commit the file (<code>git add</code>, <code>git commit</code>)</li>
+<li>Push the file. Again it will ask for the key passphrase. Success! </li>
+<li>NOTE: Optionally, you could run <code>ssh-add</code> to add the key. Then you will only be asked for the passphrase once per session. This is relatively safe on Linux and macOS, but <strong>not</strong> on Windows where it usually saves the key passphrase permanently.</li>
+</ol>
+<hr/>
+<h2 id="fourth__exercise__teamwork__clone__push__pull">Fourth exercise, teamwork, clone, push, pull<a class="headerlink" href="#fourth__exercise__teamwork__clone__push__pull" title="Anchor link to this section for reference">¶</a></h2>
+<p>One of you should create a repository on GitHub and invite their team. Remember, on the GitHub webpage the option to create a new repository is in the top right corner - click the “+”. To add members: “Settings” -&gt; “Manage access”. </p>
+<ol>
+<li>Each person should create a file in the repository (Add and commit the file)</li>
+<li>On the command line, do a <code>git status</code>. Do a <code>git log --graph --oneline --decorate --all</code></li>
+<li>NOTE! To avoid errors, do <code>git pull</code> before you stage and commit your file and also the team members should use different names for their files. See the changes appear when you do a <code>git pull</code> after all have added their file(s). </li>
+<li>You could also try to push a new change before pulling the changes your team members have made. Git will complain, but you should be able to solve this kind of simple problem with <code>git pull --rebase</code> before you re-do <code>git push</code></li>
+<li>Try create more files then add and commit. Do <code>git status</code> and <code>git log --graph --oneline --decorate --all</code> before and after each step. Push the files to the repository. Check the log and status again. </li>
+<li>NOTE: You will be asked for the key passphrase each time you do a push </li>
+</ol>
+<hr/>
+<h2 id="fifth__exercise__teamwork__branches__and__merging">Fifth exercise, teamwork, branches and merging<a class="headerlink" href="#fifth__exercise__teamwork__branches__and__merging" title="Anchor link to this section for reference">¶</a></h2>
+<ol>
+<li>Each person creates a branch in the repo you created in the previous exercise. You can use <code>git branch yourbranchname</code> where you put any name you want for the new branch. </li>
+<li>Switch to the new branch with <code>git checkout yourbranchname</code></li>
+<li>Create a uniquely named file. Put anything you want in it. </li>
+<li>Do <code>git log</code> and <code>git status</code> to see any changes.</li>
+<li>Stage and commit the file. Check again with <code>git log</code> and <code>git status</code></li>
+<li>Push your changes with <code>git push origin -u yourbranchname</code> (or with <code>git push -u origin HEAD</code> for a fast way when using the same name)</li>
+<li>When everyone has done this, all do a <code>git pull</code></li>
+<li>Use <code>git status</code>, <code>git branch</code>, and <code>git log</code> to see what has happened. </li>
+</ol>
+<hr/>
+<h2 id="sixth__exercise__teamwork__branches__and__merging__pull__requests">Sixth exercise, teamwork, branches and merging, pull requests<a class="headerlink" href="#sixth__exercise__teamwork__branches__and__merging__pull__requests" title="Anchor link to this section for reference">¶</a></h2>
+<ol>
+<li>Go to the repository on the GitHub page. Submit a pull-request from your branch to the main branch</li>
+<li>The owner of the repository (the person who created it) can then accept them and click to merge them. </li>
+<li>After doing so, everyone should again do a <code>git pull</code> (on the command line)</li>
+<li>Use <code>git status</code>, <code>git branch --all</code>, and <code>git log --graph --oneline --decorate --all</code> to see what has happened. </li>
+</ol>
+<p><strong>Note</strong>: It is possible to make the main branch “protected” so it is not changed without a review from the owner. Try doing this (on GitHub). </p>
+<hr/>
+<h2 id="seventh__exercise__teamwork__and__branches">Seventh exercise, teamwork and branches<a class="headerlink" href="#seventh__exercise__teamwork__and__branches" title="Anchor link to this section for reference">¶</a></h2>
+<ol>
+<li>Everyone in the group create a new branch in the repo - this time you could try doing it from the GitHub page</li>
+<li>Check which remote branches exist with <code>git branch -r</code></li>
+<li>Check which local branches you have with <code>git branch</code> </li>
+<li>Use <code>git status</code> to see which branch you are on. </li>
+<li>Check with <code>git branch -a</code> to see all local and remote branches</li>
+<li>Do a <code>git pull</code> from the command line to get a list of all branches. Switch to the branch you created on GitHub with <code>git checkout --track origin/mynewbranch</code>. Again do <code>git branch</code> to see which branch you are on. </li>
+<li>Create a new file and put some content to it. Add and commit it. Check for changes (<code>git status</code>, <code>git log</code>). Push the changes.</li>
+<li>Try and merge the branches from the command line. Remember to first pull any changes from your other group members. Also remember to switch to the branch you want to merge it to (main in this case). </li>
+<li>Were you succesful? Why or why not? Is there are difference between what happens when the owner of the branch tries this and when everyone else does?</li>
+<li>After doing this, everyone should again do a <code>git pull</code> (on the command line)</li>
+<li>Use <code>git status</code>, <code>git branch</code>, and <code>git log</code> to see what has happened. If you want a “prettier” and sometimes easier to read view, use <code>git log --graph --oneline --decorate --all</code> </li>
+</ol>
+<hr/>
+<h2 id="eighth__exercise__deleting__branches">Eighth exercise, deleting branches<a class="headerlink" href="#eighth__exercise__deleting__branches" title="Anchor link to this section for reference">¶</a></h2>
+<ol>
+<li>Everyone should now create two more branches in the repo. In each case, switch to the branch, create a file in it, and push the branch</li>
+<li>Check which branches exist, remotely and locally </li>
+<li>Try and delete a remote branch with `git push origin –delete myownbranch</li>
+<li>Try delete a local branch with <code>git branch -D &lt;alsomyownbranch</code>&gt;</li>
+<li>Do a <code>git status</code>, <code>git log</code> and <code>git branch</code> to see what has happened</li>
+<li>The branch you deleted locally is still on the repo. Get another copy of it (<code>git pull</code> and <code>git fetch</code>, possibly with suitable flags will get it back for you)</li>
+</ol>
+<hr/>
+<h2 id="ninth__exercise__merge__conflicts">Ninth exercise, merge conflicts<a class="headerlink" href="#ninth__exercise__merge__conflicts" title="Anchor link to this section for reference">¶</a></h2>
+<p>In this exercise everyone in the team will be working in the same branch, for instance the main branch. </p>
+<p>Merge conflicts generally happen when two (or more) teammembers edit the same file and the same line, or when one edits a file and another deletes it. </p>
+<ol>
+<li>Create a new repository on GitHub. Add your team members as in the previous exercises. Everyone clones the repository (from the command line). </li>
+<li>Create a couple files. Add, commit, and push. </li>
+<li>If more than one creates files, remember to either pull your teammates work first, or do a <code>git pull --rebase</code> before pushing. </li>
+<li>After doing this, everyone should again do a <code>git pull</code></li>
+<li>Now one or more make changes to the same file, in the same line. Add, commit, push. </li>
+<li>Did you get a conflict? Use <code>git status</code>, <code>git branch</code>, and <code>git log</code> to see what has happened. Try to resolve the conflict. </li>
+<li>Now again all will work on one file. One or more edit it and one deletes it (<code>git rm file</code>). What happens when you push your work? You should get a conflict. Try and resolve the conflict. Should the file be kept or deleted? </li>
+</ol>
+<hr/>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../remotes/" title="Working with remotes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../basic-commands-exercises/" title="Basic commands">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../remotes/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../basic-commands-exercises/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../assets/_markdown_exec_pyodide.js"></script>
+<script src="../search/main.js"></script>
+<script src="../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>

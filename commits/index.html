@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://hpc2n.github.io/course-intro-git/commits/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Traversing the commit tree - Introduction to Git</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Traversing the commit tree";
+        var mkdocs_page_input_path = "commits.md";
+        var mkdocs_page_url = "/course-intro-git/commits/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="..">
+<img alt="Logo" class="logo" src="../images/logo-text.png"/>
+</a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Traversing the commit tree</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#investigating__history">Investigating history</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#matching__regular__expressions">Matching regular expressions</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#changes__beforeafter__date">Changes before/after date</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#list__changed__files">List changed files</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#visualizing__the__tree">Visualizing the tree</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#reflog">Reflog</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#comparing__commits">Comparing commits</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#investigate__a__file">Investigate a file</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#list__uncommitted__changed">List uncommitted changed</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#navigating__the__commit__tree">Navigating the commit tree</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#detached__head">Detached HEAD</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#git__reset">Git reset</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#git__restore">git restore</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tagging">Tagging</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#referring__to__commits">Referring to commits</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cleaning__the__working__tree">Cleaning the working tree</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#cleaning__tracked__files__recap">Cleaning tracked files (recap)</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#stashing__changes">Stashing changes</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#apply__previous__entry__from__stack">Apply previous entry from stack</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#apply__any__entry__from__the__stack">Apply any entry from the stack</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple__commits__from__a__single__set__of__edits">Multiple commits from a single set of edits</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#making__changes__to__the__commit__tree">Making changes to the commit tree</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#remark">Remark</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#reminder">Reminder</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#discarding__the__last__commit">Discarding the last commit</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#changing__the__last__commit">Changing the last commit</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#git__revert">git revert</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Exercises</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Introduction to Git</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item active">Traversing the commit tree</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="lecture__4__commits">Lecture 4: Commits<a class="headerlink" href="#lecture__4__commits" title="Anchor link to this section for reference">¶</a></h1>
+<!-- Lecture material made by Mirko Myllykoski for the version of the course that was given in fall~~~~~~~~ 2020. Lecture was first given by Mirko Myllykoski in fall 2020. Moved to GitHub and some tweaks (mainly to graphs) done by Birgitte Brydsö to get it to work on GitHub pages for the 2025 version of the course. -->
+<!-- Slides: https://hackmd.io/@git-fall-2024/L4-commits -->
+<hr/>
+<h2 id="investigating__history">Investigating history<a class="headerlink" href="#investigating__history" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<p>The <strong>history</strong> can be investigated with the <code>git log</code> command:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>$<span class="w"> </span>git<span class="w"> </span>log
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>commit<span class="w"> </span>845aa0185080a80fa7ef3c....<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>Author:<span class="w"> </span>Mirko<span class="w"> </span>Myllykoski<span class="w"> </span>&lt;mirkom@cs.umu.se&gt;
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>Date:<span class="w">   </span>Wed<span class="w"> </span>Sep<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">14</span>:32:28<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0200
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>most<span class="w"> </span>recent<span class="w"> </span>commit
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>commit<span class="w"> </span>d9290ba6afc2f7d62b981c....
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>Author:<span class="w"> </span>Mirko<span class="w"> </span>Myllykoski<span class="w"> </span>&lt;mirkom@cs.umu.se&gt;
+</span><span id="__span-0-10"><a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>Date:<span class="w">   </span>Wed<span class="w"> </span>Sep<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">12</span>:06:07<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0200
+</span><span id="__span-0-11"><a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>most<span class="w"> </span>recent<span class="w"> </span>commit
+</span><span id="__span-0-13"><a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>commit<span class="w"> </span>....
+</span></code></pre></div>
+<hr/>
+<ul>
+<li>Actually, <code>git log &lt;ref&gt;</code> lists commits that are <strong>reachable</strong> from <code>&lt;ref&gt;</code><ul>
+<li><code>&lt;ref&gt;</code> defaults to <code>HEAD</code></li>
+</ul>
+</li>
+<li>For example:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>d9290ba6af
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>commit<span class="w"> </span>d9290ba6afc2f7d62b981c3befaaeeedae4da720
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>Author:<span class="w"> </span>Mirko<span class="w"> </span>Myllykoski<span class="w"> </span>&lt;mirkom@cs.umu.se&gt;
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>Date:<span class="w">   </span>Wed<span class="w"> </span>Sep<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">12</span>:06:07<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0200
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>most<span class="w"> </span>recent<span class="w"> </span>commit
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>commit<span class="w"> </span>17567d3b8023912978b8e39754ba612546312f90
+</span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>Author:<span class="w"> </span>Mirko<span class="w"> </span>Myllykoski<span class="w"> </span>&lt;mirkom@cs.umu.se&gt;
+</span><span id="__span-1-10"><a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>Date:<span class="w">   </span>Tue<span class="w"> </span>Aug<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">09</span>:55:17<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0200
+</span><span id="__span-1-11"><a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>third<span class="w"> </span>most<span class="w"> </span>recent<span class="w"> </span>commit
+</span></code></pre></div>
+<hr/>
+<p><strong>More about listing commits</strong> </p>
+<ul>
+<li><code>git log -n &lt;n&gt; &lt;ref&gt;</code> lists only <code>&lt;n&gt;</code> most recent commits</li>
+<li><code>git log --oneline &lt;ref&gt;</code> lists only the shortened hash and the commit message:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>845aa01<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>most<span class="w"> </span>recent
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>d9290ba<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>most<span class="w"> </span>recent<span class="w"> </span>commit
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>17567d3<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>third<span class="w"> </span>most<span class="w"> </span>recent<span class="w"> </span>commit
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>....
+</span></code></pre></div>
+<ul>
+<li><code>git log --format=oneline &lt;ref&gt;</code><ul>
+<li>The formats include, but are not limited to, <code>oneline</code>, <code>short</code>, <code>medium</code>, <code>full</code>, <code>fuller</code>, <code>email</code>, and <code>raw</code></li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h3 id="matching__regular__expressions">Matching <strong>regular expressions</strong><a class="headerlink" href="#matching__regular__expressions" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li><code>git log --grep=&lt;regexp&gt; &lt;ref&gt;</code> displays commits that match a regular expression <code>&lt;regexp&gt;</code>:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--grep<span class="o">=</span><span class="s2">"bug"</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>commit<span class="w"> </span>be88ff1bb6396bdca28e84dcba6bb639d0c9f82a
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>Author:<span class="w"> </span>Mirko<span class="w"> </span>Myllykoski<span class="w"> </span>&lt;mirkom@cs.umu.se&gt;
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>Date:<span class="w">   </span>Fri<span class="w"> </span>Jul<span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">14</span>:17:14<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0200
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span>Fix<span class="w"> </span>a<span class="w"> </span>bug<span class="w"> </span>that<span class="w"> </span>caused<span class="w"> </span>my<span class="w"> </span>Saturday<span class="w"> </span>headaches<span class="w"> </span>
+</span></code></pre></div>
+<hr/>
+<h3 id="changes__beforeafter__date">Changes before/after date<a class="headerlink" href="#changes__beforeafter__date" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li><code>git log --{after,before} &lt;date&gt; &lt;ref&gt;</code> displays changes committed  after/before <code>&lt;date&gt;</code>:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--after<span class="o">=</span><span class="s2">"The end of May"</span><span class="w"> </span>--before<span class="o">=</span><span class="s2">"June 15th"</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>commit<span class="w"> </span>50ea2854c6bf6aeb2e6683c8d505ad731f2960e2
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>Author:<span class="w"> </span>Mirko<span class="w"> </span>Myllykoski<span class="w"> </span>&lt;mirkom@cs.umu.se&gt;
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>Date:<span class="w">   </span>Thu<span class="w"> </span>Jun<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">13</span>:09:28<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0200
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>...
+</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>commit<span class="w"> </span>add51b56dd0a985b8625e77e8b2b4dbfab2133b8
+</span><span id="__span-4-9"><a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>Author:<span class="w"> </span>Mirko<span class="w"> </span>Myllykoski<span class="w"> </span>&lt;mirkom@cs.umu.se&gt;
+</span><span id="__span-4-10"><a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>Date:<span class="w">   </span>Wed<span class="w"> </span>Jun<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">12</span>:08:56<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0200
+</span></code></pre></div>
+<hr/>
+<h3 id="list__changed__files">List changed files<a class="headerlink" href="#list__changed__files" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li><code>git log --name-status &lt;ref&gt;</code> display files that were changed:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--name-status
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>commit<span class="w"> </span>845aa0185080a80fa7ef3c....<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span>
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>Author:<span class="w"> </span>Mirko<span class="w"> </span>Myllykoski<span class="w"> </span>&lt;mirkom@cs.umu.se&gt;
+</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>Date:<span class="w">   </span>Wed<span class="w"> </span>Sep<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">14</span>:32:28<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0200
+</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">    </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>most<span class="w"> </span>recent<span class="w"> </span>commit
+</span><span id="__span-5-7"><a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>M<span class="w">       </span>file.txt
+</span><span id="__span-5-9"><a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a>D<span class="w">       </span>mistake.txt
+</span></code></pre></div>
+<ul>
+<li><code>git log --stat &lt;ref&gt;</code> displays more information</li>
+<li><code>git log -p &lt;ref&gt;</code> displays even more information (diffs)</li>
+</ul>
+<hr/>
+<h3 id="visualizing__the__tree">Visualizing the tree<a class="headerlink" href="#visualizing__the__tree" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>When working with multible branches, <ul>
+<li><code>--graph</code> visualizes the commit tree and </li>
+<li><code>--all</code> displays all branches:</li>
+</ul>
+</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--all<span class="w"> </span>--oneline
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>*<span class="w">   </span>f0d7298<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s1">'second_branch'</span>
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="p">|</span><span class="se">\ </span><span class="w"> </span>
+</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>a118ae8<span class="w"> </span><span class="o">(</span>second_branch<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>third<span class="w"> </span>commit
+</span><span id="__span-6-5"><a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>d3c6c63<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-6-6"><a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-6-7"><a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a>*<span class="w"> </span>23b3ed5<span class="w"> </span><span class="o">(</span>tag:<span class="w"> </span>first<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<hr/>
+<h3 id="reflog">Reflog<a class="headerlink" href="#reflog" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>The <code>git log</code> command displays <strong>only changes that affect the commit tree</strong></li>
+<li>Git stores extra logging information to a <strong>reference log</strong> (reflog)<ul>
+<li>Gets updated when the tips of branches and other references are modified</li>
+<li>Accessed with the <code>git reflog</code> command</li>
+<li>Some of the information can be merged with a regular log (<code>git log -g &lt;ref&gt;</code>)</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h4 id="discarding__a__commit">Discarding a commit<a class="headerlink" href="#discarding__a__commit" title="Anchor link to this section for reference">¶</a></h4>
+<ul>
+<li>Let’s create and discard a commit (more on this later):</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"More content to this file"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>file.txt<span class="w"> </span>
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-a<span class="w"> </span>-m<span class="w"> </span><span class="s2">"I am going to delete this"</span>
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="o">[</span>master<span class="w"> </span>2f529ae<span class="o">]</span><span class="w"> </span>I<span class="w"> </span>am<span class="w"> </span>going<span class="w"> </span>to<span class="w"> </span>delete<span class="w"> </span>this
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">1</span><span class="w"> </span>deletion<span class="o">(</span>-<span class="o">)</span>
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>2f529ae<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>I<span class="w"> </span>am<span class="w"> </span>going<span class="w"> </span>to<span class="w"> </span>delete<span class="w"> </span>this
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>23b3ed5<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD~
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>HEAD<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>at<span class="w"> </span>23b3ed5<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<ul>
+<li>Note how the commit disappears from the log:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>23b3ed5<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<hr/>
+<ul>
+<li>However, the commit (<code>2f529ae</code>) still exists in the reference log:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>$<span class="w"> </span>git<span class="w"> </span>reflog
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>23b3ed5<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>HEAD@<span class="o">{</span><span class="m">0</span><span class="o">}</span>:<span class="w"> </span>reset:<span class="w"> </span>moving<span class="w"> </span>to<span class="w"> </span>HEAD~
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a>2f529ae<span class="w"> </span>HEAD@<span class="o">{</span><span class="m">1</span><span class="o">}</span>:<span class="w"> </span>commit:<span class="w"> </span>I<span class="w"> </span>am<span class="w"> </span>going<span class="w"> </span>to<span class="w"> </span>delete<span class="w"> </span>this
+</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a>23b3ed5<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>HEAD@<span class="o">{</span><span class="m">2</span><span class="o">}</span>:<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>initial<span class="o">)</span>:<span class="w"> </span>This<span class="w"> </span>is
+</span><span id="__span-11-5"><a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<ul>
+<li>At this point, we could attempt to recover the commit.<ul>
+<li>Note that Git is allowed to delete any orphan commits.</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h2 id="comparing__commits">Comparing commits<a class="headerlink" href="#comparing__commits" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<p>We can compare commits with <code>git diff</code>:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph<span class="w"> </span>--all
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>*<span class="w">   </span>f0d7298<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s1">'second_branch'</span>
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="p">|</span><span class="se">\ </span><span class="w"> </span>
+</span><span id="__span-12-4"><a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>a118ae8<span class="w"> </span><span class="o">(</span>second_branch<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>third<span class="w"> </span>commit
+</span><span id="__span-12-5"><a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>d3c6c63<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-12-6"><a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-12-7"><a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a>*<span class="w"> </span>23b3ed5<span class="w"> </span><span class="o">(</span>tag:<span class="w"> </span>first<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>23b3ed5<span class="w"> </span>d3c6c63
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>diff<span class="w"> </span>--git<span class="w"> </span>a/file.txt<span class="w"> </span>b/file.txt
+</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a>index<span class="w"> </span>09c78e6..3b23ff0<span class="w"> </span><span class="m">100644</span>
+</span><span id="__span-13-4"><a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a>---<span class="w"> </span>a/file.txt
+</span><span id="__span-13-5"><a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a>+++<span class="w"> </span>b/file.txt
+</span><span id="__span-13-6"><a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a>@@<span class="w"> </span>-1<span class="w"> </span>+1,2<span class="w"> </span>@@
+</span><span id="__span-13-7"><a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w"> </span>This<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>very<span class="w"> </span>interesting
+</span><span id="__span-13-8"><a href="#__codelineno-13-8" id="__codelineno-13-8" name="__codelineno-13-8"></a>+More<span class="w"> </span>content
+</span></code></pre></div>
+<hr/>
+<h3 id="investigate__a__file">Investigate a file<a class="headerlink" href="#investigate__a__file" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>We can also investigate an individual file:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>23b3ed5<span class="w"> </span>d3c6c63<span class="w"> </span>--<span class="w"> </span>file.txt
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>diff<span class="w"> </span>--git<span class="w"> </span>a/file.txt<span class="w"> </span>b/file.txt
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>index<span class="w"> </span>09c78e6..3b23ff0<span class="w"> </span><span class="m">100644</span>
+</span><span id="__span-14-4"><a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a>---<span class="w"> </span>a/file.txt
+</span><span id="__span-14-5"><a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a>+++<span class="w"> </span>b/file.txt
+</span><span id="__span-14-6"><a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a>@@<span class="w"> </span>-1<span class="w"> </span>+1,2<span class="w"> </span>@@
+</span><span id="__span-14-7"><a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w"> </span>This<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>very<span class="w"> </span>interesting
+</span><span id="__span-14-8"><a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a>+More<span class="w"> </span>content
+</span></code></pre></div>
+<hr/>
+<h3 id="list__uncommitted__changed">List uncommitted changed<a class="headerlink" href="#list__uncommitted__changed" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>We can list all <strong>uncommited</strong> changes by comparing against <code>HEAD</code>:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>HEAD
+</span></code></pre></div>
+<ul>
+<li>We can list all <strong>unstaged</strong> changes with command:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>$<span class="w"> </span>git<span class="w"> </span>diff
+</span></code></pre></div>
+<ul>
+<li>We can list all <strong>staged</strong> changes with command:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>--cached
+</span></code></pre></div>
+<hr/>
+<h2 id="navigating__the__commit__tree">Navigating the commit tree<a class="headerlink" href="#navigating__the__commit__tree" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<ul>
+<li>In order to use the commits stored by Git, we must be able to navigate the commit tree</li>
+<li>This happens with the <code>git checkout</code> and <code>git reset</code> commands</li>
+<li>The commands behave slightly differently!</li>
+</ul>
+<hr/>
+<ul>
+<li>Let’s investigate the commit tree. We are currently at <code>master</code>:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline
+</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>*<span class="w">   </span>f0d7298<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s1">'second_branch'</span>
+</span><span id="__span-18-3"><a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="p">|</span><span class="se">\ </span><span class="w"> </span>
+</span><span id="__span-18-4"><a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>a118ae8<span class="w"> </span><span class="o">(</span>second_branch<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>third<span class="w"> </span>commit
+</span><span id="__span-18-5"><a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>d3c6c63<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-18-6"><a href="#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-18-7"><a href="#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a>*<span class="w"> </span>23b3ed5<span class="w"> </span><span class="o">(</span>tag:<span class="w"> </span>first<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<ul>
+<li>We use <code>git checkout</code> to move to <code>d3c6c63</code>:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>d3c6c63
+</span><span id="__span-19-2"><a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a>....
+</span><span id="__span-19-3"><a href="#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a href="#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a>HEAD<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>at<span class="w"> </span>d3c6c63<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-19-5"><a href="#__codelineno-19-5" id="__codelineno-19-5" name="__codelineno-19-5"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline
+</span><span id="__span-19-6"><a href="#__codelineno-19-6" id="__codelineno-19-6" name="__codelineno-19-6"></a>*<span class="w"> </span>d3c6c63<span class="w"> </span><span class="o">(</span>HEAD<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-19-7"><a href="#__codelineno-19-7" id="__codelineno-19-7" name="__codelineno-19-7"></a>*<span class="w"> </span>23b3ed5<span class="w"> </span><span class="o">(</span>tag:<span class="w"> </span>first<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<hr/>
+<ul>
+<li><code>git checkout</code> <strong>moves only the <code>HEAD</code></strong>, the tip of the branch is not modified:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline<span class="w"> </span>master
+</span><span id="__span-20-2"><a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a>*<span class="w">   </span>f0d7298<span class="w"> </span><span class="o">(</span>master<span class="o">)</span><span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s1">'second_branch'</span>
+</span><span id="__span-20-3"><a href="#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="p">|</span><span class="se">\ </span><span class="w"> </span>
+</span><span id="__span-20-4"><a href="#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>a118ae8<span class="w"> </span><span class="o">(</span>second_branch<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>third<span class="w"> </span>commit
+</span><span id="__span-20-5"><a href="#__codelineno-20-5" id="__codelineno-20-5" name="__codelineno-20-5"></a>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>d3c6c63<span class="w"> </span><span class="o">(</span>HEAD<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-20-6"><a href="#__codelineno-20-6" id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-20-7"><a href="#__codelineno-20-7" id="__codelineno-20-7" name="__codelineno-20-7"></a>*<span class="w"> </span>23b3ed5<span class="w"> </span><span class="o">(</span>tag:<span class="w"> </span>first<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<ul>
+<li><code>git checkout</code> attempts to keep local modifications to the files in the working tree</li>
+</ul>
+<hr/>
+<h3 id="detached__head">Detached <code>HEAD</code><a class="headerlink" href="#detached__head" title="Anchor link to this section for reference">¶</a></h3>
+<p>If we <code>git checkout</code> away from the tip of a branch…</p>
+<div class="mermaid">graph LR
+  A["A"]
+  B["B"]
+  C["C"]
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  B --&gt; A
+  C --&gt; B
+  master -.-&gt; C
+  head -.-&gt; C
+</div>
+<p>Then we will get the following warning:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>d3c6c63
+</span><span id="__span-21-2"><a href="#__codelineno-21-2" id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="w"> </span>Note:<span class="w"> </span>switching<span class="w"> </span>to<span class="w"> </span><span class="s1">'d3c6c63'</span>.
+</span><span id="__span-21-3"><a href="#__codelineno-21-3" id="__codelineno-21-3" name="__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a href="#__codelineno-21-4" id="__codelineno-21-4" name="__codelineno-21-4"></a>You<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s1">'detached HEAD'</span><span class="w"> </span>state.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>look<span class="w"> </span>around,<span class="w"> </span>make
+</span><span id="__span-21-5"><a href="#__codelineno-21-5" id="__codelineno-21-5" name="__codelineno-21-5"></a>experimental<span class="w"> </span>changes<span class="w"> </span>and<span class="w"> </span>commit<span class="w"> </span>them,<span class="w"> </span>and<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>discard<span class="w"> </span>any
+</span><span id="__span-21-6"><a href="#__codelineno-21-6" id="__codelineno-21-6" name="__codelineno-21-6"></a>commits<span class="w"> </span>you<span class="w"> </span>make<span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>state<span class="w"> </span>without<span class="w"> </span>impacting<span class="w"> </span>any<span class="w"> </span>branches
+</span><span id="__span-21-7"><a href="#__codelineno-21-7" id="__codelineno-21-7" name="__codelineno-21-7"></a>by<span class="w"> </span>switching<span class="w"> </span>back<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>branch.
+</span><span id="__span-21-8"><a href="#__codelineno-21-8" id="__codelineno-21-8" name="__codelineno-21-8"></a>
+</span><span id="__span-21-9"><a href="#__codelineno-21-9" id="__codelineno-21-9" name="__codelineno-21-9"></a>....
+</span></code></pre></div>
+<hr/>
+<ul>
+<li>This simply means that the <code>HEAD</code> no longer points to the tip of the branch:</li>
+</ul>
+<div class="mermaid">graph LR
+  A["A"]
+  B["B"]
+  C["C"]
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  B --&gt; A
+  C --&gt; B
+  master -.-&gt; C
+  head -.-&gt; B
+</div>
+<ul>
+<li>We can disable the warning:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>advice.detachedHead<span class="w"> </span><span class="nb">false</span>
+</span></code></pre></div>
+<hr/>
+<ul>
+<li>If we are currently on the tip of a branch, then:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--oneline
+</span><span id="__span-23-2"><a href="#__codelineno-23-2" id="__codelineno-23-2" name="__codelineno-23-2"></a>f0d7298<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s1">'second_branch'</span>
+</span><span id="__span-23-3"><a href="#__codelineno-23-3" id="__codelineno-23-3" name="__codelineno-23-3"></a>$<span class="w"> </span>git<span class="w"> </span>rev-parse<span class="w"> </span>--abbrev-ref<span class="w"> </span>HEAD
+</span><span id="__span-23-4"><a href="#__codelineno-23-4" id="__codelineno-23-4" name="__codelineno-23-4"></a>master
+</span><span id="__span-23-5"><a href="#__codelineno-23-5" id="__codelineno-23-5" name="__codelineno-23-5"></a>$<span class="w"> </span>cat<span class="w"> </span>.git/HEAD<span class="w"> </span>
+</span><span id="__span-23-6"><a href="#__codelineno-23-6" id="__codelineno-23-6" name="__codelineno-23-6"></a>ref:<span class="w"> </span>refs/heads/master
+</span></code></pre></div>
+<ul>
+<li>If we are in the detached <code>HEAD</code> mode, then:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--oneline
+</span><span id="__span-24-2"><a href="#__codelineno-24-2" id="__codelineno-24-2" name="__codelineno-24-2"></a>d3c6c63<span class="w"> </span><span class="o">(</span>HEAD<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-24-3"><a href="#__codelineno-24-3" id="__codelineno-24-3" name="__codelineno-24-3"></a>$<span class="w"> </span>git<span class="w"> </span>rev-parse<span class="w"> </span>--abbrev-ref<span class="w"> </span>HEAD
+</span><span id="__span-24-4"><a href="#__codelineno-24-4" id="__codelineno-24-4" name="__codelineno-24-4"></a>HEAD
+</span><span id="__span-24-5"><a href="#__codelineno-24-5" id="__codelineno-24-5" name="__codelineno-24-5"></a>$<span class="w"> </span>cat<span class="w"> </span>.git/HEAD<span class="w"> </span>
+</span><span id="__span-24-6"><a href="#__codelineno-24-6" id="__codelineno-24-6" name="__codelineno-24-6"></a>d3c6c635fb44c7084797d47050bff7961853c19b
+</span></code></pre></div>
+<hr/>
+<ul>
+<li>The tip of the branch can be <strong>recovered</strong> with <code>git checkout &lt;tip_ref&gt;</code>:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>master
+</span><span id="__span-25-2"><a href="#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a>Previous<span class="w"> </span>HEAD<span class="w"> </span>position<span class="w"> </span>was<span class="w"> </span>23b3ed5<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span><span id="__span-25-3"><a href="#__codelineno-25-3" id="__codelineno-25-3" name="__codelineno-25-3"></a>Switched<span class="w"> </span>to<span class="w"> </span>branch<span class="w"> </span><span class="s1">'master'</span>
+</span></code></pre></div>
+<hr/>
+<h3 id="git__reset">Git reset<a class="headerlink" href="#git__reset" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>We could have also used <code>git reset</code> to move the <code>HEAD</code>:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>&lt;option&gt;<span class="w"> </span>&lt;ref&gt;
+</span></code></pre></div>
+<ul>
+<li>The option defines what gets updated / cleared:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><code>&lt;option&gt;</code></th>
+<th style="text-align: center;">Tree</th>
+<th style="text-align: center;">Index</th>
+<th style="text-align: center;">HEAD</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--soft</code></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--mixed</code></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td>Default</td>
+</tr>
+<tr>
+<td><code>--hard</code></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<ul>
+<li>The command can be <strong>dangerous</strong>!</li>
+<li>If you are in the detached <code>HEAD</code> mode, then only the <code>HEAD</code> gets moved:</li>
+</ul>
+<div class="mermaid">graph LR
+  A["A"]
+  B["B"]
+  C["C"]
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  old_head["HEAD"]
+  style old_head fill:#ffffff,stroke:#ffffff,color:#aeaeae
+  B --&gt; A
+  C --&gt; B
+  master -.-&gt; C
+  head -.-&gt; A
+  old_head -.-&gt; B
+  linkStyle 4 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
+</div>
+<ul>
+<li>Otherwise, also the <strong>branch tip gets moved</strong>:</li>
+</ul>
+<div class="mermaid">graph LR
+  A["A"]
+  B["B"]
+  C["C"]
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  old_head["HEAD"]
+  style old_head fill:#ffffff,stroke:#ffffff,color:#aeaeae
+  old_master["master"]
+  style old_master fill:#ffffff,stroke:#ffffff,color:#aeaeae 
+  B --&gt; A
+  C --&gt; B
+  master -.-&gt; A
+  head -.-&gt; master
+  old_head -.-&gt; old_master
+  linkStyle 4 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
+  old_master -.-&gt; C
+  linkStyle 5 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
+</div>
+<hr/>
+<ul>
+<li>Applying <code>git checkout</code> to a file <strong>discards all unstaged changes</strong> made to the file:</li>
+</ul>
+<p><div class="language-shell highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>&lt;filename&gt;
+</span></code></pre></div>
+ - Applying <code>git reset</code> to a file <strong>unstages the file</strong>:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-28-1"><a href="#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>&lt;filename&gt;
+</span></code></pre></div>
+<hr/>
+<p>An example:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-29-1"><a href="#__codelineno-29-1" id="__codelineno-29-1" name="__codelineno-29-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Even more content"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>file.txt
+</span><span id="__span-29-2"><a href="#__codelineno-29-2" id="__codelineno-29-2" name="__codelineno-29-2"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>file.txt
+</span><span id="__span-29-3"><a href="#__codelineno-29-3" id="__codelineno-29-3" name="__codelineno-29-3"></a>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>--cached
+</span><span id="__span-29-4"><a href="#__codelineno-29-4" id="__codelineno-29-4" name="__codelineno-29-4"></a>....
+</span><span id="__span-29-5"><a href="#__codelineno-29-5" id="__codelineno-29-5" name="__codelineno-29-5"></a>+Even<span class="w"> </span>more<span class="w"> </span>content
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-30-1"><a href="#__codelineno-30-1" id="__codelineno-30-1" name="__codelineno-30-1"></a>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>file.txt
+</span><span id="__span-30-2"><a href="#__codelineno-30-2" id="__codelineno-30-2" name="__codelineno-30-2"></a>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>--cached
+</span><span id="__span-30-3"><a href="#__codelineno-30-3" id="__codelineno-30-3" name="__codelineno-30-3"></a>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>
+</span><span id="__span-30-4"><a href="#__codelineno-30-4" id="__codelineno-30-4" name="__codelineno-30-4"></a>....
+</span><span id="__span-30-5"><a href="#__codelineno-30-5" id="__codelineno-30-5" name="__codelineno-30-5"></a>+Even<span class="w"> </span>more<span class="w"> </span>content
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-31-1"><a href="#__codelineno-31-1" id="__codelineno-31-1" name="__codelineno-31-1"></a>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>file.txt
+</span><span id="__span-31-2"><a href="#__codelineno-31-2" id="__codelineno-31-2" name="__codelineno-31-2"></a>Updated<span class="w"> </span><span class="m">1</span><span class="w"> </span>path<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>index
+</span><span id="__span-31-3"><a href="#__codelineno-31-3" id="__codelineno-31-3" name="__codelineno-31-3"></a>$<span class="w"> </span>git<span class="w"> </span>diff
+</span><span id="__span-31-4"><a href="#__codelineno-31-4" id="__codelineno-31-4" name="__codelineno-31-4"></a>$
+</span></code></pre></div>
+<hr/>
+<h3 id="git__restore"><code>git restore</code><a class="headerlink" href="#git__restore" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>
+<p>from git version 2.23, under development</p>
+</li>
+<li>
+<p><strong>discard all unstaged changes</strong> made to files:
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-32-1"><a href="#__codelineno-32-1" id="__codelineno-32-1" name="__codelineno-32-1"></a>$<span class="w"> </span>git<span class="w"> </span>restore<span class="w"> </span>&lt;filename&gt;<span class="w"> </span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>unstage</strong> files:
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-33-1"><a href="#__codelineno-33-1" id="__codelineno-33-1" name="__codelineno-33-1"></a>$<span class="w"> </span>git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>&lt;filename&gt;<span class="w"> </span>
+</span></code></pre></div></p>
+</li>
+<li>advantage: does not change the HEAD</li>
+</ul>
+<hr/>
+<h2 id="tagging">Tagging<a class="headerlink" href="#tagging" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<ul>
+<li>We can give a commit a special name (tag).</li>
+<li>All existing tags can be listed with:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-34-1"><a href="#__codelineno-34-1" id="__codelineno-34-1" name="__codelineno-34-1"></a>$<span class="w"> </span>git<span class="w"> </span>tag
+</span><span id="__span-34-2"><a href="#__codelineno-34-2" id="__codelineno-34-2" name="__codelineno-34-2"></a>v0.1.0
+</span><span id="__span-34-3"><a href="#__codelineno-34-3" id="__codelineno-34-3" name="__codelineno-34-3"></a>v0.1.1
+</span><span id="__span-34-4"><a href="#__codelineno-34-4" id="__codelineno-34-4" name="__codelineno-34-4"></a>....
+</span></code></pre></div>
+<ul>
+<li>We can also search for a tag that matches a given string:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-35-1"><a href="#__codelineno-35-1" id="__codelineno-35-1" name="__codelineno-35-1"></a>$<span class="w"> </span>git<span class="w"> </span>tag<span class="w"> </span>-l<span class="w"> </span><span class="s2">"*beta*"</span>
+</span><span id="__span-35-2"><a href="#__codelineno-35-2" id="__codelineno-35-2" name="__codelineno-35-2"></a>v0.1-beta.1
+</span><span id="__span-35-3"><a href="#__codelineno-35-3" id="__codelineno-35-3" name="__codelineno-35-3"></a>v0.1-beta.2
+</span><span id="__span-35-4"><a href="#__codelineno-35-4" id="__codelineno-35-4" name="__codelineno-35-4"></a>....
+</span></code></pre></div>
+<hr/>
+<ul>
+<li>In the simplest case, we can create a <strong>lightweight</strong> tag:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-36-1"><a href="#__codelineno-36-1" id="__codelineno-36-1" name="__codelineno-36-1"></a>$<span class="w"> </span>git<span class="w"> </span>tag<span class="w"> </span>&lt;tag_name&gt;
+</span></code></pre></div>
+<ul>
+<li>The created tag always points to the current <code>HEAD</code>.</li>
+<li>You an also create an <strong>annotated</strong> tag:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-37-1"><a href="#__codelineno-37-1" id="__codelineno-37-1" name="__codelineno-37-1"></a>$<span class="w"> </span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>&lt;tag_name&gt;<span class="w"> </span>-m<span class="w"> </span>&lt;comment&gt;
+</span></code></pre></div>
+<ul>
+<li>An annotated tag stores extra information such as the tag’s creator, the creation time and a comment.</li>
+</ul>
+<hr/>
+<h2 id="referring__to__commits">Referring to commits<a class="headerlink" href="#referring__to__commits" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<ul>
+<li>We can refer to commits in many different ways:<ul>
+<li>Hash (commit id): d3c6c635fb44c7....</li>
+<li>References, branches, tags: <code>HEAD</code>, <code>master</code>, <code>first</code>, etc</li>
+<li>Long names: <code>refs/heads/master</code>, <code>refs/tags/first</code></li>
+</ul>
+</li>
+</ul>
+<hr/>
+<p>We can also refer to the ancestors of a commit:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-38-1"><a href="#__codelineno-38-1" id="__codelineno-38-1" name="__codelineno-38-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--all<span class="w"> </span>--oneline
+</span><span id="__span-38-2"><a href="#__codelineno-38-2" id="__codelineno-38-2" name="__codelineno-38-2"></a>*<span class="w">   </span>f0d7298<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s1">'second_branch'</span>
+</span><span id="__span-38-3"><a href="#__codelineno-38-3" id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="p">|</span><span class="se">\ </span><span class="w"> </span>
+</span><span id="__span-38-4"><a href="#__codelineno-38-4" id="__codelineno-38-4" name="__codelineno-38-4"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>a118ae8<span class="w"> </span><span class="o">(</span>second_branch<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>third<span class="w"> </span>commit
+</span><span id="__span-38-5"><a href="#__codelineno-38-5" id="__codelineno-38-5" name="__codelineno-38-5"></a>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>d3c6c63<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-38-6"><a href="#__codelineno-38-6" id="__codelineno-38-6" name="__codelineno-38-6"></a><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-38-7"><a href="#__codelineno-38-7" id="__codelineno-38-7" name="__codelineno-38-7"></a>*<span class="w"> </span>23b3ed5<span class="w"> </span><span class="o">(</span>tag:<span class="w"> </span>first<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-39-1"><a href="#__codelineno-39-1" id="__codelineno-39-1" name="__codelineno-39-1"></a>$<span class="w"> </span>git<span class="w"> </span>rev-parse<span class="w"> </span>--short<span class="w"> </span>HEAD
+</span><span id="__span-39-2"><a href="#__codelineno-39-2" id="__codelineno-39-2" name="__codelineno-39-2"></a>f0d7298
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-40-1"><a href="#__codelineno-40-1" id="__codelineno-40-1" name="__codelineno-40-1"></a>$<span class="w"> </span>git<span class="w"> </span>rev-parse<span class="w"> </span>--short<span class="w"> </span>HEAD~
+</span><span id="__span-40-2"><a href="#__codelineno-40-2" id="__codelineno-40-2" name="__codelineno-40-2"></a>d3c6c63
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-41-1"><a href="#__codelineno-41-1" id="__codelineno-41-1" name="__codelineno-41-1"></a>$<span class="w"> </span>git<span class="w"> </span>rev-parse<span class="w"> </span>--short<span class="w"> </span>HEAD~~
+</span><span id="__span-41-2"><a href="#__codelineno-41-2" id="__codelineno-41-2" name="__codelineno-41-2"></a>23b3ed5
+</span></code></pre></div>
+<hr/>
+<ul>
+<li><code>ref~n</code> returns the <code>n</code>‘th ancestor of <code>ref</code>.<ul>
+<li><code>ref = ref~0</code></li>
+<li><code>ref~ = ref~1</code></li>
+<li><code>ref~~ = ref~2</code></li>
+<li>…</li>
+</ul>
+</li>
+<li>Always follows the <strong>first</strong> parent</li>
+</ul>
+<hr/>
+<p>We can also refer to the parents of a commit:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-42-1"><a href="#__codelineno-42-1" id="__codelineno-42-1" name="__codelineno-42-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--all<span class="w"> </span>--oneline
+</span><span id="__span-42-2"><a href="#__codelineno-42-2" id="__codelineno-42-2" name="__codelineno-42-2"></a>*<span class="w">   </span>f0d7298<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s1">'second_branch'</span>
+</span><span id="__span-42-3"><a href="#__codelineno-42-3" id="__codelineno-42-3" name="__codelineno-42-3"></a><span class="p">|</span><span class="se">\ </span><span class="w"> </span>
+</span><span id="__span-42-4"><a href="#__codelineno-42-4" id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>a118ae8<span class="w"> </span><span class="o">(</span>second_branch<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>third<span class="w"> </span>commit
+</span><span id="__span-42-5"><a href="#__codelineno-42-5" id="__codelineno-42-5" name="__codelineno-42-5"></a>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>d3c6c63<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-42-6"><a href="#__codelineno-42-6" id="__codelineno-42-6" name="__codelineno-42-6"></a><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-42-7"><a href="#__codelineno-42-7" id="__codelineno-42-7" name="__codelineno-42-7"></a>*<span class="w"> </span>23b3ed5<span class="w"> </span><span class="o">(</span>tag:<span class="w"> </span>first<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-43-1"><a href="#__codelineno-43-1" id="__codelineno-43-1" name="__codelineno-43-1"></a>$<span class="w"> </span>git<span class="w"> </span>rev-parse<span class="w"> </span>--short<span class="w"> </span>HEAD^1
+</span><span id="__span-43-2"><a href="#__codelineno-43-2" id="__codelineno-43-2" name="__codelineno-43-2"></a>d3c6c63
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-44-1"><a href="#__codelineno-44-1" id="__codelineno-44-1" name="__codelineno-44-1"></a>$<span class="w"> </span>git<span class="w"> </span>rev-parse<span class="w"> </span>--short<span class="w"> </span>HEAD^2
+</span><span id="__span-44-2"><a href="#__codelineno-44-2" id="__codelineno-44-2" name="__codelineno-44-2"></a>a118ae8
+</span></code></pre></div>
+<hr/>
+<ul>
+<li><code>ref^n</code> returns the <code>n</code>‘th parent of <code>ref</code>.<ul>
+<li><code>ref = ref^0</code></li>
+<li><code>ref^ = ref^1</code></li>
+<li><code>ref^ = ref~</code></li>
+</ul>
+</li>
+<li>Note that <code>ref^^ != ref^2</code>:</li>
+</ul>
+<div class="mermaid">graph LR
+  ref(["ref"]) --&gt; refhat(["ref^"])
+  ref(["ref"]) --&gt; refhat2(["ref^2"])
+  refhat(["ref^"]) --&gt; refhathat(["ref^^"])
+</div>
+<hr/>
+<h2 id="cleaning__the__working__tree">Cleaning the working tree<a class="headerlink" href="#cleaning__the__working__tree" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<h3 id="cleaning__tracked__files__recap">Cleaning tracked files (recap)<a class="headerlink" href="#cleaning__tracked__files__recap" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>
+<p><strong>discard all unstaged changes</strong> made to files:
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-45-1"><a href="#__codelineno-45-1" id="__codelineno-45-1" name="__codelineno-45-1"></a>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>&lt;filename&gt;
+</span><span id="__span-45-2"><a href="#__codelineno-45-2" id="__codelineno-45-2" name="__codelineno-45-2"></a>$<span class="w"> </span>git<span class="w"> </span>restore<span class="w"> </span>&lt;filename&gt;<span class="w"> </span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>unstage</strong> files:
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-46-1"><a href="#__codelineno-46-1" id="__codelineno-46-1" name="__codelineno-46-1"></a>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>&lt;filename&gt;
+</span><span id="__span-46-2"><a href="#__codelineno-46-2" id="__codelineno-46-2" name="__codelineno-46-2"></a>$<span class="w"> </span>git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>&lt;filename&gt;<span class="w"> </span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><code>git reset &lt;option&gt; &lt;ref&gt;</code></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><code>&lt;option&gt;</code></th>
+<th style="text-align: center;">Tree</th>
+<th style="text-align: center;">Index</th>
+<th style="text-align: center;">HEAD</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--soft</code></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td>Cleans nothing</td>
+</tr>
+<tr>
+<td><code>--mixed</code></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td>Default</td>
+</tr>
+<tr>
+<td><code>--hard</code></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h4 id="untracked__files__clearing">Untracked files, clearing<a class="headerlink" href="#untracked__files__clearing" title="Anchor link to this section for reference">¶</a></h4>
+<p>Untracked files are cleared with</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-47-1"><a href="#__codelineno-47-1" id="__codelineno-47-1" name="__codelineno-47-1"></a>$<span class="w"> </span>git<span class="w"> </span>clean<span class="w"> </span>&lt;options&gt;<span class="w"> </span>&lt;path&gt;
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--dry-run</code></td>
+<td>nothing is cleaned</td>
+</tr>
+<tr>
+<td><code>-d</code></td>
+<td>clean more files recursively</td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td>clean interactively</td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>needed if <code>-i</code> is not given</td>
+</tr>
+<tr>
+<td><code>-x</code></td>
+<td>clean also ignored files</td>
+</tr>
+<tr>
+<td><code>-X</code></td>
+<td>clean only ignored files</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<ul>
+<li>Usually we first check what is going to be cleaned:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-48-1"><a href="#__codelineno-48-1" id="__codelineno-48-1" name="__codelineno-48-1"></a>$<span class="w"> </span>git<span class="w"> </span>clean<span class="w"> </span>--dry-run<span class="w"> </span>-dfx
+</span></code></pre></div>
+<ul>
+<li>If everything looks good, we will clean the files:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-49-1"><a href="#__codelineno-49-1" id="__codelineno-49-1" name="__codelineno-49-1"></a>$<span class="w"> </span>git<span class="w"> </span>clean<span class="w"> </span>-dfx
+</span></code></pre></div>
+<hr/>
+<h2 id="stashing__changes">Stashing changes<a class="headerlink" href="#stashing__changes" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<ul>
+<li>We sometimes find ourselves in a situation where we want to temporarily store the changes of the working tree.</li>
+<li>This might happen, for example, when we are attempting to move the <code>HEAD</code>.<ul>
+<li>Git cannot always restore the working tree.</li>
+</ul>
+</li>
+<li>We can store these changes to the <strong>stash</strong>.</li>
+</ul>
+<hr/>
+<ul>
+<li>Let’s try to move the <code>HEAD</code> to <code>1cb12030</code>:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-50-1"><a href="#__codelineno-50-1" id="__codelineno-50-1" name="__codelineno-50-1"></a>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>1cb12030
+</span><span id="__span-50-2"><a href="#__codelineno-50-2" id="__codelineno-50-2" name="__codelineno-50-2"></a>error:<span class="w"> </span>Your<span class="w"> </span><span class="nb">local</span><span class="w"> </span>changes<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>files<span class="w"> </span>would<span class="w"> </span>be<span class="w"> </span>
+</span><span id="__span-50-3"><a href="#__codelineno-50-3" id="__codelineno-50-3" name="__codelineno-50-3"></a>overwritten<span class="w"> </span>by<span class="w"> </span>checkout:
+</span><span id="__span-50-4"><a href="#__codelineno-50-4" id="__codelineno-50-4" name="__codelineno-50-4"></a><span class="w">        </span>README.md
+</span><span id="__span-50-5"><a href="#__codelineno-50-5" id="__codelineno-50-5" name="__codelineno-50-5"></a>Please<span class="w"> </span>commit<span class="w"> </span>your<span class="w"> </span>changes<span class="w"> </span>or<span class="w"> </span>stash<span class="w"> </span>them<span class="w"> </span>before<span class="w"> </span>you<span class="w"> </span>switch
+</span><span id="__span-50-6"><a href="#__codelineno-50-6" id="__codelineno-50-6" name="__codelineno-50-6"></a>branches.
+</span><span id="__span-50-7"><a href="#__codelineno-50-7" id="__codelineno-50-7" name="__codelineno-50-7"></a>Aborting
+</span></code></pre></div>
+<ul>
+<li>We can simply stash the changes after which the checkout is successful:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-51-1"><a href="#__codelineno-51-1" id="__codelineno-51-1" name="__codelineno-51-1"></a>$<span class="w"> </span>git<span class="w"> </span>stash
+</span><span id="__span-51-2"><a href="#__codelineno-51-2" id="__codelineno-51-2" name="__codelineno-51-2"></a>Saved<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span>and<span class="w"> </span>index<span class="w"> </span>state<span class="w"> </span>WIP<span class="w"> </span>on<span class="w"> </span>master:
+</span><span id="__span-51-3"><a href="#__codelineno-51-3" id="__codelineno-51-3" name="__codelineno-51-3"></a>845aa01<span class="w"> </span>Test:<span class="w"> </span>Use<span class="w"> </span>STARNEIG_USE_ALL
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-52-1"><a href="#__codelineno-52-1" id="__codelineno-52-1" name="__codelineno-52-1"></a>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>1cb12030
+</span><span id="__span-52-2"><a href="#__codelineno-52-2" id="__codelineno-52-2" name="__codelineno-52-2"></a>....
+</span><span id="__span-52-3"><a href="#__codelineno-52-3" id="__codelineno-52-3" name="__codelineno-52-3"></a>HEAD<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>at<span class="w"> </span>1cb1203<span class="w"> </span>Use<span class="w"> </span>LANGUAGES<span class="w"> </span>argument<span class="w"> </span><span class="k">in</span><span class="w"> </span>project
+</span></code></pre></div>
+<hr/>
+<ul>
+<li>We can display the content of the entire stash:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-53-1"><a href="#__codelineno-53-1" id="__codelineno-53-1" name="__codelineno-53-1"></a>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>list
+</span><span id="__span-53-2"><a href="#__codelineno-53-2" id="__codelineno-53-2" name="__codelineno-53-2"></a>stash@<span class="o">{</span><span class="m">0</span><span class="o">}</span>:<span class="w"> </span>WIP<span class="w"> </span>on<span class="w"> </span>master:<span class="w"> </span>845aa01<span class="w"> </span>Test:<span class="w"> </span>Use<span class="w"> </span>STARNEIG_USE_ALL
+</span><span id="__span-53-3"><a href="#__codelineno-53-3" id="__codelineno-53-3" name="__codelineno-53-3"></a>stash@<span class="o">{</span><span class="m">1</span><span class="o">}</span>:<span class="w"> </span>WIP<span class="w"> </span>on<span class="w"> </span>devel:<span class="w"> </span>1a34e4a<span class="w"> </span>Fix<span class="w"> </span>pkg-config<span class="w"> </span>file
+</span><span id="__span-53-4"><a href="#__codelineno-53-4" id="__codelineno-53-4" name="__codelineno-53-4"></a>stash@<span class="o">{</span><span class="m">2</span><span class="o">}</span>:<span class="w"> </span>WIP<span class="w"> </span>on<span class="w"> </span>gh-pages:<span class="w"> </span>1d8aab9<span class="w"> </span>Add<span class="w"> </span>figures
+</span><span id="__span-53-5"><a href="#__codelineno-53-5" id="__codelineno-53-5" name="__codelineno-53-5"></a>stash@<span class="o">{</span><span class="m">3</span><span class="o">}</span>:<span class="w"> </span>WIP<span class="w"> </span>on<span class="w"> </span>v0.1-devel:<span class="w"> </span>70d21d8<span class="w"> </span>Add<span class="w"> </span>shift_origin
+</span><span id="__span-53-6"><a href="#__codelineno-53-6" id="__codelineno-53-6" name="__codelineno-53-6"></a>parameter
+</span></code></pre></div>
+<ul>
+<li>The entries are numbered. Each row contains:<ul>
+<li>the stash id,</li>
+<li>the name of the corresponding branch,</li>
+<li>the commit hash, and</li>
+<li>the matching commit message.</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li>We can also display the content of an individual stash entry:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-54-1"><a href="#__codelineno-54-1" id="__codelineno-54-1" name="__codelineno-54-1"></a>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>show<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-54-2"><a href="#__codelineno-54-2" id="__codelineno-54-2" name="__codelineno-54-2"></a><span class="w"> </span>README.md<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>+-
+</span><span id="__span-54-3"><a href="#__codelineno-54-3" id="__codelineno-54-3" name="__codelineno-54-3"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">1</span><span class="w"> </span>deletion<span class="o">(</span>-<span class="o">)</span>
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-55-1"><a href="#__codelineno-55-1" id="__codelineno-55-1" name="__codelineno-55-1"></a>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>show<span class="w"> </span>-p<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-55-2"><a href="#__codelineno-55-2" id="__codelineno-55-2" name="__codelineno-55-2"></a>diff<span class="w"> </span>--git<span class="w"> </span>a/README.md<span class="w"> </span>b/README.md
+</span><span id="__span-55-3"><a href="#__codelineno-55-3" id="__codelineno-55-3" name="__codelineno-55-3"></a>index<span class="w"> </span>942e9f4..8dbf1f6<span class="w"> </span><span class="m">100644</span>
+</span><span id="__span-55-4"><a href="#__codelineno-55-4" id="__codelineno-55-4" name="__codelineno-55-4"></a>---<span class="w"> </span>a/README.md
+</span><span id="__span-55-5"><a href="#__codelineno-55-5" id="__codelineno-55-5" name="__codelineno-55-5"></a>+++<span class="w"> </span>b/README.md
+</span><span id="__span-55-6"><a href="#__codelineno-55-6" id="__codelineno-55-6" name="__codelineno-55-6"></a>@@<span class="w"> </span>-1,4<span class="w"> </span>+1,4<span class="w"> </span>@@
+</span><span id="__span-55-7"><a href="#__codelineno-55-7" id="__codelineno-55-7" name="__codelineno-55-7"></a>-#<span class="w"> </span>Introduction
+</span><span id="__span-55-8"><a href="#__codelineno-55-8" id="__codelineno-55-8" name="__codelineno-55-8"></a>+#<span class="w"> </span>Introduction<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>software
+</span><span id="__span-55-9"><a href="#__codelineno-55-9" id="__codelineno-55-9" name="__codelineno-55-9"></a>
+</span><span id="__span-55-10"><a href="#__codelineno-55-10" id="__codelineno-55-10" name="__codelineno-55-10"></a>....
+</span></code></pre></div>
+<hr/>
+<h3 id="apply__previous__entry__from__stack">Apply previous entry from stack<a class="headerlink" href="#apply__previous__entry__from__stack" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>We can <strong>pop</strong> the previous entry from the stash and apply it to the working tree:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-56-1"><a href="#__codelineno-56-1" id="__codelineno-56-1" name="__codelineno-56-1"></a>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>pop
+</span><span id="__span-56-2"><a href="#__codelineno-56-2" id="__codelineno-56-2" name="__codelineno-56-2"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-56-3"><a href="#__codelineno-56-3" id="__codelineno-56-3" name="__codelineno-56-3"></a>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>date<span class="w"> </span>with<span class="w"> </span><span class="s1">'origin/master'</span>.
+</span><span id="__span-56-4"><a href="#__codelineno-56-4" id="__codelineno-56-4" name="__codelineno-56-4"></a>
+</span><span id="__span-56-5"><a href="#__codelineno-56-5" id="__codelineno-56-5" name="__codelineno-56-5"></a>Changes<span class="w"> </span>not<span class="w"> </span>staged<span class="w"> </span><span class="k">for</span><span class="w"> </span>commit:
+</span><span id="__span-56-6"><a href="#__codelineno-56-6" id="__codelineno-56-6" name="__codelineno-56-6"></a><span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+</span><span id="__span-56-7"><a href="#__codelineno-56-7" id="__codelineno-56-7" name="__codelineno-56-7"></a><span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git restore &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working
+</span><span id="__span-56-8"><a href="#__codelineno-56-8" id="__codelineno-56-8" name="__codelineno-56-8"></a><span class="w">  </span>directory<span class="o">)</span>
+</span><span id="__span-56-9"><a href="#__codelineno-56-9" id="__codelineno-56-9" name="__codelineno-56-9"></a><span class="w">        </span>modified:<span class="w">   </span>README.md
+</span><span id="__span-56-10"><a href="#__codelineno-56-10" id="__codelineno-56-10" name="__codelineno-56-10"></a>
+</span><span id="__span-56-11"><a href="#__codelineno-56-11" id="__codelineno-56-11" name="__codelineno-56-11"></a>no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add"</span><span class="w"> </span>and/or
+</span><span id="__span-56-12"><a href="#__codelineno-56-12" id="__codelineno-56-12" name="__codelineno-56-12"></a><span class="s2">"git commit -a"</span><span class="o">)</span>
+</span><span id="__span-56-13"><a href="#__codelineno-56-13" id="__codelineno-56-13" name="__codelineno-56-13"></a>Dropped<span class="w"> </span>refs/stash@<span class="o">{</span><span class="m">0</span><span class="o">}</span><span class="w"> </span><span class="o">(</span>a3dd9b60b18c2....<span class="o">)</span>
+</span></code></pre></div>
+<ul>
+<li>The stashed changes are applied to the working tree and the entry is dropped</li>
+</ul>
+<hr/>
+<h3 id="apply__any__entry__from__the__stack">Apply any entry from the stack<a class="headerlink" href="#apply__any__entry__from__the__stack" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>We can also apply any entry from the stash (does not drop the entry):</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-57-1"><a href="#__codelineno-57-1" id="__codelineno-57-1" name="__codelineno-57-1"></a>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>apply<span class="w"> </span>&lt;stash_id&gt;
+</span></code></pre></div>
+<ul>
+<li><code>git stash</code> stashes files that are <strong>already added to the index</strong>. <ul>
+<li>This behaviour can be overwritten with the <code>--keep-index</code> option. </li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h3 id="multiple__commits__from__a__single__set__of__edits">Multiple commits from a single set of edits<a class="headerlink" href="#multiple__commits__from__a__single__set__of__edits" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>Imagine the following situation: <em>You have spent 3 days coding and are finally ready to commit your changes. You wish to divide the changes into several self-contained commits.</em></li>
+<li>Each commit should both compile and function correctly</li>
+<li>How would you do this?</li>
+</ul>
+<hr/>
+<ul>
+<li>Do the following for each commit you want to create:<ol>
+<li>Stage changes that should go to the commit.</li>
+<li>Stash unstaged changes but keep the index (<code>--keep-index</code>).</li>
+<li>Compile and test your code.
+     4a. If your code functions as intended, commit, pop stash and move to the next commit. 
+     4b. Otherwise, pop the stash and continue from step #1.</li>
+</ol>
+</li>
+</ul>
+<hr/>
+<h2 id="making__changes__to__the__commit__tree">Making changes to the commit tree<a class="headerlink" href="#making__changes__to__the__commit__tree" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<h3 id="remark">Remark<a class="headerlink" href="#remark" title="Anchor link to this section for reference">¶</a></h3>
+<p>The following techniques should be used with caution!</p>
+<p>It is generally a <strong>bad idea</strong> to modify the commit tree if the changes have been pushed to a remote.</p>
+<p>We will return to this during Lecture 6.</p>
+<hr/>
+<h3 id="reminder">Reminder<a class="headerlink" href="#reminder" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>If you are in the detached <code>HEAD</code> mode, then <code>git reset</code> moves only the <code>HEAD</code>:</li>
+</ul>
+<div class="mermaid">graph LR
+  A["A"]
+  B["B"]
+  C["C"]
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  old_head["HEAD"]
+  style old_head fill:#ffffff,stroke:#ffffff,color:#aeaeae
+  B --&gt; A
+  C --&gt; B
+  master -.-&gt; C
+  head -.-&gt; A
+  old_head -.-&gt; B
+  linkStyle 4 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
+</div>
+<ul>
+<li>Otherwise, also the <strong>branch tip gets moved</strong>:</li>
+</ul>
+<div class="mermaid">graph LR
+  A["A"]
+  B["B"]
+  C["C"]
+  master["master"]
+  style master fill:#ffffff,stroke:#ffffff
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  old_head["HEAD"]
+  style old_head fill:#ffffff,stroke:#ffffff,color:#aeaeae
+  old_master["master"]
+  style old_master fill:#ffffff,stroke:#ffffff,color:#aeaeae
+  B --&gt; A
+  C --&gt; B
+  master -.-&gt; A
+  head -.-&gt; master
+  old_head -.-&gt; old_master
+  linkStyle 4 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
+  old_master -.-&gt; C
+  linkStyle 5 stroke:#aeaeae,stroke-width:1px,stroke-dasharray:3;
+</div>
+<hr/>
+<h3 id="discarding__the__last__commit">Discarding the last commit<a class="headerlink" href="#discarding__the__last__commit" title="Anchor link to this section for reference">¶</a></h3>
+<ul>
+<li>If we are not in the detached <code>HEAD</code> mode, then we can <strong>discard the latest commit</strong> with the <code>git reset</code> command:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-58-1"><a href="#__codelineno-58-1" id="__codelineno-58-1" name="__codelineno-58-1"></a>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>HEAD~
+</span><span id="__span-58-2"><a href="#__codelineno-58-2" id="__codelineno-58-2" name="__codelineno-58-2"></a>Unstaged<span class="w"> </span>changes<span class="w"> </span>after<span class="w"> </span>reset:
+</span><span id="__span-58-3"><a href="#__codelineno-58-3" id="__codelineno-58-3" name="__codelineno-58-3"></a>M<span class="w">       </span>file.txt
+</span></code></pre></div>
+<ul>
+<li><code>git reset</code> defaults to <code>git reset --mixed</code> =&gt; the <strong>state of the working tree is kept</strong>.</li>
+</ul>
+<hr/>
+<ul>
+<li>If we are lucky, we can still recover the commit:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-59-1"><a href="#__codelineno-59-1" id="__codelineno-59-1" name="__codelineno-59-1"></a>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>f0d7298983
+</span></code></pre></div>
+<ul>
+<li>We can try again and also <strong>discard the working tree</strong>:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-60-1"><a href="#__codelineno-60-1" id="__codelineno-60-1" name="__codelineno-60-1"></a>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD~
+</span><span id="__span-60-2"><a href="#__codelineno-60-2" id="__codelineno-60-2" name="__codelineno-60-2"></a>HEAD<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>at<span class="w"> </span>d3c6c63<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span></code></pre></div>
+<hr/>
+<h3 id="changing__the__last__commit">Changing the last commit<a class="headerlink" href="#changing__the__last__commit" title="Anchor link to this section for reference">¶</a></h3>
+<p>Imagine a situation where you have just committed your changes and then realized that you have made a <em>mistake</em>.</p>
+<div class="mermaid">graph LR
+
+  index(["index"])
+
+  A(["A"])
+  C(["C"])
+  B(["B"])
+  C --&gt; B
+  B --&gt; A
+
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  head --&gt; C
+
+  amistake["mistake"]
+  style amistake fill:#ffffff,stroke:#ffffff
+  amistake -.-&gt; C 
+
+  file2["modified: program.py"]
+  style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
+  C -.-&gt; file2
+</div>
+<p>Forgotten file, incorrect commit message, etc</p>
+<hr/>
+<p>The problem can be fixed easily in two steps:</p>
+<ul>
+<li>Step #1 is to stage the forgotten changes:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-61-1"><a href="#__codelineno-61-1" id="__codelineno-61-1" name="__codelineno-61-1"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>file.txt
+</span><span id="__span-61-2"><a href="#__codelineno-61-2" id="__codelineno-61-2" name="__codelineno-61-2"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-61-3"><a href="#__codelineno-61-3" id="__codelineno-61-3" name="__codelineno-61-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-61-4"><a href="#__codelineno-61-4" id="__codelineno-61-4" name="__codelineno-61-4"></a>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
+</span><span id="__span-61-5"><a href="#__codelineno-61-5" id="__codelineno-61-5" name="__codelineno-61-5"></a><span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git restore --staged &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
+</span><span id="__span-61-6"><a href="#__codelineno-61-6" id="__codelineno-61-6" name="__codelineno-61-6"></a><span class="w">        </span>modified:<span class="w">   </span>file.txt
+</span></code></pre></div>
+<div class="mermaid">graph LR
+
+  index(["index"])
+
+  file3["modified: file.txt"]
+  style file3 fill:#ffffff,stroke:#ffffff,color:#ff0000
+  index -.-&gt; file3
+
+  A(["A"])
+  C(["C"])
+  B(["B"])
+  C --&gt; B
+  B --&gt; A
+
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  head --&gt; C
+
+  amistake["mistake"]
+  style amistake fill:#ffffff,stroke:#ffffff
+  amistake -.-&gt; C
+
+  file2["modified: program.py"]
+  style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
+  C -.-&gt; file2
+</div>
+<hr/>
+<ul>
+<li>Step #2 is to replace the current <code>HEAD</code> with a corrected commit:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-62-1"><a href="#__codelineno-62-1" id="__codelineno-62-1" name="__codelineno-62-1"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--amend
+</span></code></pre></div>
+<hr/>
+<ul>
+<li>The <strong>amend</strong> command first removes the HEAD commit from the commit tree and combines it with the current index:</li>
+</ul>
+<div class="mermaid">graph LR
+
+  index(["index"])
+
+  file3["modified: file.txt program.py"]
+  style file3 fill:#ffffff,stroke:#ffffff,color:#ff0000
+  index -.-&gt; file3
+
+  A(["A"])
+  B(["B"])
+  B --&gt; A
+
+  head["HEAD"]
+  style head fill:#ffffff,stroke:#ffffff
+  head --&gt; B
+</div>
+<ul>
+<li>It then creates a new commit from the <em>combined</em> index:</li>
+</ul>
+<div class="mermaid">graph LR
+
+  index(["index"])
+
+  A(["A"])
+  C(["C*"])
+  B(["B"])
+  C --&gt; B
+  B --&gt; A
+
+  corr["corrected"]
+  style corr fill:#ffffff,stroke:#ffffff
+  corr --&gt; C
+
+  file2["modified: file.txt program.py"]
+  style file2 fill:#ffffff,stroke:#ffffff,color:#ff0000
+  C -.-&gt; file2
+</div>
+<hr/>
+<ul>
+<li><code>git commit --amend</code> is equivalent to:</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-63-1"><a href="#__codelineno-63-1" id="__codelineno-63-1" name="__codelineno-63-1"></a>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD^
+</span><span id="__span-63-2"><a href="#__codelineno-63-2" id="__codelineno-63-2" name="__codelineno-63-2"></a>$<span class="w"> </span>git<span class="w"> </span>status
+</span><span id="__span-63-3"><a href="#__codelineno-63-3" id="__codelineno-63-3" name="__codelineno-63-3"></a>On<span class="w"> </span>branch<span class="w"> </span>master
+</span><span id="__span-63-4"><a href="#__codelineno-63-4" id="__codelineno-63-4" name="__codelineno-63-4"></a>Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>committed:
+</span><span id="__span-63-5"><a href="#__codelineno-63-5" id="__codelineno-63-5" name="__codelineno-63-5"></a><span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git restore --staged &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
+</span><span id="__span-63-6"><a href="#__codelineno-63-6" id="__codelineno-63-6" name="__codelineno-63-6"></a><span class="w">        </span>modified:<span class="w">   </span>file.txt
+</span><span id="__span-63-7"><a href="#__codelineno-63-7" id="__codelineno-63-7" name="__codelineno-63-7"></a><span class="w">        </span>modified:<span class="w">   </span>program.py
+</span><span id="__span-63-8"><a href="#__codelineno-63-8" id="__codelineno-63-8" name="__codelineno-63-8"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-c<span class="w"> </span>ORIG_HEAD
+</span></code></pre></div>
+<hr/>
+<h3 id="git__revert"><code>git revert</code><a class="headerlink" href="#git__revert" title="Anchor link to this section for reference">¶</a></h3>
+<p>We are first going to create a commit that replaces the content of a file:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-64-1"><a href="#__codelineno-64-1" id="__codelineno-64-1" name="__codelineno-64-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"This file is not that interesting"</span><span class="w"> </span>&gt;<span class="w"> </span>file.txt
+</span><span id="__span-64-2"><a href="#__codelineno-64-2" id="__codelineno-64-2" name="__codelineno-64-2"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-a<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Bad commit"</span>
+</span><span id="__span-64-3"><a href="#__codelineno-64-3" id="__codelineno-64-3" name="__codelineno-64-3"></a><span class="o">[</span>master<span class="w"> </span>465a5a4<span class="o">]</span><span class="w"> </span>Bad<span class="w"> </span>commit
+</span><span id="__span-64-4"><a href="#__codelineno-64-4" id="__codelineno-64-4" name="__codelineno-64-4"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">3</span><span class="w"> </span>deletions<span class="o">(</span>-<span class="o">)</span>
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-65-1"><a href="#__codelineno-65-1" id="__codelineno-65-1" name="__codelineno-65-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph<span class="w"> </span>--all
+</span><span id="__span-65-2"><a href="#__codelineno-65-2" id="__codelineno-65-2" name="__codelineno-65-2"></a>*<span class="w"> </span>465a5a4<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Bad<span class="w"> </span>commit
+</span><span id="__span-65-3"><a href="#__codelineno-65-3" id="__codelineno-65-3" name="__codelineno-65-3"></a>*<span class="w">   </span>f0d7298<span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s1">'second_branch'</span>
+</span><span id="__span-65-4"><a href="#__codelineno-65-4" id="__codelineno-65-4" name="__codelineno-65-4"></a><span class="p">|</span><span class="se">\ </span><span class="w"> </span>
+</span><span id="__span-65-5"><a href="#__codelineno-65-5" id="__codelineno-65-5" name="__codelineno-65-5"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>a118ae8<span class="w"> </span><span class="o">(</span>second_branch<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>third<span class="w"> </span>commit
+</span><span id="__span-65-6"><a href="#__codelineno-65-6" id="__codelineno-65-6" name="__codelineno-65-6"></a>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>d3c6c63<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-65-7"><a href="#__codelineno-65-7" id="__codelineno-65-7" name="__codelineno-65-7"></a><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-65-8"><a href="#__codelineno-65-8" id="__codelineno-65-8" name="__codelineno-65-8"></a>*<span class="w"> </span>23b3ed5<span class="w"> </span><span class="o">(</span>tag:<span class="w"> </span>first<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<hr/>
+<p>We later discover that the commit was a mistake and revert it:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-66-1"><a href="#__codelineno-66-1" id="__codelineno-66-1" name="__codelineno-66-1"></a>$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>465a5a4
+</span><span id="__span-66-2"><a href="#__codelineno-66-2" id="__codelineno-66-2" name="__codelineno-66-2"></a><span class="o">[</span>master<span class="w"> </span>173e959<span class="o">]</span><span class="w"> </span>Revert<span class="w"> </span><span class="s2">"Bad commit"</span>
+</span><span id="__span-66-3"><a href="#__codelineno-66-3" id="__codelineno-66-3" name="__codelineno-66-3"></a><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">3</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">1</span><span class="w"> </span>deletion<span class="o">(</span>-<span class="o">)</span>
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-67-1"><a href="#__codelineno-67-1" id="__codelineno-67-1" name="__codelineno-67-1"></a>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph<span class="w"> </span>--all
+</span><span id="__span-67-2"><a href="#__codelineno-67-2" id="__codelineno-67-2" name="__codelineno-67-2"></a>*<span class="w"> </span>173e959<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span><span class="w"> </span>Revert<span class="w"> </span><span class="s2">"Bad commit"</span>
+</span><span id="__span-67-3"><a href="#__codelineno-67-3" id="__codelineno-67-3" name="__codelineno-67-3"></a>*<span class="w"> </span>465a5a4<span class="w"> </span>Bad<span class="w"> </span>commit
+</span><span id="__span-67-4"><a href="#__codelineno-67-4" id="__codelineno-67-4" name="__codelineno-67-4"></a>*<span class="w">   </span>f0d7298<span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s1">'second_branch'</span>
+</span><span id="__span-67-5"><a href="#__codelineno-67-5" id="__codelineno-67-5" name="__codelineno-67-5"></a><span class="p">|</span><span class="se">\ </span><span class="w"> </span>
+</span><span id="__span-67-6"><a href="#__codelineno-67-6" id="__codelineno-67-6" name="__codelineno-67-6"></a><span class="p">|</span><span class="w"> </span>*<span class="w"> </span>a118ae8<span class="w"> </span><span class="o">(</span>second_branch<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>third<span class="w"> </span>commit
+</span><span id="__span-67-7"><a href="#__codelineno-67-7" id="__codelineno-67-7" name="__codelineno-67-7"></a>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>d3c6c63<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>commit
+</span><span id="__span-67-8"><a href="#__codelineno-67-8" id="__codelineno-67-8" name="__codelineno-67-8"></a><span class="p">|</span>/<span class="w">  </span>
+</span><span id="__span-67-9"><a href="#__codelineno-67-9" id="__codelineno-67-9" name="__codelineno-67-9"></a>*<span class="w"> </span>23b3ed5<span class="w"> </span><span class="o">(</span>tag:<span class="w"> </span>first<span class="o">)</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>commit
+</span></code></pre></div>
+<hr/>
+<p>We can see that the revert commit simply removes the changes made in the first commit and restores changes make in the preceding commit:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-68-1"><a href="#__codelineno-68-1" id="__codelineno-68-1" name="__codelineno-68-1"></a>$<span class="w"> </span>git<span class="w"> </span>show<span class="w"> </span>173e959
+</span><span id="__span-68-2"><a href="#__codelineno-68-2" id="__codelineno-68-2" name="__codelineno-68-2"></a>commit<span class="w"> </span>173e959ed5b0ccd9....<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span>
+</span><span id="__span-68-3"><a href="#__codelineno-68-3" id="__codelineno-68-3" name="__codelineno-68-3"></a>Author:<span class="w"> </span>Mirko<span class="w"> </span>Myllykoski<span class="w"> </span>&lt;mirko.myllykoski@gmail.com&gt;
+</span><span id="__span-68-4"><a href="#__codelineno-68-4" id="__codelineno-68-4" name="__codelineno-68-4"></a>Date:<span class="w">   </span>Tue<span class="w"> </span>Sep<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">19</span>:56:19<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0200
+</span><span id="__span-68-5"><a href="#__codelineno-68-5" id="__codelineno-68-5" name="__codelineno-68-5"></a>
+</span><span id="__span-68-6"><a href="#__codelineno-68-6" id="__codelineno-68-6" name="__codelineno-68-6"></a><span class="w">    </span>Revert<span class="w"> </span><span class="s2">"Bad commit"</span>
+</span><span id="__span-68-7"><a href="#__codelineno-68-7" id="__codelineno-68-7" name="__codelineno-68-7"></a>
+</span><span id="__span-68-8"><a href="#__codelineno-68-8" id="__codelineno-68-8" name="__codelineno-68-8"></a><span class="w">    </span>This<span class="w"> </span>reverts<span class="w"> </span>commit<span class="w"> </span>173e959ed5b0ccd9.....
+</span><span id="__span-68-9"><a href="#__codelineno-68-9" id="__codelineno-68-9" name="__codelineno-68-9"></a>....
+</span><span id="__span-68-10"><a href="#__codelineno-68-10" id="__codelineno-68-10" name="__codelineno-68-10"></a>-This<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>that<span class="w"> </span>interesting
+</span><span id="__span-68-11"><a href="#__codelineno-68-11" id="__codelineno-68-11" name="__codelineno-68-11"></a>+This<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>very<span class="w"> </span>interesting
+</span><span id="__span-68-12"><a href="#__codelineno-68-12" id="__codelineno-68-12" name="__codelineno-68-12"></a>+More<span class="w"> </span>content
+</span><span id="__span-68-13"><a href="#__codelineno-68-13" id="__codelineno-68-13" name="__codelineno-68-13"></a>+Different<span class="w"> </span>content
+</span></code></pre></div>
+<hr/>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Anchor link to this section for reference">¶</a></h2>
+<hr/>
+<table>
+<thead>
+<tr>
+<th>Exercise</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.log</td>
+<td>Learn how to use <code>git log</code></td>
+</tr>
+<tr>
+<td>2.recover_head</td>
+<td>Learn how to recover a detached <code>HEAD</code></td>
+</tr>
+<tr>
+<td>3.stash</td>
+<td>Learn how to use <code>git stash</code></td>
+</tr>
+<tr>
+<td>4.discard</td>
+<td>Learn how to discard commits</td>
+</tr>
+<tr>
+<td>5.amend</td>
+<td>Learn how to amend commits</td>
+</tr>
+<tr>
+<td>6.revert</td>
+<td>Learn how to revert commits</td>
+</tr>
+<tr>
+<td>7.workflow</td>
+<td>Learn proper workflow</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../basic-concepts/" title="Basic Concepts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../branches/" title="Branches, merges, and conflicts">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../basic-concepts/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../branches/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../assets/_markdown_exec_pyodide.js"></script>
+<script src="../search/main.js"></script>
+<script src="../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>

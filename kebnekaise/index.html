@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/course-intro-git/kebnekaise/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Using Kebnekaise for the Git course - Introduction to Git</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Using Kebnekaise for the Git course";
+        var mkdocs_page_input_path = "kebnekaise.md";
+        var mkdocs_page_url = "/course-intro-git/kebnekaise/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/logo-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../remotes/">Working with remotes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Exercises</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Extra</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Using Kebnekaise for the Git course</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#thinlinc">ThinLinc</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ssh">SSH</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#open__ondemand">Open OnDemand</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setting__up__git">Setting up Git</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#testing__your__configuration">Testing your configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#testing__your__configuration__-__continued">Testing your configuration - continued</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#download__the__course__materials">Download the course materials</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Git</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Extra</li>
+      <li class="breadcrumb-item active">Using Kebnekaise for the Git course</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
+Minor modifications done for the fall 2021 and 2022 versions of the course. -->
+
+<!-- Slides: https://hackmd.io/@git-fall-2022/LB-kebnekaise#/ -->
+
+<hr />
+<h1 id="connecting__to__kebnekaise">Connecting to Kebnekaise<a class="headerlink" href="#connecting__to__kebnekaise" title="Anchor link to this section for reference">&para;</a></h1>
+<h2 id="thinlinc">ThinLinc<a class="headerlink" href="#thinlinc" title="Anchor link to this section for reference">&para;</a></h2>
+<p>For this course we recommend using ThinLinc, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only. </p>
+<ul>
+<li>Download the client from https://www.cendio.com/thinlinc/download and install it.</li>
+<li>Start the client. Enter the name of the server: kebnekaise-tl.hpc2n.umu.se and then enter your own username.</li>
+<li>Go to &ldquo;Options&rdquo; -&gt; &ldquo;Security&rdquo;. Check that authentication method is set to password.</li>
+<li>Go to &ldquo;Options&rdquo; -&gt; &ldquo;Screen&rdquo; and uncheck &ldquo;Full screen mode&rdquo;.</li>
+<li>Enter your HPC2N password. Click &ldquo;Connect&rdquo;.</li>
+</ul>
+<p>More information here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#thinlinc" target="_blank">https://docs.hpc2n.umu.se/tutorials/connections/#thinlinc</a>. </p>
+<hr />
+<h2 id="ssh">SSH<a class="headerlink" href="#ssh" title="Anchor link to this section for reference">&para;</a></h2>
+<p>If you prefer to login with a regular SSH client (i.e. PuTTY, Terminal, Linux terminal, etc.) then use the following as server: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>kebnekaise.hpc2n.umu.se
+</span></code></pre></div>
+<p>Example: logging in from a terminal:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ssh<span class="w"> </span>&lt;HPC2N<span class="w"> </span>username&gt;@kebnekaise.hpc2n.umu.se
+</span></code></pre></div>
+<p>More information here: </p>
+<ul>
+<li><a href="https://docs.hpc2n.umu.se/tutorials/connections/#login__nodes" target="_blank">https://docs.hpc2n.umu.se/tutorials/connections/#login__nodes</a></li>
+<li><a href="https://docs.hpc2n.umu.se/tutorials/connections/#connecting__from__windows" target="_blank">Connecting from Windows</a></li>
+<li><a href="https://docs.hpc2n.umu.se/tutorials/connections/#connecting__from__macos" target="_blank">Connecting from macOS</a></li>
+</ul>
+<hr />
+<h2 id="open__ondemand">Open OnDemand<a class="headerlink" href="#open__ondemand" title="Anchor link to this section for reference">&para;</a></h2>
+<p>If you prefer to use HPC2N&rsquo;s OpenOnDemand web service, then:</p>
+<ul>
+<li>Go to <a href="https://portal.hpc2n.umu.se" target="_blank">https://portal.hpc2n.umu.se</a></li>
+<li>Login with your HPC2N username and password</li>
+<li>Pick &ldquo;Interactive Apps&rdquo; -&gt; &ldquo;Kebnekaise desktop&rdquo;</li>
+<li>Fill in the information. Pick 1 regular core and however many hours you expect to use on the course. Launch </li>
+<li>After you have logged in, start a terminal: &ldquo;Applications&rdquo; -&gt; &ldquo;System Tools&rdquo; -&gt; &ldquo;MATE Terminal&rdquo; </li>
+</ul>
+<p>More information here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#open__ondemand" target="_blank">https://docs.hpc2n.umu.se/tutorials/connections/#open__ondemand</a></p>
+<hr />
+<h2 id="setting__up__git">Setting up Git<a class="headerlink" href="#setting__up__git" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Git is already installed on Kebnekaise, but you need to set your name and email globals <em>unless you have already done this at some earlier time</em>. </p>
+<ul>
+<li>Open a terminal. In ThinLinc: Go to the menu at the top. Click “Applications” → “System Tools” → “MATE Terminal”.</li>
+<li>Set your global name: <code>$ git config --global user.name "Your Name"</code></li>
+<li>Set your global email: <code>$ git config --global user.email "yourname@example.com"</code> </li>
+</ul>
+<p>You may also want to set your editor. We recommend vim, but other options are nano and emacs. </p>
+<ul>
+<li><code>$ git config --global core.editor vim</code></li>
+</ul>
+<hr />
+<h2 id="testing__your__configuration">Testing your configuration<a class="headerlink" href="#testing__your__configuration" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Create an example folder and cd into that, then create a file test.txt: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>&lt;mydir&gt;<span class="w"> </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;mydir&gt;
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>$<span class="w"> </span>touch<span class="w"> </span>test.txt
+</span></code></pre></div>
+<p>Now initialize a repository and add the new file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>git<span class="w"> </span>init
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>test.txt
+</span></code></pre></div>
+<p>Now <em>commit</em> the change. The editor which you configured earlier should open. Add an example commit message:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>test.txt<span class="w"> </span>
+</span></code></pre></div>
+<hr />
+<h2 id="testing__your__configuration__-__continued">Testing your configuration - continued<a class="headerlink" href="#testing__your__configuration__-__continued" title="Anchor link to this section for reference">&para;</a></h2>
+<p>Now let us look at the log:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>git<span class="w"> </span>log
+</span></code></pre></div>
+<p>When you do <code>git log</code>, you should see something like: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>commit<span class="w"> </span>ff8b6f699d98c72d5cffc64d65a1c618b976b45a<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>master<span class="o">)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Author:<span class="w"> </span>Birgitte<span class="w"> </span>Brydsö<span class="w"> </span>&lt;bbrydsoe@cs.umu.se&gt;
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Date:<span class="w">   </span>Thu<span class="w"> </span>Sep<span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">13</span>:53:59<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0200
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span>Test<span class="w"> </span>of<span class="w"> </span>git
+</span></code></pre></div>
+<p>but with name, email and commit message different.</p>
+<p>If that is the case, your Git should be configured correctly. </p>
+<hr />
+<h2 id="download__the__course__materials">Download the course materials<a class="headerlink" href="#download__the__course__materials" title="Anchor link to this section for reference">&para;</a></h2>
+<p>For the individual hands-on part of the course, we have created some course materials which you will download from either the course website, the course GitHub, or the &ldquo;important information&rdquo; page. </p>
+<ul>
+<li>Course website: https://www.hpc2n.umu.se/events/courses/2022/introduction-to-git</li>
+<li>Course GitHub: https://github.com/hpc2n/course-intro-git<ul>
+<li>Click the green button labeled &ldquo;Code&rdquo; to get links to clone or download the materials. </li>
+</ul>
+</li>
+<li>Download the material, then please go to the terminal window where you have downloaded and set up Git.</li>
+<li>Change the directory to wherever you wish to have the course material.</li>
+<li>Copy/transfer the tarball there (or download there directly with <code>wget &lt;url-to-tarball&gt;</code>)</li>
+<li>Unpack with <code>tar zxvf &lt;tarball&gt;</code></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../rackham/" class="btn btn-neutral float-left" title="Using Rackham for the Git course"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../rackham/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

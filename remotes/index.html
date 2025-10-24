@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://hpc2n.github.io/course-intro-git/remotes/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Working with remotes - Introduction to Git</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../css/extra.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Working with remotes";
+        var mkdocs_page_input_path = "remotes.md";
+        var mkdocs_page_url = "/course-intro-git/remotes/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="..">
+<img alt="Logo" class="logo" src="../images/logo-text.png"/>
+</a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Git</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/">Setup</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../motivation/">Why use version management?</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-commands/">Basic Commands</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts/">Basic Concepts</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../commits/">Traversing the commit tree</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../branches/">Branches, merges, and conflicts</a>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Working with remotes</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#concepts">Concepts</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#updated__scheme__for__file__stages">Updated scheme for file stages</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#concepts__cont">Concepts cont.</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding__remotes">Adding remotes</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#working__with__remotes">Working with remotes</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced">Advanced</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#displaying__remote__information">Displaying remote information</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#renaming__remotes">Renaming remotes</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deleting__remotes">Deleting remotes</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bare__repositories">Bare repositories</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating__a__bare__repository">Creating a bare repository</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cloning__a__bare__repository__cont">Cloning a bare repository cont.</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using__github">Using GitHub</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#setting__ssh-keys">Setting ssh-keys</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#network__visualization">Network visualization</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#working__with__others__repos">Working with other’s repos</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#forking__a__repository">Forking a repository</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#forking__a__repository_1">Forking a repository</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pull__request">Pull request</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#issues">Issues</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#best__practices">Best practices</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../teamwork/">Teamwork</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Exercises</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-commands-exercises/">Basic commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts-exercises/">Basic concepts</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commits-exercises/">Traversing the commit tree</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../branches-exercises/">Branches, merges, and conflicts</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../remotes-exercises/">Working with remotes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../teamwork-exercises/">Teamwork</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tetralith/">Using Tetralith for the Git course</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rackham/">Using Rackham for the Git course</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kebnekaise/">Using Kebnekaise for the Git course</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Introduction to Git</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item active">Working with remotes</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="lecture__6__working__with__remotes">Lecture 6: Working with remotes<a class="headerlink" href="#lecture__6__working__with__remotes" title="Anchor link to this section for reference">¶</a></h1>
+<!-- Lecture material made by Pedro Ojeda-May for the version of the course that was given in fall 2020. Lecture was first given by Pedro Ojeda-May in fall 2020. Converted to GitHub pages by Birgitte Brydsö in fall 2025 for that version of the course. -->
+<!-- Slides: https://hackmd.io/@git-fall-2023/L6-remotes#/ -->
+<hr/>
+<h2 id="concepts">Concepts<a class="headerlink" href="#concepts" title="Anchor link to this section for reference">¶</a></h2>
+<p>A remote repository is a version of the project which can be hosted in your local machine, some network, or over the internet (Pro Git, 2nd. Ed., Scott Chacon and Ben Straub) where you and your collaborators can push or pull code modifications. </p>
+<p>In addition to this, a remote is a way to backup your repository.</p>
+<hr/>
+<p><img alt="Remote participants" src="../images/remote-participants.jpg"/></p>
+<hr/>
+<h2 id="updated__scheme__for__file__stages">Updated scheme for file stages<a class="headerlink" href="#updated__scheme__for__file__stages" title="Anchor link to this section for reference">¶</a></h2>
+<p><img alt="Git folders" src="../images/git-folders2.png"/></p>
+<hr/>
+<h2 id="concepts__cont">Concepts cont.<a class="headerlink" href="#concepts__cont" title="Anchor link to this section for reference">¶</a></h2>
+<p>The command </p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="o">-</span><span class="n">v</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">origin</span><span class="w">  </span><span class="n">git</span><span class="nd">@bitbucket.org</span><span class="p">:</span><span class="n">arm2011</span><span class="o">/</span><span class="n">gitcourse</span><span class="p">.</span><span class="na">git</span><span class="w"> </span><span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">origin</span><span class="w">  </span><span class="n">git</span><span class="nd">@bitbucket.org</span><span class="p">:</span><span class="n">arm2011</span><span class="o">/</span><span class="n">gitcourse</span><span class="p">.</span><span class="na">git</span><span class="w"> </span><span class="p">(</span><span class="n">push</span><span class="p">)</span>
+</span></code></pre></div>
+<p>displays the remotes that are already set up where you can <em>fetch</em> and <em>pull</em> changes. In this case there is only a single remoted called <strong>origin</strong>.</p>
+<hr/>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">graph</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="o">*</span><span class="w"> </span><span class="mf">2e56d</span><span class="mi">0</span><span class="n">a</span><span class="w"> </span><span class="p">(</span><span class="n">HEAD</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">main</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">/</span><span class="n">main</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">/</span><span class="n">HEAD</span><span class="p">)</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">exercise</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="n">usage</span>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="o">*</span><span class="w"> </span><span class="mi">22</span><span class="n">a7316</span><span class="w"> </span><span class="n">Adding</span><span class="w"> </span><span class="n">yet</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">lectures</span>
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="o">*</span><span class="w"> </span><span class="mf">0d</span><span class="n">db791</span><span class="w"> </span><span class="n">Adding</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">lectures</span>
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="o">*</span><span class="w"> </span><span class="mf">3f</span><span class="n">f9f8f</span><span class="w"> </span><span class="n">Adding</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">lectures</span>
+</span></code></pre></div>
+<hr/>
+<h2 id="adding__remotes">Adding remotes<a class="headerlink" href="#adding__remotes" title="Anchor link to this section for reference">¶</a></h2>
+<p>A remote repository can be added manually with the command</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">remote_name</span><span class="w"> </span><span class="n">location</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">remote_name</span><span class="w"> </span><span class="n">git</span><span class="nd">@github.com</span><span class="p">:</span><span class="n">aliceuser2020</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">project</span><span class="p">.</span><span class="na">git</span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="o">-</span><span class="n">v</span>
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="n">remote_name</span><span class="w"> </span><span class="n">git</span><span class="nd">@github.com</span><span class="p">:</span><span class="n">aliceuser2020</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">project</span><span class="p">.</span><span class="na">git</span><span class="w"> </span><span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="n">remote_name</span><span class="w"> </span><span class="n">git</span><span class="nd">@github.com</span><span class="p">:</span><span class="n">aliceuser2020</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">project</span><span class="p">.</span><span class="na">git</span><span class="w"> </span><span class="p">(</span><span class="n">push</span><span class="p">)</span>
+</span></code></pre></div>
+<p>where the location of the remote can be an URL or the path if that is in your local machine.</p>
+<hr/>
+<p>Protocols:</p>
+<ul>
+<li>local -&gt;  git clone /opt/git/project.git</li>
+<li>SSH   -&gt;  git clone ssh://user@server:project.git</li>
+<li>HTTP  -&gt;  git clone http://example.com/gitproject.git</li>
+<li>Git</li>
+</ul>
+<hr/>
+<p>Why do we need more than one remote?</p>
+<div class="mermaid">graph TD
+
+  bob{"Bob repo"}
+  origin["origin"]
+  style origin fill:#ffffff,stroke:#ffffff,color:#ff0000
+  upstream["upstream"]
+  style upstream fill:#ffffff,stroke:#ffffff,color:#ff0000
+  upstream -.-&gt; bob 
+  origin -.-&gt; alicef
+
+  alicef(["Alice fork"])
+  alicel(["Alice local"])
+
+  bob --&gt; alicef
+
+  alicef --&gt; alicel
+  alicel -.-&gt; bob
+</div>
+<hr/>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">upstream</span><span class="w"> </span><span class="n">git</span><span class="nd">@github.com</span><span class="p">:</span><span class="n">bob</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">project</span><span class="p">.</span><span class="na">git</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="o">-</span><span class="n">v</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">origin</span><span class="w">  </span><span class="n">git</span><span class="nd">@github.com</span><span class="p">:</span><span class="n">aliceuser2020</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">project</span><span class="p">.</span><span class="na">git</span><span class="w"> </span><span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="n">origin</span><span class="w">  </span><span class="n">git</span><span class="nd">@github.com</span><span class="p">:</span><span class="n">aliceuser2020</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">project</span><span class="p">.</span><span class="na">git</span><span class="w"> </span><span class="p">(</span><span class="n">push</span><span class="p">)</span>
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="n">upstream</span><span class="w">    </span><span class="n">git</span><span class="nd">@github.com</span><span class="p">:</span><span class="n">bobuser2020</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">project</span><span class="p">.</span><span class="na">git</span><span class="w"> </span><span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="n">upstream</span><span class="w">    </span><span class="n">git</span><span class="nd">@github.com</span><span class="p">:</span><span class="n">bobuser2020</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">project</span><span class="p">.</span><span class="na">git</span><span class="w"> </span><span class="p">(</span><span class="n">push</span><span class="p">)</span>
+</span></code></pre></div>
+<hr/>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">$git</span><span class="w"> </span><span class="n">graph</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="o">*</span><span class="w"> </span><span class="mf">2e56d</span><span class="mi">0</span><span class="n">a</span><span class="w"> </span><span class="p">(</span><span class="n">HEAD</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">main</span><span class="p">,</span><span class="w"> </span><span class="n">upstream</span><span class="o">/</span><span class="n">main</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">/</span><span class="n">main</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">/</span><span class="n">HEAD</span><span class="p">)</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">exercise</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="n">usage</span>
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="o">*</span><span class="w"> </span><span class="mi">22</span><span class="n">a7316</span><span class="w"> </span><span class="n">Adding</span><span class="w"> </span><span class="n">yet</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">lectures</span>
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="o">*</span><span class="w"> </span><span class="mf">0d</span><span class="n">db791</span><span class="w"> </span><span class="n">Adding</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">lectures</span>
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="o">*</span><span class="w"> </span><span class="mf">3f</span><span class="n">f9f8f</span><span class="w"> </span><span class="n">Adding</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">lectures</span>
+</span></code></pre></div>
+<hr/>
+<h2 id="working__with__remotes">Working with remotes<a class="headerlink" href="#working__with__remotes" title="Anchor link to this section for reference">¶</a></h2>
+<p>One can push or fetch/pull to or from remotes:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>$<span class="w"> </span>git<span class="w"> </span>push<span class="w">  </span>remote_name<span class="w"> </span>branch_name
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>$<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>remote_name<span class="w"> </span>branch_name
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>$<span class="w"> </span>git<span class="w"> </span>pull<span class="w">  </span>remote_name<span class="w"> </span>branch_name<span class="w"> </span>
+</span></code></pre></div>
+<hr/>
+<p>In case you obtained the repository by cloning an existing one you will have the <strong>origin</strong> remote. You can do push/fetch/pull for this remote with</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>$<span class="w"> </span>git<span class="w"> </span>push<span class="w">  </span>origin<span class="w"> </span>master<span class="w">      </span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>$<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>origin<span class="w"> </span>master
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>$<span class="w"> </span>git<span class="w"> </span>pull<span class="w">  </span>origin<span class="w"> </span>master
+</span></code></pre></div>
+<hr/>
+<p>or </p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>$<span class="w"> </span>git<span class="w"> </span>push
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>$<span class="w"> </span>git<span class="w"> </span>fetch
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>$<span class="w"> </span>git<span class="w"> </span>pull
+</span></code></pre></div>
+<p>because the remote <em>origin</em> and the <em>master</em> branch are configured for pushing and pulling by default upon cloning.</p>
+<hr/>
+<p>The command: 
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>$<span class="w"> </span>git<span class="w"> </span>pull
+</span></code></pre></div>
+brings all the changes (branches) that are in the remote and tries to merge them with the current branch of the local repo. The default behavior of <em>git pull</em> (<em>fetch</em> part) is in the <em>$GIT_DIR/config</em> file:
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="o">[</span>remote<span class="w"> </span><span class="s2">"origin"</span><span class="o">]</span>
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">  </span><span class="nv">fetch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>+refs/heads/*:refs/remotes/origin/*
+</span></code></pre></div></p>
+<hr/>
+<p>In fact, <em>git pull</em> is a combination of two commands:
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>$<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>remote_name<span class="w"> </span>branch_name
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>remote_name/branch_name
+</span></code></pre></div></p>
+<p>If you want to fetch all branches and merge the current one:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>$<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>$<span class="w"> </span>git<span class="w"> </span>merge
+</span></code></pre></div>
+<hr/>
+<h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Anchor link to this section for reference">¶</a></h2>
+<p>The command
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>
+</span></code></pre></div>
+will send the changes in the current branch to the remote by default.</p>
+<hr/>
+<p>The default behavior can be seen with:
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--get<span class="w"> </span>push.default
+</span></code></pre></div>
+This can be changed by applying:
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>push.default<span class="w"> </span>matching<span class="o">(</span>default<span class="o">)</span>,<span class="w"> </span>current,<span class="w"> </span>...
+</span></code></pre></div></p>
+<hr/>
+<p>If you have a brand-new branch called <strong>new</strong>, you can push it the first time with the command:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>new
+</span></code></pre></div>
+<p>which is equivalent to</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>new
+</span><span id="__span-16-2"><a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a>git<span class="w"> </span>branch<span class="w"> </span>--set-upstream<span class="w"> </span>new<span class="w"> </span>origin/new
+</span></code></pre></div>
+<hr/>
+<p>then, you will be able to push/pull the changes in the branch by simply typing <strong>git push/pull</strong></p>
+<hr/>
+<h3 id="displaying__remote__information">Displaying remote information<a class="headerlink" href="#displaying__remote__information" title="Anchor link to this section for reference">¶</a></h3>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="gp">$ </span>git<span class="w"> </span>remote<span class="w"> </span>show<span class="w"> </span>origin
+</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="go">* remote origin</span>
+</span><span id="__span-17-3"><a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="go">  Fetch URL: git@bitbucket.org:arm2011/gitcourse.git</span>
+</span><span id="__span-17-4"><a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="go">  Push  URL: git@bitbucket.org:arm2011/gitcourse.git</span>
+</span><span id="__span-17-5"><a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="go">  HEAD branch: master</span>
+</span><span id="__span-17-6"><a href="#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="go">  Remote branches:</span>
+</span><span id="__span-17-7"><a href="#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="go">    experiment     tracked</span>
+</span><span id="__span-17-8"><a href="#__codelineno-17-8" id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="go">    feature        tracked</span>
+</span><span id="__span-17-9"><a href="#__codelineno-17-9" id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="go">    less-salt      tracked</span>
+</span><span id="__span-17-10"><a href="#__codelineno-17-10" id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="go">    master         tracked</span>
+</span><span id="__span-17-11"><a href="#__codelineno-17-11" id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="go">    nested-feature tracked</span>
+</span><span id="__span-17-12"><a href="#__codelineno-17-12" id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="go">  Local branches configured for 'git pull':</span>
+</span><span id="__span-17-13"><a href="#__codelineno-17-13" id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="go">    feature        merges with remote feature</span>
+</span><span id="__span-17-14"><a href="#__codelineno-17-14" id="__codelineno-17-14" name="__codelineno-17-14"></a><span class="go">    master         merges with remote master</span>
+</span><span id="__span-17-15"><a href="#__codelineno-17-15" id="__codelineno-17-15" name="__codelineno-17-15"></a><span class="go">    nested-feature merges with remote nested-feature</span>
+</span><span id="__span-17-16"><a href="#__codelineno-17-16" id="__codelineno-17-16" name="__codelineno-17-16"></a><span class="go">  Local refs configured for 'git push':</span>
+</span><span id="__span-17-17"><a href="#__codelineno-17-17" id="__codelineno-17-17" name="__codelineno-17-17"></a><span class="go">    feature        pushes to feature        (fast-forwardable)</span>
+</span><span id="__span-17-18"><a href="#__codelineno-17-18" id="__codelineno-17-18" name="__codelineno-17-18"></a><span class="go">    master         pushes to master         (up to date)</span>
+</span><span id="__span-17-19"><a href="#__codelineno-17-19" id="__codelineno-17-19" name="__codelineno-17-19"></a><span class="go">    nested-feature pushes to nested-feature (up to date)</span>
+</span></code></pre></div>
+<hr/>
+<h3 id="renaming__remotes">Renaming remotes<a class="headerlink" href="#renaming__remotes" title="Anchor link to this section for reference">¶</a></h3>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>rename<span class="w"> </span>initial_name<span class="w"> </span>new_name
+</span></code></pre></div>
+<h3 id="deleting__remotes">Deleting remotes<a class="headerlink" href="#deleting__remotes" title="Anchor link to this section for reference">¶</a></h3>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>remove<span class="w"> </span>remote_name<span class="w"> </span>
+</span></code></pre></div>
+<hr/>
+<h2 id="bare__repositories">Bare repositories<a class="headerlink" href="#bare__repositories" title="Anchor link to this section for reference">¶</a></h2>
+<p><img alt="Git bare repositories" src="../images/git-folders-bare.png"/></p>
+<p>A bare repository is a repository with no working directory.</p>
+<hr/>
+<h3 id="creating__a__bare__repository">Creating a bare repository<a class="headerlink" href="#creating__a__bare__repository" title="Anchor link to this section for reference">¶</a></h3>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>bare.git<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>bare.git
+</span><span id="__span-20-2"><a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a>$<span class="w"> </span>git<span class="w"> </span>init<span class="w"> </span>--bare
+</span></code></pre></div>
+<h3 id="cloning__a__bare__repository__cont">Cloning a bare repository cont.<a class="headerlink" href="#cloning__a__bare__repository__cont" title="Anchor link to this section for reference">¶</a></h3>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--bare<span class="w"> </span>location
+</span></code></pre></div>
+<hr/>
+<h2 id="using__github">Using GitHub<a class="headerlink" href="#using__github" title="Anchor link to this section for reference">¶</a></h2>
+<p><img alt="Using GitHub" src="../images/github-remote.jpg"/></p>
+<hr/>
+<p>Upon login into your GitHub account you will see the following option to create a new repository</p>
+<p><img alt="GitHub account" src="../images/github-account.jpg"/></p>
+<hr/>
+<p>Here, you can choose the type of repository that is appropriate to your needs (public/private), if you want to add <em>README</em> and <em>.gitignore</em> files and also the type of license for your project,</p>
+<p><img alt="GitHub type repo" src="../images/github-type-repo.jpeg"/></p>
+<hr/>
+<p>GitHub will suggest some steps that you can take for your brand-new repository:</p>
+<p><img alt="GitHub new repo" src="../images/github-new-repo.jpg"/></p>
+<hr/>
+<p><img alt="GitHub create new repo" src="../images/github-import.jpg"/></p>
+<hr/>
+<h2 id="setting__ssh-keys">Setting ssh-keys<a class="headerlink" href="#setting__ssh-keys" title="Anchor link to this section for reference">¶</a></h2>
+<ol>
+<li>ssh-keygen -t rsa -b 4096 -C “pedro@gemail.com”</li>
+<li>eval $(ssh-agent -s)</li>
+<li>ssh-add ~/.ssh/id_rsa</li>
+<li>clip &lt; ~/.ssh/id_rsa.pub (it copies the ssh key that has got generated)</li>
+</ol>
+<hr/>
+<ol>
+<li>Go to your remote repository on github.com and then <strong>Settings</strong> -&gt; <strong>SSH and GPG keys</strong> -&gt;new SSH key -&gt; write a title and paste the copied SSH key and save it</li>
+<li>check if the key was properly set on github/bitbucket </li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>$ ssh -T git@bitbucket.org
+</span><span id="__span-22-2"><a href="#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>$ ssh -T git@github.com
+</span></code></pre></div>
+<hr/>
+<p><img alt="Github SSH keys" src="../images/git-ssh.jpg"/></p>
+<hr/>
+<h2 id="network__visualization">Network visualization<a class="headerlink" href="#network__visualization" title="Anchor link to this section for reference">¶</a></h2>
+<p><img alt="Git network visualization" src="../images/git-network.jpg"/></p>
+<hr/>
+<h2 id="working__with__others__repos">Working with other’s repos<a class="headerlink" href="#working__with__others__repos" title="Anchor link to this section for reference">¶</a></h2>
+<p>In the following scenario, a developer, Bob, has its repo on GitHub. Another developer, Alice, finds it useful. Alice can clone it but she cannot push changes unless Bob allows it:</p>
+<div class="mermaid">graph LR
+    bob["Bob repo"] --- n1["cloning"]
+    n1 --&gt; alice(["Alice cloned"])
+    alice -.- n2["cannot commit"]
+    n2 -.-&gt; bob
+
+    n1@{ shape: text}
+    n2@{ shape: text}
+    style n2 color:#D50000
+    linkStyle 2 stroke:#D50000,fill:none
+    linkStyle 3 stroke:#D50000,fill:none
+</div>
+<hr/>
+<p>A better approach is to <em>fork</em> Bob’s repository: </p>
+<p><div class="mermaid">graph LR
+  bob["Bob's repo (upstream)"] 
+  alicef(["Alice's repo (origin)"])
+  alicel(["Alice local copy (PC/laptop)"]) 
+  style alicel fill:#ffffff,stroke:#39742b,color:#39742b
+
+  alicef --&gt; |cloning| alicel
+  alicel --&gt; |can commit| alicef
+  bob --&gt; |forking| alicef
+  alicel -.- n1["cannot commit"]
+  alicel -.- n2["can request pulls"]
+  n1 -.-&gt; bob
+  n2 -.-&gt; bob 
+
+  n1@{ shape: text}
+  n2@{ shape: text}
+  style n1 color:#D50000
+  style n2 color:#4169E1
+  linkStyle 3 stroke:#D50000,fill:none
+  linkStyle 4 stroke:#4169E1,fill:none
+  linkStyle 5 stroke:#D50000,fill:none
+  linkStyle 6 stroke:#4169E1,fill:none
+</div>
+In this way, Alice can push changes to her repository and eventually make Bob aware of them as well.</p>
+<hr/>
+<h2 id="forking__a__repository">Forking a repository<a class="headerlink" href="#forking__a__repository" title="Anchor link to this section for reference">¶</a></h2>
+<p>To fork a repository, Alice go to the URL of the target repository and use the option <em>Fork</em> in Bob’s repository: </p>
+<p><img alt="forking" src="../images/git-fork.jpg"/></p>
+<hr/>
+<h2 id="forking__a__repository_1">Forking a repository<a class="headerlink" href="#forking__a__repository_1" title="Anchor link to this section for reference">¶</a></h2>
+<p>Then, Alice will see the forked repository on her user space:</p>
+<p><img alt="forked" src="../images/alice-fork.jpg"/></p>
+<hr/>
+<p>After doing some changes, Alice push them to her forked repository but she wants Bob become aware of them (1 commit in this case, click on this commit)</p>
+<p><img alt="push repo" src="../images/alice-commit.png"/></p>
+<hr/>
+<h2 id="pull__request">Pull request<a class="headerlink" href="#pull__request" title="Anchor link to this section for reference">¶</a></h2>
+<p>A <strong>pull request</strong> will be suggested: </p>
+<p><img alt="pull request" src="../images/pull-request.png"/></p>
+<hr/>
+<p>You can then create a the PR:</p>
+<p><img alt="Create a pull request" src="../images/create-pr.png"/></p>
+<hr/>
+<p>Another way to create PR is with “Pull request” option:</p>
+<p><img alt="Another way to create a pull request" src="../images/also-pr.jpg"/></p>
+<hr/>
+<p>Then, Bob receives an email with the pull request information about Alice modifications. On the GitHub site he sees the request:</p>
+<p><img alt="Get pull request" src="../images/get-pr.jpeg"/></p>
+<hr/>
+<p>Because Bob find the changes from Alice useful and there are no conflicts he can merge them, </p>
+<p><img alt="Pull request is OK - merge" src="../images/pr-ok.jpg"/></p>
+<hr/>
+<h2 id="issues">Issues<a class="headerlink" href="#issues" title="Anchor link to this section for reference">¶</a></h2>
+<p>If you find some issues in the files/code you can open an “Issue” on GitHub</p>
+<p><img alt="GitHub issue" src="../images/GH-issue.jpg"/></p>
+<hr/>
+<p><img alt="GitHub issue - continued" src="../images/GH-issue-cont.jpg"/></p>
+<hr/>
+<p>You may also assign people to the issues that are more related to that topic. </p>
+<p>In future commits you may refer to this issue by using the issue number, <span style="color:blue">#2</span> in this case. This will allow you to track the evolution of the issue on GitHub.</p>
+<hr/>
+<h2 id="best__practices">Best practices<a class="headerlink" href="#best__practices" title="Anchor link to this section for reference">¶</a></h2>
+<ul>
+<li>Communicate with your colleagues.</li>
+<li>Some commands such as <strong>git rebase</strong> change the history. It wouldn’t be a good idea to use them on public branches. </li>
+<li>Don’t accept pull requests right away.</li>
+</ul>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../branches/" title="Branches, merges, and conflicts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../teamwork/" title="Teamwork">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../branches/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../teamwork/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../assets/_markdown_exec_pyodide.js"></script>
+<script src="../search/main.js"></script>
+<script src="../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>
