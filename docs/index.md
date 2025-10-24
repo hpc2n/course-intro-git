@@ -91,19 +91,19 @@
 
 **Tuesday, 2025-11-04**
 
-| Time | Topic | Activity |
-| ---- | ----- | -------- | 
+| Time | Topic | Activity | Teacher |
+| ---- | ----- | -------- | ------- |
 | 09:00 | 3. Basic concepts, part 1 | Lecture+code along | Birgitte |
 | 10:15 | Break (15 min) | | 
 | 10:30 | 3. Basic concepts, part 2 | Lecture+code along+exercises | Birgitte |
 | 11:20 | Break (10 min) | |
 | 11:30 | 4. Traversing the commit tree, part 1 | Lecture+code along | Diana |
-| 12:00 | End of second day | 
+| 12:00 | End of second day | |
 
 **Wednesday, 2025-11-05**
 
-| Time | Topic | Activity |
-| ---- | ----- | -------- |  
+| Time | Topic | Activity | Teacher |
+| ---- | ----- | -------- | ------- | 
 | 09:00 | 4. Traversing the commit tree, part 2 | Lecture+code along+exercises | Diana |
 | 10:15 | Break (15 min) | | 
 | 10:30 | 4. Traversing the commit tree, part 3 | Lecture+code along+exercises | Diana |
@@ -113,8 +113,8 @@
 
 **Thursday, 2025-11-06**
 
-| Time | Topic | Activity |
-| ---- | ----- | -------- |  
+| Time | Topic | Activity | Teacher |
+| ---- | ----- | -------- | ------- | 
 | 09:00 | 5. Branches, merges, and conflicts, part 2 | Lecture+code along+exercises | Diana |
 | 09:55 | Break (10 min) | | 
 | 10:05 | Brief intro to SSH-keys and using GitHub | Lecture+code along | Birgitte |
@@ -125,8 +125,8 @@
 
 **Friday, 2025-11-07** 
 
-| Time | Topic | Activity |
-| ---- | ----- | -------- |
+| Time | Topic | Activity | Teacher |
+| ---- | ----- | -------- | ------- |
 | 09:00 | 7. Teamwork, part 1 | Lecture+code along+exercises | Birgitte |
 | 09:55 | Break (10 min) | | 
 | 10:05 | 7. Teamwork, part 2 | exercises | All |
