@@ -15,7 +15,7 @@ You can do that either by cloning the repository or by just getting the zip file
         1. ``wget https://github.com/hpc2n/course-intro-git/raw/refs/heads/main/git_materials.zip`` 
         2. ``unzip git_materials.zip``
         3. ``cd git_materials``
-        4. ``cd 4.branches``
+        4. ``cd 5.branches``
 
 You are now in a directory with 5 subdirectories, one for each exercise.
 
