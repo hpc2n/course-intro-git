@@ -1,44 +1,46 @@
 ---
-title: "Lecture D: Using Tetralith for the Git course"
+title: "Lecture B: Using Rackham for the Git course"
 tags: Lecture, Birgitte, day 1
-description: "Git installation, use of Tetralith, etc"
+description: "Git installation, use of Rackham, etc"
 ---
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
-Minor modifications done for the fall 2021 and 2022 versions of the course. For the 2023 version of the course the machine was changed from Kebnekaise to Rackham. In 2024, Rackham will also be used. 
-For the 2024 version of the course, the machine was changed from Rackham to Tetralith, though the material for using Triolith remains, as Lecture B. -->
+Minor modifications done for the fall 2021 and 2022 versions of the course. For the 2023 version of the course the machine was changed from Kebnekaise to Rackham. In 2024, Rackham will also be used. -->
 
-<!-- Slides: https://hackmd.io/@git-fall-2024/tetralith#/ --> 
+<!-- Slides: https://hackmd.io/@git-fall-2024/LB-rackham -->
 
 ---
 
-# Connecting to Tetralith
+# Connecting to Rackham
 
-## ThinLinc
+For this course we recommend using ThinLinc, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only. 
 
-For this course we recommend using ThinLinc, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only, so an SSH client like PuTTY would also work. 
-
-* Download the ThinLinc client from https://www.cendio.com/thinlinc/download and install it.
-
-## Logging in 
-
-* Start the client. Enter the name of the server: ``tetralith.nsc.liu.se`` and then enter your own username.
+* Download the client from https://www.cendio.com/thinlinc/download and install it.
+* Start the client. Enter the name of the server: rackham-gui.uppmax.uu.se and then enter your own username.
 * Go to "Options" -> "Security". Check that authentication method is set to password.
 * Go to "Options" -> "Screen" and uncheck "Full screen mode".
-* Enter your NSC password. Click "Connect".
+* Enter your UPPMAX password. Click "Connect".
 
-If you prefer a different SSH client (terminal, etc.), you connect with ``ssh -Y <user>@tetralith.nsc.liu.se``
+ThinLinc can also be used from a browser: https://rackham-gui.uppmax.uu.se
 
-**NOTE** 2FA is needed.
+If you prefer a different SSH client (terminal, etc.), you connect with ssh -Y <user>@rackham.uppmax.uu.se
+
+---
+
+**NOTE** If you are not connecting from within the domain of a Swedish university, **2FA may be needed**.
     
-- Information about connecting: https://www.nsc.liu.se/support/getting-started/
-- More specific about 2FA: https://www.nsc.liu.se/support/2fa/     
+* You cannot do this through ThinLinc
+* It can be handled by
+    * logging in with a regular SSH-client (PuTTy or similar)
+    * doing the 2FA and then logging out again
+    * there is then a grace period of some minutes for you to login to ThinLinc. 
+* More info here: https://www.uu.se/en/centre/uppmax/get-started/2-factor   
 
 ---
 
 ## Setting up Git
 
-Git is already installed on Tetralith, but you need to set your name and email globals *unless you have already done this at some earlier time*. 
+Git is already installed on Rackham, but you need to set your name and email globals *unless you have already done this at some earlier time*. 
 
 * Open a terminal. In ThinLinc: Go to the menu at the top. Click “Applications” → “System Tools” → “MATE Terminal”.
 * Set your global name (change "Your Name"): 
@@ -103,25 +105,18 @@ If that is the case, your Git should be configured correctly.
 
 For the individual hands-on part of the course, we have created some course materials which you will download from either the course website, the course GitHub, or the "important information" page. 
 
-* Course website: <a href="https://www.hpc2n.umu.se/events/courses/2025/git" target="_blank">https://www.hpc2n.umu.se/events/courses/2025/git</a>
+* Course website: https://www.hpc2n.umu.se/events/courses/2024/fall/git
 * Course GitHub: https://github.com/hpc2n/course-intro-git
     - Click the green button labeled "Code" for links to clone or download the materials. 
     - Either do **1. CLONE** or **2. DOWNLOAD**, not both! 
         - CLONE: Change to the directory where you wish to have the course material and clone with 'git clone' and the url: 
-            - ``git clone https://github.com/hpc2n/course-intro-git.git``
+            - git clone https://github.com/hpc2n/course-intro-git.git
             - You get the directory: `course-intro-git`
         - DOWNLOAD Zipfile: Please go to the terminal window where you have downloaded and set up Git. Change the directory to wherever you wish to have the course material. 
             - Download the Zipfile and move it there. Can be done directly from the terminal with `wget https://github.com/hpc2n/course-intro-git/archive/refs/heads/main.zip`)
             - Unpack with `unzip main.zip`. 
-            - You will get a directory called `course-intro-git-main`. 
-
----
-
-## GitHub and SSH keys
-
-* You need to create an account on GitHub for the course
-* You also need to create SSH keys on Tetralith and install these on GitHub
-* We will go through this in a general way which should work regardless of system you are using
-    * We will go through it before the Teamwork session. The material for creating and setting up SSH keys are here: <a href="https://hpc2n.github.io/course-intro-git/setup/#create__a__new__ssh__key__for__github" target="_blank">https://hpc2n.github.io/course-intro-git/setup/#create__a__new__ssh__key__for__github</a>
+            - You will get a directory called `course-intro-git-main`.  
+    
+    
 
 

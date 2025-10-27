@@ -8,11 +8,13 @@ description: "Git installation, use of Tetralith, etc"
 Minor modifications done for the fall 2021 and 2022 versions of the course. For the 2023 version of the course the machine was changed from Kebnekaise to Rackham. In 2024, Rackham will also be used. 
 For the 2024 version of the course, the machine was changed from Rackham to Tetralith, though the material for using Triolith remains, as Lecture B. -->
 
+<!-- For the 2025 version of the course, material has been made for how to connect to Alvis as well. --> 
+
 <!-- Slides: https://hackmd.io/@git-fall-2024/tetralith#/ --> 
 
 ---
 
-# Connecting to Tetralith
+# Connecting to Alvis
 
 ## ThinLinc
 
@@ -103,7 +105,7 @@ If that is the case, your Git should be configured correctly.
 
 For the individual hands-on part of the course, we have created some course materials which you will download from either the course website, the course GitHub, or the "important information" page. 
 
-* Course website: <a href="https://www.hpc2n.umu.se/events/courses/2025/git" target="_blank">https://www.hpc2n.umu.se/events/courses/2025/git</a>
+* Course website: https://www.hpc2n.umu.se/events/courses/2024/fall/git
 * Course GitHub: https://github.com/hpc2n/course-intro-git
     - Click the green button labeled "Code" for links to clone or download the materials. 
     - Either do **1. CLONE** or **2. DOWNLOAD**, not both! 
@@ -122,6 +124,6 @@ For the individual hands-on part of the course, we have created some course mate
 * You need to create an account on GitHub for the course
 * You also need to create SSH keys on Tetralith and install these on GitHub
 * We will go through this in a general way which should work regardless of system you are using
-    * We will go through it before the Teamwork session. The material for creating and setting up SSH keys are here: <a href="https://hpc2n.github.io/course-intro-git/setup/#create__a__new__ssh__key__for__github" target="_blank">https://hpc2n.github.io/course-intro-git/setup/#create__a__new__ssh__key__for__github</a>
+    * We will go through it before the Teamwork session. The material for creating and setting up SSH keys are here: https://hackmd.io/@git-fall-2024/LC-github
 
 

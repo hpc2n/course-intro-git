@@ -56,6 +56,7 @@ nav:
     - Teamwork: teamwork-exercises.md  
   - Extra:
     - Using Tetralith for the Git course: tetralith.md
+    - Using Dardel for the Git course: dardel.md
     - Using Rackham for the Git course: rackham.md
     - Using Kebnekaise for the Git course: kebnekaise.md  
 plugins:
