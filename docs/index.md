@@ -62,16 +62,20 @@
 ### Q/A collabration document
 
 - Use the Q/A page for the workshop with your questions.
-    - <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EdGtUQbzqvRDu1UFAj1vrEEBegJLNy3wzrUlu3-oQYyYkw" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EdGtUQbzqvRDu1UFAj1vrEEBegJLNy3wzrUlu3-oQYyYkw</a>
+    - <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EfIQPoU5soNOgqAlN76il0MBcyyJhtGmJlgNYX5f3UX1Lg" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EfIQPoU5soNOgqAlN76il0MBcyyJhtGmJlgNYX5f3UX1Lg</a>
     - Create a new line for new questions. Take care if others are editing at the same time. 
 
 ### Important info document 
 
-- There is an "important info" document with information for the course. You have gotten an email with a link to this: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/Eapzrh9uWHBCj__7L63KFXkBAvUfBfEJfgvTfBHc-S0BiA?e=2GWXsM" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/Eapzrh9uWHBCj__7L63KFXkBAvUfBfEJfgvTfBHc-S0BiA?e=2GWXsM</a>
+- There is an "important info" document with information for the course. You have gotten an email with a link to this: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/ER8bNIT2iA5KmGxh5x2VhDwBc1GP-EQpEYH2UZii6wHBZg" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/ER8bNIT2iA5KmGxh5x2VhDwBc1GP-EQpEYH2UZii6wHBZg</a>
 
 ### Recordings
 
 - The recordings of the course lectures will be uploaded to HPC2N's YouTube channel: <a href="https://www.youtube.com/@HPC2N" target="_blank">https://www.youtube.com/@HPC2N</a>. 
+
+### Evaluation 
+
+This course is under development and will probably change a little bit before the next instance of it. There is an evaluation survey. Please help us by filling it after the course so we can use your input to make the next installment of the course better. You can find it here: <a href="" target="_blank"></a>. 
 
 ## Preliminary schedule
 
