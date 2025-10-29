@@ -1,7 +1,7 @@
 ---
-title: "Lecture D: Using Tetralith for the Git course"
+title: "Using Alvis for the Git course"
 tags: Lecture, Birgitte, day 1
-description: "Git installation, use of Tetralith, etc"
+description: "Git installation, use of Alvis, etc"
 ---
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
@@ -16,33 +16,33 @@ For the 2024 version of the course, the machine was changed from Rackham to Tetr
 
 # Connecting to Alvis
 
-## ThinLinc
+## OpenOnDemand
 
-For this course we recommend using ThinLinc, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only, so an SSH client like PuTTY would also work. 
+For this course we recommend using OpenOnDemand, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only, so an SSH client like PuTTY would also work. 
 
-* Download the ThinLinc client from https://www.cendio.com/thinlinc/download and install it.
+## Logging in to OpenOnDemand
 
-## Logging in 
+- Put ``https://alvis.c3se.chalmers.se`` in browser address bar
+- Put ``<your-c3se-username>`` and ``<your-c3se-password>`` in the login box
 
-* Start the client. Enter the name of the server: ``tetralith.nsc.liu.se`` and then enter your own username.
-* Go to "Options" -> "Security". Check that authentication method is set to password.
-* Go to "Options" -> "Screen" and uncheck "Full screen mode".
-* Enter your NSC password. Click "Connect".
+If you prefer a different SSH client (terminal, etc.), you connect with either of 
 
-If you prefer a different SSH client (terminal, etc.), you connect with ``ssh -Y <user>@tetralith.nsc.liu.se``
+- ``ssh -Y <user>@alvis1.c3se.chalmers.se`` 
+- ``ssh -Y <user>@alvis2.c3se.chalmers.se``
 
-**NOTE** 2FA is needed.
-    
-- Information about connecting: https://www.nsc.liu.se/support/getting-started/
-- More specific about 2FA: https://www.nsc.liu.se/support/2fa/     
+!!! warning "Note"
+
+    Alvis is accessible via SUNET networks (i.e. most Swedish university networks). 
+
+    If you are not on one of those networks you need to use a VPN - preferrably your own Swedish university VPN. If this is not possible, contact ``support@chalmers.se`` and ask to be added to the Chalmers's eduVPN.
 
 ---
 
 ## Setting up Git
 
-Git is already installed on Tetralith, but you need to set your name and email globals *unless you have already done this at some earlier time*. 
+Git is already installed on Alvis, but you need to set your name and email globals *unless you have already done this at some earlier time*. 
 
-* Open a terminal. In ThinLinc: Go to the menu at the top. Click “Applications” → “System Tools” → “MATE Terminal”.
+* Open a terminal. In OpenOnDemand portal: Go to the menu at the top. Click “Applications” → “System Tools” → “MATE Terminal”.
 * Set your global name (change "Your Name"): 
   `$ git config --global user.name "Your Name"`
 * Set your global email (change the example): 
