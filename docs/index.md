@@ -75,7 +75,7 @@
 
 ### Evaluation 
 
-This course is under development and will probably change a little bit before the next instance of it. There is an evaluation survey. Please help us by filling it after the course so we can use your input to make the next installment of the course better. You can find it here: <a href="" target="_blank"></a>. 
+This course is under development and will probably change a little bit before the next instance of it. There is an evaluation survey. Please help us by filling it after the course so we can use your input to make the next installment of the course better. You can find it here: <a href="https://forms.office.com/e/W3Pd3mP8rC" target="_blank">https://forms.office.com/e/W3Pd3mP8rC</a>. 
 
 ## Preliminary schedule
 
