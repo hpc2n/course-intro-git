@@ -20,12 +20,16 @@ For the 2024 version of the course, the machine was changed from Rackham to Tetr
 
 For this course we recommend using OpenOnDemand, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only, so an SSH client like PuTTY would also work. 
 
-## Logging in to OpenOnDemand
+## Logging in 
+
+### OpenOnDemand
 
 - Put ``https://alvis.c3se.chalmers.se`` in browser address bar
 - Login through SUPR, with your SUPR credentials.
 
 - Put ``<your-c3se-username>`` and ``<your-c3se-password>`` in the login box
+
+### Other SSH client 
 
 If you prefer a different SSH client (terminal, etc.), you connect with either of 
 
@@ -115,8 +119,8 @@ If that is the case, your Git should be configured correctly.
 
 For the individual hands-on part of the course, we have created some course materials which you will download from either the course website, the course GitHub, or the "important information" page. 
 
-* Course website: https://www.hpc2n.umu.se/events/courses/2024/fall/git
-* Course GitHub: https://github.com/hpc2n/course-intro-git
+* Course website: <a href="https://www.hpc2n.umu.se/events/courses/2025/git" target="_blank">https://www.hpc2n.umu.se/events/courses/2025/git</a>
+* Course GitHub: <a href="https://github.com/hpc2n/course-intro-git" target="_blank">https://github.com/hpc2n/course-intro-git</a>
     - Click the green button labeled "Code" for links to clone or download the materials. 
     - Either do **1. CLONE** or **2. DOWNLOAD**, not both! 
         - CLONE: Change to the directory where you wish to have the course material and clone with 'git clone' and the url: 

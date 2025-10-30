@@ -7,6 +7,7 @@ description: "Git installation, use of Kebnekaise, etc"
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
 Minor modifications done for the fall 2021 and 2022 versions of the course. -->
 
+<!-- Minor updates done for the fall 2025 version of the course -->
 <!-- Slides: https://hackmd.io/@git-fall-2022/LB-kebnekaise#/ --> 
 
 ---
@@ -131,8 +132,8 @@ If that is the case, your Git should be configured correctly.
 
 For the individual hands-on part of the course, we have created some course materials which you will download from either the course website, the course GitHub, or the "important information" page. 
 
-* Course website: https://www.hpc2n.umu.se/events/courses/2022/introduction-to-git
-* Course GitHub: https://github.com/hpc2n/course-intro-git
+* Course website: <a href="https://www.hpc2n.umu.se/events/courses/2025/git" target="_blank">https://www.hpc2n.umu.se/events/courses/2025/git</a>
+* Course GitHub: <a href="https://github.com/hpc2n/course-intro-git" target="_blank">https://github.com/hpc2n/course-intro-git</a>
     - Click the green button labeled "Code" to get links to clone or download the materials. 
 * Download the material, then please go to the terminal window where you have downloaded and set up Git.
 * Change the directory to wherever you wish to have the course material.

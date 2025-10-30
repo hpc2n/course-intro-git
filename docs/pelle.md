@@ -1,40 +1,41 @@
 ---
-title: "Lecture B: Using Rackham for the Git course"
+title: "Using Pelle for the Git course"
 tags: Lecture, Birgitte, day 1
-description: "Git installation, use of Rackham, etc"
+description: "Git installation, use of Pelle, etc"
 ---
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
 Minor modifications done for the fall 2021 and 2022 versions of the course. For the 2023 version of the course the machine was changed from Kebnekaise to Rackham. In 2024, Rackham will also be used. -->
 
+<!-- Created from the Rackham connecting info, for Pelle connecting for Git use. For the 2025 version of the course --> 
+
 <!-- Slides: https://hackmd.io/@git-fall-2024/LB-rackham -->
 
 ---
 
-# Connecting to Rackham
+# Connecting to Pelle
 
-For this course we recommend using ThinLinc, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only. 
+For this course we recommend using ThinLinc, at least for Windows, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only. 
 
-* Download the client from https://www.cendio.com/thinlinc/download and install it.
-* Start the client. Enter the name of the server: rackham-gui.uppmax.uu.se and then enter your own username.
+* Download the client from <a href="https://www.cendio.com/thinlinc/download" target="_blank">https://www.cendio.com/thinlinc/download</a> and install it.
+* Start the client. Enter the name of the server: ``pelle-gui.uppmax.uu.se`` and then enter your own username.
 * Go to "Options" -> "Security". Check that authentication method is set to password.
 * Go to "Options" -> "Screen" and uncheck "Full screen mode".
 * Enter your UPPMAX password. Click "Connect".
 
-ThinLinc can also be used from a browser: https://rackham-gui.uppmax.uu.se
-
-If you prefer a different SSH client (terminal, etc.), you connect with ssh -Y <user>@rackham.uppmax.uu.se
+If you prefer a different SSH client (terminal, etc.), you connect with ``ssh -Y <user>@pelle.uppmax.uu.se``
 
 ---
 
-**NOTE** If you are not connecting from within the domain of a Swedish university, **2FA may be needed**.
+**NOTE** 2FA may be needed. 
     
 * You cannot do this through ThinLinc
 * It can be handled by
     * logging in with a regular SSH-client (PuTTy or similar)
     * doing the 2FA and then logging out again
     * there is then a grace period of some minutes for you to login to ThinLinc. 
-* More info here: https://www.uu.se/en/centre/uppmax/get-started/2-factor   
+* More info here: <a href="https://docs.uppmax.uu.se/getting_started/get_uppmax_2fa/" target="_blank">https://docs.uppmax.uu.se/getting_started/get_uppmax_2fa/</a>
+
 
 ---
 
@@ -105,8 +106,8 @@ If that is the case, your Git should be configured correctly.
 
 For the individual hands-on part of the course, we have created some course materials which you will download from either the course website, the course GitHub, or the "important information" page. 
 
-* Course website: https://www.hpc2n.umu.se/events/courses/2024/fall/git
-* Course GitHub: https://github.com/hpc2n/course-intro-git
+* Course website: <a href="https://www.hpc2n.umu.se/events/courses/2025/git" target="_blank">https://www.hpc2n.umu.se/events/courses/2025/git</a>
+* Course GitHub: <a href="https://github.com/hpc2n/course-intro-git" target="_blank">https://github.com/hpc2n/course-intro-git</a>
     - Click the green button labeled "Code" for links to clone or download the materials. 
     - Either do **1. CLONE** or **2. DOWNLOAD**, not both! 
         - CLONE: Change to the directory where you wish to have the course material and clone with 'git clone' and the url: 

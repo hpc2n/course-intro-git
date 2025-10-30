@@ -1,24 +1,26 @@
 ---
-title: "Lecture B: Using Kebnekaise for the Git course"
+title: "Using Cosmos for the Git course"
 tags: Lecture, Birgitte, day 1
-description: "Git installation, use of Kebnekaise, etc"
+description: "Git installation, use of Cosmos, etc"
 ---
 
 <!-- Lecture material made by Birgitte Brydsö for the version of the course that was given in fall 2020. Lecture was first given by Birgitte Brydsö in fall 2020. 
 Minor modifications done for the fall 2021 and 2022 versions of the course. -->
 
+<!-- Created for the version of the course that ran fall 2025, describing how to use Cosmos for Git access if you do not have any other access --> 
+
 <!-- Slides: https://hackmd.io/@git-fall-2022/LB-kebnekaise#/ --> 
 
 ---
 
-# Connecting to Kebnekaise
+# Connecting to Cosmos
 
 ## ThinLinc
 
-For this course we recommend using ThinLinc, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only. 
+For this course we recommend using ThinLinc, particularly for Windows, but if you have your own installation of another SSH client that you prefer, you are welcome to use that. We will be using the command line only. 
 
-* Download the client from https://www.cendio.com/thinlinc/download and install it.
-* Start the client. Enter the name of the server: kebnekaise-tl.hpc2n.umu.se and then enter your own username.
+* Download the client from <a href="https://www.cendio.com/thinlinc/download" target="_blank">https://www.cendio.com/thinlinc/download</a> and install it.
+* Start the client. Enter the name of the server: ``cosmos-dt.lunarc.lu.se`` and then enter your own username.
 * Go to "Options" -> "Security". Check that authentication method is set to password.
 * Go to "Options" -> "Screen" and uncheck "Full screen mode".
 * Enter your HPC2N password. Click "Connect".
@@ -33,13 +35,13 @@ More information here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/
 If you prefer to login with a regular SSH client (i.e. PuTTY, Terminal, Linux terminal, etc.) then use the following as server: 
 
 ```bash
-kebnekaise.hpc2n.umu.se
+cosmos.lunarc.lu.se
 ```
 
 Example: logging in from a terminal:
 
 ```bash
-ssh <HPC2N username>@kebnekaise.hpc2n.umu.se
+ssh <COSMOS-username>@cosmos.lunarc.lu.se
 ```
 
 More information here: 
@@ -50,25 +52,12 @@ More information here:
 
 ---
 
-## Open OnDemand 
-
-If you prefer to use HPC2N's OpenOnDemand web service, then:
-
-- Go to <a href="https://portal.hpc2n.umu.se" target="_blank">https://portal.hpc2n.umu.se</a>
-- Login with your HPC2N username and password
-- Pick "Interactive Apps" -> "Kebnekaise desktop"
-- Fill in the information. Pick 1 regular core and however many hours you expect to use on the course. Launch 
-- After you have logged in, start a terminal: "Applications" -> "System Tools" -> "MATE Terminal" 
-
-More information here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#open__ondemand" target="_blank">https://docs.hpc2n.umu.se/tutorials/connections/#open__ondemand</a>
-
----
-
 ## Setting up Git
 
-Git is already installed on Kebnekaise, but you need to set your name and email globals *unless you have already done this at some earlier time*. 
+Git is already installed on Cosmos, but you need to set your name and email globals *unless you have already done this at some earlier time*. 
 
-* Open a terminal. In ThinLinc: Go to the menu at the top. Click “Applications” → “System Tools” → “MATE Terminal”.
+* Open a terminal. 
+    - If you are using ThinLinc: Go to the menu at the top. Click “Applications” → “System Tools” → “MATE Terminal”.
 * Set your global name: `$ git config --global user.name "Your Name"`
 * Set your global email: `$ git config --global user.email "yourname@example.com"` 
 
@@ -131,12 +120,21 @@ If that is the case, your Git should be configured correctly.
 
 For the individual hands-on part of the course, we have created some course materials which you will download from either the course website, the course GitHub, or the "important information" page. 
 
-* Course website: https://www.hpc2n.umu.se/events/courses/2022/introduction-to-git
-* Course GitHub: https://github.com/hpc2n/course-intro-git
+* Course website: <a href="https://www.hpc2n.umu.se/events/courses/2025/git" target="_blank">https://www.hpc2n.umu.se/events/courses/2025/git</a>
+* Course GitHub: <a href="https://github.com/hpc2n/course-intro-git" target="_blank">https://github.com/hpc2n/course-intro-git</a>
     - Click the green button labeled "Code" to get links to clone or download the materials. 
 * Download the material, then please go to the terminal window where you have downloaded and set up Git.
 * Change the directory to wherever you wish to have the course material.
 * Copy/transfer the tarball there (or download there directly with `wget <url-to-tarball>`)
 * Unpack with `tar zxvf <tarball>`
+
+---
+
+## GitHub and SSH keys
+
+* You need to create an account on GitHub for the course
+* You also need to create SSH keys on Cosmos and install these on GitHub.
+* We will go through this in a general way which should work regardless of system you are using
+    * We will go through it before the Teamwork session. The material for creating and setting up SSH keys are here: <a href="https://hpc2n.github.io/course-intro-git/setup/#create__a__new__ssh__key__for__github" target="_blank">https://hpc2n.github.io/course-intro-git/setup/#create__a__new__ssh__key__for__github</a>
 
 
