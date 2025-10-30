@@ -23,12 +23,16 @@ For this course we recommend using OpenOnDemand, but if you have your own instal
 ## Logging in to OpenOnDemand
 
 - Put ``https://alvis.c3se.chalmers.se`` in browser address bar
+- Login through SUPR, with your SUPR credentials.
+
 - Put ``<your-c3se-username>`` and ``<your-c3se-password>`` in the login box
 
 If you prefer a different SSH client (terminal, etc.), you connect with either of 
 
 - ``ssh -Y <user>@alvis1.c3se.chalmers.se`` 
 - ``ssh -Y <user>@alvis2.c3se.chalmers.se``
+
+- Put ``<your-c3se-username>`` where it says ``<user>`` and then the ``<user-c3se-password>`` when it asks for it. 
 
 !!! warning "Note"
 
@@ -42,10 +46,16 @@ If you prefer a different SSH client (terminal, etc.), you connect with either o
 
 Git is already installed on Alvis, but you need to set your name and email globals *unless you have already done this at some earlier time*. 
 
-* Open a terminal. In OpenOnDemand portal: Go to the menu at the top. Click “Applications” → “System Tools” → “MATE Terminal”.
-* Set your global name (change "Your Name"): 
+* Open a terminal. 
+    - If you are using OpenOnDemand portal: 
+        - Go to the portal and authenticate through SUPR
+        - In the menu at the top. Click “My Interactive Apps” → “Desktop Login” (since you do not need to start a job on a compute node to just run Git. 
+        - Pick either of the login nodes
+        - Pick "Alvis remote desktop" and enter your ``<alvis username>`` and ``<alvis password>``
+        - When the desktop starts, in the top menu, choose "Applications" → “System” → "Xfce Terminal".
+* Set your global name (change "Your Name", do not include the prompt `$`): 
   `$ git config --global user.name "Your Name"`
-* Set your global email (change the example): 
+* Set your global email (change the example, do not include the prompt): 
   `$ git config --global user.email "name@example.com"` 
 
 You may also want to set your editor. We recommend nano, but other options are vim and emacs (or notepad on Windows). 
@@ -122,8 +132,8 @@ For the individual hands-on part of the course, we have created some course mate
 ## GitHub and SSH keys
 
 * You need to create an account on GitHub for the course
-* You also need to create SSH keys on Tetralith and install these on GitHub
+* You also need to create SSH keys on Alvis and install these on GitHub.
 * We will go through this in a general way which should work regardless of system you are using
-    * We will go through it before the Teamwork session. The material for creating and setting up SSH keys are here: https://hackmd.io/@git-fall-2024/LC-github
+    * We will go through it before the Teamwork session. The material for creating and setting up SSH keys are here: <a href="https://hpc2n.github.io/course-intro-git/setup/#create__a__new__ssh__key__for__github" target="_blank">https://hpc2n.github.io/course-intro-git/setup/#create__a__new__ssh__key__for__github</a>
 
 

@@ -57,8 +57,10 @@ nav:
   - Extra:
     - Using Tetralith for the Git course: tetralith.md
     - Using Dardel for the Git course: dardel.md
-    - Using Rackham for the Git course: rackham.md
+    - Using Alvis for the Git course: alvis.md
+    - Using Pelle for the Git course: pelle.md
     - Using Kebnekaise for the Git course: kebnekaise.md  
+    - Using Cosmos for the Git course: cosmos.md
 plugins:
   - search
   - external-markdown

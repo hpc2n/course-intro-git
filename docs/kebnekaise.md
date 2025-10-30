@@ -139,4 +139,13 @@ For the individual hands-on part of the course, we have created some course mate
 * Copy/transfer the tarball there (or download there directly with `wget <url-to-tarball>`)
 * Unpack with `tar zxvf <tarball>`
 
+---
+
+## GitHub and SSH keys
+
+* You need to create an account on GitHub for the course
+* You also need to create SSH keys on Kebnekaise and install these on GitHub
+* We will go through this in a general way which should work regardless of system you are using
+    * We will go through it before the Teamwork session. The material for creating and setting up SSH keys are here: <a href="https://hpc2n.github.io/course-intro-git/setup/#create__a__new__ssh__key__for__github" target="_blank">https://hpc2n.github.io/course-intro-git/setup/#create__a__new__ssh__key__for__github</a>
+
 
