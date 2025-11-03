@@ -874,6 +874,8 @@ graph LR
   style master fill:#ffffff,stroke:#ffffff
   head["HEAD"]
   style head fill:#ffffff,stroke:#ffffff
+  bugfix["bugfix"]
+  style bugfix fill:#ffffff,stroke:#ffffff
 
   commit1(["commit1"])
   commit2(["commit2"])
@@ -882,8 +884,8 @@ graph LR
   commitXp(["commitX'"])
   commitYp(["commitY'"])
 
-  head -.-> master
-  master -.-> commitYp
+  head -.-> bugfix
+  master -.-> commit3
   commitYp --> commitXp
   commitXp --> commit4
   commit4 --> commit3
