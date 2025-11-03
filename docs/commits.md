@@ -851,7 +851,7 @@ Dropped refs/stash@{0} (a3dd9b60b18c2....)
 $ git stash apply <stash_id>
 ```
 
- - `git stash` stashes files that are **already added to the index**. 
+ - By default, `git stash push` stashes files that are **already added to the index**. 
      - This behaviour can be overwritten with the `--keep-index` option. 
 
 ---
