@@ -573,10 +573,10 @@ v0.1-beta.2
  - In the simplest case, we can create a **lightweight** tag:
 
 ```shell
-$ git tag <tag_name>
+$ git tag <tag_name> <commit>
 ```
 
- - The created tag always points to the current `HEAD`.
+ - The created tag points to the current `HEAD` if no commit reference is specified.
  - You an also create an **annotated** tag:
 
 ```shell
@@ -764,7 +764,7 @@ Aborting
  - We can simply stash the changes after which the checkout is successful:
 
 ```shell
-$ git stash
+$ git stash push
 Saved working directory and index state WIP on master:
 845aa01 Test: Use STARNEIG_USE_ALL
 ```
