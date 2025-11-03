@@ -134,7 +134,7 @@ $ git checkout master
 ```shell
 $ git merge cool-feature
 ```
-- You can now delete the extra branch:
+- You can now delete the reference to the extra branch, the commits stay:
 ```shell
 $ git branch -d cool-feature
 ```
@@ -235,13 +235,12 @@ $ git graph
 
 ---
 
-Now we can delete the new branch we had created, since all the content is now in the master branch. 
+Now we can delete the reference to the new branch we had created, since all the content is now in the master branch. 
 
 ```shell
 $ git branch -d cool-feature 
 Deleted branch cool-feature (was 5bad966).
 ```
-Comment: It is good practice to keep old branches for understanding of the development. Deletion could however be done for very evident mistakes or insignificant issues.
 
 ---
 
