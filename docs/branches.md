@@ -886,6 +886,7 @@ graph LR
 
   head -.-> bugfix
   master -.-> commit3
+  bugfix -.-> commitYp
   commitYp --> commitXp
   commitXp --> commit4
   commit4 --> commit3
