@@ -723,7 +723,7 @@ Feature 1 is a good implementation
 Let's try to merge the **feature_1** branch on to the **master** branch:
     
 ```shell
-$ $ git merge feature_1
+$ git merge feature_1
 Auto-merging myfile.txt
 CONFLICT (content): Merge conflict in myfile.txt
 Automatic merge failed; fix conflicts and then commit the result.
