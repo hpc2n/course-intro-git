@@ -251,7 +251,7 @@ index 09c78e6..3b23ff0 100644
 
 ---
 
-### List changes in the working directory / working tree / workspace
+### List changes in the working tree / working directory / workspace
 
  - We can list all **uncommited** changes by comparing against `HEAD`:
 
@@ -429,7 +429,7 @@ $ git reset <option> <ref>
 
  - The option defines what gets updated / cleared:
 
-|`<option>`| Tree | Index | HEAD | Comment        |
+|`<option>`| Working tree | Index | HEAD | Comment        |
 |----------|:----:|:-----:|:----:|----------------|
 |`--soft`  |      |       |  X   |                |
 |`--mixed` |      |   X   |  X   | Default        |
