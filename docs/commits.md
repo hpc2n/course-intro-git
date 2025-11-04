@@ -251,7 +251,7 @@ index 09c78e6..3b23ff0 100644
 
 ---
 
-### List uncommitted changed 
+### List changes in the working directory / working tree / workspace
 
  - We can list all **uncommited** changes by comparing against `HEAD`:
 
