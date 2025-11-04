@@ -43,7 +43,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 Save the changes in the working directory to the stash:
 
 ```shell
-$ git stash
+$ git stash push
 Saved working directory and index state WIP on master: 94e9a51 Add directions
 ```
 
