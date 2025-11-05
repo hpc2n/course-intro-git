@@ -385,7 +385,7 @@ Then, Alice will see the forked repository on her user space:
 Alice can then add the forked repository where she can *push* push changes:
 
 ```java
-$ git remote add git@github.com:aliceuser2020/my-first-project.git
+$ git remote add origin git@github.com:aliceuser2020/my-first-project.git
 
 $ git remote -v
 origin	git@github.com:aliceuser2020/my-first-project.git (fetch)
@@ -396,7 +396,7 @@ How does she add the upstream remote?
 
 
 ```java
-$ git remote add upstream git@github.com:bob/my-first-project.git
+$ git remote add upstream git@github.com:bobuser2020/my-first-project.git
 
 $ git remote -v
 origin	git@github.com:aliceuser2020/my-first-project.git (fetch)
@@ -410,7 +410,8 @@ upstream	git@github.com:bobuser2020/my-first-project.git (push)
 
 
 ```java
-$git graph
+$ git fetch upstream master
+$ git graph
 * 2e56d0a (HEAD -> main, upstream/main, origin/main, origin/HEAD) text of exercise git diff usage
 * 22a7316 Adding yet more lectures
 * 0ddb791 Adding some more of the lectures
