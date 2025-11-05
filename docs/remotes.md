@@ -41,10 +41,13 @@ origin  git@bitbucket.org:arm2011/gitcourse.git (push)
 ```
 
 
-displays the remotes that are already set up where you can *fetch* and *pull* changes. In this case there is only a single remoted called **origin**.
+displays the remotes that are already set up where you can *fetch* and *pull* changes. In this case there is only a single remoted called **origin** because I cloned the repository from the remote repository *arm2011/gitcourse.git*. If you created your repository from
+scratch (**git init**), you will not see any output from *git remote*. 
 
 ---
 
+In a repository containing an *origin* remote, one can see the following output with the 
+*git graph* command (an alias that we created in the **Basic Commands** session):
 
 ```java
 $ git graph
@@ -85,7 +88,7 @@ Protocols:
 
 ---
 
-Why do we need more than one remote?
+Do we need more than one remote?
 
   
 ```mermaid
