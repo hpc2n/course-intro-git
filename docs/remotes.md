@@ -20,7 +20,7 @@ In addition to this, a remote is a way to backup your repository.
 
 ---
 
-![Remote participants](../images/remote-participants.jpg)
+![Remote participants](../images/remote-participants.png)
 
 
 ---
