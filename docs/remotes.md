@@ -324,7 +324,7 @@ In the following scenario, a developer, Bob, has its repo on GitHub. Another dev
 graph LR
     bob["Bob repo"] --- n1["cloning"]
     n1 --> alice(["Alice cloned"])
-    alice -.- n2["cannot commit"]
+    alice -.- n2["cannot push"]
     n2 -.-> bob
 
     n1@{ shape: text}
