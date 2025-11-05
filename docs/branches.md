@@ -508,7 +508,7 @@ So, what can we do if there is a conflict?
 
 The command "stash" can be described as a **drawer** where you store uncommitted changes temporarily. 
 
-After stashing your uncommitted changes you can continue **working on other things** in a different branch.
+After stashing your uncommitted changes you can continue **working on other things**.
 
 The uncommitted changes that are stored in the stash **can be taken out and applied to any branch, including the original branch.**
 
