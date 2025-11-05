@@ -885,7 +885,7 @@ graph LR
   commitYp(["commitY'"])
 
   head -.-> bugfix
-  master -.-> commit3
+  master -.-> commit4
   bugfix -.-> commitYp
   commitYp --> commitXp
   commitXp --> commit4
