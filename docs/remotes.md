@@ -346,9 +346,9 @@ graph LR
   style alicel fill:#ffffff,stroke:#39742b,color:#39742b
 
   alicef --> |cloning| alicel
-  alicel --> |can commit| alicef
+  alicel --> |can push| alicef
   bob --> |forking| alicef
-  alicel -.- n1["cannot commit"]
+  alicel -.- n1["cannot push"]
   alicel -.- n2["can request pulls"]
   n1 -.-> bob
   n2 -.-> bob 
@@ -387,7 +387,7 @@ How do we add the upstream remote?
 ```mermaid
 graph TD
 
-  bob{"Bob repo"}
+  bob{"Bob's repo"}
   origin["origin"]
   style origin fill:#ffffff,stroke:#ffffff,color:#ff0000
   upstream["upstream"]
