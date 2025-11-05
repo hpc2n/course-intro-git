@@ -90,18 +90,6 @@ Protocols:
 
 ---
 
-
-
-```java
-$git graph
-* 2e56d0a (HEAD -> main, upstream/main, origin/main, origin/HEAD) text of exercise git diff usage
-* 22a7316 Adding yet more lectures
-* 0ddb791 Adding some more of the lectures
-* 3ff9f8f Adding some of the lectures
-```
-
----
-
 ## Working with remotes
 One can push or fetch/pull to or from remotes:
 
@@ -427,6 +415,18 @@ origin	git@github.com:aliceuser2020/my-first-project.git (fetch)
 origin	git@github.com:aliceuser2020/my-first-project.git (push)
 upstream	git@github.com:bobuser2020/my-first-project.git (fetch)
 upstream	git@github.com:bobuser2020/my-first-project.git (push)
+```
+
+---
+
+
+
+```java
+$git graph
+* 2e56d0a (HEAD -> main, upstream/main, origin/main, origin/HEAD) text of exercise git diff usage
+* 22a7316 Adding yet more lectures
+* 0ddb791 Adding some more of the lectures
+* 3ff9f8f Adding some of the lectures
 ```
 
 Alice can used the forked repository as the *origin* where she can put her changes. The *upstream* remote
