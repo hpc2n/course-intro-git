@@ -63,18 +63,20 @@ $ git graph
 
 A remote repository can be added manually with the command
 
-```java
+```bash
 $ git remote add remote_name location
 
-$ git remote add remote_name git@github.com:aliceuser2020/my-first-project.git
+# Example
+mkdyr my-repo && cd my-repo
+git init
+$ git remote add origin git@github.com:pojeda/my-first-project.git
 
 $ git remote -v
-remote_name	git@github.com:aliceuser2020/my-first-project.git (fetch)
-remote_name	git@github.com:aliceuser2020/my-first-project.git (push)
+origin	git@github.com:pojeda/my-first-project.git (fetch)
+origin	git@github.com:pojeda/my-first-project.git (push)
 ```
 
 where the location of the remote can be an URL or the path if that is in your local machine.
-
 
 ---
 
@@ -88,44 +90,7 @@ Protocols:
 
 ---
 
-Do we need more than one remote?
 
-  
-```mermaid
-graph TD
-
-  bob{"Bob repo"}
-  origin["origin"]
-  style origin fill:#ffffff,stroke:#ffffff,color:#ff0000
-  upstream["upstream"]
-  style upstream fill:#ffffff,stroke:#ffffff,color:#ff0000
-  upstream -.-> bob 
-  origin -.-> alicef
-
-  alicef(["Alice fork"])
-  alicel(["Alice local"])
-  
-  bob --> alicef
-
-  alicef --> alicel
-  alicel -.-> bob
-```
-
----
-
-
-```java
-$ git remote add upstream git@github.com:bob/my-first-project.git
-
-$ git remote -v
-origin	git@github.com:aliceuser2020/my-first-project.git (fetch)
-origin	git@github.com:aliceuser2020/my-first-project.git (push)
-upstream	git@github.com:bobuser2020/my-first-project.git (fetch)
-upstream	git@github.com:bobuser2020/my-first-project.git (push)
-```
-
-
----
 
 ```java
 $git graph
@@ -197,7 +162,6 @@ $ git merge
 
 ---
 
-## Advanced
 The command
 ```shell
 $ git push 
@@ -206,6 +170,7 @@ will send the changes in the current branch to the remote by default.
 
 ---
 
+## Advanced
 
 The default behavior can be seen with:
 ```shell
@@ -429,9 +394,53 @@ Then, Alice will see the forked repository on her user space:
 
 ---
 
+How do we add the upstream remote?
+
+```mermaid
+graph TD
+
+  bob{"Bob repo"}
+  origin["origin"]
+  style origin fill:#ffffff,stroke:#ffffff,color:#ff0000
+  upstream["upstream"]
+  style upstream fill:#ffffff,stroke:#ffffff,color:#ff0000
+  upstream -.-> bob 
+  origin -.-> alicef
+
+  alicef(["Alice fork"])
+  alicel(["Alice local"])
+  
+  bob --> alicef
+
+  alicef --> alicel
+  alicel -.-> bob
+```
+
+---
+
+
+```java
+$ git remote add upstream git@github.com:bob/my-first-project.git
+
+$ git remote -v
+origin	git@github.com:aliceuser2020/my-first-project.git (fetch)
+origin	git@github.com:aliceuser2020/my-first-project.git (push)
+upstream	git@github.com:bobuser2020/my-first-project.git (fetch)
+upstream	git@github.com:bobuser2020/my-first-project.git (push)
+```
+
+Alice can used the forked repository as the *origin* where she can put her changes. The *upstream* remote
+will help her to be updated with the latest changes from Bob (Github will show messages) but she won't be 
+able to commit changes to Bob's repo (without permissions).
+
+---
+
+## Synchronizing remotes
+
 After doing some changes, Alice push them to her forked repository but she wants Bob become aware of them (1 commit in this case, click on this commit)
 
 ![push repo](../images/alice-commit.png)
+
 
 ---
 
