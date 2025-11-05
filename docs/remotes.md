@@ -382,29 +382,17 @@ Then, Alice will see the forked repository on her user space:
 
 ---
 
-How do we add the upstream remote?
+Alice can then add the forked repository where she can *push* push changes:
 
-```mermaid
-graph TD
+```java
+$ git remote add git@github.com:aliceuser2020/my-first-project.git
 
-  bob{"Bob's repo"}
-  origin["origin"]
-  style origin fill:#ffffff,stroke:#ffffff,color:#ff0000
-  upstream["upstream"]
-  style upstream fill:#ffffff,stroke:#ffffff,color:#ff0000
-  upstream -.-> bob 
-  origin -.-> alicef
-
-  alicef(["Alice fork"])
-  alicel(["Alice local"])
-  
-  bob --> alicef
-
-  alicef --> alicel
-  alicel -.-> bob
+$ git remote -v
+origin	git@github.com:aliceuser2020/my-first-project.git (fetch)
+origin	git@github.com:aliceuser2020/my-first-project.git (push)
 ```
 
----
+How does she add the upstream remote?
 
 
 ```java
