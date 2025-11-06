@@ -286,31 +286,6 @@ GitHub will suggest some steps that you can take for your brand-new repository:
 
 ---
 
-## Setting ssh-keys
-
-1. ssh-keygen -t rsa -b 4096 -C "pedro@gemail.com"
-2. eval $(ssh-agent -s)
-3. ssh-add ~/.ssh/id_rsa
-4. clip < ~/.ssh/id_rsa.pub (it copies the ssh key that has got generated)
-
-
----
-
-5. Go to your remote repository on github.com and then **Settings** -> **SSH and GPG keys** ->new SSH key -> write a title and paste the copied SSH key and save it
-6. check if the key was properly set on github/bitbucket 
-
-```
-$ ssh -T git@bitbucket.org
-$ ssh -T git@github.com
-```
-
-
----
-
-![Github SSH keys](../images/git-ssh.jpg)
-
----
-
 ## Network visualization
 ![Git network visualization](../images/git-network.jpg)
 
