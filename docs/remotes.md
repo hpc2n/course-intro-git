@@ -13,7 +13,7 @@ description: "TODO"
 ---
 
 ## Concepts
-A remote repository is a version of the project which can be hosted in your local machine, some network, or over the internet (Pro Git, 2nd. Ed., Scott Chacon and Ben Straub) where you and your collaborators can push or pull code modifications. 
+A remote repository is a reference to another project which can be hosted in your local machine, some network, or over the internet (Pro Git, 2nd. Ed., Scott Chacon and Ben Straub) where you and your collaborators can push or pull code modifications. 
 
 In addition to this, a remote is a way to backup your repository.
 
