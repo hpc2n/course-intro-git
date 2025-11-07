@@ -11,7 +11,7 @@
 	Switched to branch 'awesomefeature'
 	bbrydsoe@enterprise-a:~/mytestrepo$ touch awesome.txt
 	bbrydsoe@enterprise-a:~/mytestrepo$ echo 'This branch will have an awesome feature' > awesome.txt 
-bbrydsoe@enterprise-a:~/mytestrepo$ git add awesome.txt 
+        bbrydsoe@enterprise-a:~/mytestrepo$ git add awesome.txt 
 	bbrydsoe@enterprise-a:~/mytestrepo$ git commit -m "Committing the first file in my new awesome branch"
 	[awesomefeature aa0f455] Committing the first file in my new awesome branch
 	 1 file changed, 1 insertion(+)
@@ -182,7 +182,7 @@ bbrydsoe@enterprise-a:~/mytestrepo$ git add awesome.txt
 
 	As you can see, nothing commmitted - you only did things "locally" and need to push it for it to take effect remotely. 
 
-Your local branches: 
+        Your local branches: 
 
 	```shell
 	bbrydsoe@enterprise-a:~/mytestrepo$ git branch
@@ -226,5 +226,5 @@ Your local branches:
           yetanotherbranch
 	```
 
-Success! We got the branch back! 
+        Success! We got the branch back! 
 
