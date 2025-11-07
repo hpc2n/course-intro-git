@@ -571,7 +571,7 @@ Hi bbrydsoe! You've successfully authenticated, but GitHub does not provide shel
 
 We now have SSH keys set up. Time to test it from your own machine: 
 
-1. Clone the repository, using the SSH address (click CODE on the GitHub repository and pick SSH). You will be asked for the key passphrase.
+1. Create a repository on GitHub. Clone the repository, using the SSH address (click CODE on the GitHub repository and pick SSH). You will be asked for the key passphrase.
 2. Enter the local repository. Do a `git pull` and see that it works. You will have to enter the key passphrase. 
 3. Create a file (or edit a file). 
 4. Add the file. Commit the file (`git add`, `git commit`)
